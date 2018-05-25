@@ -1,0 +1,80 @@
+//
+//  PrefixHeader.pch
+//  GLKLineKit
+//
+//  Created by walker on 2018/5/25.
+//  Copyright © 2018年 walker. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+#import "GLKLineKit.h"
+
+
+// 防空判断 ------------------
+/**
+ 字符串防空判断
+ */
+#define isStrEmpty(string) (string == nil || string == NULL || (![string isKindOfClass:[NSString class]]) || ([string isEqual:@""]) || [string isEqualToString:@""] || [string isEqualToString:@" "] || ([string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length == 0))
+
+/**
+ 数组防空判断
+ */
+#define isArrEmpty(array) (array == nil || array == NULL || (![array isKindOfClass:[NSArray class]]) || array.count == 0)
+
+/**
+ 字典防空判断
+ */
+#define isDictEmpty(dict) (dict == nil || dict == NULL || (![dict isKindOfClass:[NSDictionary class]]) || dict.count == 0)
+
+
+// --------- 适配公共宏 ------
+/** 控件缩放比例，按照宽度计算 */
+#define SCALE_Length(l) (IS_PORTRAIT ? round((SCREEN_Width/375.0*(l))) : round((SCREEN_Width/667.0*(l))))
+/** 是否是竖屏 */
+#define IS_PORTRAIT (([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) || ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown))
+
+// -- 导航栏和Tabbar针对iPhone X 的适配  --
+#define Nav_topH (GL_iPhoneX ? 88.0 : 64.0)
+#define Tab_H (GL_iPhoneX ? 83.0 : 49.0)
+#define NavMustAdd (GL_iPhoneX ? 24.0 : 0.0)
+#define TabMustAdd (GL_iPhoneX ? 20.0 : 0.0)
+#define TabMustAddSafe (GL_iPhoneX ? (IS_PORTRAIT ? 34.0 : 0.0) : 0.0)
+#define Status_H  (GL_iPhoneX ? 44.0 : 20.0)
+#define NavigationItem_H   (44.0)
+
+// 尺寸  --------------------
+/*
+ 屏幕宽
+ */
+#define SCREEN_WIDTH   ([UIScreen mainScreen].bounds.size.width)
+
+/*
+ 屏幕高
+ */
+#define SCREEN_HEIGHT  ([UIScreen mainScreen].bounds.size.height)
+
+
+// color 转换 ---------------
+/*
+ 根据RGB获得颜色值
+ */
+#define kColorRGB(r , g , b) kColorRGBA(r , g , b ,1.0)
+/*
+ 根据RGB和alpha值获得颜色
+ */
+#define kColorRGBA(r , g , b ,a) ([UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)])
+
+/* 当前版本号 */
+#define OSVERSION ([[UIDevice currentDevice].systemVersion floatValue])
+
+// 手机尺寸型号
+#define GL_iPhone_4x      (SCREEN_Width == 320 && SCREEN_Height == 480)
+#define GL_iPhone_5x      (SCREEN_Width == 320 && SCREEN_Height == 568)
+#define GL_iPhone_6x      (SCREEN_Width == 375 && SCREEN_Height == 667)
+#define GL_iPhone_plus    (SCREEN_Width == 414 && SCREEN_Height == 736)
+#define GL_iPhoneX        (SCREEN_Width == 375 && SCREEN_Height == 812)
+
+#endif /* PrefixHeader_pch */
