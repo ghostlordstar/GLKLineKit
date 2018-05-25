@@ -31,7 +31,7 @@
 - (void)p_initialize {
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    self.title = @"横屏样式";
     if (@available(iOS 11.0, *)) {
         
     } else {

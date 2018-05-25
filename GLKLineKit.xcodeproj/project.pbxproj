@@ -40,6 +40,7 @@
 		5D1F1E2E20B8385600BD47B1 /* KLineDataProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E2D20B8385600BD47B1 /* KLineDataProcess.m */; };
 		5D1F1E3120B83AE500BD47B1 /* SimpleKLineVolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E3020B83AE500BD47B1 /* SimpleKLineVolView.m */; };
 		5DE0140820B84310006CE8D3 /* KLineVolViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE0140720B84310006CE8D3 /* KLineVolViewConfig.m */; };
+		5DE0140E20B84CE0006CE8D3 /* bitCNY_ETH in Resources */ = {isa = PBXBuildFile; fileRef = 5DE0140D20B84CE0006CE8D3 /* bitCNY_ETH */; };
 		5DE110E020B83F3800277399 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D1F1DC820B82A4300BD47B1 /* Info.plist */; };
 		5DE110E120B83F4600277399 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D1F1D9920B8289E00BD47B1 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -136,6 +137,7 @@
 		5DE0140620B84310006CE8D3 /* KLineVolViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KLineVolViewConfig.h; sourceTree = "<group>"; };
 		5DE0140720B84310006CE8D3 /* KLineVolViewConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KLineVolViewConfig.m; sourceTree = "<group>"; };
 		5DE0140920B844F5006CE8D3 /* GLKLineKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLKLineKit.h; sourceTree = "<group>"; };
+		5DE0140D20B84CE0006CE8D3 /* bitCNY_ETH */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bitCNY_ETH; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				5D1F1D8D20B8289D00BD47B1 /* GLKLineKit */,
+				5D1F1D9720B8289E00BD47B1 /* Assets.xcassets */,
+				5D1F1D9920B8289E00BD47B1 /* LaunchScreen.storyboard */,
 				5D1F1DA620B8289E00BD47B1 /* GLKLineKitTests */,
 				5D1F1DB120B8289E00BD47B1 /* GLKLineKitUITests */,
 				5D1F1D8C20B8289D00BD47B1 /* Products */,
@@ -190,8 +194,7 @@
 				5D1F1DCF20B82BEE00BD47B1 /* Category */,
 				5D1F1DC220B82A3C00BD47B1 /* Example */,
 				5D1F1DC320B82A4300BD47B1 /* Main */,
-				5D1F1D9720B8289E00BD47B1 /* Assets.xcassets */,
-				5D1F1D9920B8289E00BD47B1 /* LaunchScreen.storyboard */,
+				5DE0140A20B84C28006CE8D3 /* Resource */,
 			);
 			path = GLKLineKit;
 			sourceTree = "<group>";
@@ -403,6 +406,14 @@
 			path = DataProcess;
 			sourceTree = "<group>";
 		};
+		5DE0140A20B84C28006CE8D3 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				5DE0140D20B84CE0006CE8D3 /* bitCNY_ETH */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -509,6 +520,7 @@
 				5DE110E120B83F4600277399 /* LaunchScreen.storyboard in Resources */,
 				5DE110E020B83F3800277399 /* Info.plist in Resources */,
 				5D1F1D9820B8289E00BD47B1 /* Assets.xcassets in Resources */,
+				5DE0140E20B84CE0006CE8D3 /* bitCNY_ETH in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

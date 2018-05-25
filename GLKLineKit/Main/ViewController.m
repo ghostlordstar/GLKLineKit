@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "PortraitTestController.h"
+#import "LandscapeController.h"
+#import "BothController.h"
 
 @interface ViewController ()
 <
@@ -69,11 +72,20 @@ static NSString *const klineKitDemoCell_id_1 = @"klineKitDemoCell_id_1";
     NSString *cellTitle = self.dataArray[indexPath.row];
     
     if ([cellTitle isEqualToString:@"竖屏"]) {
+        PortraitTestController *portraitVC = [[PortraitTestController alloc] init];
         
+        [self.navigationController pushViewController:portraitVC animated:YES];
     }else if([cellTitle isEqualToString:@"横屏"]) {
+        
+        LandscapeController *landScapeVC = [[LandscapeController alloc] init];
+        
+        [self.navigationController pushViewController:landScapeVC animated:YES];
         
     }else if([cellTitle isEqualToString:@"横竖屏切换"]) {
         
+        BothController *bothVC = [[BothController alloc] init];
+        
+        [self.navigationController pushViewController:bothVC animated:YES];
     }
     
 }
@@ -83,6 +95,8 @@ static NSString *const klineKitDemoCell_id_1 = @"klineKitDemoCell_id_1";
 - (void)p_initialize {
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.title = @"GLKLineKit";
     
     if (@available(iOS 11.0, *)) {
         self.listView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
