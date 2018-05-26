@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "KLineViewProtocol.h"
 #import "ChartDrawProtocol.h"
-#import "DataCenter.h"
-@class DataCenter,KLineViewConfig,BaseDrawLogic,KLineDataLogic;
+@class DataCenter,BaseDrawLogic,KLineDataLogic;
 
 /* 重绘时的位置类型 */
 typedef enum : NSUInteger {

@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
 当前绘图算法的标识符，用作增删改查的标识
+ 此处不安全，还需处理
 */
 @property (copy, nonatomic) NSString *drawLogicIdentifier;
 

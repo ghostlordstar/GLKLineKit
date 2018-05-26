@@ -6,13 +6,14 @@
 //  Copyright © 2018年 Ghostlrod. All rights reserved.
 //
 
-/* K线视图事件变化的逻辑处理 */
+/* K线视图手势事件变化的逻辑处理 */
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 @protocol KLineDataLogicProtocol <NSObject>
 @required
 
+#pragma mark - K线绘图相关 ---
 /**
  可见区域已经改变
 
@@ -20,6 +21,43 @@
  @param scale 当前的scale
  */
 - (void)visibleRangeDidChanged:(CGPoint)visibleRange scale:(CGFloat)scale;
+
+#pragma mark - 十字线相关 ----
+
+/**
+ 十字线的显示状态
+ 
+ @param isShow 是否显示
+ */
+- (void)reticleIsShow:(BOOL)isShow;
+
+@optional
+/**
+ KLineView 被点击的回调方法(十字线显示)
+
+ @param view 被点击的View
+ @param point point 点击的点
+ @param index index 当前触点所在item的下标
+ */
+- (void)klineView:(KLineView *)view didTapAtPoint:(CGPoint)point selectedItemIndex:(NSInteger)index;
+
+/**
+ KLineView 上触点移动的回调方法(十字线移动)
+ 
+ @param view 触点起始的View
+ @param point point 点击的点
+ @param index index 当前触点所在item的下标
+ */
+- (void)klineView:(KLineView *)view didMoveToPoint:(CGPoint)point selectedItemIndex:(NSInteger)index;
+
+/**
+ KLineView 上的触点移除的回调方法(十字线消失)
+
+ @param view 触点当前所在的View
+ @param point 触点相对于当前view的位置
+ @param index 触点所在item的下标
+ */
+- (void)klineView:(KLineView *)view didRemoveAtPoint:(CGPoint)point selectedItemIndex:(NSInteger)index;
 
 @end
 
@@ -87,6 +125,34 @@
  */
 - (void)updateVisibleRangeWithZoomCenterPercent:(CGFloat)percent perItemWidth:(CGFloat)perItemWidth scale:(CGFloat)scale;
 
+#pragma mark - 十字线相关 ----
+
+/**
+ KLineView的点击手势 (将要出现十字线)
+
+ @param view KLineView
+ @param point 触点的位置
+ @param perItemWidth 当前的Item宽度
+ */
+- (void)beginTapKLineView:(KLineView *)view touchPoint:(CGPoint)point perItemWidth:(CGFloat)perItemWidth;
+
+/**
+ 手指在KLineView上移动 (十字线将要移动)
+
+ @param view KLineView
+ @param point 触点的位置
+ @param perItemWidth 当前的item宽度
+ */
+- (void)moveTouchAtKLineView:(KLineView *)view touchPoint:(CGPoint)point perItemWidth:(CGFloat)perItemWidth;
+
+/**
+ 取消当前的显示状态 (十字线将要隐藏)
+
+ @param view KLineView
+ @param point 触点的位置
+ @param perItemWidth 当前的Item宽度
+ */
+- (void)removeTouchAtKLineView:(KLineView *)view touchPoint:(CGPoint)point perItemWidth:(CGFloat)perItemWidth;
 #pragma mark - 禁用方法 --
 
 - (instancetype)init NS_UNAVAILABLE;

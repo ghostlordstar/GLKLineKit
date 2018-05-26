@@ -75,13 +75,13 @@
     // 更新最大最小值
     [self p_updateMinAndMaxValueWithBeginIndex:beginItemIndex endIndex:endItemIndex arguments:arguments];
     
-    // 调用传入的block，更新视图的最大最小值
-    if(arguments) {
-        UpdateExtremeValueBlock block = [arguments objectForKey:updateExtremeValueBlockAtDictionaryKey];
-        if (block) {
-            block(self.drawLogicIdentifier ,self.extremeValue.minValue,self.extremeValue.maxValue);
-        }
-    }
+//    // 调用传入的block，更新视图的最大最小值
+//    if(arguments) {
+//        UpdateExtremeValueBlock block = [arguments objectForKey:updateExtremeValueBlockAtDictionaryKey];
+//        if (block) {
+//            block(self.drawLogicIdentifier ,self.extremeValue.minValue,self.extremeValue.maxValue);
+//        }
+//    }
     
     // 最大最小值的差值
     double diffValue = (self.extremeValue.maxValue - self.extremeValue.minValue) > 0.0 ? (self.extremeValue.maxValue - self.extremeValue.minValue) : 0.0;

@@ -11,7 +11,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "ConstantDefinition.h"
+#import "GLConstantDefinition.h"
 @interface NSValue (GLExtremeValue)
 
 /**

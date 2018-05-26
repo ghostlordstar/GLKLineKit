@@ -62,13 +62,13 @@
     }
     // 每个元素的宽度
     self.perItemWidth = (scale * [self.config klineGap]) + self.entityLineWidth;
-    // 开始和结束的K线下标
+    // 开始和结束的K线下标 floor()小于visibleRange.x的最大整数
     NSInteger beginItemIndex = floor(visibleRange.x);
+    // ceil()大于visibleRange.y的最小整数
     NSInteger endItemIndex = ceil(visibleRange.y);
     if (beginItemIndex < 0) {
         beginItemIndex = 0;
     }
-    
     // 修正最后一个元素下标，防止数组越界
     if (endItemIndex >= [DataCenter shareCenter].klineModelArray.count) {
         endItemIndex = [DataCenter shareCenter].klineModelArray.count - 1;

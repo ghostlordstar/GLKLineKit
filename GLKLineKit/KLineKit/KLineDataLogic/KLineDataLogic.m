@@ -230,8 +230,7 @@
         self.visibleRange = CGPointMake(0, newRange.y - newRange.x);
     }
 }
-
-
+  
 /**
  最小显示K线根数
 
@@ -243,5 +242,62 @@
     }
     return _minKlineCount;
 }
+
+#pragma mark - 十字线相关 ---
+
+/**
+ KLineView的点击手势 (将要出现十字线)
+ */
+- (void)beginTapKLineView:(KLineView *)view touchPoint:(CGPoint)point perItemWidth:(CGFloat)perItemWidth {
+    
+    NSInteger  index = 0;
+    
+    
+    for (NSObject <KLineDataLogicProtocol>*tempDelegate in self.delegateContainer) {
+        
+        if (tempDelegate && [tempDelegate respondsToSelector:@selector(klineView:didTapAtPoint:selectedItemIndex:)]) {
+            [tempDelegate klineView:view didTapAtPoint:point selectedItemIndex:index];
+        }
+        
+        if (tempDelegate && [tempDelegate respondsToSelector:@selector(reticleIsShow:)]) {
+            [tempDelegate reticleIsShow:YES];
+        }
+    }
+}
+
+/**
+ 手指在KLineView上移动 (十字线将要移动)
+ */
+- (void)moveTouchAtKLineView:(KLineView *)view touchPoint:(CGPoint)point perItemWidth:(CGFloat)perItemWidth {
+    NSInteger  index = 0;
+    
+    NSLog(@"十字线 -- point === %@",NSStringFromCGPoint(point));
+    for (NSObject <KLineDataLogicProtocol>*tempDelegate in self.delegateContainer) {
+        
+        if (tempDelegate && [tempDelegate respondsToSelector:@selector(klineView:didMoveToPoint:selectedItemIndex:)]) {
+            [tempDelegate klineView:view didMoveToPoint:point selectedItemIndex:index];
+        }
+    }
+}
+
+/**
+ 取消当前的显示状态 (十字线将要隐藏)
+ */
+- (void)removeTouchAtKLineView:(KLineView *)view touchPoint:(CGPoint)point perItemWidth:(CGFloat)perItemWidth {
+    NSInteger  index = 0;
+    
+    
+    for (NSObject <KLineDataLogicProtocol>*tempDelegate in self.delegateContainer) {
+        
+        if (tempDelegate && [tempDelegate respondsToSelector:@selector(klineView:didRemoveAtPoint:selectedItemIndex:)]) {
+            [tempDelegate klineView:view didRemoveAtPoint:point selectedItemIndex:index];
+        }
+        
+        if (tempDelegate && [tempDelegate respondsToSelector:@selector(reticleIsShow:)]) {
+            [tempDelegate reticleIsShow:NO];
+        }
+    }
+}
+
 
 @end

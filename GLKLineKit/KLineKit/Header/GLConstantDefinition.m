@@ -1,12 +1,12 @@
 //
-//  ConstantDefinition.m
+//  GLConstantDefinition.m
 //  KLineDemo
 //
 //  Created by kk_ghostlord on 2018/5/16.
 //  Copyright © 2018年 Ghostlrod. All rights reserved.
 //
 
-#import "ConstantDefinition.h"
+#import "GLConstantDefinition.h"
 /* 在字典中保存时对应的Key */
 NSString *const updateExtremeValueBlockAtDictionaryKey = @"updateExtremeValueBlockAtDictionaryKey";
 /* K线绘图算法默认的Identifier */

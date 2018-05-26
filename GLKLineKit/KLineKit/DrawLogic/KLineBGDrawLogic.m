@@ -146,7 +146,7 @@
  */
 - (void)p_drawValueWithContext:(CGContextRef)ctx rect:(CGRect)rect {
     
-    if (GLExtremeValueEqualToExtremeValue(self.extremeValue, GLExtremeValueZero) || fabs(self.extremeValue.maxValue) == fabs(MAXFLOAT) || fabs(self.extremeValue.minValue) == fabs(MAXFLOAT)) {
+    if (self.extremeValue.maxValue <= self.extremeValue.minValue) {
         NSLog(@"最大最小值都为0，不需绘制");
         return;
     }

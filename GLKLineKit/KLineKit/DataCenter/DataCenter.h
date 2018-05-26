@@ -10,7 +10,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DataCenterProtocol.h"
-#import "ConstantDefinition.h"
+#import "GLConstantDefinition.h"
 #import "KLineModel.h"
 NS_ASSUME_NONNULL_BEGIN
 

@@ -1,5 +1,5 @@
 //
-//  ConstantDefinition.h
+//  GLConstantDefinition.h
 //  KLineDemo
 //
 //  Created by kk_ghostlord on 2018/5/16.
@@ -8,8 +8,8 @@
 
 /* 一些常量定义 */
 
-#ifndef ConstantDefinition_h
-#define ConstantDefinition_h
+#ifndef GLConstantDefinition_h
+#define GLConstantDefinition_h
 #import <UIKit/UIKit.h>
 
 #pragma mark - 最大最小值的结构体 ----👇👇--begin----

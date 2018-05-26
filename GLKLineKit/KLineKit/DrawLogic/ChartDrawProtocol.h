@@ -11,7 +11,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "KLineViewProtocol.h"
-#import "ConstantDefinition.h"
+#import "GLConstantDefinition.h"
 @protocol ChartDrawProtocol <NSObject>
 
 @required

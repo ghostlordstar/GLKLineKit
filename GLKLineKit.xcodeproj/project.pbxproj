@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D14A98B20B989DF006B13A8 /* NSString+GLDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D14A98A20B989DF006B13A8 /* NSString+GLDate.m */; };
 		5D1F1D9820B8289E00BD47B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D1F1D9720B8289E00BD47B1 /* Assets.xcassets */; };
 		5D1F1DA820B8289E00BD47B1 /* GLKLineKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DA720B8289E00BD47B1 /* GLKLineKitTests.m */; };
 		5D1F1DB320B8289E00BD47B1 /* GLKLineKitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DB220B8289E00BD47B1 /* GLKLineKitUITests.m */; };
@@ -17,7 +18,7 @@
 		5D1F1E0B20B82C0400BD47B1 /* KLineViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DD720B82C0400BD47B1 /* KLineViewConfig.m */; };
 		5D1F1E0C20B82C0400BD47B1 /* NSNumber+StringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DDB20B82C0400BD47B1 /* NSNumber+StringFormatter.m */; };
 		5D1F1E0D20B82C0400BD47B1 /* NSValue+GLExtremeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DDE20B82C0400BD47B1 /* NSValue+GLExtremeValue.m */; };
-		5D1F1E0E20B82C0400BD47B1 /* ConstantDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DE020B82C0400BD47B1 /* ConstantDefinition.m */; };
+		5D1F1E0E20B82C0400BD47B1 /* GLConstantDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DE020B82C0400BD47B1 /* GLConstantDefinition.m */; };
 		5D1F1E0F20B82C0400BD47B1 /* KLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DE520B82C0400BD47B1 /* KLineView.m */; };
 		5D1F1E1020B82C0400BD47B1 /* KLineDataLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DE820B82C0400BD47B1 /* KLineDataLogic.m */; };
 		5D1F1E1120B82C0400BD47B1 /* KLineIndicatorLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DEA20B82C0400BD47B1 /* KLineIndicatorLogic.m */; };
@@ -63,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D14A98920B989DF006B13A8 /* NSString+GLDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+GLDate.h"; sourceTree = "<group>"; };
+		5D14A98A20B989DF006B13A8 /* NSString+GLDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+GLDate.m"; sourceTree = "<group>"; };
 		5D1F1D8B20B8289D00BD47B1 /* GLKLineKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLKLineKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1F1D9720B8289E00BD47B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D1F1D9A20B8289E00BD47B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,8 +90,8 @@
 		5D1F1DDC20B82C0400BD47B1 /* NSValue+GLExtremeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+GLExtremeValue.h"; sourceTree = "<group>"; };
 		5D1F1DDD20B82C0400BD47B1 /* NSNumber+StringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+StringFormatter.h"; sourceTree = "<group>"; };
 		5D1F1DDE20B82C0400BD47B1 /* NSValue+GLExtremeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+GLExtremeValue.m"; sourceTree = "<group>"; };
-		5D1F1DE020B82C0400BD47B1 /* ConstantDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConstantDefinition.m; sourceTree = "<group>"; };
-		5D1F1DE220B82C0400BD47B1 /* ConstantDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstantDefinition.h; sourceTree = "<group>"; };
+		5D1F1DE020B82C0400BD47B1 /* GLConstantDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLConstantDefinition.m; sourceTree = "<group>"; };
+		5D1F1DE220B82C0400BD47B1 /* GLConstantDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLConstantDefinition.h; sourceTree = "<group>"; };
 		5D1F1DE420B82C0400BD47B1 /* KLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineView.h; sourceTree = "<group>"; };
 		5D1F1DE520B82C0400BD47B1 /* KLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineView.m; sourceTree = "<group>"; };
 		5D1F1DE720B82C0400BD47B1 /* KLineIndicatorLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineIndicatorLogic.h; sourceTree = "<group>"; };
@@ -165,6 +168,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D14A98820B989AD006B13A8 /* NSString+Date */ = {
+			isa = PBXGroup;
+			children = (
+				5D14A98920B989DF006B13A8 /* NSString+GLDate.h */,
+				5D14A98A20B989DF006B13A8 /* NSString+GLDate.m */,
+			);
+			path = "NSString+Date";
+			sourceTree = "<group>";
+		};
 		5D1F1D8220B8289D00BD47B1 = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +271,7 @@
 		5D1F1DCF20B82BEE00BD47B1 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				5D14A98820B989AD006B13A8 /* NSString+Date */,
 				5D1F1DD020B82BFB00BD47B1 /* CenterLoading */,
 			);
 			path = Category;
@@ -300,8 +313,8 @@
 			isa = PBXGroup;
 			children = (
 				5DE0140920B844F5006CE8D3 /* GLKLineKit.h */,
-				5D1F1DE220B82C0400BD47B1 /* ConstantDefinition.h */,
-				5D1F1DE020B82C0400BD47B1 /* ConstantDefinition.m */,
+				5D1F1DE220B82C0400BD47B1 /* GLConstantDefinition.h */,
+				5D1F1DE020B82C0400BD47B1 /* GLConstantDefinition.m */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -551,13 +564,14 @@
 				5D1F1E0F20B82C0400BD47B1 /* KLineView.m in Sources */,
 				5D1F1E1C20B82C0400BD47B1 /* KLineKDJDrawLogic.m in Sources */,
 				5D1F1E2E20B8385600BD47B1 /* KLineDataProcess.m in Sources */,
+				5D14A98B20B989DF006B13A8 /* NSString+GLDate.m in Sources */,
 				5D1F1E1020B82C0400BD47B1 /* KLineDataLogic.m in Sources */,
 				5D1F1DD320B82BFB00BD47B1 /* UIView+CenterLoading.m in Sources */,
 				5D1F1DCB20B82A4300BD47B1 /* main.m in Sources */,
 				5D1F1E0C20B82C0400BD47B1 /* NSNumber+StringFormatter.m in Sources */,
 				5D1F1E1420B82C0400BD47B1 /* KLineDrawLogic.m in Sources */,
 				5D1F1E1E20B82C0400BD47B1 /* KLineModel.m in Sources */,
-				5D1F1E0E20B82C0400BD47B1 /* ConstantDefinition.m in Sources */,
+				5D1F1E0E20B82C0400BD47B1 /* GLConstantDefinition.m in Sources */,
 				5D1F1E2B20B837AC00BD47B1 /* BothController.m in Sources */,
 				5D1F1E3120B83AE500BD47B1 /* SimpleKLineVolView.m in Sources */,
 				5D1F1E1120B82C0400BD47B1 /* KLineIndicatorLogic.m in Sources */,

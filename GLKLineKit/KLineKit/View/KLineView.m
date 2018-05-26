@@ -104,6 +104,21 @@
  */
 @property (assign, nonatomic) BOOL isCustomClean;
 
+/**
+ 是否正在显示十字线
+ */
+@property (assign, nonatomic) BOOL isShowReticle;
+
+/**
+ 是否移动过,在一次begin和end之间是否移动过(+- 1像素内不算移动)
+ */
+@property (assign, nonatomic) BOOL isMoved;
+
+/**
+ 开始的触点所处的位置
+ */
+@property (assign, nonatomic) CGPoint beginPoint;
+
 @end
 
 @implementation KLineView
@@ -213,7 +228,6 @@
             }
         }
     }
-    
     return isContatin;
 }
 
@@ -225,6 +239,11 @@
  @return 添加后的绘图算法
  */
 - (NSArray <BaseDrawLogic *>* _Nullable)addDrawLogic:(BaseDrawLogic<ChartDrawProtocol>*)logic {
+    
+    if([logic isMemberOfClass:[KLineBGDrawLogic class]]) {
+        // 如果添加背景算法，就先把默认的移除掉
+        [self removeDrawLogicWithLogicId:klineBGDrawLogicDefaultIdentifier];
+    }
     
     for (BaseDrawLogic *tempLogic in self.drawLogicArray) {
         if (tempLogic.drawLogicIdentifier && [tempLogic.drawLogicIdentifier isEqualToString:logic.drawLogicIdentifier]) {
@@ -429,6 +448,16 @@
     
 }
 
+/**
+ 十字线是否在显示
+
+ @param isShow 是否在显示
+ */
+- (void)reticleIsShow:(BOOL)isShow {
+    
+    self.isShowReticle = isShow;
+}
+
 #pragma mark - 私有方法 ---
 
 /**
@@ -437,6 +466,10 @@
 - (void)p_initialization {
     // 支持多点触控
     self.multipleTouchEnabled = YES;
+    // 默认不显示十字线
+    self.isShowReticle = NO;
+    // 默认未移动过
+    self.isMoved = NO;
     // 默认不在缩放状态
     self.isPinching = NO;
     // 默认的比例为1.0
@@ -541,7 +574,8 @@
     
     UITouch *touch = [touches anyObject];
     // 记录开始的触点所在的x坐标
-    self.lastTouchPointX = [touch locationInView:self].x;
+    self.beginPoint = [touch locationInView:self];
+    self.lastTouchPointX = self.beginPoint.x;
     
     if (touch && ![self.touchArray containsObject:touch] && self.touchArray.count < 2) {
         [self.touchArray addObject:touch];
@@ -551,31 +585,58 @@
         self.lastPinchWidth = 0.0;
         self.isPinching = YES;
     }
-    
+    self.isMoved = NO;
+    NSLog(@"begin ---- %@",[[self.drawLogicArray firstObject] drawLogicIdentifier]);
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     UITouch *touch = [touches anyObject];
+    CGPoint endPoint = [touch locationInView:self];
     if (touch && [self.touchArray containsObject:touch]) {
         [self.touchArray removeAllObjects];
         self.isPinching = NO;
+    }
+    
+    if (self.touchArray.count == 0 && !self.isMoved) {
+        if (self.isShowReticle) {
+            // 隐藏十字线
+            NSLog(@"隐藏十字线");
+            [self.dataLogic removeTouchAtKLineView:self touchPoint:endPoint perItemWidth:self.perItemWidth];
+        }else {
+            // 开始显示十字线
+            NSLog(@"显示十字线");
+            [self.dataLogic beginTapKLineView:self touchPoint:endPoint perItemWidth:self.perItemWidth];
+        }
     }
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     UITouch *touch = [self.touchArray firstObject];
+    CGPoint movePoint = [touch locationInView:self];
     
     if (self.isPinching && self.touchArray.count >= 2) {
         // 缩放
         [self p_updateScaleAndVisibleRange];
     }else if(!self.isPinching && self.touchArray.count == 1) {
-        // 左右移动
-        CGFloat offsetX = [touch locationInView:self].x - self.lastTouchPointX;
-        [self p_updateVisibleRangeWithOffseX:offsetX];
-        self.lastTouchPointX = [touch locationInView:self].x;
+        if (!self.isShowReticle) {
+            // 左右移动
+            CGFloat offsetX = movePoint.x - self.lastTouchPointX;
+            [self p_updateVisibleRangeWithOffseX:offsetX];
+        }else {
+            // 移动十字线
+            [self.dataLogic moveTouchAtKLineView:self touchPoint:movePoint perItemWidth:self.perItemWidth];
+        }
+
+        // 移动超过1像素就算移动过
+        if (fabs(self.beginPoint.x - movePoint.x) > 1) {
+            self.isMoved = YES;
+        }
+        
+        self.lastTouchPointX = movePoint.x;
     }
+    
 }
 
 - (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -590,7 +651,7 @@
  更新缩放比例和当前显示区域
  */
 - (void)p_updateScaleAndVisibleRange {
-    if(!self.isPinching || self.touchArray.count < 2) {
+    if(!self.isPinching || self.isShowReticle || self.touchArray.count < 2) {
         return;
     }
     
@@ -626,6 +687,11 @@
  更新滑动手势的偏移量和可见区域
  */
 - (void)p_updateVisibleRangeWithOffseX:(CGFloat)offsetX {
+    
+    if (self.isPinching || self.isShowReticle) {
+        NSLog(@"当缩放手势或者显示十字线时不能移动");
+        return;
+    }
     
     [self.dataLogic updateVisibleRangeWithOffsetX:offsetX perItemWidth:self.perItemWidth];
     
