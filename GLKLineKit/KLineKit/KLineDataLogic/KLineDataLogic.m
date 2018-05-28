@@ -252,11 +252,20 @@
     
     NSInteger  index = 0;
     
+    index = ceil(self.visibleRange.x + (point.x / perItemWidth));
+    if(index > ([DataCenter shareCenter].klineModelArray.count - 1)) {
+        index = [DataCenter shareCenter].klineModelArray.count - 1;
+    }else if(index < 0) {
+        index = 0;
+    }
+    
+    NSLog(@"beigin point = %@",NSStringFromCGPoint(point));
+
     
     for (NSObject <KLineDataLogicProtocol>*tempDelegate in self.delegateContainer) {
         
-        if (tempDelegate && [tempDelegate respondsToSelector:@selector(klineView:didTapAtPoint:selectedItemIndex:)]) {
-            [tempDelegate klineView:view didTapAtPoint:point selectedItemIndex:index];
+        if (tempDelegate && [tempDelegate respondsToSelector:@selector(klineView:didMoveToPoint:selectedItemIndex:)]) {
+            [tempDelegate klineView:view didMoveToPoint:point selectedItemIndex:index];
         }
         
         if (tempDelegate && [tempDelegate respondsToSelector:@selector(reticleIsShow:)]) {
@@ -271,7 +280,14 @@
 - (void)moveTouchAtKLineView:(KLineView *)view touchPoint:(CGPoint)point perItemWidth:(CGFloat)perItemWidth {
     NSInteger  index = 0;
     
-    NSLog(@"十字线 -- point === %@",NSStringFromCGPoint(point));
+    index = ceil(self.visibleRange.x + (point.x / perItemWidth));
+    if(index > ([DataCenter shareCenter].klineModelArray.count - 1)) {
+        index = [DataCenter shareCenter].klineModelArray.count - 1;
+    }else if(index < 0) {
+        index = 0;
+    }
+    
+    NSLog(@"move point = %@",NSStringFromCGPoint(point));
     for (NSObject <KLineDataLogicProtocol>*tempDelegate in self.delegateContainer) {
         
         if (tempDelegate && [tempDelegate respondsToSelector:@selector(klineView:didMoveToPoint:selectedItemIndex:)]) {
@@ -287,10 +303,19 @@
     NSInteger  index = 0;
     
     
+    index = ceil(self.visibleRange.x + (point.x / perItemWidth));
+    if(index > ([DataCenter shareCenter].klineModelArray.count - 1)) {
+        index = [DataCenter shareCenter].klineModelArray.count - 1;
+    }else if(index < 0) {
+        index = 0;
+    }
+    
+    NSLog(@"end point = %@",NSStringFromCGPoint(point));
+
     for (NSObject <KLineDataLogicProtocol>*tempDelegate in self.delegateContainer) {
         
-        if (tempDelegate && [tempDelegate respondsToSelector:@selector(klineView:didRemoveAtPoint:selectedItemIndex:)]) {
-            [tempDelegate klineView:view didRemoveAtPoint:point selectedItemIndex:index];
+        if (tempDelegate && [tempDelegate respondsToSelector:@selector(klineView:didMoveToPoint:selectedItemIndex:)]) {
+            [tempDelegate klineView:view didMoveToPoint:point selectedItemIndex:index];
         }
         
         if (tempDelegate && [tempDelegate respondsToSelector:@selector(reticleIsShow:)]) {

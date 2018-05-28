@@ -40,6 +40,8 @@
 		5D1F1E2B20B837AC00BD47B1 /* BothController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E2A20B837AC00BD47B1 /* BothController.m */; };
 		5D1F1E2E20B8385600BD47B1 /* KLineDataProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E2D20B8385600BD47B1 /* KLineDataProcess.m */; };
 		5D1F1E3120B83AE500BD47B1 /* SimpleKLineVolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E3020B83AE500BD47B1 /* SimpleKLineVolView.m */; };
+		5D85D10820BBDF9A0028A851 /* VerticalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D85D10620BBDF9A0028A851 /* VerticalView.m */; };
+		5D85D10920BBDF9A0028A851 /* HorizontalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D85D10720BBDF9A0028A851 /* HorizontalView.m */; };
 		5DE0140820B84310006CE8D3 /* KLineVolViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE0140720B84310006CE8D3 /* KLineVolViewConfig.m */; };
 		5DE0140E20B84CE0006CE8D3 /* bitCNY_ETH in Resources */ = {isa = PBXBuildFile; fileRef = 5DE0140D20B84CE0006CE8D3 /* bitCNY_ETH */; };
 		5DE110E020B83F3800277399 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D1F1DC820B82A4300BD47B1 /* Info.plist */; };
@@ -137,6 +139,10 @@
 		5D1F1E2D20B8385600BD47B1 /* KLineDataProcess.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KLineDataProcess.m; sourceTree = "<group>"; };
 		5D1F1E2F20B83AE500BD47B1 /* SimpleKLineVolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleKLineVolView.h; sourceTree = "<group>"; };
 		5D1F1E3020B83AE500BD47B1 /* SimpleKLineVolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleKLineVolView.m; sourceTree = "<group>"; };
+		5D85D10420BBDF9A0028A851 /* VerticalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalView.h; sourceTree = "<group>"; };
+		5D85D10520BBDF9A0028A851 /* HorizontalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalView.h; sourceTree = "<group>"; };
+		5D85D10620BBDF9A0028A851 /* VerticalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalView.m; sourceTree = "<group>"; };
+		5D85D10720BBDF9A0028A851 /* HorizontalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalView.m; sourceTree = "<group>"; };
 		5DE0140620B84310006CE8D3 /* KLineVolViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KLineVolViewConfig.h; sourceTree = "<group>"; };
 		5DE0140720B84310006CE8D3 /* KLineVolViewConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KLineVolViewConfig.m; sourceTree = "<group>"; };
 		5DE0140920B844F5006CE8D3 /* GLKLineKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLKLineKit.h; sourceTree = "<group>"; };
@@ -203,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				5D1F1DCE20B82A4E00BD47B1 /* KLineKit */,
+				5D85D10220BBDF9A0028A851 /* Vender */,
 				5D1F1DCF20B82BEE00BD47B1 /* Category */,
 				5D1F1DC220B82A3C00BD47B1 /* Example */,
 				5D1F1DC320B82A4300BD47B1 /* Main */,
@@ -419,6 +426,25 @@
 			path = DataProcess;
 			sourceTree = "<group>";
 		};
+		5D85D10220BBDF9A0028A851 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				5D85D10320BBDF9A0028A851 /* ReticleLine */,
+			);
+			path = Vender;
+			sourceTree = "<group>";
+		};
+		5D85D10320BBDF9A0028A851 /* ReticleLine */ = {
+			isa = PBXGroup;
+			children = (
+				5D85D10520BBDF9A0028A851 /* HorizontalView.h */,
+				5D85D10720BBDF9A0028A851 /* HorizontalView.m */,
+				5D85D10420BBDF9A0028A851 /* VerticalView.h */,
+				5D85D10620BBDF9A0028A851 /* VerticalView.m */,
+			);
+			path = ReticleLine;
+			sourceTree = "<group>";
+		};
 		5DE0140A20B84C28006CE8D3 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -570,6 +596,7 @@
 				5D1F1DCB20B82A4300BD47B1 /* main.m in Sources */,
 				5D1F1E0C20B82C0400BD47B1 /* NSNumber+StringFormatter.m in Sources */,
 				5D1F1E1420B82C0400BD47B1 /* KLineDrawLogic.m in Sources */,
+				5D85D10920BBDF9A0028A851 /* HorizontalView.m in Sources */,
 				5D1F1E1E20B82C0400BD47B1 /* KLineModel.m in Sources */,
 				5D1F1E0E20B82C0400BD47B1 /* GLConstantDefinition.m in Sources */,
 				5D1F1E2B20B837AC00BD47B1 /* BothController.m in Sources */,
@@ -588,6 +615,7 @@
 				5DE0140820B84310006CE8D3 /* KLineVolViewConfig.m in Sources */,
 				5D1F1E1520B82C0400BD47B1 /* KLineVolMADrawLogic.m in Sources */,
 				5D1F1E1820B82C0400BD47B1 /* KLineRSIDrawLogic.m in Sources */,
+				5D85D10820BBDF9A0028A851 /* VerticalView.m in Sources */,
 				5D1F1E1220B82C0400BD47B1 /* DataCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

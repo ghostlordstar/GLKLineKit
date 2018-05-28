@@ -86,7 +86,7 @@
 /**
  当前的最值
  */
-@property (assign, nonatomic) GLExtremeValue currentExtremeValue;
+@property (readwrite, assign, nonatomic) GLExtremeValue currentExtremeValue;
 
 /**
  更新最大最小值的block
@@ -615,7 +615,7 @@
     
     UITouch *touch = [self.touchArray firstObject];
     CGPoint movePoint = [touch locationInView:self];
-    
+    NSLog(@"move point = %@",NSStringFromCGPoint(movePoint));
     if (self.isPinching && self.touchArray.count >= 2) {
         // 缩放
         [self p_updateScaleAndVisibleRange];
@@ -630,7 +630,7 @@
         }
 
         // 移动超过1像素就算移动过
-        if (fabs(self.beginPoint.x - movePoint.x) > 1) {
+        if (fabs(self.beginPoint.x - movePoint.x) > 1.0 || fabs(self.beginPoint.y - movePoint.y) > 1.0) {
             self.isMoved = YES;
         }
         

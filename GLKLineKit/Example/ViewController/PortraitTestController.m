@@ -113,7 +113,7 @@
 
 - (SimpleKLineVolView *)simpleKLineView {
     if (!_simpleKLineView) {
-        _simpleKLineView = [[SimpleKLineVolView alloc] initWithFrame:CGRectMake(10.0f, 64.0, SCREEN_WIDTH - 20.0f, 300.0f)];
+        _simpleKLineView = [[SimpleKLineVolView alloc] initWithFrame:CGRectMake(10.0f, 100.0, SCREEN_WIDTH - 20.0f, 300.0f)];
     }
     return _simpleKLineView;
 }

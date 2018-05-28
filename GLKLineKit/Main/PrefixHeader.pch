@@ -14,7 +14,8 @@
 // 加载图
 #import "UIView+CenterLoading.h"
 #import "NSString+GLDate.h"
-
+#import "HorizontalView.h"
+#import "VerticalView.h"
 
 // 防空判断 ------------------
 /**

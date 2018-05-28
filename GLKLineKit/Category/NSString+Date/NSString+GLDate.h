@@ -12,6 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @interface NSString (GLDate)
 
+// yyyy.MM.dd HH:mm:ss
 
 /**
  根据传入的格式将时间戳转换为响应的字符串

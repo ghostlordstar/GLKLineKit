@@ -39,6 +39,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, strong, nonatomic) NSObject<KLineViewProtocol>*config;
 
 /**
+ 当前的最值
+ */
+@property (readonly, assign, nonatomic) GLExtremeValue currentExtremeValue;
+
+/**
  初始化方法
 
  @param frame 尺寸

@@ -32,14 +32,6 @@
 - (void)reticleIsShow:(BOOL)isShow;
 
 @optional
-/**
- KLineView 被点击的回调方法(十字线显示)
-
- @param view 被点击的View
- @param point point 点击的点
- @param index index 当前触点所在item的下标
- */
-- (void)klineView:(KLineView *)view didTapAtPoint:(CGPoint)point selectedItemIndex:(NSInteger)index;
 
 /**
  KLineView 上触点移动的回调方法(十字线移动)
@@ -49,15 +41,6 @@
  @param index index 当前触点所在item的下标
  */
 - (void)klineView:(KLineView *)view didMoveToPoint:(CGPoint)point selectedItemIndex:(NSInteger)index;
-
-/**
- KLineView 上的触点移除的回调方法(十字线消失)
-
- @param view 触点当前所在的View
- @param point 触点相对于当前view的位置
- @param index 触点所在item的下标
- */
-- (void)klineView:(KLineView *)view didRemoveAtPoint:(CGPoint)point selectedItemIndex:(NSInteger)index;
 
 @end
 
