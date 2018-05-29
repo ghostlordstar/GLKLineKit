@@ -66,7 +66,7 @@
     
     // 绘制文字
     self.textRect = [self p_drawTextWithContent:ctx textRect:rect];
-
+    
 }
 
 #pragma mark - 赋值或set方法 ----
@@ -94,7 +94,7 @@
 
 - (CGSize)getCurrentTextSize {
     CGSize textSize;
-
+    
     // 计算字体的大小
     textSize = [_text sizeWithAttributes:self.attributes];
     
@@ -124,7 +124,7 @@
 
 /**
  绘制横线：暂时不用
-
+ 
  @param ctx 上下文
  */
 - (void)p_drawHorizontalLineWithContent:(CGContextRef)ctx rect:(CGRect)rect {
@@ -143,7 +143,7 @@
         // 终点
         CGContextAddLineToPoint(ctx, CGRectGetMaxX(rect), originY);
     }
-
+    
     // 绘制
     CGContextStrokePath(ctx);
 }
@@ -151,7 +151,7 @@
 
 /**
  绘制文字
-
+ 
  @param ctx 上下文
  @param rect 文字绘制区域
  @return CGRect 文字最终的绘制区域
@@ -170,7 +170,7 @@
     
     // 绘制文字背景
     [self drawTextBackGroundInRect:CGRectMake(textRect.origin.x, 0, textRect.size.width, rect.size.height) content:ctx];
-
+    
     // 绘制字体
     [self.text drawInRect:textRect withAttributes:self.attributes];
     
@@ -180,7 +180,7 @@
 
 /**
  绘制文字的背景框
-
+ 
  @param bgRect 背景框的尺寸
  @param ctx 绘图上下文
  @return 文字背景的尺寸
@@ -190,7 +190,7 @@
     CGContextSetLineWidth(ctx, 0.5f);
     // 设置画笔颜色
     CGContextSetStrokeColorWithColor(ctx, [UIColor whiteColor].CGColor);
-
+    
     // 添加矩形
     CGContextAddRect(ctx, bgRect);
     // 添加填充颜色
@@ -215,11 +215,10 @@
         style.alignment = NSTextAlignmentLeft;
         // 属性：字体，颜色，居中
         _attributes = @{
-                                     NSFontAttributeName:[UIFont systemFontOfSize:13.0f],       // 字体
-                                     NSForegroundColorAttributeName:self.textColor,   // 字体颜色
-                                     NSParagraphStyleAttributeName:style,   // 段落样式
-                                     };
-        
+                        NSFontAttributeName:[UIFont systemFontOfSize:13.0f],       // 字体
+                        NSForegroundColorAttributeName:self.textColor,   // 字体颜色
+                        NSParagraphStyleAttributeName:style,   // 段落样式
+                        };
     }
     return _attributes;
 }

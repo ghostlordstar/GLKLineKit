@@ -586,7 +586,7 @@
         self.isPinching = YES;
     }
     self.isMoved = NO;
-    NSLog(@"begin ---- %@",[[self.drawLogicArray firstObject] drawLogicIdentifier]);
+    NSLog(@"begin ---- %@ ,, event : %@",[[self.drawLogicArray firstObject] drawLogicIdentifier],event);
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

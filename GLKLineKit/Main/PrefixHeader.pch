@@ -12,10 +12,13 @@
 
 #import "GLKLineKit.h"
 // 加载图
-#import "UIView+CenterLoading.h"
-#import "NSString+GLDate.h"
-#import "HorizontalView.h"
-#import "VerticalView.h"
+#import "UIView+CenterLoading.h"    // 加载图类目
+#import "NSString+GLDate.h"         // 日期格式转换类目
+#import "NSObject+DrawText.h"
+
+#import "HorizontalView.h"          // 十字线水平文字
+#import "VerticalView.h"            // 十字线垂直线文字
+#import "DetailDataView.h"          // 详细数据展示视图
 
 // 防空判断 ------------------
 /**

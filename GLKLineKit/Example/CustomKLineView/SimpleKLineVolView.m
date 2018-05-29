@@ -8,6 +8,7 @@
 
 #import "SimpleKLineVolView.h"
 #import "NSNumber+StringFormatter.h"
+#import "DetailDataView.h"
 @interface SimpleKLineVolView ()<KLineDataLogicProtocol,DataCenterProtocol>
 /** mainViewConfig */
 @property (strong, nonatomic) KLineViewConfig *mainViewConfig;
@@ -47,7 +48,10 @@
  */
 @property (strong, nonatomic) UIView *horizontalLineView;
 
-
+/**
+ 详情视图
+ */
+@property (strong, nonatomic) DetailDataView *detailView;
 @end
 
 @implementation SimpleKLineVolView
@@ -172,7 +176,7 @@
     
     // 居中
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    style.alignment = NSTextAlignmentLeft;
+    style.alignment = NSTextAlignmentCenter;
     // 属性：字体，颜色，居中
     NSDictionary *attributes = @{
                                  NSFontAttributeName:[UIFont systemFontOfSize:13.0f],       // 字体
@@ -243,11 +247,13 @@
 - (void)reticleIsShow:(BOOL)isShow {
     
     if(isShow) {
+        [self addSubview:self.detailView];
         [self addSubview:self.verticalLineView];
         [self addSubview:self.verticalTextView];
         [self addSubview:self.horizontalTextView];
         [self addSubview:self.horizontalLineView];
     }else {
+        [self.detailView removeFromSuperview];
         [self.verticalLineView removeFromSuperview];
         [self.verticalTextView removeFromSuperview];
         [self.horizontalTextView removeFromSuperview];
@@ -343,12 +349,16 @@
         newLineRect.origin.x = 0.0f;
         newLineRect.size.width = self.frame.size.width - horizontalTextSize.width;
         self.horizontalLineView.frame = newLineRect;
+        // 详情视图
+        [self p_showDetailViewWithKLineModel:tempModel isLeft:YES];
     }else {
         
         CGRect newLineRect = self.horizontalLineView.frame;
         newLineRect.origin.x = horizontalTextSize.width;
         newLineRect.size.width = self.frame.size.width - horizontalTextSize.width;
         self.horizontalLineView.frame = newLineRect;
+        // 详情视图
+        [self p_showDetailViewWithKLineModel:tempModel isLeft:NO];
     }
     
 }
@@ -462,6 +472,40 @@
     return centerX;
 }
 
+- (void)p_showDetailViewWithKLineModel:(KLineModel *)model isLeft:(BOOL)isLeft {
+    
+    if (!model) {
+        return;
+    }
+    
+    // 时间
+    DetailDataModel *timeModel = [[DetailDataModel alloc] initWithName:@"时间" desc:[NSString gl_convertTimeStamp:(model.stamp / 1000) toFormatter:@"yy-MM-dd hh:mm"]];
+    // 开
+    DetailDataModel *openModel = [[DetailDataModel alloc] initWithName:@"开" desc:[@(model.open) gl_numberToStringWithDecimalsLimit:self.kLineMainView.dataCenter.decimalsLimit]];
+    // 高
+    DetailDataModel *highModel = [[DetailDataModel alloc] initWithName:@"高" desc:[@(model.high) gl_numberToStringWithDecimalsLimit:self.kLineMainView.dataCenter.decimalsLimit]];
+
+    // 低
+    DetailDataModel *lowModel = [[DetailDataModel alloc] initWithName:@"低" desc:[@(model.low) gl_numberToStringWithDecimalsLimit:self.kLineMainView.dataCenter.decimalsLimit]];
+
+    // 收
+    DetailDataModel *closeModel = [[DetailDataModel alloc] initWithName:@"收" desc:[@(model.close) gl_numberToStringWithDecimalsLimit:self.kLineMainView.dataCenter.decimalsLimit]];
+
+    // 量
+    DetailDataModel *volModel = [[DetailDataModel alloc] initWithName:@"量" desc:[@(model.volume) stringValue]];
+
+    [self.detailView updateContentWithDetailModels:@[timeModel,openModel,highModel,lowModel,closeModel,volModel]];
+    
+    CGRect newFrame = self.detailView.frame;
+    if (isLeft) {
+        newFrame.origin.x = self.frame.size.width - newFrame.size.width;
+    }else {
+        newFrame.origin.x = 0.0f;
+    }
+    
+    self.detailView.frame = newFrame;
+}
+
 #pragma mark - 懒加载 ---------
 
 - (KLineView *)kLineMainView {
@@ -553,6 +597,13 @@
         _horizontalLineView.userInteractionEnabled = NO;
     }
     return _horizontalLineView;
+}
+
+- (DetailDataView *)detailView {
+    if (!_detailView) {
+        _detailView = [[DetailDataView alloc] initWithFrame:CGRectMake(0, 0, 150.0f, 0.0f)];
+    }
+    return _detailView;
 }
 
 @end

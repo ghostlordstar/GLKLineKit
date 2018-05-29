@@ -7,7 +7,7 @@
 //
 
 #import "KLineViewConfig.h"
-
+#import "UIColor+Hex.h"
 @implementation KLineViewConfig
 
 /**
@@ -110,7 +110,7 @@
  */
 - (UIColor *)risingColor {
 
-    return [UIColor greenColor];
+    return [UIColor colorWithHex:0x91a628];
 }
 
 /**
@@ -118,7 +118,7 @@
  */
 - (UIColor *)fallingColor {
 
-    return [UIColor redColor];
+    return [UIColor colorWithHex:0xea0053];
 }
 
 /**
@@ -149,21 +149,21 @@
  */
 - (UIColor *)ma5Color {
     
-    return [UIColor yellowColor];
+    return [UIColor colorWithHex:0xdcdcdc];
 }
 
 /**
  ma10 线的颜色
  */
 - (UIColor *)ma10Color {
-    return [UIColor greenColor];
+    return [UIColor colorWithHex:0x195494];
 }
 
 /**
  ma30 线的颜色
  */
 - (UIColor *)ma30Color {
-    return [UIColor purpleColor];
+    return [UIColor colorWithHex:0xc830ce];
 }
 
 @end
