@@ -1,15 +1,22 @@
 //
-//  SimpleKLineVolView.m
+//  FullScreenKLineView.m
 //  GLKLineKit
 //
-//  Created by walker on 2018/5/25.
+//  Created by walker on 2018/5/30.
 //  Copyright © 2018年 walker. All rights reserved.
 //
 
-#import "SimpleKLineVolView.h"
+#import "FullScreenKLineView.h"
 #import "NSNumber+StringFormatter.h"
 #import "DetailDataView.h"
-@interface SimpleKLineVolView ()<KLineDataLogicProtocol,DataCenterProtocol>
+
+@interface FullScreenKLineView ()<KLineDataLogicProtocol,DataCenterProtocol>
+
+/**
+ K线副图(VOL)
+ */
+@property (strong, nonatomic) KLineView *volView;
+
 /** mainViewConfig */
 @property (strong, nonatomic) KLineViewConfig *mainViewConfig;
 
@@ -18,6 +25,9 @@
 
 /** 当前的主图样式 */
 @property (assign, nonatomic) KLineMainViewType mainViewType;
+
+/** 当前的附图样式 */
+@property (assign, nonatomic) KLineAssistantViewType assistantViewType;
 
 /** 当前显示的区域 */
 @property (assign, nonatomic) CGPoint currentVisibleRange;
@@ -54,7 +64,8 @@
 @property (strong, nonatomic) DetailDataView *detailView;
 @end
 
-@implementation SimpleKLineVolView
+@implementation FullScreenKLineView
+
 
 - (instancetype)initWithFrame:(CGRect)frame {
     
@@ -213,7 +224,7 @@
     // 默认的显示区域
     self.currentVisibleRange = self.kLineMainView.dataLogic.visibleRange;
     // 默认显示K线样式
-    self.mainViewType = KLineMainViewTypeKLineWithMA;
+    self.mainViewType = KLineMainViewTypeKLine;
     // 添加代理
     [self.kLineMainView.dataLogic addDelegate:self];
     [self.dataCenter addDelegate:self];
@@ -269,10 +280,14 @@
  @param index index 当前触点所在item的下标
  */
 - (void)klineView:(KLineView *)view didMoveToPoint:(CGPoint)point selectedItemIndex:(NSInteger)index {
+    
+    if (index >= [DataCenter shareCenter].klineModelArray.count || index < 0) {
+        return;
+    }
+    
     // 垂直线 -----
     // 根据index获得选中item的中心X坐标
     CGFloat textCenterX = [self p_getCurrentSelectedItemCenterXWithIndex:index];
-    
     if (textCenterX >= self.kLineMainView.frame.size.width) {
         textCenterX = self.kLineMainView.frame.size.width;
     }
@@ -427,7 +442,7 @@
         self.mainViewType = type;
         
         switch (type) {
-        
+                
             case KLineMainViewTypeKLine:    // 只有K线
             {
                 [self.kLineMainView removeAllDrawLogic];
@@ -449,7 +464,7 @@
             }
                 break;
                 
-                case  KLineMainViewTypeTimeLine:    // 只有分时线
+            case  KLineMainViewTypeTimeLine:    // 只有分时线
             {
                 [self.kLineMainView removeAllDrawLogic];
                 [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"main_bg"]];
@@ -478,6 +493,69 @@
     }
 }
 
+
+/**
+ 切换附图样式
+
+ @param type 切换到的样式
+ KLineAssistantViewTypeVol = 1,      // 成交量
+ KLineAssistantViewTypeVolWithMA,    // 成交量包含MA
+ KLineAssistantViewTypeKDJ,          // KDJ
+ KLineAssistantViewTypeMACD,         // MACD
+ KLineAssistantViewTypeRSI,
+ */
+- (void)switchKlineAssistantViewToType:(KLineAssistantViewType)type {
+    
+    if (type && self.assistantViewType != type) {
+        self.assistantViewType = type;
+        switch (type) {
+            case KLineAssistantViewTypeVol:
+            {
+                [self.kLineMainView removeAllDrawLogic];
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"vol_bg"]];
+                [self.kLineMainView addDrawLogic:[[KLineVolDrawLogic alloc] initWithDrawLogicIdentifier:@"vol"]];
+            }
+                break;
+                
+            case KLineAssistantViewTypeVolWithMA:
+            {
+                [self.kLineMainView removeAllDrawLogic];
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"vol_bg"]];
+                [self.kLineMainView addDrawLogic:[[KLineVolDrawLogic alloc] initWithDrawLogicIdentifier:@"vol"]];
+                [self.kLineMainView addDrawLogic:[[KLineVolMADrawLogic alloc] initWithDrawLogicIdentifier:@"vol_ma"]];
+            }
+                break;
+                
+            case KLineAssistantViewTypeKDJ:
+            {
+                [self.kLineMainView removeAllDrawLogic];
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"vol_bg"]];
+                [self.kLineMainView addDrawLogic:[[KLineKDJDrawLogic alloc] initWithDrawLogicIdentifier:@"kdj"]];
+            }
+                break;
+                
+            case KLineAssistantViewTypeMACD:
+            {
+                [self.kLineMainView removeAllDrawLogic];
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"vol_bg"]];
+                [self.kLineMainView addDrawLogic:[[KLineMACDDrawLogic alloc] initWithDrawLogicIdentifier:@"macd"]];
+            }
+                break;
+                
+            case KLineAssistantViewTypeRSI:
+            {
+                [self.kLineMainView removeAllDrawLogic];
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"vol_bg"]];
+                [self.kLineMainView addDrawLogic:[[KLineRSIDrawLogic alloc] initWithDrawLogicIdentifier:@"rsi"]];
+            }
+                break;
+            default:
+                break;
+        }
+        
+    }
+}
+
 #pragma mark - 私有方法 -------
 
 /**
@@ -503,16 +581,16 @@
     DetailDataModel *openModel = [[DetailDataModel alloc] initWithName:@"开" desc:[@(model.open) gl_numberToStringWithDecimalsLimit:self.kLineMainView.dataCenter.decimalsLimit]];
     // 高
     DetailDataModel *highModel = [[DetailDataModel alloc] initWithName:@"高" desc:[@(model.high) gl_numberToStringWithDecimalsLimit:self.kLineMainView.dataCenter.decimalsLimit]];
-
+    
     // 低
     DetailDataModel *lowModel = [[DetailDataModel alloc] initWithName:@"低" desc:[@(model.low) gl_numberToStringWithDecimalsLimit:self.kLineMainView.dataCenter.decimalsLimit]];
-
+    
     // 收
     DetailDataModel *closeModel = [[DetailDataModel alloc] initWithName:@"收" desc:[@(model.close) gl_numberToStringWithDecimalsLimit:self.kLineMainView.dataCenter.decimalsLimit]];
-
+    
     // 量
     DetailDataModel *volModel = [[DetailDataModel alloc] initWithName:@"量" desc:[@(model.volume) stringValue]];
-
+    
     [self.detailView updateContentWithDetailModels:@[timeModel,openModel,highModel,lowModel,closeModel,volModel]];
     
     CGRect newFrame = self.detailView.frame;
@@ -596,7 +674,7 @@
         _verticalLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1.0f, self.frame.size.height - CGRectGetHeight(self.verticalTextView.frame))];
         [_verticalLineView setBackgroundColor:[UIColor whiteColor]];
         _horizontalLineView.userInteractionEnabled = NO;
-
+        
     }
     return _verticalLineView;
 }

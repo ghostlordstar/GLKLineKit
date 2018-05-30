@@ -628,7 +628,7 @@
         }
         
         // 移动超过2像素就算移动过
-        if (fabs(self.beginPoint.x - movePoint.x) < 2.0 && fabs(self.beginPoint.y - movePoint.y) < 2.0) {
+        if (fabs(self.beginPoint.x - movePoint.x) < 3.0 && fabs(self.beginPoint.y - movePoint.y) < 3.0) {
             if (touch.timestamp - self.touchBeginStamp >= 0.4) {
                 if (!self.isShowReticle) {
                     // 开始显示十字线

@@ -133,6 +133,4 @@ static NSString *const klineKitDemoCell_id_1 = @"klineKitDemoCell_id_1";
     }
     return _dataArray;
 }
-
-
 @end

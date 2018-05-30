@@ -7,11 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-/* K线主图样式 */
-typedef enum : NSUInteger {
-    KLineMainViewTypeKLine = 1, // K线图(蜡烛图)
-    KLineMainViewTypeTimeLine,  // 分时图
-} KLineMainViewType;
 
 @interface SimpleKLineVolView : UIView
 

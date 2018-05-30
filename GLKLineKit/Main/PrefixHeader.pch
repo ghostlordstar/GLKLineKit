@@ -10,15 +10,22 @@
 #define PrefixHeader_pch
 
 
-#import "GLKLineKit.h"
-// 加载图
+#import "GLKLineKit.h"              // K线库
+
 #import "UIView+CenterLoading.h"    // 加载图类目
 #import "NSString+GLDate.h"         // 日期格式转换类目
-#import "NSObject+DrawText.h"
+#import "NSObject+DrawText.h"       // 文字绘图类目
 
 #import "HorizontalView.h"          // 十字线水平文字
 #import "VerticalView.h"            // 十字线垂直线文字
 #import "DetailDataView.h"          // 详细数据展示视图
+
+#import "ExamplePubliEnum.h"        // 公共枚举
+
+// ---------- 三方类库 -----------
+#import "Masonry.h"                 // 自适应布局三方库
+
+
 
 // 防空判断 ------------------
 /**

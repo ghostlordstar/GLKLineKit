@@ -6,8 +6,8 @@
 //  Copyright © 2018年 walker. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface LandscapeController : UIViewController
+@interface LandscapeController : BaseViewController
 
 @end

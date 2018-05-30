@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "BaseNavigationViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -20,7 +21,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    UINavigationController *naVC = [[UINavigationController alloc] initWithRootViewController:[[ViewController alloc] init]];
+    BaseNavigationViewController *naVC = [[BaseNavigationViewController alloc] initWithRootViewController:[[ViewController alloc] init]];
     [self.window setRootViewController:naVC];
 
     return YES;
@@ -53,5 +54,9 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+//- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+//
+//
+//}
 
 @end
