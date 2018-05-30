@@ -110,14 +110,14 @@
 @property (assign, nonatomic) BOOL isShowReticle;
 
 /**
- 是否移动过,在一次begin和end之间是否移动过(+- 1像素内不算移动)
- */
-@property (assign, nonatomic) BOOL isMoved;
-
-/**
  开始的触点所处的位置
  */
 @property (assign, nonatomic) CGPoint beginPoint;
+
+/**
+ 触摸开始时的时间戳
+ */
+@property (assign, nonatomic) NSTimeInterval touchBeginStamp;
 
 @end
 
@@ -293,7 +293,7 @@
             
             [self p_removeExtremeValueWithIdentifier:identifier];
             [self.drawLogicArray removeObject:drawLogic];
-
+            
             break;
         }
     }
@@ -450,7 +450,7 @@
 
 /**
  十字线是否在显示
-
+ 
  @param isShow 是否在显示
  */
 - (void)reticleIsShow:(BOOL)isShow {
@@ -468,8 +468,8 @@
     self.multipleTouchEnabled = YES;
     // 默认不显示十字线
     self.isShowReticle = NO;
-    // 默认未移动过
-    self.isMoved = NO;
+    // 手势开始时间戳
+    self.touchBeginStamp = 0.0;
     // 默认不在缩放状态
     self.isPinching = NO;
     // 默认的比例为1.0
@@ -496,20 +496,20 @@
     NSDictionary *arguments = @{};
     CGRect newRect = rect;
     
-
+    
     // 背景绘图算法传入附加参数和绘制的rect 进行特殊处理
-   if ([drawLogic isMemberOfClass:[KLineBGDrawLogic class]]) {
+    if ([drawLogic isMemberOfClass:[KLineBGDrawLogic class]]) {
         // 传入最大最小值
         arguments = @{KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier]]};
         
-   }else {  // 其他绘图算法默认传入附加参数和处理后的rect
-       
-       // 传入更新最大最小值的block
-       arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier]]};
-       
-       // 处理Rect
-       newRect = CGRectMake(rect.origin.x + [self.config insertOfKlineView].left, rect.origin.y + [self.config insertOfKlineView].top, rect.size.width - ([self.config insertOfKlineView].left + [self.config insertOfKlineView].right), rect.size.height - ([self.config insertOfKlineView].top + [self.config insertOfKlineView].bottom));
-   }
+    }else {  // 其他绘图算法默认传入附加参数和处理后的rect
+        
+        // 传入更新最大最小值的block
+        arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier]]};
+        
+        // 处理Rect
+        newRect = CGRectMake(rect.origin.x + [self.config insertOfKlineView].left, rect.origin.y + [self.config insertOfKlineView].top, rect.size.width - ([self.config insertOfKlineView].left + [self.config insertOfKlineView].right), rect.size.height - ([self.config insertOfKlineView].top + [self.config insertOfKlineView].bottom));
+    }
     
     // 绘制算法
     [drawLogic drawWithCGContext:ctx rect:newRect indexPathForVisibleRange:self.visibleRange scale:self.currentScale otherArguments:arguments];
@@ -549,7 +549,7 @@
 
 /**
  根据某个标识符移除保存的最大最小值
-
+ 
  @param identifier 标识符
  */
 - (void)p_removeExtremeValueWithIdentifier:(NSString *)identifier {
@@ -579,14 +579,15 @@
     
     if (touch && ![self.touchArray containsObject:touch] && self.touchArray.count < 2) {
         [self.touchArray addObject:touch];
+        self.touchBeginStamp = touch.timestamp;
     }
     
     if (self.touchArray.count >= 2) {
         self.lastPinchWidth = 0.0;
         self.isPinching = YES;
+        self.touchBeginStamp = 0.0;
     }
-    self.isMoved = NO;
-    NSLog(@"begin ---- %@ ,, event : %@",[[self.drawLogicArray firstObject] drawLogicIdentifier],event);
+    
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -596,19 +597,16 @@
     if (touch && [self.touchArray containsObject:touch]) {
         [self.touchArray removeAllObjects];
         self.isPinching = NO;
+        self.touchBeginStamp = 0.0;
     }
     
-    if (self.touchArray.count == 0 && !self.isMoved) {
-        if (self.isShowReticle) {
-            // 隐藏十字线
-            NSLog(@"隐藏十字线");
-            [self.dataLogic removeTouchAtKLineView:self touchPoint:endPoint perItemWidth:self.perItemWidth];
-        }else {
-            // 开始显示十字线
-            NSLog(@"显示十字线");
-            [self.dataLogic beginTapKLineView:self touchPoint:endPoint perItemWidth:self.perItemWidth];
-        }
+    
+    if (self.isShowReticle) {
+        // 隐藏十字线
+        NSLog(@"隐藏十字线");
+        [self.dataLogic removeTouchAtKLineView:self touchPoint:endPoint perItemWidth:self.perItemWidth];
     }
+    
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -628,10 +626,16 @@
             // 移动十字线
             [self.dataLogic moveTouchAtKLineView:self touchPoint:movePoint perItemWidth:self.perItemWidth];
         }
-
-        // 移动超过1像素就算移动过
-        if (fabs(self.beginPoint.x - movePoint.x) > 1.0 || fabs(self.beginPoint.y - movePoint.y) > 1.0) {
-            self.isMoved = YES;
+        
+        // 移动超过2像素就算移动过
+        if (fabs(self.beginPoint.x - movePoint.x) < 2.0 && fabs(self.beginPoint.y - movePoint.y) < 2.0) {
+            if (touch.timestamp - self.touchBeginStamp >= 0.4) {
+                if (!self.isShowReticle) {
+                    // 开始显示十字线
+                    NSLog(@"显示十字线");
+                    [self.dataLogic beginTapKLineView:self touchPoint:movePoint perItemWidth:self.perItemWidth];
+                }
+            }
         }
         
         self.lastTouchPointX = movePoint.x;
@@ -788,7 +792,7 @@
             __strong typeof(weakSelf)strongSelf = weakSelf;
             // 保存各算法的最大最小值
             [strongSelf.extremeValueDict setObject:[NSValue gl_valuewithGLExtremeValue:GLExtremeValueMake(minValue, maxValue)] forKey:identifier];
-
+            
             GLExtremeValue tempOtherExtreme = [strongSelf p_getExtremeValueFilterIdentifier:identifier];
             GLExtremeValue tempDrawExtreme = GLExtremeValueMake(fmin(minValue, tempOtherExtreme.minValue), fmax(maxValue, tempOtherExtreme.maxValue));
             
