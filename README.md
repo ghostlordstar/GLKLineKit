@@ -7,8 +7,9 @@
 		2.1 添加一个新的指标只需要编写一个算法类，添加到数组中就可以了
 		2.2 可以像调整图层一样调整指标组合
 ## 预览：	
-![预览](http://o8prfm9ji.bkt.clouddn.com/KLineKit.gif)
-	
+
+![竖屏预览](http://o8prfm9ji.bkt.clouddn.com/KLineKit.gif)
+![横屏预览](http://o8prfm9ji.bkt.clouddn.com/KLineKit_Land.gif)
 ## 备注：
 	1.当前未完成(十字线和详情浮层实现比较乱，需要封装)
 	2.框架结构未整理
