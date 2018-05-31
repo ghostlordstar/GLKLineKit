@@ -237,7 +237,8 @@
             if (tempModel.boll_up) {
                 if (tempModel.boll_up > maxValue) {
                     maxValue = tempModel.boll_up;
-                }else if(tempModel.boll_up < minValue) {
+                }
+                if(tempModel.boll_up < minValue) {
                     minValue = tempModel.boll_up;
                 }
             }
@@ -245,7 +246,8 @@
             if (tempModel.boll_low) {
                 if (tempModel.boll_low > maxValue) {
                     maxValue = tempModel.boll_low;
-                }else if(tempModel.boll_low < minValue) {
+                }
+                if(tempModel.boll_low < minValue) {
                     minValue = tempModel.boll_low;
                 }
             }

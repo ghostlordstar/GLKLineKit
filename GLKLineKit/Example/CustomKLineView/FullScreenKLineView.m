@@ -24,10 +24,10 @@
 @property (strong, nonatomic) KLineVolViewConfig *volViewConfig;
 
 /** 当前的主图样式 */
-@property (assign, nonatomic) KLineMainViewType mainViewType;
+@property (readwrite, assign, nonatomic) KLineMainViewType mainViewType;
 
 /** 当前的附图样式 */
-@property (assign, nonatomic) KLineAssistantViewType assistantViewType;
+@property (readwrite, assign, nonatomic) KLineAssistantViewType assistantViewType;
 
 /** 当前显示的区域 */
 @property (assign, nonatomic) CGPoint currentVisibleRange;
@@ -225,6 +225,8 @@
     self.currentVisibleRange = self.kLineMainView.dataLogic.visibleRange;
     // 默认显示K线样式
     self.mainViewType = KLineMainViewTypeKLine;
+    self.assistantViewType = KLineAssistantViewTypeVol;
+    
     // 添加代理
     [self.kLineMainView.dataLogic addDelegate:self];
     [self.dataCenter addDelegate:self];
@@ -467,8 +469,9 @@
             case  KLineMainViewTypeTimeLine:    // 只有分时线
             {
                 [self.kLineMainView removeAllDrawLogic];
-                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"main_bg"]];
                 [self.kLineMainView addDrawLogic:[[KLineTimeDrawLogic alloc] initWithDrawLogicIdentifier:@"main_time"]];
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"main_bg"]];
+
             }
                 break;
                 
@@ -477,13 +480,23 @@
             {  // 主图样式切换为分时图
                 
                 [self.kLineMainView removeAllDrawLogic];
-                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"main_bg"]];
                 [self.kLineMainView addDrawLogic:[[KLineTimeDrawLogic alloc] initWithDrawLogicIdentifier:@"main_time"]];
                 KLineMADrawLogic *timeMA = [[KLineMADrawLogic alloc] initWithDrawLogicIdentifier:@"main_time_ma_30"];
                 [timeMA setMa5Hiden:YES];
                 [timeMA setMa10Hiden:YES];
                 [self.kLineMainView addDrawLogic:timeMA];
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"main_bg"]];
+
                 
+            }
+                break;
+                
+                case KLineMainViewTypeKLineWithBOLL: // K线+BOLL
+            {
+                [self.kLineMainView removeAllDrawLogic];
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"main_bg"]];
+                [self.kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithDrawLogicIdentifier:@"k_line"]];
+                [self.kLineMainView addDrawLogic:[[KLineBOLLDrawLogic alloc] initWithDrawLogicIdentifier:@"k_BOLL"]];
             }
                 break;
                 
@@ -511,42 +524,42 @@
         switch (type) {
             case KLineAssistantViewTypeVol:
             {
-                [self.kLineMainView removeAllDrawLogic];
-                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"vol_bg"]];
-                [self.kLineMainView addDrawLogic:[[KLineVolDrawLogic alloc] initWithDrawLogicIdentifier:@"vol"]];
+                [self.volView removeAllDrawLogic];
+                [self.volView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"vol_bg"]];
+                [self.volView addDrawLogic:[[KLineVolDrawLogic alloc] initWithDrawLogicIdentifier:@"vol"]];
             }
                 break;
                 
             case KLineAssistantViewTypeVolWithMA:
             {
-                [self.kLineMainView removeAllDrawLogic];
-                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"vol_bg"]];
-                [self.kLineMainView addDrawLogic:[[KLineVolDrawLogic alloc] initWithDrawLogicIdentifier:@"vol"]];
-                [self.kLineMainView addDrawLogic:[[KLineVolMADrawLogic alloc] initWithDrawLogicIdentifier:@"vol_ma"]];
+                [self.volView removeAllDrawLogic];
+                [self.volView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"vol_bg"]];
+                [self.volView addDrawLogic:[[KLineVolDrawLogic alloc] initWithDrawLogicIdentifier:@"vol"]];
+                [self.volView addDrawLogic:[[KLineVolMADrawLogic alloc] initWithDrawLogicIdentifier:@"vol_ma"]];
             }
                 break;
                 
             case KLineAssistantViewTypeKDJ:
             {
-                [self.kLineMainView removeAllDrawLogic];
-                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"vol_bg"]];
-                [self.kLineMainView addDrawLogic:[[KLineKDJDrawLogic alloc] initWithDrawLogicIdentifier:@"kdj"]];
+                [self.volView removeAllDrawLogic];
+                [self.volView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"vol_bg"]];
+                [self.volView addDrawLogic:[[KLineKDJDrawLogic alloc] initWithDrawLogicIdentifier:@"kdj"]];
             }
                 break;
                 
             case KLineAssistantViewTypeMACD:
             {
-                [self.kLineMainView removeAllDrawLogic];
-                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"vol_bg"]];
-                [self.kLineMainView addDrawLogic:[[KLineMACDDrawLogic alloc] initWithDrawLogicIdentifier:@"macd"]];
+                [self.volView removeAllDrawLogic];
+                [self.volView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"vol_bg"]];
+                [self.volView addDrawLogic:[[KLineMACDDrawLogic alloc] initWithDrawLogicIdentifier:@"macd"]];
             }
                 break;
                 
             case KLineAssistantViewTypeRSI:
             {
-                [self.kLineMainView removeAllDrawLogic];
-                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"vol_bg"]];
-                [self.kLineMainView addDrawLogic:[[KLineRSIDrawLogic alloc] initWithDrawLogicIdentifier:@"rsi"]];
+                [self.volView removeAllDrawLogic];
+                [self.volView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"vol_bg"]];
+                [self.volView addDrawLogic:[[KLineRSIDrawLogic alloc] initWithDrawLogicIdentifier:@"rsi"]];
             }
                 break;
             default:
@@ -612,7 +625,6 @@
         // 添加绘图算法
         [_kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithDrawLogicIdentifier:@"k_line"]];
         [_kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"main_bg"]];
-        [_kLineMainView addDrawLogic:[[KLineMADrawLogic alloc] initWithDrawLogicIdentifier:@"main_ma_5_10_30"]];
     }
     return _kLineMainView;
 }

@@ -19,6 +19,12 @@
  */
 @property (strong, nonatomic) KLineView *kLineMainView;
 
+/** 当前的主图样式 */
+@property (readonly, assign, nonatomic) KLineMainViewType mainViewType;
+
+/** 当前的附图样式 */
+@property (readonly, assign, nonatomic) KLineAssistantViewType assistantViewType;
+
 /**
  切换主图样式，默认是K线
  */

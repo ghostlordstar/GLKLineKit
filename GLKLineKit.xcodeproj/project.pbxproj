@@ -53,6 +53,7 @@
 		5D9D486620BEE02600E9658B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D485B20BEE02600E9658B /* Info.plist */; };
 		5DD3663120BD457A007626A7 /* NSObject+DrawText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD3663020BD457A007626A7 /* NSObject+DrawText.m */; };
 		5DD3663420BD6018007626A7 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD3663320BD6018007626A7 /* UIColor+Hex.m */; };
+		5DDA1BC920BF8DDB00CE7C74 /* ListMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA1BC820BF8DDB00CE7C74 /* ListMenuView.m */; };
 		5DE0140820B84310006CE8D3 /* KLineVolViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE0140720B84310006CE8D3 /* KLineVolViewConfig.m */; };
 		5DE0140E20B84CE0006CE8D3 /* bitCNY_ETH in Resources */ = {isa = PBXBuildFile; fileRef = 5DE0140D20B84CE0006CE8D3 /* bitCNY_ETH */; };
 		5DE110E020B83F3800277399 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D1F1DC820B82A4300BD47B1 /* Info.plist */; };
@@ -186,6 +187,8 @@
 		5DD3663020BD457A007626A7 /* NSObject+DrawText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DrawText.m"; sourceTree = "<group>"; };
 		5DD3663220BD6018007626A7 /* UIColor+Hex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		5DD3663320BD6018007626A7 /* UIColor+Hex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		5DDA1BC720BF8DDB00CE7C74 /* ListMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListMenuView.h; sourceTree = "<group>"; };
+		5DDA1BC820BF8DDB00CE7C74 /* ListMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListMenuView.m; sourceTree = "<group>"; };
 		5DE0140620B84310006CE8D3 /* KLineVolViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KLineVolViewConfig.h; sourceTree = "<group>"; };
 		5DE0140720B84310006CE8D3 /* KLineVolViewConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KLineVolViewConfig.m; sourceTree = "<group>"; };
 		5DE0140920B844F5006CE8D3 /* GLKLineKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLKLineKit.h; sourceTree = "<group>"; };
@@ -540,6 +543,15 @@
 			path = DrawText;
 			sourceTree = "<group>";
 		};
+		5DDA1BC620BF8DB400CE7C74 /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				5DDA1BC720BF8DDB00CE7C74 /* ListMenuView.h */,
+				5DDA1BC820BF8DDB00CE7C74 /* ListMenuView.m */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
 		5DE0140A20B84C28006CE8D3 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,6 +571,7 @@
 		5DEF8F6820BE816100147ABD /* CustomClass */ = {
 			isa = PBXGroup;
 			children = (
+				5DDA1BC620BF8DB400CE7C74 /* ListView */,
 				5DEF8F7820BE83EE00147ABD /* BaseUIClass */,
 				5DEF8F6920BE816100147ABD /* DetailView */,
 				5DEF8F6D20BE816100147ABD /* ReticleLine */,
@@ -755,6 +768,7 @@
 				5D1F1E1620B82C0400BD47B1 /* KLineMADrawLogic.m in Sources */,
 				5D1F1E0F20B82C0400BD47B1 /* KLineView.m in Sources */,
 				5D9D486520BEE02600E9658B /* MASViewAttribute.m in Sources */,
+				5DDA1BC920BF8DDB00CE7C74 /* ListMenuView.m in Sources */,
 				5D9D486220BEE02600E9658B /* View+MASAdditions.m in Sources */,
 				5D1F1E1C20B82C0400BD47B1 /* KLineKDJDrawLogic.m in Sources */,
 				5D1F1E2E20B8385600BD47B1 /* KLineDataProcess.m in Sources */,

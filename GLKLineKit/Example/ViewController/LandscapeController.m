@@ -10,7 +10,11 @@
 #import "FullScreenKLineView.h"
 #import "KLineDataProcess.h"
 #import "UIColor+Hex.h"
-@interface LandscapeController ()
+#import "ListMenuView.h"
+
+#define kBaseBtnTag (7893)
+
+@interface LandscapeController ()<ListMenuViewProtocol,UIGestureRecognizerDelegate>
 /**
  横屏行情视图
  */
@@ -41,6 +45,51 @@
  */
 @property (strong, nonatomic) UIButton *quitBtn;
 
+/**
+ 右侧的指标选择菜单
+ */
+@property (strong, nonatomic) ListMenuView * indicatorSelectView;
+
+/**
+ 下方的时间选择视图
+ */
+@property (strong, nonatomic) ListMenuView * timeSelectView;
+
+/**
+ 分钟选择按钮
+ */
+@property (strong, nonatomic) UIButton *minuteBtn;
+
+/**
+ 小时选择按钮
+ */
+@property (strong, nonatomic) UIButton *hourBtn;
+
+/**
+ 分时按钮
+ */
+@property (strong, nonatomic) UIButton *timeLineBtn;
+
+/**
+ 日线按钮
+ */
+@property (strong, nonatomic) UIButton *dayLineBtn;
+
+/**
+ 周线按钮
+ */
+@property (strong, nonatomic) UIButton *weekLineBtn;
+
+/**
+ 背景视图手势
+ */
+@property (strong, nonatomic) UITapGestureRecognizer *backTapGesture;
+
+/**
+ bottom btn 集合
+ */
+@property (strong, nonatomic) NSArray *bottomBtnArray;
+
 @end
 
 @implementation LandscapeController
@@ -69,11 +118,146 @@
 
 #pragma mark - 控件事件 ---
 
+- (void)p_backViewTapAction:(UITapGestureRecognizer *)tap {
+    
+    [self p_hideSelectedView];
+}
+
+/**
+ 退出按钮事件
+ 
+ @param btn 退出按钮
+ */
 - (void)p_quitBtnAction:(UIButton *)btn {
     
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+/**
+ 下方切换K线周期的按钮事件
+ 
+ @param btn 切换按钮
+ */
+- (void)p_timeBtnAction:(UIButton *)btn {
+    
+    NSUInteger tag = btn.tag - kBaseBtnTag;
+    
+    switch (tag) {
+        case 0:
+        {   // 分时
+            [self.fullKLineView switchKLineMainViewToType:KLineMainViewTypeTimeLineWithMA];
+            [self.indicatorSelectView setSelectedState:YES forIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] cleanOtherItemCurrentSection:YES];
+            
+            [self p_hideSelectedView];
+            
+            [self p_setSelectedStateForBtn:self.timeLineBtn];
+        }
+            break;
+            
+        case 1:
+        {   // 日线
+            [self.fullKLineView switchKLineMainViewToType:KLineMainViewTypeKLineWithMA];
+            [self.indicatorSelectView setSelectedState:YES forIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] cleanOtherItemCurrentSection:YES];
+            
+            [self p_hideSelectedView];
+                        [self p_setSelectedStateForBtn:self.dayLineBtn];
+        }
+            break;
+            
+        case 2:
+        {   // 周线
+            [self.fullKLineView switchKLineMainViewToType:KLineMainViewTypeKLineWithMA];
+            [self.indicatorSelectView setSelectedState:YES forIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] cleanOtherItemCurrentSection:YES];
+            
+            [self p_hideSelectedView];
+                        [self p_setSelectedStateForBtn:self.weekLineBtn];
+        }
+            break;
+            
+        case 3:
+        {   // 小时
+            if(_timeSelectView && [self.backView.subviews containsObject:_timeSelectView] && _timeSelectView.tag == self.hourBtn.tag) {
+                [self p_hideSelectedView];
+            }else {
+                
+                [self p_showSelectedViewWithBtn:self.hourBtn];
+            }
+        }
+            break;
+            
+        case 4:
+        {   // 分钟
+            if(_timeSelectView && [self.backView.subviews containsObject:_timeSelectView] && _timeSelectView.tag == self.minuteBtn.tag) {
+                [self p_hideSelectedView];
+            }else {
+                
+                [self p_showSelectedViewWithBtn:self.minuteBtn];
+            }
+        }
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - ListMenuView protocol ---
+
+- (void)listMenuView:(ListMenuView *)view didSelectedAtIndexPath:(NSIndexPath *)indexPath itemTitle:(NSString *)title {
+    
+    [self p_hideSelectedView];
+    
+    if (view.identifier) {
+        
+        if ([view.identifier isEqualToString:self.indicatorSelectView.identifier]) {
+            // 根据标题切换指标
+            [self p_switchIndicatorWithSelectedTitle:title indexPath:indexPath];
+            
+        }else if(view.tag == self.hourBtn.tag){
+            [self.minuteBtn setTitle:@"分钟 ▼" forState:UIControlStateNormal];
+            [self.hourBtn setTitle:[NSString stringWithFormat:@"%@ ▼",title] forState:UIControlStateNormal];
+            [self p_setSelectedStateForBtn:self.hourBtn];
+            
+            // TODO: 切换分钟k线
+            
+        }else if(view.tag == self.minuteBtn.tag) {
+            [self.hourBtn setTitle:@"小时 ▼" forState:UIControlStateNormal];
+            [self.minuteBtn setTitle:[NSString stringWithFormat:@"%@ ▼",title] forState:UIControlStateNormal];
+            [self p_setSelectedStateForBtn:self.minuteBtn];
+            
+            // TODO: 切换小时K线
+            
+        }
+    }
+}
+
+- (NSArray *)itemTitlesAtListMenuView:(ListMenuView *)view {
+    
+    NSArray *dataSource = @[];
+    
+    if (view.identifier) {
+        
+        if ([view.identifier isEqualToString:self.indicatorSelectView.identifier]) {
+            // 指标
+            dataSource = @[@[@"MA",@"BOLL"],@[@"KDJ",@"MACD",@"RSI"]];
+        }else if([view.identifier isEqualToString:self.hourBtn.currentTitle]) {
+            // 小时
+            dataSource = @[@"1小时",@"2小时",@"4小时",@"6小时",@"12小时"];
+        }else if([view.identifier isEqualToString:self.minuteBtn.currentTitle]) {
+            // 分钟
+            dataSource = @[@"1分",@"5分",@"15分",@"30分"];
+        }
+    }
+    return dataSource;
+}
+
+#pragma mark - 手势代理方法 ---
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    if([touch.view isDescendantOfView:self.timeSelectView] || [touch.view isDescendantOfView:self.indicatorSelectView]){
+        return NO;
+    }
+    return YES;
+}
 
 #pragma mark - 私有方法 ---
 
@@ -97,6 +281,13 @@
     [self.backView addSubview:self.symbolLabel];
     [self.backView addSubview:self.currentPriceLabel];
     [self.backView addSubview:self.hour_24_changeLabel];
+    
+    [self.backView addSubview:self.indicatorSelectView];
+    [self.backView addSubview:self.timeLineBtn];
+    [self.backView addSubview:self.dayLineBtn];
+    [self.backView addSubview:self.weekLineBtn];
+    [self.backView addSubview:self.hourBtn];
+    [self.backView addSubview:self.minuteBtn];
     
     [self.view addSubview:self.backView];
     
@@ -131,6 +322,49 @@
         make.top.equalTo(self.currentPriceLabel);
         make.height.mas_equalTo(50.0f);
     }];
+    
+    [self.indicatorSelectView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.fullKLineView.mas_right);
+        make.top.equalTo(self.quitBtn.mas_bottom);
+        make.right.equalTo(self.backView.mas_right);
+        make.bottom.equalTo(self.fullKLineView.mas_bottom);
+    }];
+    
+    [self.timeLineBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.backView.mas_left);
+        make.top.equalTo(self.fullKLineView.mas_bottom);
+        make.bottom.equalTo(self.backView.mas_bottom);
+        make.width.mas_equalTo(self.backView.frame.size.width / 5.0);
+    }];
+    
+    [self.dayLineBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.timeLineBtn.mas_right);
+        make.top.equalTo(self.fullKLineView.mas_bottom);
+        make.bottom.equalTo(self.backView.mas_bottom);
+        make.width.mas_equalTo(self.backView.frame.size.width / 5.0);
+    }];
+    
+    [self.weekLineBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.dayLineBtn.mas_right);
+        make.top.equalTo(self.fullKLineView.mas_bottom);
+        make.bottom.equalTo(self.backView.mas_bottom);
+        make.width.mas_equalTo(self.backView.frame.size.width / 5.0);
+    }];
+    
+    [self.hourBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.weekLineBtn.mas_right);
+        make.top.equalTo(self.fullKLineView.mas_bottom);
+        make.bottom.equalTo(self.backView.mas_bottom);
+        make.width.mas_equalTo(self.backView.frame.size.width / 5.0);
+    }];
+    
+    [self.minuteBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.hourBtn.mas_right);
+        make.top.equalTo(self.fullKLineView.mas_bottom);
+        make.bottom.equalTo(self.backView.mas_bottom);
+        make.width.mas_equalTo(self.backView.frame.size.width / 5.0);
+    }];
+    
 }
 
 /**
@@ -144,12 +378,11 @@
     CGAffineTransform trans = GetCGAffineTransformRotateAroundPoint(centerX, centerY, SCREEN_WIDTH / 2.0, SCREEN_WIDTH / 2.0, M_PI_2);
     
     [self.backView setTransform:trans];
-    
 }
 
 /**
  获得旋转的矩阵变换对象
-
+ 
  @param centerX 需要旋转的view的Center.x
  @param centerY 需要旋转的view的Center.y
  @param x 旋转中心的x值
@@ -223,6 +456,149 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(float centerX, float ce
     [self.hour_24_changeLabel setAttributedText:mutableAttri];
 }
 
+- (void)p_switchIndicatorWithSelectedTitle:(NSString *)title indexPath:(NSIndexPath *)indexPath {
+    
+    if (!title || title.length < 1) {
+        return;
+    }
+    
+    if ([title isEqualToString:@"MA"]) {
+        switch (self.fullKLineView.mainViewType) {
+            case KLineMainViewTypeKLineWithMA:
+            {
+                [self.fullKLineView switchKLineMainViewToType:KLineMainViewTypeKLine];
+                [self.indicatorSelectView setSelectedState:NO forIndexPath:indexPath cleanOtherItemCurrentSection:YES];
+            }
+                break;
+            case KLineMainViewTypeTimeLine:
+            {
+                [self.fullKLineView switchKLineMainViewToType:KLineMainViewTypeTimeLineWithMA];
+                [self.indicatorSelectView setSelectedState:YES forIndexPath:indexPath cleanOtherItemCurrentSection:YES];
+            }
+                break;
+            case KLineMainViewTypeTimeLineWithMA:
+            {
+                [self.fullKLineView switchKLineMainViewToType:KLineMainViewTypeTimeLine];
+                [self.indicatorSelectView setSelectedState:NO forIndexPath:indexPath cleanOtherItemCurrentSection:YES];
+            }
+                break;
+                
+            default:
+            {
+                [self.fullKLineView switchKLineMainViewToType:KLineMainViewTypeKLineWithMA];
+                [self.indicatorSelectView setSelectedState:YES forIndexPath:indexPath cleanOtherItemCurrentSection:YES];
+            }
+                break;
+        }
+        
+    }else if([title isEqualToString:@"BOLL"]){
+        if (self.fullKLineView.mainViewType == KLineMainViewTypeKLineWithBOLL) {
+            [self.fullKLineView switchKLineMainViewToType:KLineMainViewTypeKLine];
+            [self.indicatorSelectView setSelectedState:NO forIndexPath:indexPath cleanOtherItemCurrentSection:YES];
+        }else {
+            [self.fullKLineView switchKLineMainViewToType:KLineMainViewTypeKLineWithBOLL];
+            [self.indicatorSelectView setSelectedState:YES forIndexPath:indexPath cleanOtherItemCurrentSection:YES];
+        }
+    }else if([title isEqualToString:@"KDJ"]) {
+        if (self.fullKLineView.assistantViewType == KLineAssistantViewTypeKDJ) {
+            [self.fullKLineView switchKlineAssistantViewToType:KLineAssistantViewTypeVolWithMA];
+            [self.indicatorSelectView setSelectedState:NO forIndexPath:indexPath cleanOtherItemCurrentSection:YES];
+        }else {
+            [self.fullKLineView switchKlineAssistantViewToType:KLineAssistantViewTypeKDJ];
+            [self.indicatorSelectView setSelectedState:YES forIndexPath:indexPath cleanOtherItemCurrentSection:YES];
+        }
+    }else if([title isEqualToString:@"MACD"]) {
+        if (self.fullKLineView.assistantViewType == KLineAssistantViewTypeMACD) {
+            [self.fullKLineView switchKlineAssistantViewToType:KLineAssistantViewTypeVolWithMA];
+            [self.indicatorSelectView setSelectedState:NO forIndexPath:indexPath cleanOtherItemCurrentSection:YES];
+        }else {
+            [self.fullKLineView switchKlineAssistantViewToType:KLineAssistantViewTypeMACD];
+            [self.indicatorSelectView setSelectedState:YES forIndexPath:indexPath cleanOtherItemCurrentSection:YES];
+        }
+    }else if([title isEqualToString:@"RSI"]) {
+        
+        if (self.fullKLineView.assistantViewType == KLineAssistantViewTypeRSI) {
+            [self.fullKLineView switchKlineAssistantViewToType:KLineAssistantViewTypeVolWithMA];
+            [self.indicatorSelectView setSelectedState:NO forIndexPath:indexPath cleanOtherItemCurrentSection:YES];
+        }else {
+            [self.fullKLineView switchKlineAssistantViewToType:KLineAssistantViewTypeRSI];
+            [self.indicatorSelectView setSelectedState:YES forIndexPath:indexPath cleanOtherItemCurrentSection:YES];
+        }
+    }
+}
+
+/**
+ 收回选择视图
+ */
+- (void)p_hideSelectedView {
+    
+    if (_timeSelectView) {
+        [self.timeSelectView removeFromSuperview];
+        NSString *newHourTitle = [self.hourBtn.currentTitle stringByReplacingOccurrencesOfString:@"▲" withString:@"▼"];
+        [self.hourBtn setTitle:newHourTitle forState:UIControlStateNormal];
+        
+        NSString *newMinuteTitle = [self.minuteBtn.currentTitle stringByReplacingOccurrencesOfString:@"▲" withString:@"▼"];
+        [self.minuteBtn setTitle:newMinuteTitle forState:UIControlStateNormal];
+        
+    }
+}
+
+/**
+ 展示选择视图
+ 
+ @param btn 需要展示选择视图的按钮
+ */
+- (void)p_showSelectedViewWithBtn:(UIButton *)btn {
+    
+    [self.backView addSubview:self.timeSelectView];
+    [self.timeSelectView updateIdentifier:btn.currentTitle];
+    
+    if (btn == self.minuteBtn) {
+        
+        self.timeSelectView.frame = CGRectMake(0, 0, 100.0f, 4*44.0f);
+        [self.timeSelectView reloadListData];
+        self.timeSelectView.tag = self.minuteBtn.tag;
+        [self.timeSelectView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.minuteBtn.mas_top);
+            make.centerX.equalTo(self.minuteBtn.mas_centerX);
+            make.size.mas_equalTo(CGSizeMake(100.0f, 4 * 44.0f));
+        }];
+        
+        NSString *newMinuteTitle = [self.minuteBtn.currentTitle stringByReplacingOccurrencesOfString:@"▼" withString:@"▲"];
+        [self.minuteBtn setTitle:newMinuteTitle forState:UIControlStateNormal];
+        
+    }else if(btn == self.hourBtn) {
+        
+        self.timeSelectView.frame = CGRectMake(0, 0, 100.0f, 5*44.0f);
+        [self.timeSelectView reloadListData];
+        self.timeSelectView.tag = self.hourBtn.tag;
+        [self.timeSelectView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.hourBtn.mas_top);
+            make.centerX.equalTo(self.hourBtn.mas_centerX);
+            make.size.mas_equalTo(CGSizeMake(100.0f, 5 * 44.0f));
+        }];
+        
+        NSString *newHourTitle = [self.hourBtn.currentTitle stringByReplacingOccurrencesOfString:@"▼" withString:@"▲"];
+        [self.hourBtn setTitle:newHourTitle forState:UIControlStateNormal];
+    }
+}
+
+/**
+ 设置选中状态
+
+ @param btn 设置选中状态的按钮
+ */
+- (void)p_setSelectedStateForBtn:(UIButton *)btn {
+    
+    for (UIButton *tmpBtn in self.bottomBtnArray) {
+        if (tmpBtn.tag == btn.tag) {
+            [tmpBtn setTitleColor:[UIColor yellowColor] forState:UIControlStateNormal];
+        }else {
+            [tmpBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        }
+    }
+}
+
 #pragma mark - 懒加载 ---
 
 - (FullScreenKLineView *)fullKLineView {
@@ -237,8 +613,17 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(float centerX, float ce
     if (!_backView) {
         _backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_HEIGHT, SCREEN_WIDTH)];
         _backView.backgroundColor = [UIColor darkGrayColor];
+        [_backView addGestureRecognizer:self.backTapGesture];
     }
     return _backView;
+}
+
+- (UITapGestureRecognizer *)backTapGesture {
+    if (!_backTapGesture) {
+        _backTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(p_backViewTapAction:)];
+        _backTapGesture.delegate = self;
+    }
+    return _backTapGesture;
 }
 
 - (UILabel *)symbolLabel {
@@ -274,6 +659,84 @@ CGAffineTransform  GetCGAffineTransformRotateAroundPoint(float centerX, float ce
         [_quitBtn addTarget:self action:@selector(p_quitBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _quitBtn;
+}
+
+- (ListMenuView *)indicatorSelectView {
+    if (!_indicatorSelectView) {
+        _indicatorSelectView = [[ListMenuView alloc] initWithFrame:CGRectZero identifier:@"indicatorSelectView"];
+        _indicatorSelectView.delegate = self;
+    }
+    return _indicatorSelectView;
+}
+
+- (ListMenuView *)timeSelectView {
+    if (!_timeSelectView) {
+        _timeSelectView = [[ListMenuView alloc] initWithFrame:CGRectZero identifier:self.minuteBtn.currentTitle];
+        _timeSelectView.backgroundColor = [UIColor blackColor];
+        _timeSelectView.isShowSeparator = YES;
+        _timeSelectView.delegate = self;
+    }
+    return _timeSelectView;
+}
+
+- (UIButton *)timeLineBtn {
+    
+    if (!_timeLineBtn) {
+        _timeLineBtn = [[UIButton alloc] initWithFrame:CGRectZero];
+        [_timeLineBtn setTitle:@"分时" forState:UIControlStateNormal];
+        _timeLineBtn.tag = kBaseBtnTag + 0;
+        [_timeLineBtn addTarget:self action:@selector(p_timeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _timeLineBtn;
+}
+
+- (UIButton *)dayLineBtn {
+    
+    if (!_dayLineBtn) {
+        _dayLineBtn = [[UIButton alloc] initWithFrame:CGRectZero];
+        [_dayLineBtn setTitle:@"日线" forState:UIControlStateNormal];
+        _dayLineBtn.tag = kBaseBtnTag + 1;
+        [_dayLineBtn addTarget:self action:@selector(p_timeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _dayLineBtn;
+}
+
+- (UIButton *)weekLineBtn {
+    
+    if (!_weekLineBtn) {
+        _weekLineBtn = [[UIButton alloc] initWithFrame:CGRectZero];
+        [_weekLineBtn setTitle:@"周线" forState:UIControlStateNormal];
+        _weekLineBtn.tag = kBaseBtnTag + 2;
+        [_weekLineBtn addTarget:self action:@selector(p_timeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _weekLineBtn;
+}
+//▲
+- (UIButton *)hourBtn{
+    if (!_hourBtn) {
+        _hourBtn = [[UIButton alloc] initWithFrame:CGRectZero];
+        [_hourBtn setTitle:@"小时 ▼" forState:UIControlStateNormal];
+        _hourBtn.tag = kBaseBtnTag + 3;
+        [_hourBtn addTarget:self action:@selector(p_timeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _hourBtn;
+}
+
+- (UIButton *)minuteBtn {
+    if (!_minuteBtn) {
+        _minuteBtn = [[UIButton alloc] initWithFrame:CGRectZero];
+        [_minuteBtn setTitle:@"分钟 ▼" forState:UIControlStateNormal];
+        _minuteBtn.tag = kBaseBtnTag + 4;
+        [_minuteBtn addTarget:self action:@selector(p_timeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _minuteBtn;
+}
+
+- (NSArray *)bottomBtnArray {
+    if (!_bottomBtnArray) {
+        _bottomBtnArray = @[self.timeLineBtn,self.dayLineBtn,self.weekLineBtn,self.hourBtn,self.minuteBtn];
+    }
+    return _bottomBtnArray;
 }
 
 @end

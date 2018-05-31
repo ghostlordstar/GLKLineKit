@@ -293,7 +293,8 @@
             if (tempModel.ma5 && !self.isMa5Hiden) {
                 if (tempModel.ma5 > maxValue) {
                     maxValue = tempModel.ma5;
-                }else if(tempModel.ma5 < minValue) {
+                }
+                if(tempModel.ma5 < minValue) {
                     minValue = tempModel.ma5;
                 }
             }
@@ -301,7 +302,8 @@
             if (tempModel.ma10 && !self.isMa10Hiden) {
                 if (tempModel.ma10 > maxValue) {
                     maxValue = tempModel.ma10;
-                }else if(tempModel.ma10 < minValue) {
+                }
+                if(tempModel.ma10 < minValue) {
                     minValue = tempModel.ma10;
                 }
             }
@@ -309,7 +311,8 @@
             if (tempModel.ma30 && !self.isMa30Hiden) {
                 if (tempModel.ma30 > maxValue) {
                     maxValue = tempModel.ma30;
-                }else if(tempModel.ma30 < minValue) {
+                }
+                if(tempModel.ma30 < minValue) {
                     minValue = tempModel.ma30;
                 }
             }

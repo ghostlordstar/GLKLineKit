@@ -330,7 +330,7 @@
     
     result = (close - low9) / (high9 - low9) * 100.0;
     
-    return result;
+    return isnan(result) ? 0 : result;
 }
 
 

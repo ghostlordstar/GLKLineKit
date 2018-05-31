@@ -63,10 +63,10 @@
     
     self.lineWidth = 1.0f;
     
-    NSLog(@"VOLMA data prepare begin");
+    NSLog(@"KDJ data prepare begin");
     if(![[DataCenter shareCenter] isPrepareForDataType:IndicatorsDataTypeKDJ]){
         [[DataCenter shareCenter] prepareDataWithType:IndicatorsDataTypeKDJ fromIndex:0];
-        NSLog(@"VOLMA data prepare finish");
+        NSLog(@"KDJ data prepare finish");
     }
 }
 
@@ -230,19 +230,22 @@
             
             if (tempModel.k > maxValue) {
                 maxValue = tempModel.k;
-            }else if(tempModel.k < minValue) {
+            }
+            if(tempModel.k < minValue) {
                 minValue = tempModel.k;
             }
             
             if (tempModel.d > maxValue) {
                 maxValue = tempModel.d;
-            }else if(tempModel.d < minValue) {
+            }
+            if(tempModel.d < minValue) {
                 minValue = tempModel.d;
             }
             
             if (tempModel.j > maxValue) {
                 maxValue = tempModel.j;
-            }else if(tempModel.j < minValue) {
+            }
+            if(tempModel.j < minValue) {
                 minValue = tempModel.j;
             }
         }

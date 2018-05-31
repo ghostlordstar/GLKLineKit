@@ -219,7 +219,8 @@
             if (tempModel.volMa5) {
                 if (tempModel.volMa5 > maxValue) {
                     maxValue = tempModel.volMa5;
-                }else if(tempModel.volMa5 < minValue) {
+                }
+                if(tempModel.volMa5 < minValue) {
                     minValue = tempModel.volMa5;
                 }
             }
@@ -227,7 +228,8 @@
             if (tempModel.volMa10) {
                 if (tempModel.volMa10 > maxValue) {
                     maxValue = tempModel.volMa10;
-                }else if(tempModel.volMa10 < minValue) {
+                }
+                if(tempModel.volMa10 < minValue) {
                     minValue = tempModel.volMa10;
                 }
             }

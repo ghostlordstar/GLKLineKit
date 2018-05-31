@@ -249,19 +249,22 @@
             
             if (tempModel.dif > maxValue) {
                 maxValue = tempModel.dif;
-            }else if(tempModel.dif < minValue) {
+            }
+            if(tempModel.dif < minValue) {
                 minValue = tempModel.dif;
             }
 
             if (tempModel.dea > maxValue) {
                 maxValue = tempModel.dea;
-            }else if(tempModel.dea < minValue) {
+            }
+            if(tempModel.dea < minValue) {
                 minValue = tempModel.dea;
             }
             
             if(tempModel.macd > maxValue) {
                 maxValue = tempModel.macd;
-            }else if(tempModel.macd < minValue) {
+            }
+            if(tempModel.macd < minValue) {
                 minValue = tempModel.macd;
             }
         }

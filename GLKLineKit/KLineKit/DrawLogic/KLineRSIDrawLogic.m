@@ -229,19 +229,22 @@
             
             if (tempModel.rsi6 > maxValue) {
                 maxValue = tempModel.rsi6;
-            }else if(tempModel.rsi6 < minValue) {
+            }
+            if(tempModel.rsi6 < minValue) {
                 minValue = tempModel.rsi6;
             }
             
             if (tempModel.rsi12 > maxValue) {
                 maxValue = tempModel.rsi12;
-            }else if(tempModel.rsi12 < minValue) {
+            }
+            if(tempModel.rsi12 < minValue) {
                 minValue = tempModel.rsi12;
             }
             
             if (tempModel.rsi24 > maxValue) {
                 maxValue = tempModel.rsi24;
-            }else if(tempModel.rsi24 < minValue) {
+            }
+            if(tempModel.rsi24 < minValue) {
                 minValue = tempModel.rsi24;
             }
         }
