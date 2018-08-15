@@ -101,7 +101,7 @@
         // 实体线
         CGFloat openY = rect.size.height * (1.0f - (tempModel.open - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
         CGFloat closeY = rect.size.height * (1.0f - (tempModel.close - self.extremeValue.minValue) / diffValue) + rect.origin.y;
-        if (openY == closeY) {
+        if (ABS(closeY - openY) <= 1.0f) {
             closeY = openY + 1.0f;
         }
         
