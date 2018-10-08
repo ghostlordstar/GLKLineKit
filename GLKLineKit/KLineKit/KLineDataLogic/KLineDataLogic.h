@@ -74,6 +74,9 @@
  */
 @property (readonly, assign, nonatomic) CGPoint visibleRange;
 
+/** K线是否是充满模式 */
+@property (assign, nonatomic) BOOL isFull;
+
 /**
  最小显示K线数量
  */
