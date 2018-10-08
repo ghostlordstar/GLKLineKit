@@ -37,7 +37,6 @@
 		5D1F1E1E20B82C0400BD47B1 /* KLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E0820B82C0400BD47B1 /* KLineModel.m */; };
 		5D1F1E2520B8375E00BD47B1 /* PortraitTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E2420B8375E00BD47B1 /* PortraitTestController.m */; };
 		5D1F1E2820B8378100BD47B1 /* LandscapeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E2720B8378100BD47B1 /* LandscapeController.m */; };
-		5D1F1E2B20B837AC00BD47B1 /* BothController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E2A20B837AC00BD47B1 /* BothController.m */; };
 		5D1F1E2E20B8385600BD47B1 /* KLineDataProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E2D20B8385600BD47B1 /* KLineDataProcess.m */; };
 		5D1F1E3120B83AE500BD47B1 /* SimpleKLineVolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E3020B83AE500BD47B1 /* SimpleKLineVolView.m */; };
 		5D9D485C20BEE02600E9658B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D484320BEE02600E9658B /* NSLayoutConstraint+MASDebugAdditions.m */; };
@@ -151,8 +150,6 @@
 		5D1F1E2420B8375E00BD47B1 /* PortraitTestController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PortraitTestController.m; sourceTree = "<group>"; };
 		5D1F1E2620B8378100BD47B1 /* LandscapeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LandscapeController.h; sourceTree = "<group>"; };
 		5D1F1E2720B8378100BD47B1 /* LandscapeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LandscapeController.m; sourceTree = "<group>"; };
-		5D1F1E2920B837AC00BD47B1 /* BothController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BothController.h; sourceTree = "<group>"; };
-		5D1F1E2A20B837AC00BD47B1 /* BothController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BothController.m; sourceTree = "<group>"; };
 		5D1F1E2C20B8385600BD47B1 /* KLineDataProcess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KLineDataProcess.h; sourceTree = "<group>"; };
 		5D1F1E2D20B8385600BD47B1 /* KLineDataProcess.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KLineDataProcess.m; sourceTree = "<group>"; };
 		5D1F1E2F20B83AE500BD47B1 /* SimpleKLineVolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleKLineVolView.h; sourceTree = "<group>"; };
@@ -477,8 +474,6 @@
 				5D1F1E2420B8375E00BD47B1 /* PortraitTestController.m */,
 				5D1F1E2620B8378100BD47B1 /* LandscapeController.h */,
 				5D1F1E2720B8378100BD47B1 /* LandscapeController.m */,
-				5D1F1E2920B837AC00BD47B1 /* BothController.h */,
-				5D1F1E2A20B837AC00BD47B1 /* BothController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -784,7 +779,6 @@
 				5DD3663420BD6018007626A7 /* UIColor+Hex.m in Sources */,
 				5D1F1E1E20B82C0400BD47B1 /* KLineModel.m in Sources */,
 				5D1F1E0E20B82C0400BD47B1 /* GLConstantDefinition.m in Sources */,
-				5D1F1E2B20B837AC00BD47B1 /* BothController.m in Sources */,
 				5DEF8F7320BE816100147ABD /* VerticalView.m in Sources */,
 				5D1F1E3120B83AE500BD47B1 /* SimpleKLineVolView.m in Sources */,
 				5DEF8F7D20BE83EF00147ABD /* BaseNavigationViewController.m in Sources */,

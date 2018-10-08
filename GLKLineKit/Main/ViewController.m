@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "PortraitTestController.h"
 #import "LandscapeController.h"
-#import "BothController.h"
 
 @interface ViewController ()
 <
@@ -81,11 +80,6 @@ static NSString *const klineKitDemoCell_id_1 = @"klineKitDemoCell_id_1";
         
         [self.navigationController pushViewController:landScapeVC animated:YES];
         
-    }else if([cellTitle isEqualToString:@"横竖屏切换"]) {
-        
-        BothController *bothVC = [[BothController alloc] init];
-        
-        [self.navigationController pushViewController:bothVC animated:YES];
     }
     
 }
@@ -129,7 +123,6 @@ static NSString *const klineKitDemoCell_id_1 = @"klineKitDemoCell_id_1";
         _dataArray = [NSMutableArray array];
         [_dataArray addObject:@"竖屏"];
         [_dataArray addObject:@"横屏"];
-        [_dataArray addObject:@"横竖屏切换"];
     }
     return _dataArray;
 }
