@@ -23,4 +23,5 @@
 
 ## 欢迎交流。相比于Issues和Star，我更希望看到你们的Pull requests👏 
 
+1. QQ群:901786039
 ![QQ交流群](http://o8prfm9ji.bkt.clouddn.com/GLKitQQGroupSQ.jpeg)
