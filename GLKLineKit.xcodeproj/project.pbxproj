@@ -7,60 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D14A98B20B989DF006B13A8 /* NSString+GLDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D14A98A20B989DF006B13A8 /* NSString+GLDate.m */; };
+		5D1638772170996F007C81CB /* LanguageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1638752170996E007C81CB /* LanguageTool.m */; };
+		5D16387B21709E56007C81CB /* UIFont+ScaleSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D16387A21709E56007C81CB /* UIFont+ScaleSize.m */; };
 		5D1F1D9820B8289E00BD47B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D1F1D9720B8289E00BD47B1 /* Assets.xcassets */; };
 		5D1F1DA820B8289E00BD47B1 /* GLKLineKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DA720B8289E00BD47B1 /* GLKLineKitTests.m */; };
 		5D1F1DB320B8289E00BD47B1 /* GLKLineKitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DB220B8289E00BD47B1 /* GLKLineKitUITests.m */; };
-		5D1F1DCA20B82A4300BD47B1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DC520B82A4300BD47B1 /* ViewController.m */; };
-		5D1F1DCB20B82A4300BD47B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DC620B82A4300BD47B1 /* main.m */; };
-		5D1F1DCC20B82A4300BD47B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DC720B82A4300BD47B1 /* AppDelegate.m */; };
-		5D1F1DD320B82BFB00BD47B1 /* UIView+CenterLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DD120B82BFB00BD47B1 /* UIView+CenterLoading.m */; };
-		5D1F1E0B20B82C0400BD47B1 /* KLineViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DD720B82C0400BD47B1 /* KLineViewConfig.m */; };
-		5D1F1E0C20B82C0400BD47B1 /* NSNumber+StringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DDB20B82C0400BD47B1 /* NSNumber+StringFormatter.m */; };
-		5D1F1E0D20B82C0400BD47B1 /* NSValue+GLExtremeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DDE20B82C0400BD47B1 /* NSValue+GLExtremeValue.m */; };
-		5D1F1E0E20B82C0400BD47B1 /* GLConstantDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DE020B82C0400BD47B1 /* GLConstantDefinition.m */; };
-		5D1F1E0F20B82C0400BD47B1 /* KLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DE520B82C0400BD47B1 /* KLineView.m */; };
-		5D1F1E1020B82C0400BD47B1 /* KLineDataLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DE820B82C0400BD47B1 /* KLineDataLogic.m */; };
-		5D1F1E1120B82C0400BD47B1 /* KLineIndicatorLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DEA20B82C0400BD47B1 /* KLineIndicatorLogic.m */; };
-		5D1F1E1220B82C0400BD47B1 /* DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DED20B82C0400BD47B1 /* DataCenter.m */; };
-		5D1F1E1320B82C0400BD47B1 /* KLineVolDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DF020B82C0400BD47B1 /* KLineVolDrawLogic.m */; };
-		5D1F1E1420B82C0400BD47B1 /* KLineDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DF320B82C0400BD47B1 /* KLineDrawLogic.m */; };
-		5D1F1E1520B82C0400BD47B1 /* KLineVolMADrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DF520B82C0400BD47B1 /* KLineVolMADrawLogic.m */; };
-		5D1F1E1620B82C0400BD47B1 /* KLineMADrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DFA20B82C0400BD47B1 /* KLineMADrawLogic.m */; };
-		5D1F1E1720B82C0400BD47B1 /* BaseDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DFB20B82C0400BD47B1 /* BaseDrawLogic.m */; };
-		5D1F1E1820B82C0400BD47B1 /* KLineRSIDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DFC20B82C0400BD47B1 /* KLineRSIDrawLogic.m */; };
-		5D1F1E1920B82C0400BD47B1 /* KLineMACDDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DFD20B82C0400BD47B1 /* KLineMACDDrawLogic.m */; };
-		5D1F1E1A20B82C0400BD47B1 /* KLineBOLLDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E0020B82C0400BD47B1 /* KLineBOLLDrawLogic.m */; };
-		5D1F1E1B20B82C0400BD47B1 /* KLineTimeDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E0420B82C0400BD47B1 /* KLineTimeDrawLogic.m */; };
-		5D1F1E1C20B82C0400BD47B1 /* KLineKDJDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E0520B82C0400BD47B1 /* KLineKDJDrawLogic.m */; };
-		5D1F1E1D20B82C0400BD47B1 /* KLineBGDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E0620B82C0400BD47B1 /* KLineBGDrawLogic.m */; };
-		5D1F1E1E20B82C0400BD47B1 /* KLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E0820B82C0400BD47B1 /* KLineModel.m */; };
-		5D1F1E2520B8375E00BD47B1 /* PortraitTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E2420B8375E00BD47B1 /* PortraitTestController.m */; };
-		5D1F1E2820B8378100BD47B1 /* LandscapeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E2720B8378100BD47B1 /* LandscapeController.m */; };
-		5D1F1E2E20B8385600BD47B1 /* KLineDataProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E2D20B8385600BD47B1 /* KLineDataProcess.m */; };
-		5D1F1E3120B83AE500BD47B1 /* SimpleKLineVolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1E3020B83AE500BD47B1 /* SimpleKLineVolView.m */; };
-		5D9D485C20BEE02600E9658B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D484320BEE02600E9658B /* NSLayoutConstraint+MASDebugAdditions.m */; };
-		5D9D485D20BEE02600E9658B /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D484C20BEE02600E9658B /* ViewController+MASAdditions.m */; };
-		5D9D485E20BEE02600E9658B /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D485020BEE02600E9658B /* MASCompositeConstraint.m */; };
-		5D9D485F20BEE02600E9658B /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D485120BEE02600E9658B /* MASConstraintMaker.m */; };
-		5D9D486020BEE02600E9658B /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D485220BEE02600E9658B /* MASLayoutConstraint.m */; };
-		5D9D486120BEE02600E9658B /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D485320BEE02600E9658B /* NSArray+MASAdditions.m */; };
-		5D9D486220BEE02600E9658B /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D485420BEE02600E9658B /* View+MASAdditions.m */; };
-		5D9D486320BEE02600E9658B /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D485720BEE02600E9658B /* MASConstraint.m */; };
-		5D9D486420BEE02600E9658B /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D485920BEE02600E9658B /* MASViewConstraint.m */; };
-		5D9D486520BEE02600E9658B /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D485A20BEE02600E9658B /* MASViewAttribute.m */; };
-		5DD3663120BD457A007626A7 /* NSObject+DrawText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD3663020BD457A007626A7 /* NSObject+DrawText.m */; };
-		5DD3663420BD6018007626A7 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD3663320BD6018007626A7 /* UIColor+Hex.m */; };
-		5DDA1BC920BF8DDB00CE7C74 /* ListMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA1BC820BF8DDB00CE7C74 /* ListMenuView.m */; };
-		5DE0140820B84310006CE8D3 /* KLineVolViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE0140720B84310006CE8D3 /* KLineVolViewConfig.m */; };
-		5DE0140E20B84CE0006CE8D3 /* bitCNY_ETH in Resources */ = {isa = PBXBuildFile; fileRef = 5DE0140D20B84CE0006CE8D3 /* bitCNY_ETH */; };
+		5D4CF00D216DD738009D5602 /* KLineDataProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEF8F216DD738009D5602 /* KLineDataProcess.m */; };
+		5D4CF00E216DD738009D5602 /* SimpleKLineVolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEF92216DD738009D5602 /* SimpleKLineVolView.m */; };
+		5D4CF00F216DD738009D5602 /* FullScreenKLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEF93216DD738009D5602 /* FullScreenKLineView.m */; };
+		5D4CF010216DD738009D5602 /* LandscapeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEF99216DD738009D5602 /* LandscapeController.m */; };
+		5D4CF011216DD738009D5602 /* PortraitTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEF9A216DD738009D5602 /* PortraitTestController.m */; };
+		5D4CF012216DD738009D5602 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEF9D216DD738009D5602 /* ViewController.m */; };
+		5D4CF013216DD738009D5602 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEF9E216DD738009D5602 /* main.m */; };
+		5D4CF014216DD738009D5602 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEF9F216DD738009D5602 /* AppDelegate.m */; };
+		5D4CF016216DD738009D5602 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFA8216DD738009D5602 /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		5D4CF017216DD738009D5602 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFB1216DD738009D5602 /* ViewController+MASAdditions.m */; };
+		5D4CF018216DD738009D5602 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFB5216DD738009D5602 /* MASCompositeConstraint.m */; };
+		5D4CF019216DD738009D5602 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFB6216DD738009D5602 /* MASConstraintMaker.m */; };
+		5D4CF01A216DD738009D5602 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFB7216DD738009D5602 /* MASLayoutConstraint.m */; };
+		5D4CF01B216DD738009D5602 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFB8216DD738009D5602 /* NSArray+MASAdditions.m */; };
+		5D4CF01C216DD738009D5602 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFB9216DD738009D5602 /* View+MASAdditions.m */; };
+		5D4CF01D216DD738009D5602 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFBC216DD738009D5602 /* MASConstraint.m */; };
+		5D4CF01E216DD738009D5602 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFBE216DD738009D5602 /* MASViewConstraint.m */; };
+		5D4CF01F216DD738009D5602 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFBF216DD738009D5602 /* MASViewAttribute.m */; };
+		5D4CF021216DD738009D5602 /* DetailDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFC4216DD738009D5602 /* DetailDataView.m */; };
+		5D4CF022216DD738009D5602 /* VerticalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFC8216DD738009D5602 /* VerticalView.m */; };
+		5D4CF023216DD738009D5602 /* HorizontalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFC9216DD738009D5602 /* HorizontalView.m */; };
+		5D4CF024216DD738009D5602 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFCD216DD738009D5602 /* BaseViewController.m */; };
+		5D4CF025216DD738009D5602 /* BaseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFD1216DD738009D5602 /* BaseNavigationViewController.m */; };
+		5D4CF026216DD738009D5602 /* BTC_USDT_2h.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D4CEFD3216DD738009D5602 /* BTC_USDT_2h.json */; };
+		5D4CF027216DD738009D5602 /* DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFD7216DD738009D5602 /* DataCenter.m */; };
+		5D4CF028216DD738009D5602 /* KLineDataLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFDB216DD738009D5602 /* KLineDataLogic.m */; };
+		5D4CF029216DD738009D5602 /* KLineIndicatorLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFDD216DD738009D5602 /* KLineIndicatorLogic.m */; };
+		5D4CF02A216DD738009D5602 /* KLineVolViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFDF216DD738009D5602 /* KLineVolViewConfig.m */; };
+		5D4CF02B216DD738009D5602 /* KLineViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFE1216DD738009D5602 /* KLineViewConfig.m */; };
+		5D4CF02C216DD738009D5602 /* NSNumber+StringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFE5216DD738009D5602 /* NSNumber+StringFormatter.m */; };
+		5D4CF02D216DD738009D5602 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFE7216DD738009D5602 /* UIColor+Hex.m */; };
+		5D4CF02E216DD738009D5602 /* NSValue+GLExtremeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFEA216DD738009D5602 /* NSValue+GLExtremeValue.m */; };
+		5D4CF02F216DD738009D5602 /* KLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFEC216DD738009D5602 /* KLineModel.m */; };
+		5D4CF030216DD738009D5602 /* KLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFF0216DD738009D5602 /* KLineView.m */; };
+		5D4CF031216DD738009D5602 /* KLineVolDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFF2216DD738009D5602 /* KLineVolDrawLogic.m */; };
+		5D4CF032216DD738009D5602 /* KLineDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFF5216DD738009D5602 /* KLineDrawLogic.m */; };
+		5D4CF033216DD738009D5602 /* KLineVolMADrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFF7216DD738009D5602 /* KLineVolMADrawLogic.m */; };
+		5D4CF034216DD738009D5602 /* KLineMADrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFFC216DD738009D5602 /* KLineMADrawLogic.m */; };
+		5D4CF035216DD738009D5602 /* BaseDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFFD216DD738009D5602 /* BaseDrawLogic.m */; };
+		5D4CF036216DD738009D5602 /* KLineRSIDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFFE216DD738009D5602 /* KLineRSIDrawLogic.m */; };
+		5D4CF037216DD738009D5602 /* KLineMACDDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEFFF216DD738009D5602 /* KLineMACDDrawLogic.m */; };
+		5D4CF038216DD738009D5602 /* KLineBOLLDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF002216DD738009D5602 /* KLineBOLLDrawLogic.m */; };
+		5D4CF039216DD738009D5602 /* KLineTimeDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF006216DD738009D5602 /* KLineTimeDrawLogic.m */; };
+		5D4CF03A216DD738009D5602 /* KLineKDJDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF007216DD738009D5602 /* KLineKDJDrawLogic.m */; };
+		5D4CF03B216DD738009D5602 /* KLineBGDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF008216DD738009D5602 /* KLineBGDrawLogic.m */; };
+		5D4CF03C216DD738009D5602 /* GLConstantDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF00A216DD738009D5602 /* GLConstantDefinition.m */; };
+		5D4CF057216DDDE0009D5602 /* NSString+GLDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF04D216DDDE0009D5602 /* NSString+GLDate.m */; };
+		5D4CF058216DDDE0009D5602 /* UIView+CenterLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF04F216DDDE0009D5602 /* UIView+CenterLoading.m */; };
+		5D4CF059216DDDE0009D5602 /* NSObject+DrawText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF053216DDDE0009D5602 /* NSObject+DrawText.m */; };
+		5D4CF05A216DDDE0009D5602 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF055216DDDE0009D5602 /* UIColor+Hex.m */; };
 		5DE110E120B83F4600277399 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D1F1D9920B8289E00BD47B1 /* LaunchScreen.storyboard */; };
-		5DEF8F6520BE52E200147ABD /* FullScreenKLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF8F6420BE52E200147ABD /* FullScreenKLineView.m */; };
-		5DEF8F7220BE816100147ABD /* DetailDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF8F6B20BE816100147ABD /* DetailDataView.m */; };
-		5DEF8F7320BE816100147ABD /* VerticalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF8F7020BE816100147ABD /* VerticalView.m */; };
-		5DEF8F7420BE816100147ABD /* HorizontalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF8F7120BE816100147ABD /* HorizontalView.m */; };
-		5DEF8F7D20BE83EF00147ABD /* BaseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF8F7C20BE83EE00147ABD /* BaseNavigationViewController.m */; };
-		5DEF8F8020BE83FE00147ABD /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF8F7F20BE83FE00147ABD /* BaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,8 +83,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5D14A98920B989DF006B13A8 /* NSString+GLDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+GLDate.h"; sourceTree = "<group>"; };
-		5D14A98A20B989DF006B13A8 /* NSString+GLDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+GLDate.m"; sourceTree = "<group>"; };
+		5D1638752170996E007C81CB /* LanguageTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageTool.m; sourceTree = "<group>"; };
+		5D1638762170996E007C81CB /* LanguageTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageTool.h; sourceTree = "<group>"; };
+		5D16387921709E56007C81CB /* UIFont+ScaleSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+ScaleSize.h"; sourceTree = "<group>"; };
+		5D16387A21709E56007C81CB /* UIFont+ScaleSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ScaleSize.m"; sourceTree = "<group>"; };
 		5D1F1D8B20B8289D00BD47B1 /* GLKLineKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLKLineKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1F1D9720B8289E00BD47B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D1F1D9A20B8289E00BD47B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -92,116 +96,120 @@
 		5D1F1DAE20B8289E00BD47B1 /* GLKLineKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GLKLineKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1F1DB220B8289E00BD47B1 /* GLKLineKitUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLKLineKitUITests.m; sourceTree = "<group>"; };
 		5D1F1DB420B8289E00BD47B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D1F1DC420B82A4300BD47B1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		5D1F1DC520B82A4300BD47B1 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		5D1F1DC620B82A4300BD47B1 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5D1F1DC720B82A4300BD47B1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5D1F1DC820B82A4300BD47B1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D1F1DC920B82A4300BD47B1 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5D1F1DD120B82BFB00BD47B1 /* UIView+CenterLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CenterLoading.m"; sourceTree = "<group>"; };
-		5D1F1DD220B82BFB00BD47B1 /* UIView+CenterLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CenterLoading.h"; sourceTree = "<group>"; };
-		5D1F1DD620B82C0400BD47B1 /* KLineViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineViewProtocol.h; sourceTree = "<group>"; };
-		5D1F1DD720B82C0400BD47B1 /* KLineViewConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineViewConfig.m; sourceTree = "<group>"; };
-		5D1F1DD920B82C0400BD47B1 /* KLineViewConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineViewConfig.h; sourceTree = "<group>"; };
-		5D1F1DDB20B82C0400BD47B1 /* NSNumber+StringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+StringFormatter.m"; sourceTree = "<group>"; };
-		5D1F1DDC20B82C0400BD47B1 /* NSValue+GLExtremeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+GLExtremeValue.h"; sourceTree = "<group>"; };
-		5D1F1DDD20B82C0400BD47B1 /* NSNumber+StringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+StringFormatter.h"; sourceTree = "<group>"; };
-		5D1F1DDE20B82C0400BD47B1 /* NSValue+GLExtremeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+GLExtremeValue.m"; sourceTree = "<group>"; };
-		5D1F1DE020B82C0400BD47B1 /* GLConstantDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLConstantDefinition.m; sourceTree = "<group>"; };
-		5D1F1DE220B82C0400BD47B1 /* GLConstantDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLConstantDefinition.h; sourceTree = "<group>"; };
-		5D1F1DE420B82C0400BD47B1 /* KLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineView.h; sourceTree = "<group>"; };
-		5D1F1DE520B82C0400BD47B1 /* KLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineView.m; sourceTree = "<group>"; };
-		5D1F1DE720B82C0400BD47B1 /* KLineIndicatorLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineIndicatorLogic.h; sourceTree = "<group>"; };
-		5D1F1DE820B82C0400BD47B1 /* KLineDataLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineDataLogic.m; sourceTree = "<group>"; };
-		5D1F1DE920B82C0400BD47B1 /* KLineDataLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineDataLogic.h; sourceTree = "<group>"; };
-		5D1F1DEA20B82C0400BD47B1 /* KLineIndicatorLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineIndicatorLogic.m; sourceTree = "<group>"; };
-		5D1F1DEC20B82C0400BD47B1 /* DataCenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCenterProtocol.h; sourceTree = "<group>"; };
-		5D1F1DED20B82C0400BD47B1 /* DataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCenter.m; sourceTree = "<group>"; };
-		5D1F1DEE20B82C0400BD47B1 /* DataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCenter.h; sourceTree = "<group>"; };
-		5D1F1DF020B82C0400BD47B1 /* KLineVolDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineVolDrawLogic.m; sourceTree = "<group>"; };
-		5D1F1DF120B82C0400BD47B1 /* KLineMACDDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineMACDDrawLogic.h; sourceTree = "<group>"; };
-		5D1F1DF220B82C0400BD47B1 /* KLineRSIDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineRSIDrawLogic.h; sourceTree = "<group>"; };
-		5D1F1DF320B82C0400BD47B1 /* KLineDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineDrawLogic.m; sourceTree = "<group>"; };
-		5D1F1DF420B82C0400BD47B1 /* KLineBOLLDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineBOLLDrawLogic.h; sourceTree = "<group>"; };
-		5D1F1DF520B82C0400BD47B1 /* KLineVolMADrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineVolMADrawLogic.m; sourceTree = "<group>"; };
-		5D1F1DF620B82C0400BD47B1 /* ChartDrawProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartDrawProtocol.h; sourceTree = "<group>"; };
-		5D1F1DF720B82C0400BD47B1 /* KLineBGDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineBGDrawLogic.h; sourceTree = "<group>"; };
-		5D1F1DF820B82C0400BD47B1 /* KLineKDJDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineKDJDrawLogic.h; sourceTree = "<group>"; };
-		5D1F1DF920B82C0400BD47B1 /* KLineTimeDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineTimeDrawLogic.h; sourceTree = "<group>"; };
-		5D1F1DFA20B82C0400BD47B1 /* KLineMADrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineMADrawLogic.m; sourceTree = "<group>"; };
-		5D1F1DFB20B82C0400BD47B1 /* BaseDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDrawLogic.m; sourceTree = "<group>"; };
-		5D1F1DFC20B82C0400BD47B1 /* KLineRSIDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineRSIDrawLogic.m; sourceTree = "<group>"; };
-		5D1F1DFD20B82C0400BD47B1 /* KLineMACDDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineMACDDrawLogic.m; sourceTree = "<group>"; };
-		5D1F1DFE20B82C0400BD47B1 /* KLineVolDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineVolDrawLogic.h; sourceTree = "<group>"; };
-		5D1F1DFF20B82C0400BD47B1 /* KLineVolMADrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineVolMADrawLogic.h; sourceTree = "<group>"; };
-		5D1F1E0020B82C0400BD47B1 /* KLineBOLLDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineBOLLDrawLogic.m; sourceTree = "<group>"; };
-		5D1F1E0120B82C0400BD47B1 /* KLineDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineDrawLogic.h; sourceTree = "<group>"; };
-		5D1F1E0220B82C0400BD47B1 /* KLineMADrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineMADrawLogic.h; sourceTree = "<group>"; };
-		5D1F1E0320B82C0400BD47B1 /* BaseDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDrawLogic.h; sourceTree = "<group>"; };
-		5D1F1E0420B82C0400BD47B1 /* KLineTimeDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineTimeDrawLogic.m; sourceTree = "<group>"; };
-		5D1F1E0520B82C0400BD47B1 /* KLineKDJDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineKDJDrawLogic.m; sourceTree = "<group>"; };
-		5D1F1E0620B82C0400BD47B1 /* KLineBGDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineBGDrawLogic.m; sourceTree = "<group>"; };
-		5D1F1E0820B82C0400BD47B1 /* KLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineModel.m; sourceTree = "<group>"; };
-		5D1F1E0920B82C0400BD47B1 /* KLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineModel.h; sourceTree = "<group>"; };
-		5D1F1E2220B82EF400BD47B1 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		5D1F1E2320B8375E00BD47B1 /* PortraitTestController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PortraitTestController.h; sourceTree = "<group>"; };
-		5D1F1E2420B8375E00BD47B1 /* PortraitTestController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PortraitTestController.m; sourceTree = "<group>"; };
-		5D1F1E2620B8378100BD47B1 /* LandscapeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LandscapeController.h; sourceTree = "<group>"; };
-		5D1F1E2720B8378100BD47B1 /* LandscapeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LandscapeController.m; sourceTree = "<group>"; };
-		5D1F1E2C20B8385600BD47B1 /* KLineDataProcess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KLineDataProcess.h; sourceTree = "<group>"; };
-		5D1F1E2D20B8385600BD47B1 /* KLineDataProcess.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KLineDataProcess.m; sourceTree = "<group>"; };
-		5D1F1E2F20B83AE500BD47B1 /* SimpleKLineVolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleKLineVolView.h; sourceTree = "<group>"; };
-		5D1F1E3020B83AE500BD47B1 /* SimpleKLineVolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleKLineVolView.m; sourceTree = "<group>"; };
-		5D9D484220BEE02600E9658B /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
-		5D9D484320BEE02600E9658B /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
-		5D9D484420BEE02600E9658B /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
-		5D9D484520BEE02600E9658B /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
-		5D9D484620BEE02600E9658B /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		5D9D484720BEE02600E9658B /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
-		5D9D484820BEE02600E9658B /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
-		5D9D484920BEE02600E9658B /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
-		5D9D484A20BEE02600E9658B /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
-		5D9D484B20BEE02600E9658B /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
-		5D9D484C20BEE02600E9658B /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
-		5D9D484D20BEE02600E9658B /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
-		5D9D484E20BEE02600E9658B /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
-		5D9D484F20BEE02600E9658B /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
-		5D9D485020BEE02600E9658B /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
-		5D9D485120BEE02600E9658B /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
-		5D9D485220BEE02600E9658B /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
-		5D9D485320BEE02600E9658B /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
-		5D9D485420BEE02600E9658B /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
-		5D9D485520BEE02600E9658B /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		5D9D485620BEE02600E9658B /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
-		5D9D485720BEE02600E9658B /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
-		5D9D485820BEE02600E9658B /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
-		5D9D485920BEE02600E9658B /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
-		5D9D485A20BEE02600E9658B /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
-		5D9D485B20BEE02600E9658B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DD3662F20BD457A007626A7 /* NSObject+DrawText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+DrawText.h"; sourceTree = "<group>"; };
-		5DD3663020BD457A007626A7 /* NSObject+DrawText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DrawText.m"; sourceTree = "<group>"; };
-		5DD3663220BD6018007626A7 /* UIColor+Hex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
-		5DD3663320BD6018007626A7 /* UIColor+Hex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
-		5DDA1BC720BF8DDB00CE7C74 /* ListMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListMenuView.h; sourceTree = "<group>"; };
-		5DDA1BC820BF8DDB00CE7C74 /* ListMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListMenuView.m; sourceTree = "<group>"; };
-		5DE0140620B84310006CE8D3 /* KLineVolViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KLineVolViewConfig.h; sourceTree = "<group>"; };
-		5DE0140720B84310006CE8D3 /* KLineVolViewConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KLineVolViewConfig.m; sourceTree = "<group>"; };
-		5DE0140920B844F5006CE8D3 /* GLKLineKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLKLineKit.h; sourceTree = "<group>"; };
-		5DE0140D20B84CE0006CE8D3 /* bitCNY_ETH */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bitCNY_ETH; sourceTree = "<group>"; };
-		5DEF8F6320BE52E200147ABD /* FullScreenKLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FullScreenKLineView.h; sourceTree = "<group>"; };
-		5DEF8F6420BE52E200147ABD /* FullScreenKLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FullScreenKLineView.m; sourceTree = "<group>"; };
-		5DEF8F6720BE535500147ABD /* ExamplePubliEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExamplePubliEnum.h; sourceTree = "<group>"; };
-		5DEF8F6A20BE816100147ABD /* DetailDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailDataView.h; sourceTree = "<group>"; };
-		5DEF8F6B20BE816100147ABD /* DetailDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailDataView.m; sourceTree = "<group>"; };
-		5DEF8F6E20BE816100147ABD /* VerticalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalView.h; sourceTree = "<group>"; };
-		5DEF8F6F20BE816100147ABD /* HorizontalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalView.h; sourceTree = "<group>"; };
-		5DEF8F7020BE816100147ABD /* VerticalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalView.m; sourceTree = "<group>"; };
-		5DEF8F7120BE816100147ABD /* HorizontalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalView.m; sourceTree = "<group>"; };
-		5DEF8F7B20BE83EE00147ABD /* BaseNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationViewController.h; sourceTree = "<group>"; };
-		5DEF8F7C20BE83EE00147ABD /* BaseNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationViewController.m; sourceTree = "<group>"; };
-		5DEF8F7E20BE83FE00147ABD /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
-		5DEF8F7F20BE83FE00147ABD /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		5DEF8F8120BE846200147ABD /* ScreenRotationProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenRotationProtocol.h; sourceTree = "<group>"; };
+		5D4CEF8E216DD738009D5602 /* KLineDataProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineDataProcess.h; sourceTree = "<group>"; };
+		5D4CEF8F216DD738009D5602 /* KLineDataProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineDataProcess.m; sourceTree = "<group>"; };
+		5D4CEF92216DD738009D5602 /* SimpleKLineVolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleKLineVolView.m; sourceTree = "<group>"; };
+		5D4CEF93216DD738009D5602 /* FullScreenKLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenKLineView.m; sourceTree = "<group>"; };
+		5D4CEF94216DD738009D5602 /* SimpleKLineVolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleKLineVolView.h; sourceTree = "<group>"; };
+		5D4CEF95216DD738009D5602 /* FullScreenKLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenKLineView.h; sourceTree = "<group>"; };
+		5D4CEF97216DD738009D5602 /* LandscapeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeController.h; sourceTree = "<group>"; };
+		5D4CEF98216DD738009D5602 /* PortraitTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortraitTestController.h; sourceTree = "<group>"; };
+		5D4CEF99216DD738009D5602 /* LandscapeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeController.m; sourceTree = "<group>"; };
+		5D4CEF9A216DD738009D5602 /* PortraitTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortraitTestController.m; sourceTree = "<group>"; };
+		5D4CEF9C216DD738009D5602 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5D4CEF9D216DD738009D5602 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5D4CEF9E216DD738009D5602 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5D4CEF9F216DD738009D5602 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5D4CEFA1216DD738009D5602 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D4CEFA2216DD738009D5602 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5D4CEFA7216DD738009D5602 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
+		5D4CEFA8216DD738009D5602 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		5D4CEFA9216DD738009D5602 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
+		5D4CEFAA216DD738009D5602 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
+		5D4CEFAB216DD738009D5602 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		5D4CEFAC216DD738009D5602 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
+		5D4CEFAD216DD738009D5602 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
+		5D4CEFAE216DD738009D5602 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		5D4CEFAF216DD738009D5602 /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
+		5D4CEFB0216DD738009D5602 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
+		5D4CEFB1216DD738009D5602 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		5D4CEFB2216DD738009D5602 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
+		5D4CEFB3216DD738009D5602 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
+		5D4CEFB4216DD738009D5602 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		5D4CEFB5216DD738009D5602 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
+		5D4CEFB6216DD738009D5602 /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
+		5D4CEFB7216DD738009D5602 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
+		5D4CEFB8216DD738009D5602 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		5D4CEFB9216DD738009D5602 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
+		5D4CEFBA216DD738009D5602 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		5D4CEFBB216DD738009D5602 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
+		5D4CEFBC216DD738009D5602 /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
+		5D4CEFBD216DD738009D5602 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
+		5D4CEFBE216DD738009D5602 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
+		5D4CEFBF216DD738009D5602 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
+		5D4CEFC0216DD738009D5602 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D4CEFC3216DD738009D5602 /* DetailDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailDataView.h; sourceTree = "<group>"; };
+		5D4CEFC4216DD738009D5602 /* DetailDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailDataView.m; sourceTree = "<group>"; };
+		5D4CEFC6216DD738009D5602 /* VerticalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalView.h; sourceTree = "<group>"; };
+		5D4CEFC7216DD738009D5602 /* HorizontalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalView.h; sourceTree = "<group>"; };
+		5D4CEFC8216DD738009D5602 /* VerticalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalView.m; sourceTree = "<group>"; };
+		5D4CEFC9216DD738009D5602 /* HorizontalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalView.m; sourceTree = "<group>"; };
+		5D4CEFCD216DD738009D5602 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		5D4CEFCE216DD738009D5602 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		5D4CEFD0216DD738009D5602 /* BaseNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationViewController.h; sourceTree = "<group>"; };
+		5D4CEFD1216DD738009D5602 /* BaseNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationViewController.m; sourceTree = "<group>"; };
+		5D4CEFD3216DD738009D5602 /* BTC_USDT_2h.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BTC_USDT_2h.json; sourceTree = "<group>"; };
+		5D4CEFD6216DD738009D5602 /* DataCenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCenterProtocol.h; sourceTree = "<group>"; };
+		5D4CEFD7216DD738009D5602 /* DataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCenter.m; sourceTree = "<group>"; };
+		5D4CEFD8216DD738009D5602 /* DataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCenter.h; sourceTree = "<group>"; };
+		5D4CEFDA216DD738009D5602 /* KLineIndicatorLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineIndicatorLogic.h; sourceTree = "<group>"; };
+		5D4CEFDB216DD738009D5602 /* KLineDataLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineDataLogic.m; sourceTree = "<group>"; };
+		5D4CEFDC216DD738009D5602 /* KLineDataLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineDataLogic.h; sourceTree = "<group>"; };
+		5D4CEFDD216DD738009D5602 /* KLineIndicatorLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineIndicatorLogic.m; sourceTree = "<group>"; };
+		5D4CEFDF216DD738009D5602 /* KLineVolViewConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineVolViewConfig.m; sourceTree = "<group>"; };
+		5D4CEFE0216DD738009D5602 /* KLineViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineViewProtocol.h; sourceTree = "<group>"; };
+		5D4CEFE1216DD738009D5602 /* KLineViewConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineViewConfig.m; sourceTree = "<group>"; };
+		5D4CEFE2216DD738009D5602 /* KLineVolViewConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineVolViewConfig.h; sourceTree = "<group>"; };
+		5D4CEFE3216DD738009D5602 /* KLineViewConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineViewConfig.h; sourceTree = "<group>"; };
+		5D4CEFE5216DD738009D5602 /* NSNumber+StringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+StringFormatter.m"; sourceTree = "<group>"; };
+		5D4CEFE6216DD738009D5602 /* NSValue+GLExtremeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+GLExtremeValue.h"; sourceTree = "<group>"; };
+		5D4CEFE7216DD738009D5602 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		5D4CEFE8216DD738009D5602 /* NSNumber+StringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+StringFormatter.h"; sourceTree = "<group>"; };
+		5D4CEFE9216DD738009D5602 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		5D4CEFEA216DD738009D5602 /* NSValue+GLExtremeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+GLExtremeValue.m"; sourceTree = "<group>"; };
+		5D4CEFEC216DD738009D5602 /* KLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineModel.m; sourceTree = "<group>"; };
+		5D4CEFED216DD738009D5602 /* KLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineModel.h; sourceTree = "<group>"; };
+		5D4CEFEF216DD738009D5602 /* KLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineView.h; sourceTree = "<group>"; };
+		5D4CEFF0216DD738009D5602 /* KLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineView.m; sourceTree = "<group>"; };
+		5D4CEFF2216DD738009D5602 /* KLineVolDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineVolDrawLogic.m; sourceTree = "<group>"; };
+		5D4CEFF3216DD738009D5602 /* KLineMACDDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineMACDDrawLogic.h; sourceTree = "<group>"; };
+		5D4CEFF4216DD738009D5602 /* KLineRSIDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineRSIDrawLogic.h; sourceTree = "<group>"; };
+		5D4CEFF5216DD738009D5602 /* KLineDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineDrawLogic.m; sourceTree = "<group>"; };
+		5D4CEFF6216DD738009D5602 /* KLineBOLLDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineBOLLDrawLogic.h; sourceTree = "<group>"; };
+		5D4CEFF7216DD738009D5602 /* KLineVolMADrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineVolMADrawLogic.m; sourceTree = "<group>"; };
+		5D4CEFF8216DD738009D5602 /* ChartDrawProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartDrawProtocol.h; sourceTree = "<group>"; };
+		5D4CEFF9216DD738009D5602 /* KLineBGDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineBGDrawLogic.h; sourceTree = "<group>"; };
+		5D4CEFFA216DD738009D5602 /* KLineKDJDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineKDJDrawLogic.h; sourceTree = "<group>"; };
+		5D4CEFFB216DD738009D5602 /* KLineTimeDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineTimeDrawLogic.h; sourceTree = "<group>"; };
+		5D4CEFFC216DD738009D5602 /* KLineMADrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineMADrawLogic.m; sourceTree = "<group>"; };
+		5D4CEFFD216DD738009D5602 /* BaseDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDrawLogic.m; sourceTree = "<group>"; };
+		5D4CEFFE216DD738009D5602 /* KLineRSIDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineRSIDrawLogic.m; sourceTree = "<group>"; };
+		5D4CEFFF216DD738009D5602 /* KLineMACDDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineMACDDrawLogic.m; sourceTree = "<group>"; };
+		5D4CF000216DD738009D5602 /* KLineVolDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineVolDrawLogic.h; sourceTree = "<group>"; };
+		5D4CF001216DD738009D5602 /* KLineVolMADrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineVolMADrawLogic.h; sourceTree = "<group>"; };
+		5D4CF002216DD738009D5602 /* KLineBOLLDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineBOLLDrawLogic.m; sourceTree = "<group>"; };
+		5D4CF003216DD738009D5602 /* KLineDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineDrawLogic.h; sourceTree = "<group>"; };
+		5D4CF004216DD738009D5602 /* KLineMADrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineMADrawLogic.h; sourceTree = "<group>"; };
+		5D4CF005216DD738009D5602 /* BaseDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDrawLogic.h; sourceTree = "<group>"; };
+		5D4CF006216DD738009D5602 /* KLineTimeDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineTimeDrawLogic.m; sourceTree = "<group>"; };
+		5D4CF007216DD738009D5602 /* KLineKDJDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineKDJDrawLogic.m; sourceTree = "<group>"; };
+		5D4CF008216DD738009D5602 /* KLineBGDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineBGDrawLogic.m; sourceTree = "<group>"; };
+		5D4CF00A216DD738009D5602 /* GLConstantDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLConstantDefinition.m; sourceTree = "<group>"; };
+		5D4CF00B216DD738009D5602 /* GLKLineKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLKLineKit.h; sourceTree = "<group>"; };
+		5D4CF00C216DD738009D5602 /* GLConstantDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLConstantDefinition.h; sourceTree = "<group>"; };
+		5D4CF04A216DDCBE009D5602 /* ScreenRotationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenRotationProtocol.h; sourceTree = "<group>"; };
+		5D4CF04C216DDDE0009D5602 /* NSString+GLDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GLDate.h"; sourceTree = "<group>"; };
+		5D4CF04D216DDDE0009D5602 /* NSString+GLDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GLDate.m"; sourceTree = "<group>"; };
+		5D4CF04F216DDDE0009D5602 /* UIView+CenterLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CenterLoading.m"; sourceTree = "<group>"; };
+		5D4CF050216DDDE0009D5602 /* UIView+CenterLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CenterLoading.h"; sourceTree = "<group>"; };
+		5D4CF052216DDDE0009D5602 /* NSObject+DrawText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DrawText.h"; sourceTree = "<group>"; };
+		5D4CF053216DDDE0009D5602 /* NSObject+DrawText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DrawText.m"; sourceTree = "<group>"; };
+		5D4CF055216DDDE0009D5602 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		5D4CF056216DDDE0009D5602 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		5D4CF05C216DDFEF009D5602 /* ExamplePubliEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamplePubliEnum.h; sourceTree = "<group>"; };
+		5D4CF05D216DDFEF009D5602 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		5D4CF05E216DE021009D5602 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		5DAA4E7D216DE867003A3250 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,24 +237,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5D14A98820B989AD006B13A8 /* NSString+Date */ = {
+		5D1638742170996E007C81CB /* LanguageTool */ = {
 			isa = PBXGroup;
 			children = (
-				5D14A98920B989DF006B13A8 /* NSString+GLDate.h */,
-				5D14A98A20B989DF006B13A8 /* NSString+GLDate.m */,
+				5D1638762170996E007C81CB /* LanguageTool.h */,
+				5D1638752170996E007C81CB /* LanguageTool.m */,
 			);
-			path = "NSString+Date";
+			path = LanguageTool;
+			sourceTree = "<group>";
+		};
+		5D16387821709E56007C81CB /* UIFont */ = {
+			isa = PBXGroup;
+			children = (
+				5D16387921709E56007C81CB /* UIFont+ScaleSize.h */,
+				5D16387A21709E56007C81CB /* UIFont+ScaleSize.m */,
+			);
+			path = UIFont;
 			sourceTree = "<group>";
 		};
 		5D1F1D8220B8289D00BD47B1 = {
 			isa = PBXGroup;
 			children = (
-				5D1F1D8D20B8289D00BD47B1 /* GLKLineKit */,
+				5D4CEF8A216DD738009D5602 /* Example */,
+				5D4CEFD4216DD738009D5602 /* GLKLineKit */,
 				5D1F1D9720B8289E00BD47B1 /* Assets.xcassets */,
 				5D1F1D9920B8289E00BD47B1 /* LaunchScreen.storyboard */,
 				5D1F1DA620B8289E00BD47B1 /* GLKLineKitTests */,
 				5D1F1DB120B8289E00BD47B1 /* GLKLineKitUITests */,
 				5D1F1D8C20B8289D00BD47B1 /* Products */,
+				5DAA4E7C216DE867003A3250 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -258,19 +277,6 @@
 				5D1F1DAE20B8289E00BD47B1 /* GLKLineKitUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		5D1F1D8D20B8289D00BD47B1 /* GLKLineKit */ = {
-			isa = PBXGroup;
-			children = (
-				5D1F1DCE20B82A4E00BD47B1 /* KLineKit */,
-				5D85D10220BBDF9A0028A851 /* Vender */,
-				5D1F1DCF20B82BEE00BD47B1 /* Category */,
-				5D1F1DC220B82A3C00BD47B1 /* Example */,
-				5D1F1DC320B82A4300BD47B1 /* Main */,
-				5DE0140A20B84C28006CE8D3 /* Resource */,
-			);
-			path = GLKLineKit;
 			sourceTree = "<group>";
 		};
 		5D1F1DA620B8289E00BD47B1 /* GLKLineKitTests */ = {
@@ -291,333 +297,389 @@
 			path = GLKLineKitUITests;
 			sourceTree = "<group>";
 		};
-		5D1F1DC220B82A3C00BD47B1 /* Example */ = {
+		5D4CEF8A216DD738009D5602 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				5DEF8F6620BE533800147ABD /* Header */,
-				5D1F1E2120B82E6D00BD47B1 /* DataProcess */,
-				5D1F1E2020B82E6600BD47B1 /* ViewController */,
-				5D1F1E1F20B82C6F00BD47B1 /* CustomKLineView */,
+				5D4CEF8B216DD738009D5602 /* Classes */,
+				5D4CEFD2216DD738009D5602 /* Resource */,
 			);
 			path = Example;
 			sourceTree = "<group>";
 		};
-		5D1F1DC320B82A4300BD47B1 /* Main */ = {
+		5D4CEF8B216DD738009D5602 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				5D1F1DC420B82A4300BD47B1 /* AppDelegate.h */,
-				5D1F1DC720B82A4300BD47B1 /* AppDelegate.m */,
-				5D1F1DC920B82A4300BD47B1 /* ViewController.h */,
-				5D1F1DC520B82A4300BD47B1 /* ViewController.m */,
-				5D1F1DC620B82A4300BD47B1 /* main.m */,
-				5D1F1DC820B82A4300BD47B1 /* Info.plist */,
-				5D1F1E2220B82EF400BD47B1 /* PrefixHeader.pch */,
+				5D4CF05B216DDFEF009D5602 /* Macro */,
+				5D4CF03D216DD771009D5602 /* Categories */,
+				5D4CEF8C216DD738009D5602 /* KlineModule */,
+				5D4CEF9B216DD738009D5602 /* Main */,
+				5D4CEFA5216DD738009D5602 /* Vender */,
 			);
-			path = Main;
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		5D1F1DCE20B82A4E00BD47B1 /* KLineKit */ = {
+		5D4CEF8C216DD738009D5602 /* KlineModule */ = {
 			isa = PBXGroup;
 			children = (
-				5D1F1DDF20B82C0400BD47B1 /* Header */,
-				5D1F1DDA20B82C0400BD47B1 /* UtilityTool */,
-				5D1F1DD420B82C0400BD47B1 /* Config */,
-				5D1F1DEB20B82C0400BD47B1 /* DataCenter */,
-				5D1F1DEF20B82C0400BD47B1 /* DrawLogic */,
-				5D1F1DE620B82C0400BD47B1 /* KLineDataLogic */,
-				5D1F1E0720B82C0400BD47B1 /* Model */,
-				5D1F1DE320B82C0400BD47B1 /* View */,
+				5D4CEF96216DD738009D5602 /* ViewController */,
+				5D4CEF8D216DD738009D5602 /* DataProcess */,
+				5D4CEF90216DD738009D5602 /* Model */,
+				5D4CEF91216DD738009D5602 /* View */,
 			);
-			path = KLineKit;
+			path = KlineModule;
 			sourceTree = "<group>";
 		};
-		5D1F1DCF20B82BEE00BD47B1 /* Category */ = {
+		5D4CEF8D216DD738009D5602 /* DataProcess */ = {
 			isa = PBXGroup;
 			children = (
-				5DD3662E20BD4561007626A7 /* DrawText */,
-				5D14A98820B989AD006B13A8 /* NSString+Date */,
-				5D1F1DD020B82BFB00BD47B1 /* CenterLoading */,
-			);
-			path = Category;
-			sourceTree = "<group>";
-		};
-		5D1F1DD020B82BFB00BD47B1 /* CenterLoading */ = {
-			isa = PBXGroup;
-			children = (
-				5D1F1DD220B82BFB00BD47B1 /* UIView+CenterLoading.h */,
-				5D1F1DD120B82BFB00BD47B1 /* UIView+CenterLoading.m */,
-			);
-			path = CenterLoading;
-			sourceTree = "<group>";
-		};
-		5D1F1DD420B82C0400BD47B1 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				5D1F1DD620B82C0400BD47B1 /* KLineViewProtocol.h */,
-				5D1F1DD920B82C0400BD47B1 /* KLineViewConfig.h */,
-				5D1F1DD720B82C0400BD47B1 /* KLineViewConfig.m */,
-				5DE0140620B84310006CE8D3 /* KLineVolViewConfig.h */,
-				5DE0140720B84310006CE8D3 /* KLineVolViewConfig.m */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
-		5D1F1DDA20B82C0400BD47B1 /* UtilityTool */ = {
-			isa = PBXGroup;
-			children = (
-				5D1F1DDD20B82C0400BD47B1 /* NSNumber+StringFormatter.h */,
-				5D1F1DDB20B82C0400BD47B1 /* NSNumber+StringFormatter.m */,
-				5D1F1DDC20B82C0400BD47B1 /* NSValue+GLExtremeValue.h */,
-				5D1F1DDE20B82C0400BD47B1 /* NSValue+GLExtremeValue.m */,
-				5DD3663220BD6018007626A7 /* UIColor+Hex.h */,
-				5DD3663320BD6018007626A7 /* UIColor+Hex.m */,
-			);
-			path = UtilityTool;
-			sourceTree = "<group>";
-		};
-		5D1F1DDF20B82C0400BD47B1 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				5DE0140920B844F5006CE8D3 /* GLKLineKit.h */,
-				5D1F1DE220B82C0400BD47B1 /* GLConstantDefinition.h */,
-				5D1F1DE020B82C0400BD47B1 /* GLConstantDefinition.m */,
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		5D1F1DE320B82C0400BD47B1 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				5D1F1DE420B82C0400BD47B1 /* KLineView.h */,
-				5D1F1DE520B82C0400BD47B1 /* KLineView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		5D1F1DE620B82C0400BD47B1 /* KLineDataLogic */ = {
-			isa = PBXGroup;
-			children = (
-				5D1F1DE920B82C0400BD47B1 /* KLineDataLogic.h */,
-				5D1F1DE820B82C0400BD47B1 /* KLineDataLogic.m */,
-				5D1F1DE720B82C0400BD47B1 /* KLineIndicatorLogic.h */,
-				5D1F1DEA20B82C0400BD47B1 /* KLineIndicatorLogic.m */,
-			);
-			path = KLineDataLogic;
-			sourceTree = "<group>";
-		};
-		5D1F1DEB20B82C0400BD47B1 /* DataCenter */ = {
-			isa = PBXGroup;
-			children = (
-				5D1F1DEC20B82C0400BD47B1 /* DataCenterProtocol.h */,
-				5D1F1DEE20B82C0400BD47B1 /* DataCenter.h */,
-				5D1F1DED20B82C0400BD47B1 /* DataCenter.m */,
-			);
-			path = DataCenter;
-			sourceTree = "<group>";
-		};
-		5D1F1DEF20B82C0400BD47B1 /* DrawLogic */ = {
-			isa = PBXGroup;
-			children = (
-				5D1F1DF620B82C0400BD47B1 /* ChartDrawProtocol.h */,
-				5D1F1E0320B82C0400BD47B1 /* BaseDrawLogic.h */,
-				5D1F1DFB20B82C0400BD47B1 /* BaseDrawLogic.m */,
-				5D1F1DF720B82C0400BD47B1 /* KLineBGDrawLogic.h */,
-				5D1F1E0620B82C0400BD47B1 /* KLineBGDrawLogic.m */,
-				5D1F1E0120B82C0400BD47B1 /* KLineDrawLogic.h */,
-				5D1F1DF320B82C0400BD47B1 /* KLineDrawLogic.m */,
-				5D1F1DFE20B82C0400BD47B1 /* KLineVolDrawLogic.h */,
-				5D1F1DF020B82C0400BD47B1 /* KLineVolDrawLogic.m */,
-				5D1F1DF920B82C0400BD47B1 /* KLineTimeDrawLogic.h */,
-				5D1F1E0420B82C0400BD47B1 /* KLineTimeDrawLogic.m */,
-				5D1F1E0220B82C0400BD47B1 /* KLineMADrawLogic.h */,
-				5D1F1DFA20B82C0400BD47B1 /* KLineMADrawLogic.m */,
-				5D1F1DFF20B82C0400BD47B1 /* KLineVolMADrawLogic.h */,
-				5D1F1DF520B82C0400BD47B1 /* KLineVolMADrawLogic.m */,
-				5D1F1DF120B82C0400BD47B1 /* KLineMACDDrawLogic.h */,
-				5D1F1DFD20B82C0400BD47B1 /* KLineMACDDrawLogic.m */,
-				5D1F1DF420B82C0400BD47B1 /* KLineBOLLDrawLogic.h */,
-				5D1F1E0020B82C0400BD47B1 /* KLineBOLLDrawLogic.m */,
-				5D1F1DF820B82C0400BD47B1 /* KLineKDJDrawLogic.h */,
-				5D1F1E0520B82C0400BD47B1 /* KLineKDJDrawLogic.m */,
-				5D1F1DF220B82C0400BD47B1 /* KLineRSIDrawLogic.h */,
-				5D1F1DFC20B82C0400BD47B1 /* KLineRSIDrawLogic.m */,
-			);
-			path = DrawLogic;
-			sourceTree = "<group>";
-		};
-		5D1F1E0720B82C0400BD47B1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				5D1F1E0920B82C0400BD47B1 /* KLineModel.h */,
-				5D1F1E0820B82C0400BD47B1 /* KLineModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		5D1F1E1F20B82C6F00BD47B1 /* CustomKLineView */ = {
-			isa = PBXGroup;
-			children = (
-				5D1F1E2F20B83AE500BD47B1 /* SimpleKLineVolView.h */,
-				5D1F1E3020B83AE500BD47B1 /* SimpleKLineVolView.m */,
-				5DEF8F6320BE52E200147ABD /* FullScreenKLineView.h */,
-				5DEF8F6420BE52E200147ABD /* FullScreenKLineView.m */,
-			);
-			path = CustomKLineView;
-			sourceTree = "<group>";
-		};
-		5D1F1E2020B82E6600BD47B1 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				5D1F1E2320B8375E00BD47B1 /* PortraitTestController.h */,
-				5D1F1E2420B8375E00BD47B1 /* PortraitTestController.m */,
-				5D1F1E2620B8378100BD47B1 /* LandscapeController.h */,
-				5D1F1E2720B8378100BD47B1 /* LandscapeController.m */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		5D1F1E2120B82E6D00BD47B1 /* DataProcess */ = {
-			isa = PBXGroup;
-			children = (
-				5D1F1E2C20B8385600BD47B1 /* KLineDataProcess.h */,
-				5D1F1E2D20B8385600BD47B1 /* KLineDataProcess.m */,
+				5D4CEF8E216DD738009D5602 /* KLineDataProcess.h */,
+				5D4CEF8F216DD738009D5602 /* KLineDataProcess.m */,
 			);
 			path = DataProcess;
 			sourceTree = "<group>";
 		};
-		5D85D10220BBDF9A0028A851 /* Vender */ = {
+		5D4CEF90216DD738009D5602 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5D9D484120BEE02600E9658B /* Masonry */,
-				5DEF8F6820BE816100147ABD /* CustomClass */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5D4CEF91216DD738009D5602 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CEF92216DD738009D5602 /* SimpleKLineVolView.m */,
+				5D4CEF93216DD738009D5602 /* FullScreenKLineView.m */,
+				5D4CEF94216DD738009D5602 /* SimpleKLineVolView.h */,
+				5D4CEF95216DD738009D5602 /* FullScreenKLineView.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5D4CEF96216DD738009D5602 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CEF97216DD738009D5602 /* LandscapeController.h */,
+				5D4CEF99216DD738009D5602 /* LandscapeController.m */,
+				5D4CEF98216DD738009D5602 /* PortraitTestController.h */,
+				5D4CEF9A216DD738009D5602 /* PortraitTestController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		5D4CEF9B216DD738009D5602 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CEF9C216DD738009D5602 /* AppDelegate.h */,
+				5D4CEF9F216DD738009D5602 /* AppDelegate.m */,
+				5D4CEFA2216DD738009D5602 /* ViewController.h */,
+				5D4CEF9D216DD738009D5602 /* ViewController.m */,
+				5D4CEF9E216DD738009D5602 /* main.m */,
+				5D4CEFA1216DD738009D5602 /* Info.plist */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		5D4CEFA5216DD738009D5602 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CEFA6216DD738009D5602 /* Masonry */,
+				5D4CEFC1216DD738009D5602 /* CustomClass */,
 			);
 			path = Vender;
 			sourceTree = "<group>";
 		};
-		5D9D484120BEE02600E9658B /* Masonry */ = {
+		5D4CEFA6216DD738009D5602 /* Masonry */ = {
 			isa = PBXGroup;
 			children = (
-				5D9D484220BEE02600E9658B /* MASCompositeConstraint.h */,
-				5D9D484320BEE02600E9658B /* NSLayoutConstraint+MASDebugAdditions.m */,
-				5D9D484420BEE02600E9658B /* MASConstraint+Private.h */,
-				5D9D484520BEE02600E9658B /* MASLayoutConstraint.h */,
-				5D9D484620BEE02600E9658B /* NSArray+MASShorthandAdditions.h */,
-				5D9D484720BEE02600E9658B /* MASConstraintMaker.h */,
-				5D9D484820BEE02600E9658B /* View+MASAdditions.h */,
-				5D9D484920BEE02600E9658B /* NSArray+MASAdditions.h */,
-				5D9D484A20BEE02600E9658B /* MASUtilities.h */,
-				5D9D484B20BEE02600E9658B /* MASViewAttribute.h */,
-				5D9D484C20BEE02600E9658B /* ViewController+MASAdditions.m */,
-				5D9D484D20BEE02600E9658B /* MASViewConstraint.h */,
-				5D9D484E20BEE02600E9658B /* MASConstraint.h */,
-				5D9D484F20BEE02600E9658B /* NSLayoutConstraint+MASDebugAdditions.h */,
-				5D9D485020BEE02600E9658B /* MASCompositeConstraint.m */,
-				5D9D485120BEE02600E9658B /* MASConstraintMaker.m */,
-				5D9D485220BEE02600E9658B /* MASLayoutConstraint.m */,
-				5D9D485320BEE02600E9658B /* NSArray+MASAdditions.m */,
-				5D9D485420BEE02600E9658B /* View+MASAdditions.m */,
-				5D9D485520BEE02600E9658B /* View+MASShorthandAdditions.h */,
-				5D9D485620BEE02600E9658B /* Masonry.h */,
-				5D9D485720BEE02600E9658B /* MASConstraint.m */,
-				5D9D485820BEE02600E9658B /* ViewController+MASAdditions.h */,
-				5D9D485920BEE02600E9658B /* MASViewConstraint.m */,
-				5D9D485A20BEE02600E9658B /* MASViewAttribute.m */,
-				5D9D485B20BEE02600E9658B /* Info.plist */,
+				5D4CEFA7216DD738009D5602 /* MASCompositeConstraint.h */,
+				5D4CEFA8216DD738009D5602 /* NSLayoutConstraint+MASDebugAdditions.m */,
+				5D4CEFA9216DD738009D5602 /* MASConstraint+Private.h */,
+				5D4CEFAA216DD738009D5602 /* MASLayoutConstraint.h */,
+				5D4CEFAB216DD738009D5602 /* NSArray+MASShorthandAdditions.h */,
+				5D4CEFAC216DD738009D5602 /* MASConstraintMaker.h */,
+				5D4CEFAD216DD738009D5602 /* View+MASAdditions.h */,
+				5D4CEFAE216DD738009D5602 /* NSArray+MASAdditions.h */,
+				5D4CEFAF216DD738009D5602 /* MASUtilities.h */,
+				5D4CEFB0216DD738009D5602 /* MASViewAttribute.h */,
+				5D4CEFB1216DD738009D5602 /* ViewController+MASAdditions.m */,
+				5D4CEFB2216DD738009D5602 /* MASViewConstraint.h */,
+				5D4CEFB3216DD738009D5602 /* MASConstraint.h */,
+				5D4CEFB4216DD738009D5602 /* NSLayoutConstraint+MASDebugAdditions.h */,
+				5D4CEFB5216DD738009D5602 /* MASCompositeConstraint.m */,
+				5D4CEFB6216DD738009D5602 /* MASConstraintMaker.m */,
+				5D4CEFB7216DD738009D5602 /* MASLayoutConstraint.m */,
+				5D4CEFB8216DD738009D5602 /* NSArray+MASAdditions.m */,
+				5D4CEFB9216DD738009D5602 /* View+MASAdditions.m */,
+				5D4CEFBA216DD738009D5602 /* View+MASShorthandAdditions.h */,
+				5D4CEFBB216DD738009D5602 /* Masonry.h */,
+				5D4CEFBC216DD738009D5602 /* MASConstraint.m */,
+				5D4CEFBD216DD738009D5602 /* ViewController+MASAdditions.h */,
+				5D4CEFBE216DD738009D5602 /* MASViewConstraint.m */,
+				5D4CEFBF216DD738009D5602 /* MASViewAttribute.m */,
+				5D4CEFC0216DD738009D5602 /* Info.plist */,
 			);
 			path = Masonry;
 			sourceTree = "<group>";
 		};
-		5DD3662E20BD4561007626A7 /* DrawText */ = {
+		5D4CEFC1216DD738009D5602 /* CustomClass */ = {
 			isa = PBXGroup;
 			children = (
-				5DD3662F20BD457A007626A7 /* NSObject+DrawText.h */,
-				5DD3663020BD457A007626A7 /* NSObject+DrawText.m */,
-			);
-			path = DrawText;
-			sourceTree = "<group>";
-		};
-		5DDA1BC620BF8DB400CE7C74 /* ListView */ = {
-			isa = PBXGroup;
-			children = (
-				5DDA1BC720BF8DDB00CE7C74 /* ListMenuView.h */,
-				5DDA1BC820BF8DDB00CE7C74 /* ListMenuView.m */,
-			);
-			path = ListView;
-			sourceTree = "<group>";
-		};
-		5DE0140A20B84C28006CE8D3 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				5DE0140D20B84CE0006CE8D3 /* bitCNY_ETH */,
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
-		5DEF8F6620BE533800147ABD /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				5DEF8F6720BE535500147ABD /* ExamplePubliEnum.h */,
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		5DEF8F6820BE816100147ABD /* CustomClass */ = {
-			isa = PBXGroup;
-			children = (
-				5DDA1BC620BF8DB400CE7C74 /* ListView */,
-				5DEF8F7820BE83EE00147ABD /* BaseUIClass */,
-				5DEF8F6920BE816100147ABD /* DetailView */,
-				5DEF8F6D20BE816100147ABD /* ReticleLine */,
+				5D1638742170996E007C81CB /* LanguageTool */,
+				5D4CEFC2216DD738009D5602 /* DetailView */,
+				5D4CEFC5216DD738009D5602 /* ReticleLine */,
+				5D4CEFCA216DD738009D5602 /* BaseUIClass */,
 			);
 			path = CustomClass;
 			sourceTree = "<group>";
 		};
-		5DEF8F6920BE816100147ABD /* DetailView */ = {
+		5D4CEFC2216DD738009D5602 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
-				5DEF8F6A20BE816100147ABD /* DetailDataView.h */,
-				5DEF8F6B20BE816100147ABD /* DetailDataView.m */,
+				5D4CEFC3216DD738009D5602 /* DetailDataView.h */,
+				5D4CEFC4216DD738009D5602 /* DetailDataView.m */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
 		};
-		5DEF8F6D20BE816100147ABD /* ReticleLine */ = {
+		5D4CEFC5216DD738009D5602 /* ReticleLine */ = {
 			isa = PBXGroup;
 			children = (
-				5DEF8F6E20BE816100147ABD /* VerticalView.h */,
-				5DEF8F6F20BE816100147ABD /* HorizontalView.h */,
-				5DEF8F7020BE816100147ABD /* VerticalView.m */,
-				5DEF8F7120BE816100147ABD /* HorizontalView.m */,
+				5D4CEFC6216DD738009D5602 /* VerticalView.h */,
+				5D4CEFC7216DD738009D5602 /* HorizontalView.h */,
+				5D4CEFC8216DD738009D5602 /* VerticalView.m */,
+				5D4CEFC9216DD738009D5602 /* HorizontalView.m */,
 			);
 			path = ReticleLine;
 			sourceTree = "<group>";
 		};
-		5DEF8F7820BE83EE00147ABD /* BaseUIClass */ = {
+		5D4CEFCA216DD738009D5602 /* BaseUIClass */ = {
 			isa = PBXGroup;
 			children = (
-				5DEF8F7920BE83EE00147ABD /* BaseVC */,
-				5DEF8F7A20BE83EE00147ABD /* BaseNavigationVC */,
+				5D4CEFCB216DD738009D5602 /* BaseView */,
+				5D4CEFCC216DD738009D5602 /* BaseVC */,
+				5D4CEFCF216DD738009D5602 /* BaseNavigationVC */,
 			);
 			path = BaseUIClass;
 			sourceTree = "<group>";
 		};
-		5DEF8F7920BE83EE00147ABD /* BaseVC */ = {
+		5D4CEFCB216DD738009D5602 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
-				5DEF8F8120BE846200147ABD /* ScreenRotationProtocol.h */,
-				5DEF8F7E20BE83FE00147ABD /* BaseViewController.h */,
-				5DEF8F7F20BE83FE00147ABD /* BaseViewController.m */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		5D4CEFCC216DD738009D5602 /* BaseVC */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CF04A216DDCBE009D5602 /* ScreenRotationProtocol.h */,
+				5D4CEFCE216DD738009D5602 /* BaseViewController.h */,
+				5D4CEFCD216DD738009D5602 /* BaseViewController.m */,
 			);
 			path = BaseVC;
 			sourceTree = "<group>";
 		};
-		5DEF8F7A20BE83EE00147ABD /* BaseNavigationVC */ = {
+		5D4CEFCF216DD738009D5602 /* BaseNavigationVC */ = {
 			isa = PBXGroup;
 			children = (
-				5DEF8F7B20BE83EE00147ABD /* BaseNavigationViewController.h */,
-				5DEF8F7C20BE83EE00147ABD /* BaseNavigationViewController.m */,
+				5D4CEFD0216DD738009D5602 /* BaseNavigationViewController.h */,
+				5D4CEFD1216DD738009D5602 /* BaseNavigationViewController.m */,
 			);
 			path = BaseNavigationVC;
+			sourceTree = "<group>";
+		};
+		5D4CEFD2216DD738009D5602 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CEFD3216DD738009D5602 /* BTC_USDT_2h.json */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		5D4CEFD4216DD738009D5602 /* GLKLineKit */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CEFD5216DD738009D5602 /* DataCenter */,
+				5D4CEFD9216DD738009D5602 /* KLineDataLogic */,
+				5D4CEFDE216DD738009D5602 /* Config */,
+				5D4CEFE4216DD738009D5602 /* UtilityTool */,
+				5D4CEFEB216DD738009D5602 /* Model */,
+				5D4CEFEE216DD738009D5602 /* View */,
+				5D4CEFF1216DD738009D5602 /* DrawLogic */,
+				5D4CF009216DD738009D5602 /* Header */,
+			);
+			path = GLKLineKit;
+			sourceTree = "<group>";
+		};
+		5D4CEFD5216DD738009D5602 /* DataCenter */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CEFD6216DD738009D5602 /* DataCenterProtocol.h */,
+				5D4CEFD8216DD738009D5602 /* DataCenter.h */,
+				5D4CEFD7216DD738009D5602 /* DataCenter.m */,
+			);
+			path = DataCenter;
+			sourceTree = "<group>";
+		};
+		5D4CEFD9216DD738009D5602 /* KLineDataLogic */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CEFDA216DD738009D5602 /* KLineIndicatorLogic.h */,
+				5D4CEFDB216DD738009D5602 /* KLineDataLogic.m */,
+				5D4CEFDC216DD738009D5602 /* KLineDataLogic.h */,
+				5D4CEFDD216DD738009D5602 /* KLineIndicatorLogic.m */,
+			);
+			path = KLineDataLogic;
+			sourceTree = "<group>";
+		};
+		5D4CEFDE216DD738009D5602 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CEFE0216DD738009D5602 /* KLineViewProtocol.h */,
+				5D4CEFE2216DD738009D5602 /* KLineVolViewConfig.h */,
+				5D4CEFDF216DD738009D5602 /* KLineVolViewConfig.m */,
+				5D4CEFE3216DD738009D5602 /* KLineViewConfig.h */,
+				5D4CEFE1216DD738009D5602 /* KLineViewConfig.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		5D4CEFE4216DD738009D5602 /* UtilityTool */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CEFE5216DD738009D5602 /* NSNumber+StringFormatter.m */,
+				5D4CEFE6216DD738009D5602 /* NSValue+GLExtremeValue.h */,
+				5D4CEFE7216DD738009D5602 /* UIColor+Hex.m */,
+				5D4CEFE8216DD738009D5602 /* NSNumber+StringFormatter.h */,
+				5D4CEFE9216DD738009D5602 /* UIColor+Hex.h */,
+				5D4CEFEA216DD738009D5602 /* NSValue+GLExtremeValue.m */,
+			);
+			path = UtilityTool;
+			sourceTree = "<group>";
+		};
+		5D4CEFEB216DD738009D5602 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CEFEC216DD738009D5602 /* KLineModel.m */,
+				5D4CEFED216DD738009D5602 /* KLineModel.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5D4CEFEE216DD738009D5602 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CEFEF216DD738009D5602 /* KLineView.h */,
+				5D4CEFF0216DD738009D5602 /* KLineView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5D4CEFF1216DD738009D5602 /* DrawLogic */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CEFF2216DD738009D5602 /* KLineVolDrawLogic.m */,
+				5D4CEFF3216DD738009D5602 /* KLineMACDDrawLogic.h */,
+				5D4CEFF4216DD738009D5602 /* KLineRSIDrawLogic.h */,
+				5D4CEFF5216DD738009D5602 /* KLineDrawLogic.m */,
+				5D4CEFF6216DD738009D5602 /* KLineBOLLDrawLogic.h */,
+				5D4CEFF7216DD738009D5602 /* KLineVolMADrawLogic.m */,
+				5D4CEFF8216DD738009D5602 /* ChartDrawProtocol.h */,
+				5D4CEFF9216DD738009D5602 /* KLineBGDrawLogic.h */,
+				5D4CEFFA216DD738009D5602 /* KLineKDJDrawLogic.h */,
+				5D4CEFFB216DD738009D5602 /* KLineTimeDrawLogic.h */,
+				5D4CEFFC216DD738009D5602 /* KLineMADrawLogic.m */,
+				5D4CEFFD216DD738009D5602 /* BaseDrawLogic.m */,
+				5D4CEFFE216DD738009D5602 /* KLineRSIDrawLogic.m */,
+				5D4CEFFF216DD738009D5602 /* KLineMACDDrawLogic.m */,
+				5D4CF000216DD738009D5602 /* KLineVolDrawLogic.h */,
+				5D4CF001216DD738009D5602 /* KLineVolMADrawLogic.h */,
+				5D4CF002216DD738009D5602 /* KLineBOLLDrawLogic.m */,
+				5D4CF003216DD738009D5602 /* KLineDrawLogic.h */,
+				5D4CF004216DD738009D5602 /* KLineMADrawLogic.h */,
+				5D4CF005216DD738009D5602 /* BaseDrawLogic.h */,
+				5D4CF006216DD738009D5602 /* KLineTimeDrawLogic.m */,
+				5D4CF007216DD738009D5602 /* KLineKDJDrawLogic.m */,
+				5D4CF008216DD738009D5602 /* KLineBGDrawLogic.m */,
+			);
+			path = DrawLogic;
+			sourceTree = "<group>";
+		};
+		5D4CF009216DD738009D5602 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CF00B216DD738009D5602 /* GLKLineKit.h */,
+				5D4CF00C216DD738009D5602 /* GLConstantDefinition.h */,
+				5D4CF00A216DD738009D5602 /* GLConstantDefinition.m */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		5D4CF03D216DD771009D5602 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				5D16387821709E56007C81CB /* UIFont */,
+				5D4CF04B216DDDE0009D5602 /* Date */,
+				5D4CF051216DDDE0009D5602 /* NSObject+Draw */,
+				5D4CF054216DDDE0009D5602 /* UIColor */,
+				5D4CF04E216DDDE0009D5602 /* UIView */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		5D4CF04B216DDDE0009D5602 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CF04C216DDDE0009D5602 /* NSString+GLDate.h */,
+				5D4CF04D216DDDE0009D5602 /* NSString+GLDate.m */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		5D4CF04E216DDDE0009D5602 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CF050216DDDE0009D5602 /* UIView+CenterLoading.h */,
+				5D4CF04F216DDDE0009D5602 /* UIView+CenterLoading.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		5D4CF051216DDDE0009D5602 /* NSObject+Draw */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CF052216DDDE0009D5602 /* NSObject+DrawText.h */,
+				5D4CF053216DDDE0009D5602 /* NSObject+DrawText.m */,
+			);
+			path = "NSObject+Draw";
+			sourceTree = "<group>";
+		};
+		5D4CF054216DDDE0009D5602 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CF056216DDDE0009D5602 /* UIColor+Hex.h */,
+				5D4CF055216DDDE0009D5602 /* UIColor+Hex.m */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		5D4CF05B216DDFEF009D5602 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				5D4CF05E216DE021009D5602 /* Constants.h */,
+				5D4CF05C216DDFEF009D5602 /* ExamplePubliEnum.h */,
+				5D4CF05D216DDFEF009D5602 /* PrefixHeader.pch */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		5DAA4E7C216DE867003A3250 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5DAA4E7D216DE867003A3250 /* UIKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -724,8 +786,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DE110E120B83F4600277399 /* LaunchScreen.storyboard in Resources */,
+				5D4CF026216DD738009D5602 /* BTC_USDT_2h.json in Resources */,
 				5D1F1D9820B8289E00BD47B1 /* Assets.xcassets in Resources */,
-				5DE0140E20B84CE0006CE8D3 /* bitCNY_ETH in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,55 +812,57 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DEF8F6520BE52E200147ABD /* FullScreenKLineView.m in Sources */,
-				5D1F1E2520B8375E00BD47B1 /* PortraitTestController.m in Sources */,
-				5D1F1E2820B8378100BD47B1 /* LandscapeController.m in Sources */,
-				5DEF8F7220BE816100147ABD /* DetailDataView.m in Sources */,
-				5D9D485F20BEE02600E9658B /* MASConstraintMaker.m in Sources */,
-				5D9D485D20BEE02600E9658B /* ViewController+MASAdditions.m in Sources */,
-				5D1F1E1620B82C0400BD47B1 /* KLineMADrawLogic.m in Sources */,
-				5D1F1E0F20B82C0400BD47B1 /* KLineView.m in Sources */,
-				5D9D486520BEE02600E9658B /* MASViewAttribute.m in Sources */,
-				5DDA1BC920BF8DDB00CE7C74 /* ListMenuView.m in Sources */,
-				5D9D486220BEE02600E9658B /* View+MASAdditions.m in Sources */,
-				5D1F1E1C20B82C0400BD47B1 /* KLineKDJDrawLogic.m in Sources */,
-				5D1F1E2E20B8385600BD47B1 /* KLineDataProcess.m in Sources */,
-				5D14A98B20B989DF006B13A8 /* NSString+GLDate.m in Sources */,
-				5D9D485E20BEE02600E9658B /* MASCompositeConstraint.m in Sources */,
-				5D1F1E1020B82C0400BD47B1 /* KLineDataLogic.m in Sources */,
-				5D1F1DD320B82BFB00BD47B1 /* UIView+CenterLoading.m in Sources */,
-				5D9D486420BEE02600E9658B /* MASViewConstraint.m in Sources */,
-				5D1F1DCB20B82A4300BD47B1 /* main.m in Sources */,
-				5D1F1E0C20B82C0400BD47B1 /* NSNumber+StringFormatter.m in Sources */,
-				5D1F1E1420B82C0400BD47B1 /* KLineDrawLogic.m in Sources */,
-				5DEF8F7420BE816100147ABD /* HorizontalView.m in Sources */,
-				5DD3663420BD6018007626A7 /* UIColor+Hex.m in Sources */,
-				5D1F1E1E20B82C0400BD47B1 /* KLineModel.m in Sources */,
-				5D1F1E0E20B82C0400BD47B1 /* GLConstantDefinition.m in Sources */,
-				5DEF8F7320BE816100147ABD /* VerticalView.m in Sources */,
-				5D1F1E3120B83AE500BD47B1 /* SimpleKLineVolView.m in Sources */,
-				5DEF8F7D20BE83EF00147ABD /* BaseNavigationViewController.m in Sources */,
-				5DEF8F8020BE83FE00147ABD /* BaseViewController.m in Sources */,
-				5D9D486320BEE02600E9658B /* MASConstraint.m in Sources */,
-				5D9D485C20BEE02600E9658B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
-				5D1F1E1120B82C0400BD47B1 /* KLineIndicatorLogic.m in Sources */,
-				5D1F1DCA20B82A4300BD47B1 /* ViewController.m in Sources */,
-				5D1F1E1A20B82C0400BD47B1 /* KLineBOLLDrawLogic.m in Sources */,
-				5D1F1E1D20B82C0400BD47B1 /* KLineBGDrawLogic.m in Sources */,
-				5D1F1E1920B82C0400BD47B1 /* KLineMACDDrawLogic.m in Sources */,
-				5D9D486120BEE02600E9658B /* NSArray+MASAdditions.m in Sources */,
-				5D1F1E0B20B82C0400BD47B1 /* KLineViewConfig.m in Sources */,
-				5D1F1E0D20B82C0400BD47B1 /* NSValue+GLExtremeValue.m in Sources */,
-				5D1F1E1B20B82C0400BD47B1 /* KLineTimeDrawLogic.m in Sources */,
-				5D1F1E1720B82C0400BD47B1 /* BaseDrawLogic.m in Sources */,
-				5D1F1DCC20B82A4300BD47B1 /* AppDelegate.m in Sources */,
-				5D1F1E1320B82C0400BD47B1 /* KLineVolDrawLogic.m in Sources */,
-				5DE0140820B84310006CE8D3 /* KLineVolViewConfig.m in Sources */,
-				5D1F1E1520B82C0400BD47B1 /* KLineVolMADrawLogic.m in Sources */,
-				5D9D486020BEE02600E9658B /* MASLayoutConstraint.m in Sources */,
-				5D1F1E1820B82C0400BD47B1 /* KLineRSIDrawLogic.m in Sources */,
-				5DD3663120BD457A007626A7 /* NSObject+DrawText.m in Sources */,
-				5D1F1E1220B82C0400BD47B1 /* DataCenter.m in Sources */,
+				5D4CF01D216DD738009D5602 /* MASConstraint.m in Sources */,
+				5D16387B21709E56007C81CB /* UIFont+ScaleSize.m in Sources */,
+				5D4CF034216DD738009D5602 /* KLineMADrawLogic.m in Sources */,
+				5D4CF02D216DD738009D5602 /* UIColor+Hex.m in Sources */,
+				5D4CF01B216DD738009D5602 /* NSArray+MASAdditions.m in Sources */,
+				5D4CF012216DD738009D5602 /* ViewController.m in Sources */,
+				5D4CF03B216DD738009D5602 /* KLineBGDrawLogic.m in Sources */,
+				5D4CF023216DD738009D5602 /* HorizontalView.m in Sources */,
+				5D4CF00E216DD738009D5602 /* SimpleKLineVolView.m in Sources */,
+				5D4CF02C216DD738009D5602 /* NSNumber+StringFormatter.m in Sources */,
+				5D4CF02A216DD738009D5602 /* KLineVolViewConfig.m in Sources */,
+				5D4CF016216DD738009D5602 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				5D4CF05A216DDDE0009D5602 /* UIColor+Hex.m in Sources */,
+				5D4CF021216DD738009D5602 /* DetailDataView.m in Sources */,
+				5D4CF037216DD738009D5602 /* KLineMACDDrawLogic.m in Sources */,
+				5D4CF01F216DD738009D5602 /* MASViewAttribute.m in Sources */,
+				5D4CF02F216DD738009D5602 /* KLineModel.m in Sources */,
+				5D4CF030216DD738009D5602 /* KLineView.m in Sources */,
+				5D4CF03A216DD738009D5602 /* KLineKDJDrawLogic.m in Sources */,
+				5D4CF00F216DD738009D5602 /* FullScreenKLineView.m in Sources */,
+				5D4CF01E216DD738009D5602 /* MASViewConstraint.m in Sources */,
+				5D4CF036216DD738009D5602 /* KLineRSIDrawLogic.m in Sources */,
+				5D1638772170996F007C81CB /* LanguageTool.m in Sources */,
+				5D4CF029216DD738009D5602 /* KLineIndicatorLogic.m in Sources */,
+				5D4CF058216DDDE0009D5602 /* UIView+CenterLoading.m in Sources */,
+				5D4CF02B216DD738009D5602 /* KLineViewConfig.m in Sources */,
+				5D4CF027216DD738009D5602 /* DataCenter.m in Sources */,
+				5D4CF031216DD738009D5602 /* KLineVolDrawLogic.m in Sources */,
+				5D4CF00D216DD738009D5602 /* KLineDataProcess.m in Sources */,
+				5D4CF032216DD738009D5602 /* KLineDrawLogic.m in Sources */,
+				5D4CF025216DD738009D5602 /* BaseNavigationViewController.m in Sources */,
+				5D4CF038216DD738009D5602 /* KLineBOLLDrawLogic.m in Sources */,
+				5D4CF019216DD738009D5602 /* MASConstraintMaker.m in Sources */,
+				5D4CF03C216DD738009D5602 /* GLConstantDefinition.m in Sources */,
+				5D4CF057216DDDE0009D5602 /* NSString+GLDate.m in Sources */,
+				5D4CF039216DD738009D5602 /* KLineTimeDrawLogic.m in Sources */,
+				5D4CF01A216DD738009D5602 /* MASLayoutConstraint.m in Sources */,
+				5D4CF024216DD738009D5602 /* BaseViewController.m in Sources */,
+				5D4CF01C216DD738009D5602 /* View+MASAdditions.m in Sources */,
+				5D4CF059216DDDE0009D5602 /* NSObject+DrawText.m in Sources */,
+				5D4CF035216DD738009D5602 /* BaseDrawLogic.m in Sources */,
+				5D4CF018216DD738009D5602 /* MASCompositeConstraint.m in Sources */,
+				5D4CF022216DD738009D5602 /* VerticalView.m in Sources */,
+				5D4CF02E216DD738009D5602 /* NSValue+GLExtremeValue.m in Sources */,
+				5D4CF014216DD738009D5602 /* AppDelegate.m in Sources */,
+				5D4CF017216DD738009D5602 /* ViewController+MASAdditions.m in Sources */,
+				5D4CF028216DD738009D5602 /* KLineDataLogic.m in Sources */,
+				5D4CF011216DD738009D5602 /* PortraitTestController.m in Sources */,
+				5D4CF013216DD738009D5602 /* main.m in Sources */,
+				5D4CF033216DD738009D5602 /* KLineVolMADrawLogic.m in Sources */,
+				5D4CF010216DD738009D5602 /* LandscapeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -961,8 +1025,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3A2K24E22F;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/GLKLineKit/Main/PrefixHeader.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/GLKLineKit/Main/Info.plist";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Example/Classes/Macro/PrefixHeader.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Classes/Main/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -980,8 +1044,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3A2K24E22F;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/GLKLineKit/Main/PrefixHeader.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/GLKLineKit/Main/Info.plist";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Example/Classes/Macro/PrefixHeader.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Classes/Main/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

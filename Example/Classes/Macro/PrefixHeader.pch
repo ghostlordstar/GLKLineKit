@@ -1,0 +1,38 @@
+//
+//  PrefixHeader.pch
+//  GLKLineKit
+//
+//  Created by walker on 2018/5/25.
+//  Copyright © 2018年 walker. All rights reserved.
+//
+
+/* 全局引用文件 */
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+// ---------- 标准库 ---------
+#import <UIKit/UIKit.h>
+
+// ---------- 公共枚举文件和常量文件 -------
+#import "ExamplePubliEnum.h"
+#import "Constants.h"
+
+// --------- 公共类目 ----------
+#import "UIView+CenterLoading.h"    // 加载图类目
+#import "NSString+GLDate.h"         // 日期格式转换类目
+#import "NSObject+DrawText.h"       // 文字绘图类目
+#import "UIColor+Hex.h"             // 十六进制颜色
+#import "UIFont+ScaleSize.h"        // 字体大小适配
+
+// ---------- 三方类库 -----------
+#import "Masonry.h"                 // 自适应布局三方库
+
+// ---------- K线库 --------------
+#import "GLKLineKit.h"
+
+// ---------- 自定义工具类 -------
+#import "LanguageTool.h"
+
+#endif /* PrefixHeader_pch */
