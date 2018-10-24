@@ -1,0 +1,10 @@
+/* 
+  Localization.strings
+  GLKLineKit
+
+  Created by walker on 2018/10/24.
+  Copyright © 2018 walker. All rights reserved.
+*/
+
+"kline_demo_portrait_screen" = "竖屏";
+"kline_demo_landscape" = "横屏";

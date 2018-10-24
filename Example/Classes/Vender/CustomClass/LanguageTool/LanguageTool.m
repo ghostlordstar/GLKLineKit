@@ -11,7 +11,7 @@
 #import "LanguageTool.h"
 
 // 语言类型本地化时的关键字
-#define kUserDefaultLanguageKey @"KKCurrentDisplayLanguage"
+#define kUserDefaultLanguageKey @"GLCurrentDisplayLanguage"
 
 
 @interface LanguageTool()
@@ -125,7 +125,7 @@ static LanguageTool *instance = nil;
     switch (languageType) {
         case KKLanguageTypeSimplified:
         {
-            languagePackageName = @"zh-Hans";
+            languagePackageName = @"zh-Hans-CN";
             break;
         }
         case KKLanguageTypeEnglish:

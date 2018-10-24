@@ -62,7 +62,8 @@
 		5D4CF058216DDDE0009D5602 /* UIView+CenterLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF04F216DDDE0009D5602 /* UIView+CenterLoading.m */; };
 		5D4CF059216DDDE0009D5602 /* NSObject+DrawText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF053216DDDE0009D5602 /* NSObject+DrawText.m */; };
 		5D4CF05A216DDDE0009D5602 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF055216DDDE0009D5602 /* UIColor+Hex.m */; };
-		5DE110E120B83F4600277399 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D1F1D9920B8289E00BD47B1 /* LaunchScreen.storyboard */; };
+		5D5493BC2180927F00FD024F /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D5493B92180916300FD024F /* Localization.strings */; };
+		5D5493BD2180929100FD024F /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D5493B62180914100FD024F /* Localization.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,7 +90,6 @@
 		5D16387A21709E56007C81CB /* UIFont+ScaleSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ScaleSize.m"; sourceTree = "<group>"; };
 		5D1F1D8B20B8289D00BD47B1 /* GLKLineKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLKLineKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1F1D9720B8289E00BD47B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5D1F1D9A20B8289E00BD47B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D1F1DA320B8289E00BD47B1 /* GLKLineKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GLKLineKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1F1DA720B8289E00BD47B1 /* GLKLineKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLKLineKitTests.m; sourceTree = "<group>"; };
 		5D1F1DA920B8289E00BD47B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -209,6 +209,10 @@
 		5D4CF05C216DDFEF009D5602 /* ExamplePubliEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamplePubliEnum.h; sourceTree = "<group>"; };
 		5D4CF05D216DDFEF009D5602 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5D4CF05E216DE021009D5602 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		5D54939F21808D7B00FD024F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		5D5493A021808D8600FD024F /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		5D5493B72180914100FD024F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localization.strings; sourceTree = "<group>"; };
+		5D5493BA2180916300FD024F /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = Localization.strings; sourceTree = "<group>"; };
 		5DAA4E7D216DE867003A3250 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -323,7 +327,6 @@
 			children = (
 				5D4CEF96216DD738009D5602 /* ViewController */,
 				5D4CEF8D216DD738009D5602 /* DataProcess */,
-				5D4CEF90216DD738009D5602 /* Model */,
 				5D4CEF91216DD738009D5602 /* View */,
 			);
 			path = KlineModule;
@@ -336,13 +339,6 @@
 				5D4CEF8F216DD738009D5602 /* KLineDataProcess.m */,
 			);
 			path = DataProcess;
-			sourceTree = "<group>";
-		};
-		5D4CEF90216DD738009D5602 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		5D4CEF91216DD738009D5602 /* View */ = {
@@ -493,6 +489,7 @@
 			isa = PBXGroup;
 			children = (
 				5D4CEFD3216DD738009D5602 /* BTC_USDT_2h.json */,
+				5D5493A921808F7300FD024F /* LanguagePackage */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -526,9 +523,9 @@
 			isa = PBXGroup;
 			children = (
 				5D4CEFDA216DD738009D5602 /* KLineIndicatorLogic.h */,
-				5D4CEFDB216DD738009D5602 /* KLineDataLogic.m */,
-				5D4CEFDC216DD738009D5602 /* KLineDataLogic.h */,
 				5D4CEFDD216DD738009D5602 /* KLineIndicatorLogic.m */,
+				5D4CEFDC216DD738009D5602 /* KLineDataLogic.h */,
+				5D4CEFDB216DD738009D5602 /* KLineDataLogic.m */,
 			);
 			path = KLineDataLogic;
 			sourceTree = "<group>";
@@ -674,6 +671,31 @@
 			path = Macro;
 			sourceTree = "<group>";
 		};
+		5D5493A921808F7300FD024F /* LanguagePackage */ = {
+			isa = PBXGroup;
+			children = (
+				5D5493B021808FA500FD024F /* zh-Hans-CN.lproj */,
+				5D5493AD21808FA500FD024F /* en.lproj */,
+			);
+			path = LanguagePackage;
+			sourceTree = "<group>";
+		};
+		5D5493AD21808FA500FD024F /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				5D5493B62180914100FD024F /* Localization.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		5D5493B021808FA500FD024F /* zh-Hans-CN.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				5D5493B92180916300FD024F /* Localization.strings */,
+			);
+			path = "zh-Hans-CN.lproj";
+			sourceTree = "<group>";
+		};
 		5DAA4E7C216DE867003A3250 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -765,8 +787,8 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				"zh-Hans-CN",
 				en,
-				Base,
 			);
 			mainGroup = 5D1F1D8220B8289D00BD47B1;
 			productRefGroup = 5D1F1D8C20B8289D00BD47B1 /* Products */;
@@ -785,7 +807,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DE110E120B83F4600277399 /* LaunchScreen.storyboard in Resources */,
+				5D5493BD2180929100FD024F /* Localization.strings in Resources */,
+				5D5493BC2180927F00FD024F /* Localization.strings in Resources */,
 				5D4CF026216DD738009D5602 /* BTC_USDT_2h.json in Resources */,
 				5D1F1D9820B8289E00BD47B1 /* Assets.xcassets in Resources */,
 			);
@@ -901,9 +924,26 @@
 		5D1F1D9920B8289E00BD47B1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5D1F1D9A20B8289E00BD47B1 /* Base */,
+				5D54939F21808D7B00FD024F /* en */,
+				5D5493A021808D8600FD024F /* zh-Hans-CN */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		5D5493B62180914100FD024F /* Localization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D5493B72180914100FD024F /* en */,
+			);
+			name = Localization.strings;
+			sourceTree = "<group>";
+		};
+		5D5493B92180916300FD024F /* Localization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D5493BA2180916300FD024F /* zh-Hans-CN */,
+			);
+			name = Localization.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -913,6 +953,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -971,6 +1012,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

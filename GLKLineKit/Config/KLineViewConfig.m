@@ -121,6 +121,11 @@
     return KColorShort;
 }
 
+/* 是否充满,如果传入YES，最小显示K线数量无效 */
+- (BOOL)isFullKline {
+    return YES;
+}
+
 /**
  最小显示k线数量
  */

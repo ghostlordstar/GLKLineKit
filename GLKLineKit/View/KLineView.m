@@ -808,6 +808,7 @@
         _dataLogic = [[KLineDataLogic alloc] initWithVisibleRange:self.visibleRange perItemWidth:self.perItemWidth];
         // 设置最小显示个数
         _dataLogic.minKlineCount = [self.config minShowKlineCount];
+        _dataLogic.isFull = [self.config isFullKline];
         [_dataLogic addDelegate:self];
     }
     return _dataLogic;

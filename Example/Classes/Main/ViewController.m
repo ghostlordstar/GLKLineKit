@@ -70,11 +70,11 @@ static NSString *const klineKitDemoCell_id_1 = @"klineKitDemoCell_id_1";
     
     NSString *cellTitle = self.dataArray[indexPath.row];
     
-    if ([cellTitle isEqualToString:@"竖屏"]) {
+    if ([cellTitle isEqualToString:KLocalizedString(@"kline_demo_portrait_screen", @"竖屏")]) {
         PortraitTestController *portraitVC = [[PortraitTestController alloc] init];
         
         [self.navigationController pushViewController:portraitVC animated:YES];
-    }else if([cellTitle isEqualToString:@"横屏"]) {
+    }else if([cellTitle isEqualToString:KLocalizedString(@"kline_demo_landscape", @"横屏")]) {
         
         LandscapeController *landScapeVC = [[LandscapeController alloc] init];
         
@@ -134,8 +134,8 @@ static NSString *const klineKitDemoCell_id_1 = @"klineKitDemoCell_id_1";
 - (NSMutableArray *)dataArray {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
-        [_dataArray addObject:@"竖屏"];
-        [_dataArray addObject:@"横屏"];
+        [_dataArray addObject:KLocalizedString(@"kline_demo_portrait_screen", @"竖屏")];
+        [_dataArray addObject:KLocalizedString(@"kline_demo_landscape", @"横屏")];
     }
     return _dataArray;
 }

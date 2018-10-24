@@ -199,37 +199,67 @@
     }
 }
 
-
 /**
  修正并更新当前显示区域
-
  @param newRange 需要更新到的显示区域
  */
 - (void)p_fixAndUpdateVisibleRange:(CGPoint)newRange {
     self.visibleRange = newRange;
     CGFloat allCount = [DataCenter shareCenter].klineModelArray.count;
-    // 修正显示区域
-    if (allCount >= self.minKlineCount) {
-        if(self.visibleRange.x >= allCount - self.minKlineCount) {
-            self.visibleRange = CGPointMake(allCount - self.minKlineCount, (allCount - self.minKlineCount) + (newRange.y - newRange.x));
-        }
+    
+    if(!self.isFull) { // 非充满状态
         
-        if(self.visibleRange.x < - self.minKlineCount) {
-            self.visibleRange = CGPointMake(- self.minKlineCount, (newRange.y - newRange.x) - self.minKlineCount);
+        // 修正显示区域
+        if (allCount >= self.minKlineCount) {
+            if(self.visibleRange.x >= allCount - self.minKlineCount) {
+                self.visibleRange = CGPointMake(allCount - self.minKlineCount, (allCount - self.minKlineCount) + (newRange.y - newRange.x));
+            }
+            
+            if(self.visibleRange.x < - self.minKlineCount) {
+                self.visibleRange = CGPointMake(- self.minKlineCount, (newRange.y - newRange.x) - self.minKlineCount);
+            }
+        }else if(allCount > 0 && allCount < self.minKlineCount) {
+            if(self.visibleRange.x >= allCount) {
+                self.visibleRange = CGPointMake(allCount, allCount + (newRange.y - newRange.x));
+            }
+            
+            if(self.visibleRange.x < allCount) {
+                self.visibleRange = CGPointMake(- allCount, (newRange.y - newRange.x) - allCount);
+            }
+        }else {
+            
+            self.visibleRange = CGPointMake(0, newRange.y - newRange.x);
         }
-    }else if(allCount > 0 && self.minKlineCount < self.minKlineCount) {
-        if(self.visibleRange.x >= allCount) {
-            self.visibleRange = CGPointMake(allCount, allCount + (newRange.y - newRange.x));
-        }
+    }else { // 充满状态
         
-        if(self.visibleRange.x < allCount) {
-            self.visibleRange = CGPointMake(- allCount, (newRange.y - newRange.x) - allCount);
-        }
-    }else {
         
-        self.visibleRange = CGPointMake(0, newRange.y - newRange.x);
+        if(allCount >= 0) {
+            
+            if (allCount > (newRange.y - newRange.x)) {
+                
+                if (newRange.y >= allCount) {
+                    if (newRange.x <= 0) {
+                        self.visibleRange = CGPointMake(0, allCount - (newRange.y - newRange.x));
+                    }else {
+                        self.visibleRange = CGPointMake(allCount - (newRange.y - newRange.x), allCount);
+                    }
+                }else {
+                    if (newRange.x <= 0) {
+                        self.visibleRange = CGPointMake(0, newRange.y - newRange.x);
+                    }else {
+                        self.visibleRange = CGPointMake(newRange.x, newRange.y);
+                    }
+                }
+            }else {
+                self.visibleRange = CGPointMake(0, allCount);
+            }
+            
+        }else {
+            self.visibleRange = CGPointMake(0, 0);
+        }
     }
 }
+
   
 /**
  最小显示K线根数
