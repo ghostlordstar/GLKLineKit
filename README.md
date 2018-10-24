@@ -22,3 +22,6 @@
 - [ ] 优化捏合手势操作
 
 ## 欢迎交流。相比于Issues和Star，我更希望看到你们的Pull requests👏 
+
+1. QQ群:901786039
+<img src="http://o8prfm9ji.bkt.clouddn.com/GLKitQQGroupSQ.png"  height="370" width="270">
