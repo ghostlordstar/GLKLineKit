@@ -65,7 +65,7 @@
 - (void)p_initialize {
     
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"竖屏样式";
+    self.title = KLocalizedString(@"kline_demo_portrait", @"竖屏");
     
     if (@available(iOS 11.0, *)) {
         
@@ -123,7 +123,7 @@
     
     if (!_timeBtn) {
         _timeBtn = [[UIButton alloc] initWithFrame:CGRectMake(100, SCREEN_HEIGHT - 150, 50, 30)];
-        [_timeBtn setTitle:@"分时" forState:UIControlStateNormal];
+        [_timeBtn setTitle:KLocalizedString(@"kline_demo_timeLine", @"分时") forState:UIControlStateNormal];
         [_timeBtn setTag:8805];
         [_timeBtn setBackgroundColor:[UIColor grayColor]];
         [_timeBtn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -135,7 +135,7 @@
     
     if (!_klineBtn) {
         _klineBtn = [[UIButton alloc] initWithFrame:CGRectMake(200, SCREEN_HEIGHT - 150, 50, 30)];
-        [_klineBtn setTitle:@"K线" forState:UIControlStateNormal];
+        [_klineBtn setTitle:KLocalizedString(@"kline_demo_Kline", @"k线") forState:UIControlStateNormal];
         [_klineBtn setTag:8806];
         [_klineBtn setBackgroundColor:[UIColor grayColor]];
         [_klineBtn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];

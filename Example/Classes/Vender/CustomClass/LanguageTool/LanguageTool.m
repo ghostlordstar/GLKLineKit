@@ -174,7 +174,6 @@ static LanguageTool *instance = nil;
             [_languageDelegate delegate_languageTool_languageDidChanged:self.currentLanguageType];
             
         }
-        
     }
     
     return languageBundle;

@@ -123,7 +123,7 @@ static NSString *const indicatorListView_cell_id_1 = @"indicatorListView_cell_id
 - (void)p_initialize {
     
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"横屏样式";
+    self.title = KLocalizedString(@"kline_demo_landscape", @"横屏样式");
     if (@available(iOS 11.0, *)) {
         
     } else {
@@ -259,7 +259,7 @@ static NSString *const indicatorListView_cell_id_1 = @"indicatorListView_cell_id
  */
 - (void)p_update24Hchange {
     
-    NSMutableAttributedString *mutableAttri = [[NSMutableAttributedString alloc] initWithString:@"24h涨跌  " attributes:@{NSForegroundColorAttributeName:[UIColor lightGrayColor],NSFontAttributeName:[UIFont systemFontOfSize:17.0]}];
+    NSMutableAttributedString *mutableAttri = [[NSMutableAttributedString alloc] initWithString:KLocalizedString(@"kline_demo_24change", @"24h涨跌") attributes:@{NSForegroundColorAttributeName:[UIColor lightGrayColor],NSFontAttributeName:[UIFont systemFontOfSize:17.0]}];
     NSAttributedString *attri = [[NSAttributedString alloc] initWithString:@"-1.24%" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithHex:0xdf1958],NSFontAttributeName:[UIFont systemFontOfSize:17.0]}];
     [mutableAttri appendAttributedString:attri];
     
@@ -431,7 +431,7 @@ static NSString *const indicatorListView_cell_id_1 = @"indicatorListView_cell_id
     
     if (!_timeLineBtn) {
         _timeLineBtn = [[UIButton alloc] initWithFrame:CGRectZero];
-        [_timeLineBtn setTitle:@"分时" forState:UIControlStateNormal];
+        [_timeLineBtn setTitle:KLocalizedString(@"kline_demo_timeLine", @"分时") forState:UIControlStateNormal];
         [_timeLineBtn setBackgroundColor:KColorText_000000];
         _timeLineBtn.tag = kBaseBtnTag + 0;
         [_timeLineBtn addTarget:self action:@selector(p_timeBtnAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -442,7 +442,7 @@ static NSString *const indicatorListView_cell_id_1 = @"indicatorListView_cell_id
 - (UIButton *)kLineBtn {
     if (!_kLineBtn) {
         _kLineBtn = [[UIButton alloc] initWithFrame:CGRectZero];
-        [_kLineBtn setTitle:@"K线" forState:UIControlStateNormal];
+        [_kLineBtn setTitle:KLocalizedString(@"kline_demo_Kline", @"k线")  forState:UIControlStateNormal];
         [_kLineBtn setBackgroundColor:KColorText_000000];
         _kLineBtn.tag = kBaseBtnTag + 4;
         [_kLineBtn addTarget:self action:@selector(p_klineBtnAction:) forControlEvents:UIControlEventTouchUpInside];

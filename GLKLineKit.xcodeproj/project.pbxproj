@@ -62,8 +62,8 @@
 		5D4CF058216DDDE0009D5602 /* UIView+CenterLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF04F216DDDE0009D5602 /* UIView+CenterLoading.m */; };
 		5D4CF059216DDDE0009D5602 /* NSObject+DrawText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF053216DDDE0009D5602 /* NSObject+DrawText.m */; };
 		5D4CF05A216DDDE0009D5602 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF055216DDDE0009D5602 /* UIColor+Hex.m */; };
-		5D5493BC2180927F00FD024F /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D5493B92180916300FD024F /* Localization.strings */; };
-		5D5493BD2180929100FD024F /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D5493B62180914100FD024F /* Localization.strings */; };
+		5D5493BC2180927F00FD024F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D5493B92180916300FD024F /* Localizable.strings */; };
+		5D5493BD2180929100FD024F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D5493B62180914100FD024F /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,8 +211,8 @@
 		5D4CF05E216DE021009D5602 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		5D54939F21808D7B00FD024F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5D5493A021808D8600FD024F /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		5D5493B72180914100FD024F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localization.strings; sourceTree = "<group>"; };
-		5D5493BA2180916300FD024F /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = Localization.strings; sourceTree = "<group>"; };
+		5D5493B72180914100FD024F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
+		5D5493BA2180916300FD024F /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = Localizable.strings; sourceTree = "<group>"; };
 		5DAA4E7D216DE867003A3250 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -683,7 +683,7 @@
 		5D5493AD21808FA500FD024F /* en.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				5D5493B62180914100FD024F /* Localization.strings */,
+				5D5493B62180914100FD024F /* Localizable.strings */,
 			);
 			path = en.lproj;
 			sourceTree = "<group>";
@@ -691,7 +691,7 @@
 		5D5493B021808FA500FD024F /* zh-Hans-CN.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				5D5493B92180916300FD024F /* Localization.strings */,
+				5D5493B92180916300FD024F /* Localizable.strings */,
 			);
 			path = "zh-Hans-CN.lproj";
 			sourceTree = "<group>";
@@ -807,8 +807,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D5493BD2180929100FD024F /* Localization.strings in Resources */,
-				5D5493BC2180927F00FD024F /* Localization.strings in Resources */,
+				5D5493BD2180929100FD024F /* Localizable.strings in Resources */,
+				5D5493BC2180927F00FD024F /* Localizable.strings in Resources */,
 				5D4CF026216DD738009D5602 /* BTC_USDT_2h.json in Resources */,
 				5D1F1D9820B8289E00BD47B1 /* Assets.xcassets in Resources */,
 			);
@@ -930,20 +930,20 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		5D5493B62180914100FD024F /* Localization.strings */ = {
+		5D5493B62180914100FD024F /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5D5493B72180914100FD024F /* en */,
 			);
-			name = Localization.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		5D5493B92180916300FD024F /* Localization.strings */ = {
+		5D5493B92180916300FD024F /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5D5493BA2180916300FD024F /* zh-Hans-CN */,
 			);
-			name = Localization.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

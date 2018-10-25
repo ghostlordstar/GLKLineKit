@@ -6,5 +6,8 @@
   Copyright © 2018 walker. All rights reserved.
 */
 
-"kline_demo_portrait_screen" = "竖屏";
+"kline_demo_portrait" = "竖屏";
 "kline_demo_landscape" = "横屏";
+"kline_demo_24change" = "24h涨跌  ";
+"kline_demo_timeLine" = "分时";
+"kline_demo_Kline" = "K线";

@@ -6,5 +6,8 @@
   Copyright © 2018 walker. All rights reserved.
 */
 
-"kline_demo_portrait_screen" = "PorTrait";
+"kline_demo_portrait" = "PorTrait";
 "kline_demo_landscape" = "Landscape";
+"kline_demo_24change" = "24hChange   ";
+"kline_demo_timeLine" = "Time line";
+"kline_demo_Kline" = "K lines";
