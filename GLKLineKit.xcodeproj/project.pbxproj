@@ -64,6 +64,7 @@
 		5D4CF05A216DDDE0009D5602 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF055216DDDE0009D5602 /* UIColor+Hex.m */; };
 		5D5493BC2180927F00FD024F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D5493B92180916300FD024F /* Localizable.strings */; };
 		5D5493BD2180929100FD024F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D5493B62180914100FD024F /* Localizable.strings */; };
+		5DD9A3B22181F903002CF47D /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD9A3B12181F903002CF47D /* BaseView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +215,8 @@
 		5D5493B72180914100FD024F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		5D5493BA2180916300FD024F /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = Localizable.strings; sourceTree = "<group>"; };
 		5DAA4E7D216DE867003A3250 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5DD9A3B02181F903002CF47D /* BaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
+		5DD9A3B12181F903002CF47D /* BaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,10 +347,10 @@
 		5D4CEF91216DD738009D5602 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5D4CEF92216DD738009D5602 /* SimpleKLineVolView.m */,
-				5D4CEF93216DD738009D5602 /* FullScreenKLineView.m */,
 				5D4CEF94216DD738009D5602 /* SimpleKLineVolView.h */,
+				5D4CEF92216DD738009D5602 /* SimpleKLineVolView.m */,
 				5D4CEF95216DD738009D5602 /* FullScreenKLineView.h */,
+				5D4CEF93216DD738009D5602 /* FullScreenKLineView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -442,8 +445,8 @@
 			isa = PBXGroup;
 			children = (
 				5D4CEFC6216DD738009D5602 /* VerticalView.h */,
-				5D4CEFC7216DD738009D5602 /* HorizontalView.h */,
 				5D4CEFC8216DD738009D5602 /* VerticalView.m */,
+				5D4CEFC7216DD738009D5602 /* HorizontalView.h */,
 				5D4CEFC9216DD738009D5602 /* HorizontalView.m */,
 			);
 			path = ReticleLine;
@@ -452,18 +455,11 @@
 		5D4CEFCA216DD738009D5602 /* BaseUIClass */ = {
 			isa = PBXGroup;
 			children = (
-				5D4CEFCB216DD738009D5602 /* BaseView */,
+				5DD9A3AF2181F8EC002CF47D /* BaseView */,
 				5D4CEFCC216DD738009D5602 /* BaseVC */,
 				5D4CEFCF216DD738009D5602 /* BaseNavigationVC */,
 			);
 			path = BaseUIClass;
-			sourceTree = "<group>";
-		};
-		5D4CEFCB216DD738009D5602 /* BaseView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = BaseView;
 			sourceTree = "<group>";
 		};
 		5D4CEFCC216DD738009D5602 /* BaseVC */ = {
@@ -545,12 +541,12 @@
 		5D4CEFE4216DD738009D5602 /* UtilityTool */ = {
 			isa = PBXGroup;
 			children = (
-				5D4CEFE5216DD738009D5602 /* NSNumber+StringFormatter.m */,
-				5D4CEFE6216DD738009D5602 /* NSValue+GLExtremeValue.h */,
-				5D4CEFE7216DD738009D5602 /* UIColor+Hex.m */,
-				5D4CEFE8216DD738009D5602 /* NSNumber+StringFormatter.h */,
 				5D4CEFE9216DD738009D5602 /* UIColor+Hex.h */,
+				5D4CEFE7216DD738009D5602 /* UIColor+Hex.m */,
+				5D4CEFE6216DD738009D5602 /* NSValue+GLExtremeValue.h */,
 				5D4CEFEA216DD738009D5602 /* NSValue+GLExtremeValue.m */,
+				5D4CEFE8216DD738009D5602 /* NSNumber+StringFormatter.h */,
+				5D4CEFE5216DD738009D5602 /* NSNumber+StringFormatter.m */,
 			);
 			path = UtilityTool;
 			sourceTree = "<group>";
@@ -558,8 +554,8 @@
 		5D4CEFEB216DD738009D5602 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5D4CEFEC216DD738009D5602 /* KLineModel.m */,
 				5D4CEFED216DD738009D5602 /* KLineModel.h */,
+				5D4CEFEC216DD738009D5602 /* KLineModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -576,29 +572,29 @@
 		5D4CEFF1216DD738009D5602 /* DrawLogic */ = {
 			isa = PBXGroup;
 			children = (
+				5D4CEFF8216DD738009D5602 /* ChartDrawProtocol.h */,
+				5D4CF005216DD738009D5602 /* BaseDrawLogic.h */,
+				5D4CEFFD216DD738009D5602 /* BaseDrawLogic.m */,
+				5D4CEFF9216DD738009D5602 /* KLineBGDrawLogic.h */,
+				5D4CF008216DD738009D5602 /* KLineBGDrawLogic.m */,
+				5D4CF003216DD738009D5602 /* KLineDrawLogic.h */,
+				5D4CEFF5216DD738009D5602 /* KLineDrawLogic.m */,
+				5D4CF004216DD738009D5602 /* KLineMADrawLogic.h */,
+				5D4CEFFC216DD738009D5602 /* KLineMADrawLogic.m */,
+				5D4CF000216DD738009D5602 /* KLineVolDrawLogic.h */,
 				5D4CEFF2216DD738009D5602 /* KLineVolDrawLogic.m */,
 				5D4CEFF3216DD738009D5602 /* KLineMACDDrawLogic.h */,
-				5D4CEFF4216DD738009D5602 /* KLineRSIDrawLogic.h */,
-				5D4CEFF5216DD738009D5602 /* KLineDrawLogic.m */,
-				5D4CEFF6216DD738009D5602 /* KLineBOLLDrawLogic.h */,
-				5D4CEFF7216DD738009D5602 /* KLineVolMADrawLogic.m */,
-				5D4CEFF8216DD738009D5602 /* ChartDrawProtocol.h */,
-				5D4CEFF9216DD738009D5602 /* KLineBGDrawLogic.h */,
-				5D4CEFFA216DD738009D5602 /* KLineKDJDrawLogic.h */,
-				5D4CEFFB216DD738009D5602 /* KLineTimeDrawLogic.h */,
-				5D4CEFFC216DD738009D5602 /* KLineMADrawLogic.m */,
-				5D4CEFFD216DD738009D5602 /* BaseDrawLogic.m */,
-				5D4CEFFE216DD738009D5602 /* KLineRSIDrawLogic.m */,
 				5D4CEFFF216DD738009D5602 /* KLineMACDDrawLogic.m */,
-				5D4CF000216DD738009D5602 /* KLineVolDrawLogic.h */,
-				5D4CF001216DD738009D5602 /* KLineVolMADrawLogic.h */,
+				5D4CEFF4216DD738009D5602 /* KLineRSIDrawLogic.h */,
+				5D4CEFFE216DD738009D5602 /* KLineRSIDrawLogic.m */,
+				5D4CEFF6216DD738009D5602 /* KLineBOLLDrawLogic.h */,
 				5D4CF002216DD738009D5602 /* KLineBOLLDrawLogic.m */,
-				5D4CF003216DD738009D5602 /* KLineDrawLogic.h */,
-				5D4CF004216DD738009D5602 /* KLineMADrawLogic.h */,
-				5D4CF005216DD738009D5602 /* BaseDrawLogic.h */,
-				5D4CF006216DD738009D5602 /* KLineTimeDrawLogic.m */,
+				5D4CF001216DD738009D5602 /* KLineVolMADrawLogic.h */,
+				5D4CEFF7216DD738009D5602 /* KLineVolMADrawLogic.m */,
+				5D4CEFFA216DD738009D5602 /* KLineKDJDrawLogic.h */,
 				5D4CF007216DD738009D5602 /* KLineKDJDrawLogic.m */,
-				5D4CF008216DD738009D5602 /* KLineBGDrawLogic.m */,
+				5D4CEFFB216DD738009D5602 /* KLineTimeDrawLogic.h */,
+				5D4CF006216DD738009D5602 /* KLineTimeDrawLogic.m */,
 			);
 			path = DrawLogic;
 			sourceTree = "<group>";
@@ -665,8 +661,8 @@
 			isa = PBXGroup;
 			children = (
 				5D4CF05E216DE021009D5602 /* Constants.h */,
-				5D4CF05C216DDFEF009D5602 /* ExamplePubliEnum.h */,
 				5D4CF05D216DDFEF009D5602 /* PrefixHeader.pch */,
+				5D4CF05C216DDFEF009D5602 /* ExamplePubliEnum.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -702,6 +698,15 @@
 				5DAA4E7D216DE867003A3250 /* UIKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5DD9A3AF2181F8EC002CF47D /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				5DD9A3B02181F903002CF47D /* BaseView.h */,
+				5DD9A3B12181F903002CF47D /* BaseView.m */,
+			);
+			path = BaseView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -854,6 +859,7 @@
 				5D4CF02F216DD738009D5602 /* KLineModel.m in Sources */,
 				5D4CF030216DD738009D5602 /* KLineView.m in Sources */,
 				5D4CF03A216DD738009D5602 /* KLineKDJDrawLogic.m in Sources */,
+				5DD9A3B22181F903002CF47D /* BaseView.m in Sources */,
 				5D4CF00F216DD738009D5602 /* FullScreenKLineView.m in Sources */,
 				5D4CF01E216DD738009D5602 /* MASViewConstraint.m in Sources */,
 				5D4CF036216DD738009D5602 /* KLineRSIDrawLogic.m in Sources */,

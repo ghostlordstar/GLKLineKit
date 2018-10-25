@@ -129,6 +129,12 @@
  */
 @property (strong, nonatomic) KLineModel *selectedModel;
 
+/** 平移手势 */
+@property (strong, nonatomic) UIPanGestureRecognizer *panGesture;
+
+/** 捏合手势 */
+@property (strong, nonatomic) UIPinchGestureRecognizer *pinchGesture;
+
 @end
 
 @implementation KLineView
@@ -875,5 +881,12 @@
         _extremeValueDict = @{}.mutableCopy;
     }
     return _extremeValueDict;
+}
+
+- (UIPanGestureRecognizer *)panGesture {
+    if (!_panGesture) {
+        _panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(p_panGestureAction:)];
+    }
+    return _panGesture;
 }
 @end
