@@ -18,11 +18,11 @@
 
 ## TODO:
 - [x] 添加K线图充满模式
-- [x] 测试Demo添加英文国际化
+- [x] 对Demo进行精简，添加英文国际化
 - [ ] 将指标和K线整合到一张View中，以解决跨界面捏合手势和时间显示重合问题
 - [ ] 优化捏合手势操作
 
-## 欢迎交流。相比于Issues和Star，我更希望看到你们的Pull requests👏 
+## 欢迎交流。欢迎提Issues和Star，也希望看到你们的Pull requests👏 
 
 1. QQ群:901786039
 <img src="http://o8prfm9ji.bkt.clouddn.com/GLKitQQGroupSQ.png"  height="370" width="270">
