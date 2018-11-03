@@ -135,6 +135,8 @@
 /** 捏合手势 */
 @property (strong, nonatomic) UIPinchGestureRecognizer *pinchGesture;
 
+/** 长按手势 */
+@property (strong, nonatomic) UILongPressGestureRecognizer *longPressGesture;
 @end
 
 @implementation KLineView
@@ -209,7 +211,6 @@
         
         [self p_updateVisibleRangeForNewBounds];
     }
-    
 }
 
 #pragma mark - 公共方法 ---
@@ -374,7 +375,7 @@
                 if ((self.visibleRange.x >= self.dataCenter.klineModelArray.count - 1) || (self.visibleRange.y <= self.dataCenter.klineModelArray.count - 1)|| (self.visibleRange.x < -[self.config minShowKlineCount])) {
                     self.visibleRange = CGPointMake(0 , self.maxItemCount);
                 }
-
+                
             }else {
                 
                 self.visibleRange = CGPointMake(self.dataCenter.klineModelArray.count - self.maxItemCount, self.dataCenter.klineModelArray.count);
@@ -534,6 +535,10 @@
     [self visibleRange];
     // 对frame添加观察者
     [self addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    
+    [self addGestureRecognizer:self.panGesture];        // 添加平移手势
+    [self addGestureRecognizer:self.pinchGesture];      // 添加缩放手势
+    [self addGestureRecognizer:self.longPressGesture];  // 添加长按手势
 }
 
 /**
@@ -562,7 +567,7 @@
             // 传入更新最大最小值的block
             arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier]]};
         }
-
+        
         // 处理Rect
         newRect = CGRectMake(rect.origin.x + [self.config insertOfKlineView].left, rect.origin.y + [self.config insertOfKlineView].top, rect.size.width - ([self.config insertOfKlineView].left + [self.config insertOfKlineView].right), rect.size.height - ([self.config insertOfKlineView].top + [self.config insertOfKlineView].bottom));
     }
@@ -621,125 +626,64 @@
 - (void)p_removeAllExtremeValues {
     
     [self.extremeValueDict removeAllObjects];
-    
 }
 
-#pragma mark - 手势 处理 ----
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesBegan:touches withEvent:event];
-    UITouch *touch = [touches anyObject];
-    // 记录开始的触点所在的x坐标
-    self.beginPoint = [touch locationInView:self];
-    self.lastTouchPointX = self.beginPoint.x;
+- (void)p_panGestureAction:(UIPanGestureRecognizer *)pan {
     
-    NSLog(@"touch :%@",touch);
+    CGPoint panPoint = [pan locationInView:self];
     
-    if (touch && ![self.touchArray containsObject:touch] && self.touchArray.count < 2) {
-        [self.touchArray addObject:touch];
-        self.touchBeginStamp = touch.timestamp;
-    }
+    // 左右移动
+    CGFloat offsetX = panPoint.x - self.lastTouchPointX;
+    [self p_updateVisibleRangeWithOffseX:offsetX];
     
-    if (self.touchArray.count >= 2) {
-        self.lastPinchWidth = 0.0;
-        self.isPinching = YES;
-        self.touchBeginStamp = 0.0;
-        NSLog(@"touch begin --- isPinching : %d",self.isPinching);
-    }
-    
+    self.lastTouchPointX = panPoint.x;
 }
 
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesEnded:touches withEvent:event];
+/* 捏合手势处理 */
+- (void)p_pinchGestureAction:(UIPinchGestureRecognizer *)pinch {
     
-    UITouch *touch = [touches anyObject];
-    CGPoint endPoint = [touch locationInView:self];
-    if (touch && [self.touchArray containsObject:touch]) {
-        [self.touchArray removeAllObjects];
-        self.isPinching = NO;
-        self.touchBeginStamp = 0.0;
+    NSLog(@"scal :%f,velocity: %f",pinch.scale,pinch.velocity);
+    
+    if(pinch.numberOfTouches >= 2) {
+        CGPoint firstPoint = [pinch locationOfTouch:0 inView:self];
+        CGPoint secondPoint = [pinch locationOfTouch:1 inView:self];
+        
+        CGFloat touchCenterX = (firstPoint.x + secondPoint.x) / 2.0;
+        // 此处为了保持缩放平滑和灵敏，将捏合的速度作为缩放的参数
+        [self p_updateScaleAndVisibleRangeWithScale:pinch.velocity touchCenterX:touchCenterX];
     }
+}
+
+- (void)p_longPressGestureAction:(UILongPressGestureRecognizer *)longPress {
     
+    CGPoint longPressPoint = [longPress locationInView:self];
     
-    if (self.isShowReticle) {
+    // 移动超过2像素就算移动过
+    if (longPress.state == UIGestureRecognizerStateChanged) {
+        // 开始显示十字线
+        NSLog(@"显示十字线");
+        [self.dataLogic beginTapKLineView:self touchPoint:longPressPoint perItemWidth:self.perItemWidth];
+    }else {
+        
         // 隐藏十字线
-        [self.dataLogic removeTouchAtKLineView:self touchPoint:endPoint perItemWidth:self.perItemWidth];
+        [self.dataLogic removeTouchAtKLineView:self touchPoint:longPressPoint perItemWidth:self.perItemWidth];
+        
     }
     
-}
-
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesMoved:touches withEvent:event];
-    
-    UITouch *touch = [self.touchArray firstObject];
-    CGPoint movePoint = [touch locationInView:self];
-//    NSLog(@"move point = %@",NSStringFromCGPoint(movePoint));
-    if (self.isPinching && self.touchArray.count >= 2) {
-        // 缩放
-        [self p_updateScaleAndVisibleRange];
-        
-        NSLog(@"touch moved ： %d",self.isPinching);
-    }else if(!self.isPinching && self.touchArray.count == 1) {
-        
-        if (!self.isShowReticle) {
-            // 左右移动
-            CGFloat offsetX = movePoint.x - self.lastTouchPointX;
-            [self p_updateVisibleRangeWithOffseX:offsetX];
-        }else {
-            // 移动十字线
-            [self.dataLogic moveTouchAtKLineView:self touchPoint:movePoint perItemWidth:self.perItemWidth];
-        }
-        
-        // 移动超过2像素就算移动过
-        if (fabs(self.beginPoint.x - movePoint.x) < 3.0 && fabs(self.beginPoint.y - movePoint.y) < 3.0) {
-            if (touch.timestamp - self.touchBeginStamp >= 0.4) {
-                if (!self.isShowReticle) {
-                    // 开始显示十字线
-                    NSLog(@"显示十字线");
-                    [self.dataLogic beginTapKLineView:self touchPoint:movePoint perItemWidth:self.perItemWidth];
-                }
-            }
-        }
-        
-        self.lastTouchPointX = movePoint.x;
-    }
-    
-}
-
-- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesCancelled:touches withEvent:event];
-    
-    // TODO:触摸事件被系统事件打断的处理
-    [self.touchArray removeAllObjects];
-    self.isPinching = NO;
 }
 
 #pragma mark - 手势计算 ---
-
 /**
- 更新缩放比例和当前显示区域
+ 缩放
+ 
+ @param scale 缩放的比例
+ @param touchCenterX 缩放中心的坐标值
  */
-- (void)p_updateScaleAndVisibleRange {
+- (void)p_updateScaleAndVisibleRangeWithScale:(CGFloat)scale touchCenterX:(CGFloat)touchCenterX {
     
-    NSLog(@"缩放  --- ");
-    
-    if(!self.isPinching || self.isShowReticle || self.touchArray.count < 2) {
-        return;
-    }
-    
-    // 计算出中心点在x轴的比例
-    CGPoint firstPoint = [[self.touchArray firstObject] locationInView:self];
-    CGPoint secondPoint = [[self.touchArray objectAtIndex:1] locationInView:self];
-    CGFloat currentPinchWidth = fabs(firstPoint.x - secondPoint.x);
-    CGFloat touchCenterX = (firstPoint.x + secondPoint.x) / 2.0;
     CGFloat xPercent = touchCenterX / self.frame.size.width;
     
-    if(self.lastPinchWidth == 0.0) {
-        self.lastPinchWidth = currentPinchWidth;
-        return;
-    }
-    // 计算缩放比例
-    self.currentScale += (currentPinchWidth / self.lastPinchWidth - 1.0f);
+    self.currentScale += (scale / 10.0f);
     
     if (self.currentScale > [self.config maxPinchScale]) {
         self.currentScale = [self.config maxPinchScale];
@@ -750,10 +694,8 @@
     self.perItemWidth = self.currentScale * ([self.config defaultEntityLineWidth] + [self.config klineGap]);
     // 计算当前显示的区域
     [self.dataLogic updateVisibleRangeWithZoomCenterPercent:xPercent perItemWidth:self.perItemWidth scale:self.currentScale];
-    
-    // 记录触点距离
-    self.lastPinchWidth = currentPinchWidth;
 }
+
 
 /**
  更新滑动手势的偏移量和可见区域
@@ -864,7 +806,6 @@
             
             GLExtremeValue tempOtherExtreme = [strongSelf p_getExtremeValueFilterIdentifier:identifier];
             GLExtremeValue tempDrawExtreme = GLExtremeValueMake(fmin(minValue, tempOtherExtreme.minValue), fmax(maxValue, tempOtherExtreme.maxValue));
-//            NSLog(@"id:%@,min:%f,max:%f",identifier,minValue,maxValue);
             if (!GLExtremeValueEqualToExtremeValue(strongSelf.currentExtremeValue, tempDrawExtreme)) {
                 strongSelf.currentExtremeValue = tempDrawExtreme;
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -889,4 +830,20 @@
     }
     return _panGesture;
 }
+
+- (UIPinchGestureRecognizer *)pinchGesture {
+    if (!_pinchGesture) {
+        _pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(p_pinchGestureAction:)];
+    }
+    return _pinchGesture;
+}
+
+- (UILongPressGestureRecognizer *)longPressGesture {
+    
+    if (!_longPressGesture) {
+        _longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(p_longPressGestureAction:)];
+    }
+    return _longPressGesture;
+}
+
 @end

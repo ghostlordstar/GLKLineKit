@@ -11,3 +11,11 @@
 "kline_demo_24change" = "24h涨跌  ";
 "kline_demo_timeLine" = "分时";
 "kline_demo_Kline" = "K线";
+
+"trade_commission_date" = "日期";
+"trade_open" = "开";
+"trade_high" = "高";
+"trade_low" = "低";
+"trade_closed" = "收";
+"trade_amount_short" = "量";
+

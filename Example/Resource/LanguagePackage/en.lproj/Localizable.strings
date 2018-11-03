@@ -11,3 +11,10 @@
 "kline_demo_24change" = "24hChange   ";
 "kline_demo_timeLine" = "Time line";
 "kline_demo_Kline" = "K lines";
+
+"trade_commission_date" = "Date";
+"trade_open" = "O";
+"trade_high" = "H";
+"trade_low" = "L";
+"trade_closed" = "C";
+"trade_amount_short" = "V";

@@ -210,8 +210,6 @@
 		5D4CF05C216DDFEF009D5602 /* ExamplePubliEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamplePubliEnum.h; sourceTree = "<group>"; };
 		5D4CF05D216DDFEF009D5602 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5D4CF05E216DE021009D5602 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		5D54939F21808D7B00FD024F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		5D5493A021808D8600FD024F /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		5D5493B72180914100FD024F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		5D5493BA2180916300FD024F /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = Localizable.strings; sourceTree = "<group>"; };
 		5DAA4E7D216DE867003A3250 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -268,7 +266,6 @@
 				5D4CEF8A216DD738009D5602 /* Example */,
 				5D4CEFD4216DD738009D5602 /* GLKLineKit */,
 				5D1F1D9720B8289E00BD47B1 /* Assets.xcassets */,
-				5D1F1D9920B8289E00BD47B1 /* LaunchScreen.storyboard */,
 				5D1F1DA620B8289E00BD47B1 /* GLKLineKitTests */,
 				5D1F1DB120B8289E00BD47B1 /* GLKLineKitUITests */,
 				5D1F1D8C20B8289D00BD47B1 /* Products */,
@@ -927,15 +924,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5D1F1D9920B8289E00BD47B1 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5D54939F21808D7B00FD024F /* en */,
-				5D5493A021808D8600FD024F /* zh-Hans-CN */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		5D5493B62180914100FD024F /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
