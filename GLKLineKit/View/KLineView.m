@@ -346,7 +346,7 @@
  */
 - (void)reDrawWithScale:(CGFloat)scale {
     
-//    NSAssert(scale > 0, @"draw scale must > 0");
+    //    NSAssert(scale > 0, @"draw scale must > 0");
     if (scale > 0) {
         self.currentScale = scale;
         [self reDrawWithType:ReDrawTypeDefault];
@@ -652,7 +652,7 @@
 /* 捏合手势处理 */
 - (void)p_pinchGestureAction:(UIPinchGestureRecognizer *)pinch {
     
-//    NSLog(@"scal :%f,velocity: %f",pinch.scale,pinch.velocity);
+    //    NSLog(@"scal :%f,velocity: %f",pinch.scale,pinch.velocity);
     
     if(pinch.numberOfTouches >= 2) {
         CGPoint firstPoint = [pinch locationOfTouch:0 inView:self];
@@ -770,29 +770,6 @@
     return _dataLogic;
 }
 
-- (NSObject<KLineViewProtocol> *)config {
-    if (!_config) {
-        _config = [[KLineViewConfig alloc] init];
-    }
-    return _config;
-}
-
-- (CGPoint)visibleRange {
-    if (CGPointEqualToPoint(CGPointZero, _visibleRange) && self.dataCenter.klineModelArray.count >= 1) {
-        
-        CGFloat itemCount = (self.frame.size.width - (self.config.insertOfKlineView.left + self.config.insertOfKlineView.right)) / self.perItemWidth;
-        
-        _visibleRange = CGPointMake(self.dataCenter.klineModelArray.count - itemCount, self.dataCenter.klineModelArray.count);
-    }
-    return _visibleRange;
-}
-
-- (NSMutableArray<UITouch *> *)touchArray {
-    if (!_touchArray) {
-        _touchArray = @[].mutableCopy;
-    }
-    return _touchArray;
-}
 
 - (CGFloat)maxItemCount {
     
@@ -823,6 +800,32 @@
         };
     }
     return _updateExtremeValueBlock;
+}
+
+#pragma mark ----- 懒加载 ----
+
+- (NSObject<KLineViewProtocol> *)config {
+    if (!_config) {
+        _config = [[KLineViewConfig alloc] init];
+    }
+    return _config;
+}
+
+- (CGPoint)visibleRange {
+    if (CGPointEqualToPoint(CGPointZero, _visibleRange) && self.dataCenter.klineModelArray.count >= 1) {
+        
+        CGFloat itemCount = (self.frame.size.width - (self.config.insertOfKlineView.left + self.config.insertOfKlineView.right)) / self.perItemWidth;
+        
+        _visibleRange = CGPointMake(self.dataCenter.klineModelArray.count - itemCount, self.dataCenter.klineModelArray.count);
+    }
+    return _visibleRange;
+}
+
+- (NSMutableArray<UITouch *> *)touchArray {
+    if (!_touchArray) {
+        _touchArray = @[].mutableCopy;
+    }
+    return _touchArray;
 }
 
 - (NSMutableDictionary *)extremeValueDict {
