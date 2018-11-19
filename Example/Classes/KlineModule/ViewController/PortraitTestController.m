@@ -122,7 +122,7 @@
 - (UIButton *)timeBtn {
     
     if (!_timeBtn) {
-        _timeBtn = [[UIButton alloc] initWithFrame:CGRectMake(100, SCREEN_HEIGHT - 150, 50, 30)];
+        _timeBtn = [[UIButton alloc] initWithFrame:CGRectMake(50, SCREEN_HEIGHT - 150, 100, 30)];
         [_timeBtn setTitle:KLocalizedString(@"kline_demo_timeLine", @"分时") forState:UIControlStateNormal];
         [_timeBtn setTag:8805];
         [_timeBtn setBackgroundColor:[UIColor grayColor]];
@@ -134,7 +134,7 @@
 - (UIButton *)klineBtn {
     
     if (!_klineBtn) {
-        _klineBtn = [[UIButton alloc] initWithFrame:CGRectMake(200, SCREEN_HEIGHT - 150, 50, 30)];
+        _klineBtn = [[UIButton alloc] initWithFrame:CGRectMake(200, SCREEN_HEIGHT - 150, 100, 30)];
         [_klineBtn setTitle:KLocalizedString(@"kline_demo_Kline", @"k线") forState:UIControlStateNormal];
         [_klineBtn setTag:8806];
         [_klineBtn setBackgroundColor:[UIColor grayColor]];

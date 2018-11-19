@@ -346,7 +346,7 @@
  */
 - (void)reDrawWithScale:(CGFloat)scale {
     
-    NSAssert(scale > 0, @"draw scale must > 0");
+//    NSAssert(scale > 0, @"draw scale must > 0");
     if (scale > 0) {
         self.currentScale = scale;
         [self reDrawWithType:ReDrawTypeDefault];
@@ -473,6 +473,7 @@
 - (void)visibleRangeDidChanged:(CGPoint)visibleRange scale:(CGFloat)scale {
     
     if (!CGPointEqualToPoint(self.visibleRange, visibleRange)) {
+        NSLog(@"visibleRangeX = %f,visibleRangeY = %f",visibleRange.x,visibleRange.y);
         self.visibleRange = visibleRange;
         self.currentScale = scale;
         self.perItemWidth = ([self.config defaultEntityLineWidth] + [self.config klineGap]) * self.currentScale;
@@ -628,9 +629,18 @@
     [self.extremeValueDict removeAllObjects];
 }
 
+/*平移手势处理*/
 - (void)p_panGestureAction:(UIPanGestureRecognizer *)pan {
     
+    if (pan.state == UIGestureRecognizerStateBegan) {
+        self.lastTouchPointX = 0.0f;
+    }
+    
     CGPoint panPoint = [pan locationInView:self];
+    
+    if (fabs(self.lastTouchPointX) == 0) {
+        self.lastTouchPointX = panPoint.x;
+    }
     
     // 左右移动
     CGFloat offsetX = panPoint.x - self.lastTouchPointX;
@@ -642,7 +652,7 @@
 /* 捏合手势处理 */
 - (void)p_pinchGestureAction:(UIPinchGestureRecognizer *)pinch {
     
-    NSLog(@"scal :%f,velocity: %f",pinch.scale,pinch.velocity);
+//    NSLog(@"scal :%f,velocity: %f",pinch.scale,pinch.velocity);
     
     if(pinch.numberOfTouches >= 2) {
         CGPoint firstPoint = [pinch locationOfTouch:0 inView:self];
@@ -667,9 +677,7 @@
         
         // 隐藏十字线
         [self.dataLogic removeTouchAtKLineView:self touchPoint:longPressPoint perItemWidth:self.perItemWidth];
-        
     }
-    
 }
 
 #pragma mark - 手势计算 ---
