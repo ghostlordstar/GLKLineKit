@@ -338,7 +338,7 @@
     
     if (touchY <= CGRectGetMaxY(self.kLineMainView.frame) && touchY >= 0) {
         
-        double currentNum = (self.kLineMainView.currentExtremeValue.maxValue - self.kLineMainView.currentExtremeValue.minValue) * (1.0 - (touchY - [self.kLineMainView.config insertOfKlineView].top) / (CGRectGetHeight(self.kLineMainView.frame) - ([self.kLineMainView.config insertOfKlineView].top + [self.kLineMainView.config insertOfKlineView].bottom))) + self.kLineMainView.currentExtremeValue.minValue;
+        double currentNum = (self.kLineMainView.currentExtremeValue.maxValue - self.kLineMainView.currentExtremeValue.minValue) * (1.0 - (touchY - [self.kLineMainView.config insetsOfKlineView].top) / (CGRectGetHeight(self.kLineMainView.frame) - ([self.kLineMainView.config insetsOfKlineView].top + [self.kLineMainView.config insetsOfKlineView].bottom))) + self.kLineMainView.currentExtremeValue.minValue;
         
         if (currentNum < self.kLineMainView.currentExtremeValue.minValue) {
             currentNum = self.kLineMainView.currentExtremeValue.minValue;
@@ -351,7 +351,7 @@
     }else if(touchY >= CGRectGetMinY(self.volView.frame) && touchY <= CGRectGetMaxY(self.volView.frame)) {
         
         touchY = touchY - CGRectGetMinY(self.volView.frame);
-        double currentNum = (self.volView.currentExtremeValue.maxValue - self.volView.currentExtremeValue.minValue) * (1.0 - (touchY - [self.volView.config insertOfKlineView].top)/ (CGRectGetHeight(self.volView.frame) - ([self.volView.config insertOfKlineView].top + [self.volView.config insertOfKlineView].bottom))) + self.volView.currentExtremeValue.minValue;
+        double currentNum = (self.volView.currentExtremeValue.maxValue - self.volView.currentExtremeValue.minValue) * (1.0 - (touchY - [self.volView.config insetsOfKlineView].top)/ (CGRectGetHeight(self.volView.frame) - ([self.volView.config insetsOfKlineView].top + [self.volView.config insetsOfKlineView].bottom))) + self.volView.currentExtremeValue.minValue;
         
         if (currentNum < self.volView.currentExtremeValue.minValue) {
             currentNum = self.volView.currentExtremeValue.minValue;

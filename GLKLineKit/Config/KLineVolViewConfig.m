@@ -16,7 +16,7 @@
  
  @return 内边距
  */
-- (UIEdgeInsets)insertOfKlineView {
+- (UIEdgeInsets)insetsOfKlineView {
     
     CGFloat defaultBorderWidth = [self borderWidth] + 1.0f;
     
