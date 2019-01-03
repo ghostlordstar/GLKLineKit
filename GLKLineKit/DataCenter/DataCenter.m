@@ -169,12 +169,12 @@ static DataCenter *_center;
         
         // 重新计算所有指标
         [self p_prepareAllDataFromIndex:0];
-        
-        // 通知所有代理
-        for (id delegate in self.delegateContainer) {
-            if (delegate && [delegate respondsToSelector:@selector(dataCenter:didReload:)]) {
-                [delegate dataCenter:self didReload:self.klineModelArray];
-            }
+    }
+    
+    // 通知所有代理
+    for (id delegate in self.delegateContainer) {
+        if (delegate && [delegate respondsToSelector:@selector(dataCenter:didReload:)]) {
+            [delegate dataCenter:self didReload:self.klineModelArray];
         }
     }
 }

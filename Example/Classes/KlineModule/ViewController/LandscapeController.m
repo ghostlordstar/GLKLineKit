@@ -72,10 +72,11 @@ static NSString *const indicatorListView_cell_id_1 = @"indicatorListView_cell_id
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)prefersStatusBarHidden {
-    return YES;
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
-
 
 #pragma mark - 控件事件 ---
 
@@ -130,7 +131,7 @@ static NSString *const indicatorListView_cell_id_1 = @"indicatorListView_cell_id
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
-    self.navigationController.navigationBarHidden = YES;
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)p_setUpUI {

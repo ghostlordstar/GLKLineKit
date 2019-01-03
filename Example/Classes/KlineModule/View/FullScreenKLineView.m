@@ -309,7 +309,7 @@
     }
     
     CGFloat touchY = pointAtSuperView.y;
-//    NSLog(@"point At superView = %@",NSStringFromCGPoint(pointAtSuperView));
+    //    NSLog(@"point At superView = %@",NSStringFromCGPoint(pointAtSuperView));
     // 修正十字线水平文字边界
     if (touchY < 10.0f) {
         self.horizontalTextView.frame = CGRectMake(0, 0, self.frame.size.width, 20.0f);
@@ -473,7 +473,7 @@
                 [self.kLineMainView removeAllDrawLogic];
                 [self.kLineMainView addDrawLogic:[[KLineTimeDrawLogic alloc] initWithDrawLogicIdentifier:@"main_time"]];
                 [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"main_bg"]];
-
+                
             }
                 break;
                 
@@ -488,12 +488,12 @@
                 [timeMA setMa10Hiden:YES];
                 [self.kLineMainView addDrawLogic:timeMA];
                 [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"main_bg"]];
-
+                
                 
             }
                 break;
                 
-                case KLineMainViewTypeKLineWithBOLL: // K线+BOLL
+            case KLineMainViewTypeKLineWithBOLL: // K线+BOLL
             {
                 [self.kLineMainView removeAllDrawLogic];
                 [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:@"main_bg"]];
@@ -511,7 +511,7 @@
 
 /**
  切换附图样式
-
+ 
  @param type 切换到的样式
  KLineAssistantViewTypeVol = 1,      // 成交量
  KLineAssistantViewTypeVolWithMA,    // 成交量包含MA
@@ -714,7 +714,7 @@
 - (DetailDataView *)detailView {
     if (!_detailView) {
         _detailView = [[DetailDataView alloc] initWithFrame:CGRectMake(0, 20.0f, 150.0f, 0.0f)];
-//        _detailView.textColor = KColorTitle_333;
+        //        _detailView.textColor = KColorTitle_333;
     }
     return _detailView;
 }
