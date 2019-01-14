@@ -8,8 +8,8 @@
 		2.2 可以像调整图层一样调整指标组合
 ## 预览：	
 
-![竖屏预览](http://o8prfm9ji.bkt.clouddn.com/KLineKit.gif)
-![横屏预览](http://o8prfm9ji.bkt.clouddn.com/KLineKit_Land.gif)
+![竖屏预览](https://github.com/ghostlordstar/PicRepo/blob/master/DemoShowImg/kline/kline_Demo_portrait_git_001.gif?raw=true)
+![横屏预览](https://github.com/ghostlordstar/PicRepo/blob/master/DemoShowImg/kline/kline_Demo_landscape_git_001.gif?raw=true)
 ## 备注：
 	1.当前未完成(十字线和详情浮层实现比较乱，需要封装)
 	2.框架结构未整理
@@ -22,7 +22,16 @@
 - [ ] 将指标和K线整合到一张View中，以解决跨界面捏合手势和时间显示重合问题
 - [x] 优化捏合手势操作
 
-## 欢迎交流。欢迎提Issues和Star，也希望看到你们的Pull requests👏 
+# ChangeLog
+>* 20190114_21:29:
+	1.修改十字线横轴向下划超出显示区域的问题
+	2.删除冗余文件
+	3.修复七牛图床失效问题
 
+
+
+##  ✊欢迎交流。欢迎提Issues和Star，也希望看到你们的Pull requests！
+
+----
 1. QQ群:901786039
-<img src="http://o8prfm9ji.bkt.clouddn.com/GLKitQQGroupSQ.png"  height="370" width="270">
+<img src="https://github.com/ghostlordstar/PicRepo/blob/master/DemoShowImg/kline/kline_qqGroup_qrcode.jpeg?raw=true"  height="370" width="270">
