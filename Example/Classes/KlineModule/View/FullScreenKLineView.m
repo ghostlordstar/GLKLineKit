@@ -317,8 +317,7 @@
         
     }else if(touchY > self.frame.size.height - 10.0f) {
         self.horizontalTextView.frame = CGRectMake(0, self.frame.size.height - 20.0f, self.frame.size.width, 20.0f);
-        self.horizontalLineView.frame = CGRectMake(0, (touchY - 0.5f) >=0 ? (touchY - 0.5f) : 0, self.frame.size.width, 1.0);
-        
+        self.horizontalLineView.frame = CGRectMake(0, (touchY - 0.5f) <= (self.frame.size.height - 1.5f)? (touchY - 0.5f) : self.frame.size.height - 1.5f, self.frame.size.width, 1.0);
     }else if(touchY >= (CGRectGetMaxY(self.kLineMainView.frame) - 10.0f) && touchY <= CGRectGetMaxY(self.kLineMainView.frame)) {
         
         self.horizontalTextView.frame = CGRectMake(0, CGRectGetMaxY(self.kLineMainView.frame) - 20.0f, self.frame.size.width, 20.0f);

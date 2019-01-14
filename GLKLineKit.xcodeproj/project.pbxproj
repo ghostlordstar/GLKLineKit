@@ -61,7 +61,6 @@
 		5D4CF057216DDDE0009D5602 /* NSString+GLDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF04D216DDDE0009D5602 /* NSString+GLDate.m */; };
 		5D4CF058216DDDE0009D5602 /* UIView+CenterLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF04F216DDDE0009D5602 /* UIView+CenterLoading.m */; };
 		5D4CF059216DDDE0009D5602 /* NSObject+DrawText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF053216DDDE0009D5602 /* NSObject+DrawText.m */; };
-		5D4CF05A216DDDE0009D5602 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CF055216DDDE0009D5602 /* UIColor+Hex.m */; };
 		5D5493BC2180927F00FD024F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D5493B92180916300FD024F /* Localizable.strings */; };
 		5D5493BD2180929100FD024F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D5493B62180914100FD024F /* Localizable.strings */; };
 		5DD9A3B22181F903002CF47D /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD9A3B12181F903002CF47D /* BaseView.m */; };
@@ -205,8 +204,6 @@
 		5D4CF050216DDDE0009D5602 /* UIView+CenterLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CenterLoading.h"; sourceTree = "<group>"; };
 		5D4CF052216DDDE0009D5602 /* NSObject+DrawText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DrawText.h"; sourceTree = "<group>"; };
 		5D4CF053216DDDE0009D5602 /* NSObject+DrawText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DrawText.m"; sourceTree = "<group>"; };
-		5D4CF055216DDDE0009D5602 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
-		5D4CF056216DDDE0009D5602 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		5D4CF05C216DDFEF009D5602 /* ExamplePubliEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamplePubliEnum.h; sourceTree = "<group>"; };
 		5D4CF05D216DDFEF009D5602 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5D4CF05E216DE021009D5602 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -612,7 +609,6 @@
 				5D16387821709E56007C81CB /* UIFont */,
 				5D4CF04B216DDDE0009D5602 /* Date */,
 				5D4CF051216DDDE0009D5602 /* NSObject+Draw */,
-				5D4CF054216DDDE0009D5602 /* UIColor */,
 				5D4CF04E216DDDE0009D5602 /* UIView */,
 			);
 			path = Categories;
@@ -643,15 +639,6 @@
 				5D4CF053216DDDE0009D5602 /* NSObject+DrawText.m */,
 			);
 			path = "NSObject+Draw";
-			sourceTree = "<group>";
-		};
-		5D4CF054216DDDE0009D5602 /* UIColor */ = {
-			isa = PBXGroup;
-			children = (
-				5D4CF056216DDDE0009D5602 /* UIColor+Hex.h */,
-				5D4CF055216DDDE0009D5602 /* UIColor+Hex.m */,
-			);
-			path = UIColor;
 			sourceTree = "<group>";
 		};
 		5D4CF05B216DDFEF009D5602 /* Macro */ = {
@@ -849,7 +836,6 @@
 				5D4CF02C216DD738009D5602 /* NSNumber+StringFormatter.m in Sources */,
 				5D4CF02A216DD738009D5602 /* KLineVolViewConfig.m in Sources */,
 				5D4CF016216DD738009D5602 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
-				5D4CF05A216DDDE0009D5602 /* UIColor+Hex.m in Sources */,
 				5D4CF021216DD738009D5602 /* DetailDataView.m in Sources */,
 				5D4CF037216DD738009D5602 /* KLineMACDDrawLogic.m in Sources */,
 				5D4CF01F216DD738009D5602 /* MASViewAttribute.m in Sources */,
