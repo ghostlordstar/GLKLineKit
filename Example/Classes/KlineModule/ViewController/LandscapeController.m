@@ -379,7 +379,7 @@ static NSString *const indicatorListView_cell_id_1 = @"indicatorListView_cell_id
 - (FullScreenKLineView *)fullKLineView {
     
     if (!_fullKLineView) {
-        _fullKLineView = [[FullScreenKLineView alloc] initWithFrame:CGRectMake(0.0f, 50.0f, SCREEN_HEIGHT - 50.0f, SCREEN_WIDTH - 100.0f)];
+        _fullKLineView = [[FullScreenKLineView alloc] initWithFrame:CGRectMake(NavMustAdd, 50.0f, SCREEN_HEIGHT - 50.0f - NavMustAdd, SCREEN_WIDTH - 100.0f)];
     }
     return _fullKLineView;
 }
