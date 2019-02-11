@@ -34,8 +34,8 @@
 
 @implementation KLineDrawLogic
 
-- (instancetype)initWithDrawLogicIdentifier:(NSString *)identifier {
-    if (self = [super initWithDrawLogicIdentifier:identifier]) {
+- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier {
+    if (self = [super initWithRect:rect drawLogicIdentifier:identifier]) {
         [self p_initialization];
     }
     return self;
@@ -45,6 +45,12 @@
  根据上下文和绘制区域绘制图形
  */
 - (void)drawWithCGContext:(CGContextRef)ctx rect:(CGRect)rect indexPathForVisibleRange:(CGPoint)visibleRange scale:(CGFloat)scale otherArguments:(NSDictionary *)arguments {
+    NSLog(@"drawRect [%s] :%@",__FILE__,NSStringFromCGRect(rect));
+    
+    if (CGRectEqualToRect(self.logicRect, CGRectZero)) {
+        self.logicRect = UIEdgeInsetsInsetRect(rect, [self.config insertOfKlineView]);
+    }
+    
     
     if ([DataCenter shareCenter].klineModelArray.count <= 0) {
         return;
@@ -99,15 +105,15 @@
         CGFloat centerX = drawX + (self.perItemWidth / 2.0);
         
         // 实体线
-        CGFloat openY = rect.size.height * (1.0f - (tempModel.open - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
-        CGFloat closeY = rect.size.height * (1.0f - (tempModel.close - self.extremeValue.minValue) / diffValue) + rect.origin.y;
+        CGFloat openY = self.logicRect.size.height * (1.0f - (tempModel.open - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
+        CGFloat closeY = self.logicRect.size.height * (1.0f - (tempModel.close - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y;
         if (ABS(closeY - openY) <= 1.0f) {
             closeY = openY + 1.0f;
         }
         
         // 影线
-        CGFloat highY = rect.size.height * (1.0f - (tempModel.high - self.extremeValue.minValue) / diffValue) + rect.origin.y;
-        CGFloat lowY = rect.size.height * (1.0f - (tempModel.low - self.extremeValue.minValue) / diffValue) + rect.origin.y;
+        CGFloat highY = self.logicRect.size.height * (1.0f - (tempModel.high - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y;
+        CGFloat lowY = self.logicRect.size.height * (1.0f - (tempModel.low - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y;
         
         // 绘制实体线
         CGContextSetLineWidth(ctx, self.entityLineWidth);

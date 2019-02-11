@@ -55,8 +55,8 @@
 
 @implementation KLineBOLLDrawLogic
 
-- (instancetype)initWithDrawLogicIdentifier:(NSString *)identifier {
-    if (self = [super initWithDrawLogicIdentifier:identifier]) {
+- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier {
+    if (self = [super initWithRect:rect drawLogicIdentifier:identifier]) {
         [self p_initialization];
     }
     return self;
@@ -78,7 +78,8 @@
  根据上下文和绘制区域绘制图形
  */
 - (void)drawWithCGContext:(CGContextRef)ctx rect:(CGRect)rect indexPathForVisibleRange:(CGPoint)visibleRange scale:(CGFloat)scale otherArguments:(NSDictionary *)arguments {
-    
+    NSLog(@"drawRect [%s] :%@",__FILE__,NSStringFromCGRect(rect));
+
     if ([DataCenter shareCenter].klineModelArray.count <= 0) {
         return;
     }

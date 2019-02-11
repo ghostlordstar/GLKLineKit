@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 */
 @property (copy, nonatomic) NSString *drawLogicIdentifier;
 
+/* 绘制的区域 */
+@property (assign, nonatomic) CGRect logicRect;
+
 /**
  配置类对象
  如果是自定义的配置类，一定要传，
@@ -33,13 +36,14 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  初始化方法
 
+ @param rect 绘制的区域
  @param identifier 绘图算法的标识符
  */
-- (instancetype)initWithDrawLogicIdentifier:(NSString *)identifier NS_DESIGNATED_INITIALIZER NS_REQUIRES_SUPER;
+- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier NS_DESIGNATED_INITIALIZER NS_REQUIRES_SUPER;
 
 /**
  禁用此初始化方法
- 请使用 - initWithDrawLogicIdentifier:方法
+ 请使用 - initWithRect:drawLogicIdentifier:方法
  */
 - (instancetype)init NS_UNAVAILABLE;
 @end

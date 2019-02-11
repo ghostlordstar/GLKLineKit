@@ -8,14 +8,162 @@
 
 #import "NewSimpleKlineView.h"
 
+@interface NewSimpleKlineView ()
+
+/** mainViewConfig */
+@property (strong, nonatomic) KLineViewConfig *mainViewConfig;
+
+/** VolViewConfig */
+@property (strong, nonatomic) KLineVolViewConfig *volViewConfig;
+
+/** 当前的主图样式 */
+@property (assign, nonatomic) KLineMainViewType mainViewType;
+
+@end
+
 @implementation NewSimpleKlineView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame {
+    
+    if (self = [super initWithFrame:frame]) {
+        
+        [self p_initialize];
+        
+        [self p_setUpUI];
+    }
+    return self;
 }
-*/
+
+
+#pragma mark - 初始化等方法 -------
+
+- (void)p_initialize {
+    
+    self.backgroundColor = KColorBackGround;
+    
+    // 默认显示K线样式
+    self.mainViewType = KLineMainViewTypeKLineWithMA;
+//    // 添加代理
+//    [self.kLineMainView.dataLogic addDelegate:self];
+//    [self.dataCenter addDelegate:self];
+}
+
+- (void)p_setUpUI {
+    
+    [self addSubview:self.kLineMainView];
+    
+    [self p_layout];
+}
+
+- (void)p_layout {
+    
+    [self.kLineMainView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.mas_left);
+        make.right.equalTo(self.mas_right);
+        make.top.equalTo(self.mas_top);
+        make.bottom.equalTo(self.mas_bottom);
+    }];
+    
+}
+
+#pragma mark - 公共方法 -----
+
+/**
+ 切换主图样式
+ */
+- (void)switchKLineMainViewToType:(KLineMainViewType)type {
+    
+    if (type && type != self.mainViewType) {
+        self.mainViewType = type;
+        
+        switch (type) {
+                
+            case KLineMainViewTypeKLine:    // 只有K线
+            {
+                [self.kLineMainView removeAllDrawLogic];
+                
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_bg"]];
+                [self.kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"k_line"]];
+            }
+                break;
+                
+                
+            case KLineMainViewTypeKLineWithMA:  // K线+MA
+            {// 主图切为分时蜡烛图
+                
+                [self.kLineMainView removeAllDrawLogic];
+                
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_bg"]];
+                [self.kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"k_line"]];
+                [self.kLineMainView addDrawLogic:[[KLineMADrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_ma_5_10_30"]];
+            }
+                break;
+                
+            case  KLineMainViewTypeTimeLine:    // 只有分时线
+            {
+                [self.kLineMainView removeAllDrawLogic];
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_bg"]];
+                [self.kLineMainView addDrawLogic:[[KLineTimeDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_time"]];
+            }
+                break;
+                
+                
+            case KLineMainViewTypeTimeLineWithMA:   // 分时线+MA
+            {  // 主图样式切换为分时图
+                
+                [self.kLineMainView removeAllDrawLogic];
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_bg"]];
+                [self.kLineMainView addDrawLogic:[[KLineTimeDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_time"]];
+                KLineMADrawLogic *timeMA = [[KLineMADrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_time_ma_30"];
+                [timeMA setMa5Hiden:YES];
+                [timeMA setMa10Hiden:YES];
+                [self.kLineMainView addDrawLogic:timeMA];
+                
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
+
+#pragma mark - 懒加载 ---------
+
+- (KLineView *)kLineMainView {
+    if (!_kLineMainView) {
+        _kLineMainView = [[KLineView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, (self.frame.size.height - 20.0f) * 7.0/10.0) config:self.mainViewConfig];
+        _kLineMainView.backgroundColor = KColorBackGround;
+        // 添加绘图算法
+        [_kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"k_line"]];
+        [_kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_bg"]];
+        [_kLineMainView addDrawLogic:[[KLineMADrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_ma_5_10_30"]];
+        [_kLineMainView addDrawLogic:[[KLineVolDrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol"]];
+        [_kLineMainView addDrawLogic:[[KLineVolMADrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.height - 80.0f, 80.0f) drawLogicIdentifier:@"vol_ma"]];
+    }
+    return _kLineMainView;
+}
+
+- (KLineViewConfig *)mainViewConfig {
+    if (!_mainViewConfig) {
+        _mainViewConfig = [[KLineViewConfig alloc] init];
+    }
+    return _mainViewConfig;
+}
+
+- (KLineVolViewConfig *)volViewConfig {
+    if (!_volViewConfig) {
+        _volViewConfig = [[KLineVolViewConfig alloc] init];
+    }
+    return _volViewConfig;
+}
+
+- (DataCenter *)dataCenter {
+    
+    if (!_dataCenter) {
+        _dataCenter = [self.kLineMainView dataCenter];
+    }
+    return _dataCenter;
+}
 
 @end

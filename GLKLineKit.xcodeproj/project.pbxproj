@@ -64,6 +64,7 @@
 		5D5493BC2180927F00FD024F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D5493B92180916300FD024F /* Localizable.strings */; };
 		5D5493BD2180929100FD024F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D5493B62180914100FD024F /* Localizable.strings */; };
 		5DD9A3B22181F903002CF47D /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD9A3B12181F903002CF47D /* BaseView.m */; };
+		F8A0033122117FF9005E2A9F /* NewSimpleKlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A0033022117FF9005E2A9F /* NewSimpleKlineView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +213,8 @@
 		5DAA4E7D216DE867003A3250 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5DD9A3B02181F903002CF47D /* BaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
 		5DD9A3B12181F903002CF47D /* BaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
+		F8A0032F22117FF9005E2A9F /* NewSimpleKlineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewSimpleKlineView.h; sourceTree = "<group>"; };
+		F8A0033022117FF9005E2A9F /* NewSimpleKlineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewSimpleKlineView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +348,8 @@
 				5D4CEF92216DD738009D5602 /* SimpleKLineVolView.m */,
 				5D4CEF95216DD738009D5602 /* FullScreenKLineView.h */,
 				5D4CEF93216DD738009D5602 /* FullScreenKLineView.m */,
+				F8A0032F22117FF9005E2A9F /* NewSimpleKlineView.h */,
+				F8A0033022117FF9005E2A9F /* NewSimpleKlineView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -865,6 +870,7 @@
 				5D4CF01C216DD738009D5602 /* View+MASAdditions.m in Sources */,
 				5D4CF059216DDDE0009D5602 /* NSObject+DrawText.m in Sources */,
 				5D4CF035216DD738009D5602 /* BaseDrawLogic.m in Sources */,
+				F8A0033122117FF9005E2A9F /* NewSimpleKlineView.m in Sources */,
 				5D4CF018216DD738009D5602 /* MASCompositeConstraint.m in Sources */,
 				5D4CF022216DD738009D5602 /* VerticalView.m in Sources */,
 				5D4CF02E216DD738009D5602 /* NSValue+GLExtremeValue.m in Sources */,

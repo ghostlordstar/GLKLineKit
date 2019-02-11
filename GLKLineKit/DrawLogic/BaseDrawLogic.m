@@ -13,12 +13,14 @@
 /**
  初始化方法
  
+ @param rect 绘制的区域
  @param identifier 绘图算法的标识符
  */
-- (instancetype)initWithDrawLogicIdentifier:(NSString *)identifier NS_REQUIRES_SUPER NS_REQUIRES_SUPER {
+- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier NS_REQUIRES_SUPER NS_REQUIRES_SUPER {
     if(self == [super init]) {
         if (identifier && [identifier isKindOfClass:[NSString class]] && identifier.length > 0) {
             _drawLogicIdentifier = identifier;
+            _logicRect = rect;
         }
     }
     return self;

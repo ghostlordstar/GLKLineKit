@@ -7,7 +7,8 @@
 //
 
 #import "PortraitTestController.h"
-#import "SimpleKLineVolView.h"
+//#import "SimpleKLineVolView.h"
+#import "NewSimpleKlineView.h"
 #import "KLineDataProcess.h"
 
 @interface PortraitTestController ()
@@ -15,7 +16,7 @@
 /**
  简单行情视图
  */
-@property (strong, nonatomic) SimpleKLineVolView *simpleKLineView;
+@property (strong, nonatomic) NewSimpleKlineView *simpleKLineView;
 
 /**
  分时切换按钮
@@ -111,9 +112,9 @@
 
 #pragma mark - 懒加载 ----
 
-- (SimpleKLineVolView *)simpleKLineView {
+- (NewSimpleKlineView *)simpleKLineView {
     if (!_simpleKLineView) {
-        _simpleKLineView = [[SimpleKLineVolView alloc] initWithFrame:CGRectMake(10.0f, 100.0, SCREEN_WIDTH - 20.0f, 300.0f)];
+        _simpleKLineView = [[NewSimpleKlineView alloc] initWithFrame:CGRectMake(10.0f, 100.0, SCREEN_WIDTH - 20.0f, 300.0f)];
         [_simpleKLineView switchKLineMainViewToType:KLineMainViewTypeKLine];
     }
     return _simpleKLineView;

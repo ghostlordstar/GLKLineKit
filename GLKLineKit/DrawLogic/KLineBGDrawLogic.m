@@ -25,8 +25,8 @@
 
 @implementation KLineBGDrawLogic
 
-- (instancetype)initWithDrawLogicIdentifier:(NSString *)identifier {
-    if (self = [super initWithDrawLogicIdentifier:identifier]) {
+- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier {
+    if (self = [super initWithRect:rect drawLogicIdentifier:identifier]) {
         [self p_initialization];
     }
     return self;
@@ -41,6 +41,8 @@
  */
 - (void)drawWithCGContext:(CGContextRef)ctx rect:(CGRect)rect indexPathForVisibleRange:(CGPoint)visibleRange scale:(CGFloat)scale otherArguments:(NSDictionary *)arguments {
 
+    NSLog(@"drawRect [%s] :%@",__FILE__,NSStringFromCGRect(rect));
+    
     // 根据传入的参数更新最大最小值
     [self p_updateExtremeValueWithArguments:arguments];
     

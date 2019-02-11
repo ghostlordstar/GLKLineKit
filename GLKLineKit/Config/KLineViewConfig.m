@@ -19,7 +19,7 @@
     
     CGFloat defaultBorderWidth = [self borderWidth] + 1.0f;
     
-    return UIEdgeInsetsMake(defaultBorderWidth + 17.0f, defaultBorderWidth, defaultBorderWidth, defaultBorderWidth);
+    return UIEdgeInsetsMake(defaultBorderWidth + 20.0f, defaultBorderWidth, defaultBorderWidth, defaultBorderWidth);
 }
 
 /**

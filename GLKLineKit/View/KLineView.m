@@ -585,7 +585,7 @@
 - (void)p_addDefaultDrawLogic {
     
     // 背景绘图算法
-    KLineBGDrawLogic *tempKlineBGDrawLogic = [[KLineBGDrawLogic alloc] initWithDrawLogicIdentifier:klineBGDrawLogicDefaultIdentifier];
+    KLineBGDrawLogic *tempKlineBGDrawLogic = [[KLineBGDrawLogic alloc] initWithRect:self.bounds drawLogicIdentifier: klineBGDrawLogicDefaultIdentifier];
     tempKlineBGDrawLogic.config = self.config;
     [self addDrawLogic:tempKlineBGDrawLogic];
     
