@@ -604,7 +604,7 @@
         }
         
         // 处理Rect
-//        newRect = CGRectMake(rect.origin.x + [self.config insertOfKlineView].left, rect.origin.y + [self.config insertOfKlineView].top, rect.size.width - ([self.config insertOfKlineView].left + [self.config insertOfKlineView].right), rect.size.height - ([self.config insertOfKlineView].top + [self.config insertOfKlineView].bottom));
+//        newRect = CGRectMake(rect.origin.x + [self.config insetsOfKlineView].left, rect.origin.y + [self.config insetsOfKlineView].top, rect.size.width - ([self.config insetsOfKlineView].left + [self.config insetsOfKlineView].right), rect.size.height - ([self.config insetsOfKlineView].top + [self.config insetsOfKlineView].bottom));
     }
     
     // 绘制算法
@@ -635,7 +635,7 @@
         if(CGPointEqualToPoint(_visibleRange, CGPointZero)) {
             [self visibleRange];
         }else {
-            self.visibleRange = CGPointMake(self.visibleRange.x, self.visibleRange.x + (self.frame.size.width - (self.config.insertOfKlineView.left + self.config.insertOfKlineView.right)) / self.perItemWidth);
+            self.visibleRange = CGPointMake(self.visibleRange.x, self.visibleRange.x + (self.frame.size.width - (self.config.insetsOfKlineView.left + self.config.insetsOfKlineView.right)) / self.perItemWidth);
         }
         
         [self.dataLogic updateVisibleRange:self.visibleRange];
@@ -878,7 +878,7 @@
 
 - (CGFloat)maxItemCount {
     
-    _maxItemCount = (self.frame.size.width - ([self.config insertOfKlineView].left + [self.config insertOfKlineView].right)) / self.perItemWidth;
+    _maxItemCount = (self.frame.size.width - ([self.config insetsOfKlineView].left + [self.config insetsOfKlineView].right)) / self.perItemWidth;
     
     return _maxItemCount;
 }
@@ -923,7 +923,7 @@
 - (CGPoint)visibleRange {
     if (CGPointEqualToPoint(CGPointZero, _visibleRange) && self.dataCenter.klineModelArray.count >= 1) {
         
-        CGFloat itemCount = (self.frame.size.width - (self.config.insertOfKlineView.left + self.config.insertOfKlineView.right)) / self.perItemWidth;
+        CGFloat itemCount = (self.frame.size.width - (self.config.insetsOfKlineView.left + self.config.insetsOfKlineView.right)) / self.perItemWidth;
         
         _visibleRange = CGPointMake(self.dataCenter.klineModelArray.count - itemCount, self.dataCenter.klineModelArray.count);
     }

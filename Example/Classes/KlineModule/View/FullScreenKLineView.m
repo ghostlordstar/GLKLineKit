@@ -317,8 +317,7 @@
         
     }else if(touchY > self.frame.size.height - 10.0f) {
         self.horizontalTextView.frame = CGRectMake(0, self.frame.size.height - 20.0f, self.frame.size.width, 20.0f);
-        self.horizontalLineView.frame = CGRectMake(0, (touchY - 0.5f) >=0 ? (touchY - 0.5f) : 0, self.frame.size.width, 1.0);
-        
+        self.horizontalLineView.frame = CGRectMake(0, (touchY - 0.5f) <= (self.frame.size.height - 1.5f)? (touchY - 0.5f) : self.frame.size.height - 1.5f, self.frame.size.width, 1.0);
     }else if(touchY >= (CGRectGetMaxY(self.kLineMainView.frame) - 10.0f) && touchY <= CGRectGetMaxY(self.kLineMainView.frame)) {
         
         self.horizontalTextView.frame = CGRectMake(0, CGRectGetMaxY(self.kLineMainView.frame) - 20.0f, self.frame.size.width, 20.0f);
@@ -336,32 +335,33 @@
         }
     }
     
-//    if (touchY <= CGRectGetMaxY(self.kLineMainView.frame) && touchY >= 0) {
-//
-//        double currentNum = (self.kLineMainView.currentExtremeValue.maxValue - self.kLineMainView.currentExtremeValue.minValue) * (1.0 - (touchY - [self.kLineMainView.config insertOfKlineView].top) / (CGRectGetHeight(self.kLineMainView.frame) - ([self.kLineMainView.config insertOfKlineView].top + [self.kLineMainView.config insertOfKlineView].bottom))) + self.kLineMainView.currentExtremeValue.minValue;
-//
-//        if (currentNum < self.kLineMainView.currentExtremeValue.minValue) {
-//            currentNum = self.kLineMainView.currentExtremeValue.minValue;
-//        }else if(currentNum > self.kLineMainView.currentExtremeValue.maxValue) {
-//            currentNum = self.kLineMainView.currentExtremeValue.maxValue;
-//        }
-//
-//        NSString *currentNumString = [@(currentNum) gl_numberToStringWithDecimalsLimit:[DataCenter shareCenter].decimalsLimit];
-//        [self.horizontalTextView updateText:currentNumString];
-//    }else if(touchY >= CGRectGetMinY(self.volView.frame) && touchY <= CGRectGetMaxY(self.volView.frame)) {
-//    
-//        touchY = touchY - CGRectGetMinY(self.volView.frame);
-//        double currentNum = (self.volView.currentExtremeValue.maxValue - self.volView.currentExtremeValue.minValue) * (1.0 - (touchY - [self.volView.config insertOfKlineView].top)/ (CGRectGetHeight(self.volView.frame) - ([self.volView.config insertOfKlineView].top + [self.volView.config insertOfKlineView].bottom))) + self.volView.currentExtremeValue.minValue;
-//        
-//        if (currentNum < self.volView.currentExtremeValue.minValue) {
-//            currentNum = self.volView.currentExtremeValue.minValue;
-//        }else if(currentNum > self.volView.currentExtremeValue.maxValue) {
-//            currentNum = self.volView.currentExtremeValue.maxValue;
-//        }
-//        
-//        NSString *currentNumString = [NSString stringWithFormat:@"%f",currentNum];
-//        [self.horizontalTextView updateText:currentNumString];
-//    }
+    // if (touchY <= CGRectGetMaxY(self.kLineMainView.frame) && touchY >= 0) {
+        
+    //     double currentNum = (self.kLineMainView.currentExtremeValue.maxValue - self.kLineMainView.currentExtremeValue.minValue) * (1.0 - (touchY - [self.kLineMainView.config insetsOfKlineView].top) / (CGRectGetHeight(self.kLineMainView.frame) - ([self.kLineMainView.config insetsOfKlineView].top + [self.kLineMainView.config insetsOfKlineView].bottom))) + self.kLineMainView.currentExtremeValue.minValue;
+        
+    //     if (currentNum < self.kLineMainView.currentExtremeValue.minValue) {
+    //         currentNum = self.kLineMainView.currentExtremeValue.minValue;
+    //     }else if(currentNum > self.kLineMainView.currentExtremeValue.maxValue) {
+    //         currentNum = self.kLineMainView.currentExtremeValue.maxValue;
+    //     }
+        
+    //     NSString *currentNumString = [@(currentNum) gl_numberToStringWithDecimalsLimit:[DataCenter shareCenter].decimalsLimit];
+    //     [self.horizontalTextView updateText:currentNumString];
+    // }else if(touchY >= CGRectGetMinY(self.volView.frame) && touchY <= CGRectGetMaxY(self.volView.frame)) {
+        
+    //     touchY = touchY - CGRectGetMinY(self.volView.frame);
+    //     double currentNum = (self.volView.currentExtremeValue.maxValue - self.volView.currentExtremeValue.minValue) * (1.0 - (touchY - [self.volView.config insetsOfKlineView].top)/ (CGRectGetHeight(self.volView.frame) - ([self.volView.config insetsOfKlineView].top + [self.volView.config insetsOfKlineView].bottom))) + self.volView.currentExtremeValue.minValue;
+        
+    //     if (currentNum < self.volView.currentExtremeValue.minValue) {
+    //         currentNum = self.volView.currentExtremeValue.minValue;
+    //     }else if(currentNum > self.volView.currentExtremeValue.maxValue) {
+    //         currentNum = self.volView.currentExtremeValue.maxValue;
+    //     }
+        
+    //     NSString *currentNumString = [NSString stringWithFormat:@"%f",currentNum];
+    //     [self.horizontalTextView updateText:currentNumString];
+    // }
+
     
     CGSize horizontalTextSize = [self.horizontalTextView getCurrentTextSize];
     

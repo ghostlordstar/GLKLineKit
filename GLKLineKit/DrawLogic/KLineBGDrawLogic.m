@@ -39,7 +39,7 @@
 - (void)updateConfig:(NSObject<KLineViewProtocol> *)config {
     [super updateConfig:config];
     
-    self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insertOfKlineView]);
+    self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insetsOfKlineView]);
 }
 
 
@@ -51,7 +51,7 @@
     NSLog(@"drawRect [%s] :%@",__FILE__,NSStringFromCGRect(rect));
     
     if (CGRectEqualToRect(self.logicRect, CGRectZero)) {
-        self.logicRect = UIEdgeInsetsInsetRect(rect, [self.config insertOfKlineView]);
+        self.logicRect = UIEdgeInsetsInsetRect(rect, [self.config insetsOfKlineView]);
     }
     // 根据传入的参数更新最大最小值
     [self p_updateExtremeValueWithArguments:arguments];

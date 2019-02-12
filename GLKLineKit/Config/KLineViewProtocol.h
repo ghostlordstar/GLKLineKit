@@ -17,7 +17,7 @@
  
  @return 内边距
  */
-- (UIEdgeInsets)insertOfKlineView;
+- (UIEdgeInsets)insetsOfKlineView;
 
 /**
  是否绘制边框

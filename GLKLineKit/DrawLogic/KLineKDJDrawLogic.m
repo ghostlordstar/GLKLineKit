@@ -77,7 +77,7 @@
 - (void)updateConfig:(NSObject<KLineViewProtocol> *)config {
     [super updateConfig:config];
     
-    self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insertOfKlineView]);
+    self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insetsOfKlineView]);
 }
 
 /**
@@ -87,7 +87,7 @@
     NSLog(@"drawRect [%s] :%@",__FILE__,NSStringFromCGRect(rect));
 
     if (CGRectEqualToRect(self.logicRect, CGRectZero)) {
-        self.logicRect = UIEdgeInsetsInsetRect(rect, [self.config insertOfKlineView]);
+        self.logicRect = UIEdgeInsetsInsetRect(rect, [self.config insetsOfKlineView]);
     }
     
     if ([DataCenter shareCenter].klineModelArray.count <= 0) {
