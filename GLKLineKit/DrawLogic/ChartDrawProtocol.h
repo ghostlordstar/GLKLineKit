@@ -11,7 +11,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "KLineViewProtocol.h"
-#import "GLConstantDefinition.h"
+
+/* 更新最大最小值的block */
+typedef void (^UpdateExtremeValueBlock)(NSString *identifier, GraphType GraphType, double minValue, double maxValue);
+
 @protocol ChartDrawProtocol <NSObject>
 
 @required

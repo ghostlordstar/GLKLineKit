@@ -40,7 +40,7 @@
 /**
  绘图算法集合
  */
-@property (strong, nonatomic) NSMutableArray *drawLogicArray;
+@property (strong, nonatomic) NSMutableArray <BaseDrawLogic *>*drawLogicArray;
 
 /**
  当前显示的图的比例
@@ -85,8 +85,9 @@
 
 /**
  当前的最值
+ @{@(graphType):@(GLExtremeValue)}
  */
-@property (readwrite, assign, nonatomic) GLExtremeValue currentExtremeValue;
+@property (strong, nonatomic) NSMutableDictionary <NSNumber *,NSValue*>*currentExtremeValueDict;
 
 /**
  更新最大最小值的block
@@ -95,14 +96,9 @@
 
 /**
  各绘图算法的最大最小值
- {identifier:@(GLExtremeValue)}
+ {@(graphType):@{identifier:@(GLExtremeValue)}}
  */
 @property (strong, nonatomic) NSMutableDictionary *extremeValueDict;
-
-/**
- 是否主动清除所有绘图算法
- */
-@property (assign, nonatomic) BOOL isCustomClean;
 
 /**
  是否正在显示十字线
@@ -124,9 +120,7 @@
  */
 @property (assign, nonatomic) BOOL isFirstLoad;
 
-/**
- 十字线选中的model
- */
+/** 十字线选中的model */
 @property (strong, nonatomic) KLineModel *selectedModel;
 
 /** 平移手势 */
@@ -194,7 +188,7 @@
     // 按照绘图算法绘制
     for (BaseDrawLogic *drawLogic in self.drawLogicArray) {
         
-        [self drawWithLogic:drawLogic contentext:ctx rect:rect];
+        [self p_drawWithLogic:drawLogic contentext:ctx rect:rect];
     }
 }
 
@@ -232,20 +226,20 @@
  是否包含某个指定id的绘图算法
  
  @param identifier id
- @return 存在返回YES，不存在返回NO
+ @return 存在返回对应的图形类型，不存在返回0
  */
-- (BOOL)containsDrawLogicWithIdentifier:(NSString * _Nullable)identifier {
-    BOOL isContatin = NO;
+- (GraphType)containsDrawLogicWithIdentifier:(NSString * _Nullable)identifier {
+    GraphType result = 0;
     
     if(identifier && [identifier isKindOfClass:[NSString class]]) {
         for (BaseDrawLogic *tempDrawLogic in self.drawLogicArray) {
             if ([tempDrawLogic.drawLogicIdentifier isEqualToString:identifier]) {
-                isContatin = YES;
+                result = tempDrawLogic.graphType;
                 break;
             }
         }
     }
-    return isContatin;
+    return result;
 }
 
 
@@ -257,10 +251,10 @@
  */
 - (NSArray <BaseDrawLogic *>* _Nullable)addDrawLogic:(BaseDrawLogic<ChartDrawProtocol>*)logic {
     
-    if([logic isMemberOfClass:[KLineBGDrawLogic class]]) {
-        // 如果添加背景算法，就先把默认的移除掉
-        [self removeDrawLogicWithLogicId:klineBGDrawLogicDefaultIdentifier];
-    }
+//    if([logic isMemberOfClass:[KLineBGDrawLogic class]]) {
+//        // 如果添加背景算法，就先把默认的移除掉
+//        [self removeDrawLogicWithLogicId:klineBGDrawLogicDefaultIdentifier];
+//    }
     
     for (BaseDrawLogic *tempLogic in self.drawLogicArray) {
         if (tempLogic.drawLogicIdentifier && [tempLogic.drawLogicIdentifier isEqualToString:logic.drawLogicIdentifier]) {
@@ -268,7 +262,10 @@
         }
     }
     
-    logic.config = self.config;
+    if (!logic.config) {
+        [logic updateConfig:self.config];
+    }
+    
     [self.drawLogicArray addObject:logic];
     
     [self reDrawWithType:ReDrawTypeDefault];
@@ -286,8 +283,33 @@
     
     [self.drawLogicArray removeAllObjects];
     [self p_removeAllExtremeValues];
-    self.isCustomClean = YES;
     [self reDrawWithType:ReDrawTypeDefault];
+    return count;
+}
+
+/**
+ 清除某个图形类型的所有算法
+ 
+ @param graphType 图形类型
+ @return 清除的算法个数
+ */
+- (NSInteger)removeAllDrawLogicAtGraphType:(GraphType)graphType {
+    
+    NSInteger count = 0;
+    
+    if (graphType >= GraphTypeMain && graphType <= GraphTypeFull) {
+        for (int a = 0; a < self.drawLogicArray.count; a ++) {
+            BaseDrawLogic *tempDrawLogic = [self.drawLogicArray objectAtIndex:a];
+            if (tempDrawLogic.graphType == graphType) {
+                [self.drawLogicArray removeObject:tempDrawLogic];
+                count ++;
+            }
+        }
+    }else {
+        
+        count = [self removeAllDrawLogic];
+    }
+    
     return count;
 }
 
@@ -337,6 +359,20 @@
     [self reDrawWithType:ReDrawTypeDefault];
     
     return self.drawLogicArray;
+}
+
+/**
+ 获得某个类型图形整体的最值
+ 
+ @param graphType 图形类型
+ @return 指定类型图形整体的最值
+ */
+- (GLExtremeValue)getCurrentExtremeValueWithGraphType:(GraphType)graphType {
+    GLExtremeValue tempExtreme = GLExtremeValueZero;
+    
+    tempExtreme = [self.currentExtremeValueDict objectForKey:@(graphType)].gl_extremeValue;
+    
+    return tempExtreme;
 }
 
 /**
@@ -530,8 +566,6 @@
     self.currentScale = 1.0f;
     // 默认的一个K线的宽度为实体线的宽度与K线之间的间隙的和
     self.perItemWidth = ([self.config defaultEntityLineWidth] + [self.config klineGap]) * self.currentScale;
-    // 默认的最大最小值
-    self.currentExtremeValue = GLExtremeValueMake(0.0f, 0.0f);
     // 获得默认的显示区域
     [self visibleRange];
     // 对frame添加观察者
@@ -549,7 +583,7 @@
  @param ctx 绘图上下文
  @param rect 绘图的区域
  */
-- (void)drawWithLogic:(BaseDrawLogic *)drawLogic contentext:(CGContextRef)ctx rect:(CGRect)rect {
+- (void)p_drawWithLogic:(BaseDrawLogic *)drawLogic contentext:(CGContextRef)ctx rect:(CGRect)rect {
     
     NSDictionary *arguments = @{};
     CGRect newRect = rect;
@@ -558,23 +592,24 @@
     // 背景绘图算法传入附加参数和绘制的rect 进行特殊处理
     if ([drawLogic isMemberOfClass:[KLineBGDrawLogic class]]) {
         // 传入最大最小值
-        arguments = @{KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier]]};
+        arguments = @{KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]]};
         
     }else {  // 其他绘图算法默认传入附加参数和处理后的rect
         if (self.selectedModel) {
             // 传入更新最大最小值的block
-            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier]],KlineViewReticleSelectedModelKey:self.selectedModel};
+            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewReticleSelectedModelKey:self.selectedModel};
         }else {
             // 传入更新最大最小值的block
-            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier]]};
+            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]]};
         }
         
         // 处理Rect
-        newRect = CGRectMake(rect.origin.x + [self.config insertOfKlineView].left, rect.origin.y + [self.config insertOfKlineView].top, rect.size.width - ([self.config insertOfKlineView].left + [self.config insertOfKlineView].right), rect.size.height - ([self.config insertOfKlineView].top + [self.config insertOfKlineView].bottom));
+//        newRect = CGRectMake(rect.origin.x + [self.config insertOfKlineView].left, rect.origin.y + [self.config insertOfKlineView].top, rect.size.width - ([self.config insertOfKlineView].left + [self.config insertOfKlineView].right), rect.size.height - ([self.config insertOfKlineView].top + [self.config insertOfKlineView].bottom));
     }
     
     // 绘制算法
-    [drawLogic drawWithCGContext:ctx rect:newRect indexPathForVisibleRange:self.visibleRange scale:self.currentScale otherArguments:arguments];
+//    [drawLogic drawWithCGContext:ctx rect:newRect indexPathForVisibleRange:self.visibleRange scale:self.currentScale otherArguments:arguments];
+    [drawLogic drawWithCGContext:ctx rect:rect indexPathForVisibleRange:self.visibleRange scale:self.currentScale otherArguments:arguments];
 }
 
 
@@ -585,10 +620,9 @@
 - (void)p_addDefaultDrawLogic {
     
     // 背景绘图算法
-    KLineBGDrawLogic *tempKlineBGDrawLogic = [[KLineBGDrawLogic alloc] initWithRect:self.bounds drawLogicIdentifier: klineBGDrawLogicDefaultIdentifier];
-    tempKlineBGDrawLogic.config = self.config;
+    KLineBGDrawLogic *tempKlineBGDrawLogic = [[KLineBGDrawLogic alloc] initWithRect:self.bounds drawLogicIdentifier: klineBGDrawLogicDefaultIdentifier graphType:GraphTypeMain];
+    [tempKlineBGDrawLogic updateConfig:self.config];
     [self addDrawLogic:tempKlineBGDrawLogic];
-    
 }
 
 /**
@@ -609,6 +643,44 @@
     }
 }
 
+
+/**
+ 更新最值
+
+ @param extremeValue 最值
+ @param identifier 绘图算法的唯一标识符
+ @param graphType 绘图算法所属的图形类型
+ */
+- (void)p_updateExtremeValueWithGLExtremeValue:(GLExtremeValue)extremeValue identifier:(NSString *)identifier graphType:(GraphType)graphType {
+    
+    if(identifier && identifier.length > 0) {
+        if (graphType >= GraphTypeMain && graphType <= GraphTypeFull) {
+            NSMutableDictionary *tempDict = [self.extremeValueDict objectForKey:@(graphType)];
+            NSValue *value = [NSValue gl_valuewithGLExtremeValue:extremeValue];
+            if (value) {
+                if (tempDict) {
+                    [tempDict setObject:value forKey:identifier];
+                }else {
+                    [self.extremeValueDict setObject:@{identifier:value}.mutableCopy forKey:@(graphType)];
+                }
+            }
+        }
+    }
+    
+    for (NSNumber *keyNum in self.extremeValueDict) {
+        NSDictionary *tempDict = [self.extremeValueDict objectForKey:keyNum];
+        for (NSString *key in tempDict) {
+            NSValue *value = [tempDict objectForKey:key];
+            
+            GLExtremeValue tempValue = [value gl_extremeValue];
+            
+            NSLog(@"id:%@,key:%@,Max:%f,Min:%f",keyNum,key,tempValue.maxValue,tempValue.minValue);
+        }
+    }
+
+    NSLog(@" all---------------------------------");
+}
+
 /**
  根据某个标识符移除保存的最大最小值
  
@@ -617,8 +689,38 @@
 - (void)p_removeExtremeValueWithIdentifier:(NSString *)identifier {
     
     if (identifier && identifier.length >= 1) {
-        [self.extremeValueDict removeObjectForKey:identifier];
+        
+        for (NSNumber *tempGraph in self.extremeValueDict) {
+            NSMutableDictionary *tempExtremeDict = [self.extremeValueDict objectForKey:tempGraph];
+            
+            for (NSString *tempId in [tempExtremeDict copy]) {
+                if ([tempId isEqualToString:identifier]) {
+                    [tempExtremeDict removeObjectForKey:tempId];
+                    return;
+                }
+            }
+        }
     }
+}
+
+/**
+ 更新某个图形类型的当前显示的最值
+
+ @param extreme 当前的最值
+ @param graphType 图形类型
+ */
+- (void)p_updateCurrentExtremeValue:(GLExtremeValue)extreme atGraphType:(GraphType)graphType {
+    
+    NSValue *extremeValue = [NSValue gl_valuewithGLExtremeValue:extreme];
+    
+    [self.currentExtremeValueDict setObject:extremeValue forKey:@(graphType)];
+    
+    for (NSNumber *keyNum in self.currentExtremeValueDict) {
+        GLExtremeValue tempValue = [self.currentExtremeValueDict objectForKey:keyNum].gl_extremeValue;
+        
+        NSLog(@"key:%@,Max:%f,Min:%f",keyNum,tempValue.maxValue,tempValue.minValue);
+    }
+    NSLog(@" current---------------------------------");
 }
 
 /**
@@ -664,6 +766,7 @@
     }
 }
 
+/* 长按手势处理 */
 - (void)p_longPressGestureAction:(UILongPressGestureRecognizer *)longPress {
     
     CGPoint longPressPoint = [longPress locationInView:self];
@@ -720,21 +823,23 @@
 }
 
 /**
- 获得最大最小值
- 
- @param identifier 过滤某个算法的最大最小值
- @return 共同的最大最小值
+ 获得某类图形的最大最小值
+
+ @param identifier 需要过滤的某个算法的唯一标识符,传空代表不过滤
+ @param graphType 图形类型
+ @return 指定类型下共同的最大最小值
  */
-- (GLExtremeValue)p_getExtremeValueFilterIdentifier:(NSString *)identifier {
+- (GLExtremeValue)p_getExtremeValueFilterIdentifier:(NSString * _Nullable)identifier graphType:(GraphType)graphType {
     
     GLExtremeValue result = GLExtremeValueMake(CGFLOAT_MAX, 0.0f);
+    NSDictionary *graphExtremeDict = [self.extremeValueDict objectForKey:@(graphType)];
     
-    for (NSString *tempKey in self.extremeValueDict) {
+    for (NSString *tempKey in graphExtremeDict) {
         if ([tempKey isEqualToString:identifier]) {
             continue;
         }
         
-        NSValue *value = self.extremeValueDict[tempKey];
+        NSValue *value = graphExtremeDict[tempKey];
         GLExtremeValue tempValue = [value gl_extremeValue];
         result = GLExtremeValueMake(fmin(tempValue.minValue, result.minValue), fmax(tempValue.maxValue, result.maxValue));
     }
@@ -744,7 +849,7 @@
 
 #pragma mark - 懒加载 ----
 
-- (NSMutableArray *)drawLogicArray {
+- (NSMutableArray <BaseDrawLogic *>*)drawLogicArray {
     if(!_drawLogicArray) {
         _drawLogicArray = @[].mutableCopy;
     }
@@ -784,15 +889,19 @@
 - (UpdateExtremeValueBlock)updateExtremeValueBlock {
     if (!_updateExtremeValueBlock) {
         __weak typeof(self)weakSelf = self;
-        _updateExtremeValueBlock = ^(NSString *identifier ,double minValue,double maxValue) {
+        _updateExtremeValueBlock = ^(NSString *identifier,GraphType graphType, double minValue, double maxValue) {
             __strong typeof(weakSelf)strongSelf = weakSelf;
+            GLExtremeValue currentExtreme = [strongSelf getCurrentExtremeValueWithGraphType:graphType];
+
             // 保存各算法的最大最小值
-            [strongSelf.extremeValueDict setObject:[NSValue gl_valuewithGLExtremeValue:GLExtremeValueMake(minValue, maxValue)] forKey:identifier];
+//            [strongSelf.extremeValueDict setObject:[NSValue gl_valuewithGLExtremeValue:GLExtremeValueMake(minValue, maxValue)] forKey:identifier];
+            [strongSelf p_updateExtremeValueWithGLExtremeValue:GLExtremeValueMake(minValue, maxValue) identifier:identifier graphType:graphType];
             
-            GLExtremeValue tempOtherExtreme = [strongSelf p_getExtremeValueFilterIdentifier:identifier];
+            GLExtremeValue tempOtherExtreme = [strongSelf p_getExtremeValueFilterIdentifier:identifier graphType:graphType];
             GLExtremeValue tempDrawExtreme = GLExtremeValueMake(fmin(minValue, tempOtherExtreme.minValue), fmax(maxValue, tempOtherExtreme.maxValue));
-            if (!GLExtremeValueEqualToExtremeValue(strongSelf.currentExtremeValue, tempDrawExtreme)) {
-                strongSelf.currentExtremeValue = tempDrawExtreme;
+            if (!GLExtremeValueEqualToExtremeValue(currentExtreme, tempDrawExtreme)) {
+//                [strongSelf.currentExtremeValueDict setObject:[NSValue gl_valuewithGLExtremeValue:tempDrawExtreme] forKey:@(graphType)];
+                [strongSelf p_updateCurrentExtremeValue:tempDrawExtreme atGraphType:graphType];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [strongSelf setNeedsDisplay];
                 });
@@ -833,6 +942,13 @@
         _extremeValueDict = @{}.mutableCopy;
     }
     return _extremeValueDict;
+}
+
+- (NSMutableDictionary<NSNumber *,NSValue *> *)currentExtremeValueDict {
+    if (!_currentExtremeValueDict) {
+        _currentExtremeValueDict = @{}.mutableCopy;
+    }
+    return _currentExtremeValueDict;
 }
 
 - (UIPanGestureRecognizer *)panGesture {

@@ -23,7 +23,7 @@
 
 // 常量配置 -------
 #import "GLConstantDefinition.h"
-
+#import "GLKLineKitPublicEnum.h"
 // 绘图算法 -------
 #import "KLineBGDrawLogic.h"
 #import "KLineDrawLogic.h"

@@ -56,8 +56,8 @@
 
 @implementation KLineKDJDrawLogic
 
-- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier {
-    if (self = [super initWithRect:rect drawLogicIdentifier:identifier]) {
+- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier graphType:(GraphType)graphType{
+    if (self = [super initWithRect:rect drawLogicIdentifier:identifier graphType:graphType]) {
         [self p_initialization];
     }
     return self;
@@ -74,17 +74,27 @@
     }
 }
 
+- (void)updateConfig:(NSObject<KLineViewProtocol> *)config {
+    [super updateConfig:config];
+    
+    self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insertOfKlineView]);
+}
+
 /**
  根据上下文和绘制区域绘制图形
  */
 - (void)drawWithCGContext:(CGContextRef)ctx rect:(CGRect)rect indexPathForVisibleRange:(CGPoint)visibleRange scale:(CGFloat)scale otherArguments:(NSDictionary *)arguments {
     NSLog(@"drawRect [%s] :%@",__FILE__,NSStringFromCGRect(rect));
 
+    if (CGRectEqualToRect(self.logicRect, CGRectZero)) {
+        self.logicRect = UIEdgeInsetsInsetRect(rect, [self.config insertOfKlineView]);
+    }
+    
     if ([DataCenter shareCenter].klineModelArray.count <= 0) {
         return;
     }
     
-    [self p_drawIndicatorDetailWithRect:rect];
+    [self p_drawIndicatorDetailWithRect:self.logicRect];
 
     
     // 根据传入的参数更新最大最小值
@@ -139,19 +149,19 @@
         CGFloat centerX = drawX + (self.perItemWidth / 2.0);
         
         // K的点
-        CGFloat kPointY = rect.size.height * (1.0f - (tempModel.k - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
+        CGFloat kPointY = self.logicRect.size.height * (1.0f - (tempModel.k - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
         NSValue *kPointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, kPointY)];
         [self.kPointArray addObject:kPointValue];
         
         
         // D的点
-        CGFloat dPointY = rect.size.height * (1.0f - (tempModel.d - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
+        CGFloat dPointY = self.logicRect.size.height * (1.0f - (tempModel.d - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
         NSValue *dPointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, dPointY)];
         
         [self.dPointArray addObject:dPointValue];
         
         // J的点
-        CGFloat jPointY = rect.size.height * (1.0f - (tempModel.j - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
+        CGFloat jPointY = self.logicRect.size.height * (1.0f - (tempModel.j - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
         NSValue *jPointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, jPointY)];
         
         [self.jPointArray addObject:jPointValue];
@@ -266,7 +276,7 @@
     if(arguments) {
         UpdateExtremeValueBlock block = [arguments objectForKey:updateExtremeValueBlockAtDictionaryKey];
         if (block) {
-            block(self.drawLogicIdentifier ,minValue,maxValue);
+            block(self.drawLogicIdentifier, self.graphType, minValue, maxValue);
         }
     }
     
@@ -312,9 +322,6 @@
         [mattirbuteStr drawInRect:CGRectMake(rect.origin.x + 5.0, 0, rect.size.width - 5.0, 20.0)];
     }
 }
-
-
-
 
 - (NSMutableArray *)kPointArray {
     if (!_kPointArray) {

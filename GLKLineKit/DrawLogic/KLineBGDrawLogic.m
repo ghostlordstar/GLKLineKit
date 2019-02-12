@@ -25,8 +25,8 @@
 
 @implementation KLineBGDrawLogic
 
-- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier {
-    if (self = [super initWithRect:rect drawLogicIdentifier:identifier]) {
+- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier graphType:(GraphType)graphType{
+    if (self = [super initWithRect:rect drawLogicIdentifier:identifier graphType:graphType]) {
         [self p_initialization];
     }
     return self;
@@ -36,6 +36,13 @@
     
 }
 
+- (void)updateConfig:(NSObject<KLineViewProtocol> *)config {
+    [super updateConfig:config];
+    
+    self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insertOfKlineView]);
+}
+
+
 /**
  根据上下文和绘制区域绘制图形
  */
@@ -43,21 +50,24 @@
 
     NSLog(@"drawRect [%s] :%@",__FILE__,NSStringFromCGRect(rect));
     
+    if (CGRectEqualToRect(self.logicRect, CGRectZero)) {
+        self.logicRect = UIEdgeInsetsInsetRect(rect, [self.config insertOfKlineView]);
+    }
     // 根据传入的参数更新最大最小值
     [self p_updateExtremeValueWithArguments:arguments];
     
     if ([self.config isHaveBorder]) {
         // 绘制边框
-        [self p_drawBorderWithContext:ctx rect:rect];
+        [self p_drawBorderWithContext:ctx rect:self.logicRect];
     }
     
     // 绘制分割线
-    [self p_drawSeparatorWithContext:ctx rect:rect];
+    [self p_drawSeparatorWithContext:ctx rect:self.logicRect];
     
     if ([DataCenter shareCenter].klineModelArray.count >= 1) {
         
         // 绘制刻度
-        [self p_drawValueWithContext:ctx rect:rect];
+        [self p_drawValueWithContext:ctx rect:self.logicRect];
     }
 }
 
@@ -79,7 +89,7 @@
     // 设置画笔颜色
     CGContextSetStrokeColorWithColor(ctx, [self.config borderColor].CGColor);
     // 添加矩形
-    CGContextAddRect(ctx, rect);
+    CGContextAddRect(ctx, self.logicRect);
     // 绘制边框
     CGContextStrokePath(ctx);
 }
@@ -114,9 +124,9 @@
             
             [self.horizontalYArray addObject:@(perH * (a + 1))];
             // 起点
-            CGContextMoveToPoint(ctx, rect.origin.x, perH * (a + 1));
+            CGContextMoveToPoint(ctx, self.logicRect.origin.x, perH * (a + 1));
             // 终点
-            CGContextAddLineToPoint(ctx, rect.origin.x + rect.size.width, perH * (a + 1));
+            CGContextAddLineToPoint(ctx, self.logicRect.origin.x + self.logicRect.size.width, perH * (a + 1));
             // 绘制边框
             CGContextStrokePath(ctx);
         }
@@ -130,9 +140,9 @@
         
         for (int a = 0; a < v_sep_count; a ++) {
             // 起点
-            CGContextMoveToPoint(ctx, rect.origin.x + perW * (a + 1), rect.origin.y + rect.size.height);
+            CGContextMoveToPoint(ctx, self.logicRect.origin.x + perW * (a + 1), self.logicRect.origin.y + self.logicRect.size.height);
             // 终点
-            CGContextAddLineToPoint(ctx, rect.origin.x + perW * (a + 1), rect.origin.y);
+            CGContextAddLineToPoint(ctx, self.logicRect.origin.x + perW * (a + 1), self.logicRect.origin.y);
             // 绘制边框
             CGContextStrokePath(ctx);
         }
@@ -158,7 +168,7 @@
     CGFloat textRectHeight = 20.0f;
     
     // 文本区域
-    CGRect textRect = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, textRectHeight);
+    CGRect textRect = CGRectMake(self.logicRect.origin.x, self.logicRect.origin.y, self.logicRect.size.width, textRectHeight);
     // 居中
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     style.alignment = NSTextAlignmentRight;
@@ -182,10 +192,10 @@
     }
 
     // 最大值
-    textRect.origin.y = rect.origin.y;
+    textRect.origin.y = self.logicRect.origin.y;
     [self p_drawTextInRect:textRect text:[@(self.extremeValue.maxValue) gl_numberToStringWithDecimalsLimit:decimalsLimit] attributes:attributes];
     // 最小值
-    textRect.origin.y = CGRectGetMaxY(rect) - textRectHeight;
+    textRect.origin.y = CGRectGetMaxY(self.logicRect) - textRectHeight;
     [self p_drawTextInRect:textRect text:[@(self.extremeValue.minValue) gl_numberToStringWithDecimalsLimit:decimalsLimit] attributes:attributes];
 
 }
@@ -203,10 +213,10 @@
     // 计算字体的大小
     CGSize textSize = [text sizeWithAttributes:attributes];
     
-    CGFloat originY = rect.origin.y + ((rect.size.height - textSize.height) / 2.0);
+    CGFloat originY = self.logicRect.origin.y + ((self.logicRect.size.height - textSize.height) / 2.0);
     
     // 计算绘制字体的rect
-    CGRect textRect = CGRectMake(rect.origin.x, originY, rect.size.width, textSize.height);
+    CGRect textRect = CGRectMake(self.logicRect.origin.x, originY, self.logicRect.size.width, textSize.height);
     
     // 绘制字体
     [text drawInRect:textRect withAttributes:attributes];

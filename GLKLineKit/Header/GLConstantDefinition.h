@@ -42,13 +42,6 @@ __GLExtremeValueEqualToExtremeValue(GLExtremeValue value1, GLExtremeValue value2
 
 #pragma mark -- 最大最小值的结构体 ----👆👆--end----
 
-
-
-#pragma mark - block 定义 -----------------
-/* 更新最大最小值的block */
-typedef void (^UpdateExtremeValueBlock)(NSString *identifier , double minValue,double maxValue);
-
-
 #pragma mark - 一些Key的定义 ---------------
 /* 在字典中保存时对应的Key */
 UIKIT_EXTERN NSString *const updateExtremeValueBlockAtDictionaryKey;

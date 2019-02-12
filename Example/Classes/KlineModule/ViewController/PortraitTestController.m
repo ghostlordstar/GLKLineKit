@@ -116,6 +116,8 @@
     if (!_simpleKLineView) {
         _simpleKLineView = [[NewSimpleKlineView alloc] initWithFrame:CGRectMake(10.0f, 100.0, SCREEN_WIDTH - 20.0f, 300.0f)];
         [_simpleKLineView switchKLineMainViewToType:KLineMainViewTypeKLine];
+        _simpleKLineView.layer.borderColor = [UIColor redColor].CGColor;
+        _simpleKLineView.layer.borderWidth = 0.5;
     }
     return _simpleKLineView;
 }

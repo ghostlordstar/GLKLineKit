@@ -49,8 +49,8 @@
 
 @implementation KLineMACDDrawLogic
 
-- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier {
-    if (self = [super initWithRect:rect drawLogicIdentifier:identifier]) {
+- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier graphType:(GraphType)graphType{
+    if (self = [super initWithRect:rect drawLogicIdentifier:identifier graphType:graphType]) {
         [self p_initialization];
     }
     return self;
@@ -69,17 +69,27 @@
     
 }
 
+- (void)updateConfig:(NSObject<KLineViewProtocol> *)config {
+    [super updateConfig:config];
+    
+    self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insertOfKlineView]);
+}
+
 /**
  根据上下文和绘制区域绘制图形
  */
 - (void)drawWithCGContext:(CGContextRef)ctx rect:(CGRect)rect indexPathForVisibleRange:(CGPoint)visibleRange scale:(CGFloat)scale otherArguments:(NSDictionary *)arguments {
     NSLog(@"drawRect [%s] :%@",__FILE__,NSStringFromCGRect(rect));
 
+    if (CGRectEqualToRect(self.logicRect, CGRectZero)) {
+        self.logicRect = UIEdgeInsetsInsetRect(rect, [self.config insertOfKlineView]);
+    }
+    
     if ([DataCenter shareCenter].klineModelArray.count <= 0) {
         return;
     }
     
-    [self p_drawIndicatorDetailWithRect:rect];
+    [self p_drawIndicatorDetailWithRect:self.logicRect];
     
     // 根据传入的参数更新最大最小值
     [self p_updateExtremeValueWithArguments:arguments];
@@ -131,18 +141,18 @@
         CGFloat centerX = drawX + (self.perItemWidth / 2.0);
         
         // DIF的点
-        CGFloat difPointY = rect.size.height * (1.0f - (tempModel.dif - self.extremeValue.minValue) / diffValue) + rect.origin.y;
+        CGFloat difPointY = self.logicRect.size.height * (1.0f - (tempModel.dif - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y;
         NSValue *difPointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, difPointY)];
         [self.difPointArray addObject:difPointValue];
         
         // DEA的点
-        CGFloat deaPointY = rect.size.height * (1.0f - (tempModel.dea - self.extremeValue.minValue) / diffValue) + rect.origin.y;
+        CGFloat deaPointY = self.logicRect.size.height * (1.0f - (tempModel.dea - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y;
         NSValue *deaPointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, deaPointY)];
         [self.deaPointArray addObject:deaPointValue];
         
         // MACD柱线
-        CGFloat macdStartPointY = rect.size.height * (1.0f - (0.0f - self.extremeValue.minValue) / diffValue) + rect.origin.y;
-        CGFloat macdEndPointY = rect.size.height * (1.0f - (tempModel.macd - self.extremeValue.minValue) / diffValue) + rect.origin.y;
+        CGFloat macdStartPointY = self.logicRect.size.height * (1.0f - (0.0f - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y;
+        CGFloat macdEndPointY = self.logicRect.size.height * (1.0f - (tempModel.macd - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y;
         CGColorRef color = [self.config risingColor].CGColor;
         if (macdStartPointY <= macdEndPointY) {
             // 朝下
@@ -283,7 +293,7 @@
     if(arguments) {
         UpdateExtremeValueBlock block = [arguments objectForKey:updateExtremeValueBlockAtDictionaryKey];
         if (block) {
-            block(self.drawLogicIdentifier ,minValue,maxValue);
+            block(self.drawLogicIdentifier, self.graphType, minValue, maxValue);
         }
     }
     

@@ -18,4 +18,4 @@ NSString *const KlineViewToKlineBGDrawLogicExtremeValueKey = @"KlineViewToKlineB
 /* 十字线选中的model的key */
 NSString  *const KlineViewReticleSelectedModelKey = @"KlineViewReticleSelectedModelKey";
 
-GLExtremeValue const GLExtremeValueZero = {0,0};
+GLExtremeValue const GLExtremeValueZero = {0.0f,0.0f};

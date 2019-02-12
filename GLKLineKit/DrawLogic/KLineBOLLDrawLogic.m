@@ -55,8 +55,8 @@
 
 @implementation KLineBOLLDrawLogic
 
-- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier {
-    if (self = [super initWithRect:rect drawLogicIdentifier:identifier]) {
+- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier graphType:(GraphType)graphType{
+    if (self = [super initWithRect:rect drawLogicIdentifier:identifier graphType:graphType]) {
         [self p_initialization];
     }
     return self;
@@ -74,17 +74,27 @@
     
 }
 
+- (void)updateConfig:(NSObject<KLineViewProtocol> *)config {
+    [super updateConfig:config];
+    
+    self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insertOfKlineView]);
+}
+
 /**
  根据上下文和绘制区域绘制图形
  */
 - (void)drawWithCGContext:(CGContextRef)ctx rect:(CGRect)rect indexPathForVisibleRange:(CGPoint)visibleRange scale:(CGFloat)scale otherArguments:(NSDictionary *)arguments {
     NSLog(@"drawRect [%s] :%@",__FILE__,NSStringFromCGRect(rect));
 
+    if (CGRectEqualToRect(self.logicRect, CGRectZero)) {
+        self.logicRect = UIEdgeInsetsInsetRect(rect, [self.config insertOfKlineView]);
+    }
+    
     if ([DataCenter shareCenter].klineModelArray.count <= 0) {
         return;
     }
     
-    [self p_drawIndicatorDetailWithRect:rect];
+    [self p_drawIndicatorDetailWithRect:self.logicRect];
     
     // 根据传入的参数更新最大最小值
     [self p_updateExtremeValueWithArguments:arguments];
@@ -138,7 +148,7 @@
         CGFloat centerX = drawX + (self.perItemWidth / 2.0);
         if (tempModel.boll_up > 0) {
             // 上轨曲线的点
-            CGFloat pointY = rect.size.height * (1.0f - (tempModel.boll_up - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
+            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.boll_up - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
             NSValue *pointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, pointY)];
             
             [self.upPointArray addObject:pointValue];
@@ -147,7 +157,7 @@
         
         if (tempModel.ma20 > 0) {
             // 中轨曲线的点
-            CGFloat pointY = rect.size.height * (1.0f - (tempModel.ma20 - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
+            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.ma20 - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
             NSValue *pointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, pointY)];
             
             [self.midPointArray addObject:pointValue];
@@ -155,7 +165,7 @@
         
         if (tempModel.boll_low > 0) {
             // 中轨曲线的点
-            CGFloat pointY = rect.size.height * (1.0f - (tempModel.boll_low - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
+            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.boll_low - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
             NSValue *pointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, pointY)];
             
             [self.lowPointArray addObject:pointValue];
@@ -308,7 +318,7 @@
     if(arguments) {
         UpdateExtremeValueBlock block = [arguments objectForKey:updateExtremeValueBlockAtDictionaryKey];
         if (block) {
-            block(self.drawLogicIdentifier ,minValue,maxValue);
+            block(self.drawLogicIdentifier, self.graphType, minValue, maxValue);
         }
     }
     

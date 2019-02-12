@@ -34,11 +34,17 @@
 
 @implementation KLineDrawLogic
 
-- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier {
-    if (self = [super initWithRect:rect drawLogicIdentifier:identifier]) {
+- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier graphType:(GraphType)graphType{
+    if (self = [super initWithRect:rect drawLogicIdentifier:identifier graphType:graphType]) {
         [self p_initialization];
     }
     return self;
+}
+
+- (void)updateConfig:(NSObject<KLineViewProtocol> *)config {
+    [super updateConfig:config];
+    
+    self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insertOfKlineView]);
 }
 
 /**
@@ -50,7 +56,6 @@
     if (CGRectEqualToRect(self.logicRect, CGRectZero)) {
         self.logicRect = UIEdgeInsetsInsetRect(rect, [self.config insertOfKlineView]);
     }
-    
     
     if ([DataCenter shareCenter].klineModelArray.count <= 0) {
         return;
@@ -193,7 +198,7 @@
     if(arguments) {
         UpdateExtremeValueBlock block = [arguments objectForKey:updateExtremeValueBlockAtDictionaryKey];
         if (block) {
-            block(self.drawLogicIdentifier ,minValue,maxValue);
+            block(self.drawLogicIdentifier, self.graphType, minValue, maxValue);
         }
     }
     

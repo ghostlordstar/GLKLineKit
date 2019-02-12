@@ -70,8 +70,9 @@
 @end
 
 @implementation KLineMADrawLogic
-- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier {
-    if (self = [super initWithRect:rect drawLogicIdentifier:identifier]) {
+
+- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier graphType:(GraphType)graphType{
+    if (self = [super initWithRect:rect drawLogicIdentifier:identifier graphType:graphType]) {
         [self p_initialization];
     }
     return self;
@@ -100,7 +101,6 @@
 - (void)setMa5Hiden:(BOOL)hide {
     
     self.isMa5Hiden = hide;
-    
 }
 
 /**
@@ -121,6 +121,11 @@
     self.isMa30Hiden = hide;
 }
 
+- (void)updateConfig:(NSObject<KLineViewProtocol> *)config {
+    [super updateConfig:config];
+    
+    self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insertOfKlineView]);
+}
 
 /**
  根据上下文和绘制区域绘制图形
@@ -128,12 +133,16 @@
 - (void)drawWithCGContext:(CGContextRef)ctx rect:(CGRect)rect indexPathForVisibleRange:(CGPoint)visibleRange scale:(CGFloat)scale otherArguments:(NSDictionary *)arguments {
     NSLog(@"drawRect [%s] :%@",__FILE__,NSStringFromCGRect(rect));
 
+    if (CGRectEqualToRect(self.logicRect, CGRectZero)) {
+        self.logicRect = UIEdgeInsetsInsetRect(rect, [self.config insertOfKlineView]);
+    }
+    
     if ([DataCenter shareCenter].klineModelArray.count <= 0) {
         return;
     }
     
     // 绘制上方的详情视图
-    [self p_drawIndicatorDetailWithRect:rect];
+    [self p_drawIndicatorDetailWithRect:self.logicRect];
     
     // 根据传入的参数更新最大最小值
     [self p_updateExtremeValueWithArguments:arguments];
@@ -187,7 +196,7 @@
         CGFloat centerX = drawX + (self.perItemWidth / 2.0);
         if (tempModel.ma5 > 0) {
             // MA5的点
-            CGFloat pointY = rect.size.height * (1.0f - (tempModel.ma5 - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
+            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.ma5 - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
             NSValue *pointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, pointY)];
             
             [self.ma5PointArray addObject:pointValue];
@@ -196,7 +205,7 @@
         
         if (tempModel.ma10 > 0) {
             // MA10的点
-            CGFloat pointY = rect.size.height * (1.0f - (tempModel.ma10 - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
+            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.ma10 - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
             NSValue *pointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, pointY)];
             
             [self.ma10PointArray addObject:pointValue];
@@ -205,7 +214,7 @@
         if (tempModel.ma30 > 0) {
             
             // MA30的点
-            CGFloat pointY = rect.size.height * (1.0f - (tempModel.ma30 - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
+            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.ma30 - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
             NSValue *pointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, pointY)];
             
             [self.ma30PointArray addObject:pointValue];
@@ -335,7 +344,7 @@
     if(arguments) {
         UpdateExtremeValueBlock block = [arguments objectForKey:updateExtremeValueBlockAtDictionaryKey];
         if (block) {
-            block(self.drawLogicIdentifier ,minValue,maxValue);
+            block(self.drawLogicIdentifier, self.graphType, minValue, maxValue);
         }
     }
     

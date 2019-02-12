@@ -82,8 +82,10 @@
             {
                 [self.kLineMainView removeAllDrawLogic];
                 
-                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_bg"]];
-                [self.kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"k_line"]];
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_bg" graphType:GraphTypeMain]];
+                [self.kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"k_line" graphType:GraphTypeMain]];
+                [self.kLineMainView addDrawLogic:[[KLineVolDrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol" graphType:GraphTypeAssistant]];
+                [self.kLineMainView addDrawLogic:[[KLineVolMADrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol_ma" graphType:GraphTypeAssistant]];
             }
                 break;
                 
@@ -93,17 +95,21 @@
                 
                 [self.kLineMainView removeAllDrawLogic];
                 
-                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_bg"]];
-                [self.kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"k_line"]];
-                [self.kLineMainView addDrawLogic:[[KLineMADrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_ma_5_10_30"]];
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_bg" graphType:GraphTypeMain]];
+                [self.kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"k_line" graphType:GraphTypeMain]];
+                [self.kLineMainView addDrawLogic:[[KLineMADrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_ma_5_10_30" graphType:GraphTypeMain]];
+                [self.kLineMainView addDrawLogic:[[KLineVolDrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol" graphType:GraphTypeAssistant]];
+                [self.kLineMainView addDrawLogic:[[KLineVolMADrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol_ma" graphType:GraphTypeAssistant]];
             }
                 break;
                 
             case  KLineMainViewTypeTimeLine:    // 只有分时线
             {
                 [self.kLineMainView removeAllDrawLogic];
-                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_bg"]];
-                [self.kLineMainView addDrawLogic:[[KLineTimeDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_time"]];
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_bg" graphType:GraphTypeMain]];
+                [self.kLineMainView addDrawLogic:[[KLineTimeDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_time" graphType:GraphTypeMain]];
+                [self.kLineMainView addDrawLogic:[[KLineVolDrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol" graphType:GraphTypeAssistant]];
+                [self.kLineMainView addDrawLogic:[[KLineVolMADrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol_ma" graphType:GraphTypeAssistant]];
             }
                 break;
                 
@@ -112,13 +118,15 @@
             {  // 主图样式切换为分时图
                 
                 [self.kLineMainView removeAllDrawLogic];
-                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_bg"]];
-                [self.kLineMainView addDrawLogic:[[KLineTimeDrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_time"]];
-                KLineMADrawLogic *timeMA = [[KLineMADrawLogic alloc] initWithRect:self.kLineMainView.bounds drawLogicIdentifier:@"main_time_ma_30"];
+                [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_bg" graphType:GraphTypeMain]];
+                [self.kLineMainView addDrawLogic:[[KLineTimeDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_time" graphType:GraphTypeMain]];
+                KLineMADrawLogic *timeMA = [[KLineMADrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_time_ma_30" graphType:GraphTypeMain];
                 [timeMA setMa5Hiden:YES];
                 [timeMA setMa10Hiden:YES];
                 [self.kLineMainView addDrawLogic:timeMA];
                 
+                [self.kLineMainView addDrawLogic:[[KLineVolDrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol" graphType:GraphTypeAssistant]];
+                [self.kLineMainView addDrawLogic:[[KLineVolMADrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol_ma" graphType:GraphTypeAssistant]];
             }
                 break;
                 
@@ -135,11 +143,11 @@
         _kLineMainView = [[KLineView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, (self.frame.size.height - 20.0f) * 7.0/10.0) config:self.mainViewConfig];
         _kLineMainView.backgroundColor = KColorBackGround;
         // 添加绘图算法
-        [_kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"k_line"]];
-        [_kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_bg"]];
-        [_kLineMainView addDrawLogic:[[KLineMADrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_ma_5_10_30"]];
-        [_kLineMainView addDrawLogic:[[KLineVolDrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol"]];
-        [_kLineMainView addDrawLogic:[[KLineVolMADrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.height - 80.0f, 80.0f) drawLogicIdentifier:@"vol_ma"]];
+        [_kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"k_line" graphType:GraphTypeMain]];
+        [_kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_bg" graphType:GraphTypeMain]];
+        [_kLineMainView addDrawLogic:[[KLineMADrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_ma_5_10_30" graphType:GraphTypeMain]];
+        [_kLineMainView addDrawLogic:[[KLineVolDrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol" graphType:GraphTypeAssistant]];
+        [_kLineMainView addDrawLogic:[[KLineVolMADrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol_ma" graphType:GraphTypeAssistant]];
     }
     return _kLineMainView;
 }

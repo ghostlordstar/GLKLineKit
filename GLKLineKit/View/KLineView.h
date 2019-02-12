@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLKLineKitPublicEnum.h"
 #import "KLineViewProtocol.h"
 #import "ChartDrawProtocol.h"
 @class DataCenter,BaseDrawLogic,KLineDataLogic;
@@ -39,11 +40,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, strong, nonatomic) NSObject<KLineViewProtocol>*config;
 
 /**
- 当前的最值
- */
-@property (readonly, assign, nonatomic) GLExtremeValue currentExtremeValue;
-
-/**
  初始化方法
 
  @param frame 尺寸
@@ -62,9 +58,9 @@ NS_ASSUME_NONNULL_BEGIN
  是否包含某个指定id的绘图算法
 
  @param identifier id
- @return 存在返回YES，不存在返回NO
+ @return 存在返回对应的图形类型，不存在返回0
  */
-- (BOOL)containsDrawLogicWithIdentifier:(NSString * _Nullable)identifier;
+- (GraphType)containsDrawLogicWithIdentifier:(NSString * _Nullable)identifier;
 
 /**
  添加绘图算法
@@ -72,7 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param logic 需要添加的绘图算法
  @return 添加后的绘图算法
  */
-- (NSArray <BaseDrawLogic *>* _Nullable)addDrawLogic:(BaseDrawLogic<ChartDrawProtocol>*)logic;
+- (NSArray <BaseDrawLogic *>* _Nullable)addDrawLogic:(BaseDrawLogic<ChartDrawProtocol>* _Nonnull)logic;
 
 /**
  清除所有绘图算法
@@ -82,7 +78,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)removeAllDrawLogic;
 
 /**
- 移除某个绘图算法
+ 清除某个图形类型的所有算法
+
+ @param graphType 图形类型,⚠️如果传值不在枚举范围,会清除所有绘图算法
+ @return 清除的算法个数
+ */
+- (NSInteger)removeAllDrawLogicAtGraphType:(GraphType)graphType;
+
+/**
+ 根据唯一标识符移除某个绘图算法
 
  @param identifier 需要移除的绘图算法的标识符
  @return 移除以后的绘图算法集合
@@ -90,12 +94,20 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSArray <BaseDrawLogic *>* _Nullable)removeDrawLogicWithLogicId:(NSString *)identifier;
 
 /**
- 移除某个绘图算法
+ 根据绘图算法对象移除某个绘图算法
  
  @param logic 需要移除的绘图算法
  @return 移除以后的绘图算法集合
  */
 - (NSArray <BaseDrawLogic *>* _Nullable)removeDrawLogicWithLogic:(BaseDrawLogic<ChartDrawProtocol>*)logic;
+
+/**
+ 获得某个类型图形的最值
+
+ @param graphType 图形类型
+ @return 指定类型图形的最值
+ */
+- (GLExtremeValue)getCurrentExtremeValueWithGraphType:(GraphType)graphType;
 
 /**
  根据缩放比例绘制

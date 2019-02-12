@@ -54,8 +54,9 @@
 @end
 
 @implementation KLineRSIDrawLogic
-- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier {
-    if (self = [super initWithRect:rect drawLogicIdentifier:identifier]) {
+
+- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier graphType:(GraphType)graphType{
+    if (self = [super initWithRect:rect drawLogicIdentifier:identifier graphType:graphType]) {
         [self p_initialization];
     }
     return self;
@@ -72,17 +73,27 @@
     }
 }
 
+- (void)updateConfig:(NSObject<KLineViewProtocol> *)config {
+    [super updateConfig:config];
+    
+    self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insertOfKlineView]);
+}
+
 /**
  根据上下文和绘制区域绘制图形
  */
 - (void)drawWithCGContext:(CGContextRef)ctx rect:(CGRect)rect indexPathForVisibleRange:(CGPoint)visibleRange scale:(CGFloat)scale otherArguments:(NSDictionary *)arguments {
     NSLog(@"drawRect [%s] :%@",__FILE__,NSStringFromCGRect(rect));
 
+    if (CGRectEqualToRect(self.logicRect, CGRectZero)) {
+        self.logicRect = UIEdgeInsetsInsetRect(rect, [self.config insertOfKlineView]);
+    }
+    
     if ([DataCenter shareCenter].klineModelArray.count <= 0) {
         return;
     }
     
-    [self p_drawIndicatorDetailWithRect:rect];
+    [self p_drawIndicatorDetailWithRect:self.logicRect];
     
     // 根据传入的参数更新最大最小值
     [self p_updateExtremeValueWithArguments:arguments];
@@ -136,19 +147,19 @@
         CGFloat centerX = drawX + (self.perItemWidth / 2.0);
         
         // RSI6的点
-        CGFloat rsi6PointY = rect.size.height * (1.0f - (tempModel.rsi6 - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
+        CGFloat rsi6PointY = self.logicRect.size.height * (1.0f - (tempModel.rsi6 - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
         NSValue *rsi6PointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, rsi6PointY)];
         [self.rsi6PointArray addObject:rsi6PointValue];
         
         
         // RSI12的点
-        CGFloat rsi12PointY = rect.size.height * (1.0f - (tempModel.rsi12 - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
+        CGFloat rsi12PointY = self.logicRect.size.height * (1.0f - (tempModel.rsi12 - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
         NSValue *rsi12PointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, rsi12PointY)];
         
         [self.rsi12PointArray addObject:rsi12PointValue];
         
         // RSI24的点
-        CGFloat rsi24PointY = rect.size.height * (1.0f - (tempModel.rsi24 - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
+        CGFloat rsi24PointY = self.logicRect.size.height * (1.0f - (tempModel.rsi24 - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
         NSValue *rsi24PointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, rsi24PointY)];
         
         [self.rsi24PointArray addObject:rsi24PointValue];
@@ -263,7 +274,7 @@
     if(arguments) {
         UpdateExtremeValueBlock block = [arguments objectForKey:updateExtremeValueBlockAtDictionaryKey];
         if (block) {
-            block(self.drawLogicIdentifier ,minValue,maxValue);
+            block(self.drawLogicIdentifier, self.graphType, minValue, maxValue);
         }
     }
     

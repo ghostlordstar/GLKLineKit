@@ -30,8 +30,9 @@
 @end
 
 @implementation KLineVolDrawLogic
-- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier {
-    if (self = [super initWithRect:rect drawLogicIdentifier:identifier]) {
+
+- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier graphType:(GraphType)graphType{
+    if (self = [super initWithRect:rect drawLogicIdentifier:identifier graphType:graphType]) {
         [self p_initialization];
     }
     return self;
@@ -41,17 +42,26 @@
     self.extremeValue = GLExtremeValueZero;
 }
 
+- (void)updateConfig:(NSObject<KLineViewProtocol> *)config {
+    [super updateConfig:config];
+    
+    self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insertOfKlineView]);
+}
+
+
 /**
  根据上下文和绘制区域绘制图形
  */
 - (void)drawWithCGContext:(CGContextRef)ctx rect:(CGRect)rect indexPathForVisibleRange:(CGPoint)visibleRange scale:(CGFloat)scale otherArguments:(NSDictionary *)arguments {
     NSLog(@"drawRect [%s] :%@",__FILE__,NSStringFromCGRect(rect));
 
+    if (CGRectEqualToRect(self.logicRect, CGRectZero)) {
+        self.logicRect = UIEdgeInsetsInsetRect(rect, [self.config insertOfKlineView]);
+    }
+    
     if ([DataCenter shareCenter].klineModelArray.count <= 0) {
         return;
     }
-    
-
     
     // 根据传入的参数更新最大最小值
     [self p_updateExtremeValueWithArguments:arguments];
@@ -103,8 +113,8 @@
         CGFloat centerX = drawX + (self.perItemWidth / 2.0);
         
         // 实体线
-        CGFloat startPointY = rect.size.height * (1.0f - (tempModel.volume - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
-        CGFloat endPointY = rect.size.height + rect.origin.y;
+        CGFloat startPointY = self.logicRect.size.height * (1.0f - (tempModel.volume - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
+        CGFloat endPointY = self.logicRect.size.height + self.logicRect.origin.y;
         if (startPointY == endPointY) {
             endPointY = startPointY + 1.0f;
         }
@@ -176,7 +186,7 @@
     if(arguments) {
         UpdateExtremeValueBlock block = [arguments objectForKey:updateExtremeValueBlockAtDictionaryKey];
         if (block) {
-            block(self.drawLogicIdentifier ,minValue,maxValue);
+            block(self.drawLogicIdentifier, self.graphType, minValue, maxValue);
         }
     }
     

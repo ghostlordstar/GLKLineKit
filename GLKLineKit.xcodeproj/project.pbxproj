@@ -13,7 +13,6 @@
 		5D1F1DA820B8289E00BD47B1 /* GLKLineKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DA720B8289E00BD47B1 /* GLKLineKitTests.m */; };
 		5D1F1DB320B8289E00BD47B1 /* GLKLineKitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F1DB220B8289E00BD47B1 /* GLKLineKitUITests.m */; };
 		5D4CF00D216DD738009D5602 /* KLineDataProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEF8F216DD738009D5602 /* KLineDataProcess.m */; };
-		5D4CF00E216DD738009D5602 /* SimpleKLineVolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEF92216DD738009D5602 /* SimpleKLineVolView.m */; };
 		5D4CF00F216DD738009D5602 /* FullScreenKLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEF93216DD738009D5602 /* FullScreenKLineView.m */; };
 		5D4CF010216DD738009D5602 /* LandscapeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEF99216DD738009D5602 /* LandscapeController.m */; };
 		5D4CF011216DD738009D5602 /* PortraitTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CEF9A216DD738009D5602 /* PortraitTestController.m */; };
@@ -99,9 +98,7 @@
 		5D1F1DB420B8289E00BD47B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D4CEF8E216DD738009D5602 /* KLineDataProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineDataProcess.h; sourceTree = "<group>"; };
 		5D4CEF8F216DD738009D5602 /* KLineDataProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineDataProcess.m; sourceTree = "<group>"; };
-		5D4CEF92216DD738009D5602 /* SimpleKLineVolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleKLineVolView.m; sourceTree = "<group>"; };
 		5D4CEF93216DD738009D5602 /* FullScreenKLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenKLineView.m; sourceTree = "<group>"; };
-		5D4CEF94216DD738009D5602 /* SimpleKLineVolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleKLineVolView.h; sourceTree = "<group>"; };
 		5D4CEF95216DD738009D5602 /* FullScreenKLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenKLineView.h; sourceTree = "<group>"; };
 		5D4CEF97216DD738009D5602 /* LandscapeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeController.h; sourceTree = "<group>"; };
 		5D4CEF98216DD738009D5602 /* PortraitTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortraitTestController.h; sourceTree = "<group>"; };
@@ -215,6 +212,7 @@
 		5DD9A3B12181F903002CF47D /* BaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		F8A0032F22117FF9005E2A9F /* NewSimpleKlineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewSimpleKlineView.h; sourceTree = "<group>"; };
 		F8A0033022117FF9005E2A9F /* NewSimpleKlineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewSimpleKlineView.m; sourceTree = "<group>"; };
+		F8C57C8E2212A26500AFD5C9 /* GLKLineKitPublicEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLKLineKitPublicEnum.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,8 +342,6 @@
 		5D4CEF91216DD738009D5602 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5D4CEF94216DD738009D5602 /* SimpleKLineVolView.h */,
-				5D4CEF92216DD738009D5602 /* SimpleKLineVolView.m */,
 				5D4CEF95216DD738009D5602 /* FullScreenKLineView.h */,
 				5D4CEF93216DD738009D5602 /* FullScreenKLineView.m */,
 				F8A0032F22117FF9005E2A9F /* NewSimpleKlineView.h */,
@@ -604,6 +600,7 @@
 				5D4CF00B216DD738009D5602 /* GLKLineKit.h */,
 				5D4CF00C216DD738009D5602 /* GLConstantDefinition.h */,
 				5D4CF00A216DD738009D5602 /* GLConstantDefinition.m */,
+				F8C57C8E2212A26500AFD5C9 /* GLKLineKitPublicEnum.h */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -837,7 +834,6 @@
 				5D4CF012216DD738009D5602 /* ViewController.m in Sources */,
 				5D4CF03B216DD738009D5602 /* KLineBGDrawLogic.m in Sources */,
 				5D4CF023216DD738009D5602 /* HorizontalView.m in Sources */,
-				5D4CF00E216DD738009D5602 /* SimpleKLineVolView.m in Sources */,
 				5D4CF02C216DD738009D5602 /* NSNumber+StringFormatter.m in Sources */,
 				5D4CF02A216DD738009D5602 /* KLineVolViewConfig.m in Sources */,
 				5D4CF016216DD738009D5602 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,

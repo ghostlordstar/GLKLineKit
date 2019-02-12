@@ -41,8 +41,8 @@
 
 @implementation KLineTimeDrawLogic
 
-- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier {
-    if (self = [super initWithRect:rect drawLogicIdentifier:identifier]) {
+- (instancetype)initWithRect:(CGRect)rect drawLogicIdentifier:(NSString *)identifier graphType:(GraphType)graphType{
+    if (self = [super initWithRect:rect drawLogicIdentifier:identifier graphType:graphType]) {
         [self p_initialization];
     }
     return self;
@@ -57,7 +57,12 @@
         [[DataCenter shareCenter] prepareDataWithType:IndicatorsDataTypeMA fromIndex:0];
         NSLog(@"MA data prepare finish");
     }
+}
+
+- (void)updateConfig:(NSObject<KLineViewProtocol> *)config {
+    [super updateConfig:config];
     
+    self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insertOfKlineView]);
 }
 
 /**
@@ -66,6 +71,10 @@
 - (void)drawWithCGContext:(CGContextRef)ctx rect:(CGRect)rect indexPathForVisibleRange:(CGPoint)visibleRange scale:(CGFloat)scale otherArguments:(NSDictionary *)arguments {
     NSLog(@"drawRect [%s] :%@",__FILE__,NSStringFromCGRect(rect));
 
+    if (CGRectEqualToRect(self.logicRect, CGRectZero)) {
+        self.logicRect = UIEdgeInsetsInsetRect(rect, [self.config insertOfKlineView]);
+    }
+    
     if ([DataCenter shareCenter].klineModelArray.count <= 0) {
         return;
     }
@@ -119,7 +128,7 @@
         CGFloat centerX = drawX + (self.perItemWidth / 2.0);
         
             // 分时的点
-            CGFloat pointY = rect.size.height * (1.0f - (tempModel.close - self.extremeValue.minValue) / diffValue) + rect.origin.y ;
+            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.close - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
             NSValue *pointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, pointY)];
         [self.timePointArray addObject:pointValue];
         
@@ -214,7 +223,7 @@
     if(arguments) {
         UpdateExtremeValueBlock block = [arguments objectForKey:updateExtremeValueBlockAtDictionaryKey];
         if (block) {
-            block(self.drawLogicIdentifier ,minValue,maxValue);
+            block(self.drawLogicIdentifier, self.graphType, minValue, maxValue);
         }
     }
     
