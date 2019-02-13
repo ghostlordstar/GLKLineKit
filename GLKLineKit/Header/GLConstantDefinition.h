@@ -58,4 +58,12 @@ UIKIT_EXTERN NSString *const KlineViewToKlineBGDrawLogicExtremeValueKey;
 /* 十字线选中的model的key */
 UIKIT_EXTERN NSString *const KlineViewReticleSelectedModelKey;
 
+#pragma mark -- 常用的颜色 ---------
+#define kCustomYellowColor  [UIColor colorWithHex:0xFFC125]
+
+#define kCustomGreenColor   [UIColor colorWithHex:0x66CDAA]
+
+#define kCustomPurpleColor  [UIColor colorWithHex:0x8470FF]
+
+#define kCustomBlueColor    [UIColor colorWithHex:0x009ACD]
 #endif /* ConstantDefinition_h */

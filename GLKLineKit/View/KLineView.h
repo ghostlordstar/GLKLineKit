@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  K线图的配置对象
- 默认为KlineViewConfig
+ 默认为KLineBaseConfig
  如果要自定义，请使用initWithConfig:方法
  */
 @property (readonly, strong, nonatomic) NSObject<KLineViewProtocol>*config;

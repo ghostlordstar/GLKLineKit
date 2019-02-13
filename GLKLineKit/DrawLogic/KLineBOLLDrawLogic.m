@@ -148,7 +148,7 @@
         CGFloat centerX = drawX + (self.perItemWidth / 2.0);
         if (tempModel.boll_up > 0) {
             // 上轨曲线的点
-            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.boll_up - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
+            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.boll_up - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y;
             NSValue *pointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, pointY)];
             
             [self.upPointArray addObject:pointValue];
@@ -157,7 +157,7 @@
         
         if (tempModel.ma20 > 0) {
             // 中轨曲线的点
-            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.ma20 - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
+            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.ma20 - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y;
             NSValue *pointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, pointY)];
             
             [self.midPointArray addObject:pointValue];
@@ -165,7 +165,7 @@
         
         if (tempModel.boll_low > 0) {
             // 中轨曲线的点
-            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.boll_low - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
+            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.boll_low - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y;
             NSValue *pointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, pointY)];
             
             [self.lowPointArray addObject:pointValue];
@@ -176,13 +176,13 @@
     }
     
     // up
-    [self p_drawLineWithPointArray:self.upPointArray atContent:ctx color:[self.config ma10Color].CGColor];
+    [self p_drawLineWithPointArray:self.upPointArray atContent:ctx color:[self.config bollUpColor].CGColor];
     
     // mid
-    [self p_drawLineWithPointArray:self.midPointArray atContent:ctx color:[self.config ma5Color].CGColor];
+    [self p_drawLineWithPointArray:self.midPointArray atContent:ctx color:[self.config bollMidColor].CGColor];
     
     // low
-    [self p_drawLineWithPointArray:self.lowPointArray atContent:ctx color:[self.config ma30Color].CGColor];
+    [self p_drawLineWithPointArray:self.lowPointArray atContent:ctx color:[self.config bollDownColor].CGColor];
 }
 
 /**
@@ -242,13 +242,13 @@
         
         NSString *lb = [NSString stringWithFormat:@"LB:%@",[@(self.selectedModel.boll_low) gl_numberToStringWithDecimalsLimit:[DataCenter shareCenter].decimalsLimit]];
         
-        NSAttributedString *midAtt = [[NSAttributedString alloc] initWithString:mid attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma5Color]}];
+        NSAttributedString *midAtt = [[NSAttributedString alloc] initWithString:mid attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config bollMidColor]}];
         
-        NSAttributedString *upAtt = [[NSAttributedString alloc] initWithString:up attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma10Color]}];
+        NSAttributedString *upAtt = [[NSAttributedString alloc] initWithString:up attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config bollUpColor]}];
         
-        NSAttributedString *lbAtt = [[NSAttributedString alloc] initWithString:lb attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma30Color]}];
+        NSAttributedString *lbAtt = [[NSAttributedString alloc] initWithString:lb attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config bollDownColor]}];
         
-        NSMutableAttributedString *mattirbuteStr = [[NSMutableAttributedString alloc] initWithString:indicatorName attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:KColorTipText_999}];
+        NSMutableAttributedString *mattirbuteStr = [[NSMutableAttributedString alloc] initWithString:indicatorName attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config bollUpColor]}];
         if (upAtt) {
             [mattirbuteStr appendAttributedString:upAtt];
         }
@@ -261,7 +261,7 @@
             [mattirbuteStr appendAttributedString:lbAtt];
         }
         
-        [mattirbuteStr drawInRect:CGRectMake(rect.origin.x + 5.0, 0, rect.size.width - 5.0, 20.0)];
+        [mattirbuteStr drawInRect:CGRectMake(rect.origin.x + 5.0, rect.origin.y - 20.0f, rect.size.width - 5.0, 20.0)];
     }
 }
 

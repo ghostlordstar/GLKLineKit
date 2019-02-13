@@ -141,16 +141,15 @@
         CGFloat centerX = drawX + (self.perItemWidth / 2.0);
         if (tempModel.volMa5 >= 0) {
             // MA5的点
-            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.volMa5 - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
+            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.volMa5 - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y;
             NSValue *pointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, pointY)];
             
             [self.volMa5PointArray addObject:pointValue];
         }
         
-        
         if (tempModel.volMa10 >= 0) {
             // MA10的点
-            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.volMa10 - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
+            CGFloat pointY = self.logicRect.size.height * (1.0f - (tempModel.volMa10 - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y;
             NSValue *pointValue = [NSValue valueWithCGPoint:CGPointMake(centerX, pointY)];
             
             [self.volMa10PointArray addObject:pointValue];
@@ -285,13 +284,13 @@
         
         NSString *volMa10String = [NSString stringWithFormat:@"ma10:%@",[@(self.selectedModel.volMa10) stringValue]];
         
-        NSAttributedString *VOLatt = [[NSAttributedString alloc] initWithString:volString attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+        NSAttributedString *VOLatt = [[NSAttributedString alloc] initWithString:volString attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[UIColor whiteColor]}];
         
-        NSAttributedString *volMa5att = [[NSAttributedString alloc] initWithString:volMa5String attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma5Color]}];
+        NSAttributedString *volMa5att = [[NSAttributedString alloc] initWithString:volMa5String attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config ma5Color]}];
         
-        NSAttributedString *volMa10att = [[NSAttributedString alloc] initWithString:volMa10String attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma10Color]}];
+        NSAttributedString *volMa10att = [[NSAttributedString alloc] initWithString:volMa10String attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config ma10Color]}];
         
-        NSMutableAttributedString *mattirbuteStr = [[NSMutableAttributedString alloc] initWithString:indicatorName attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:KColorTipText_999}];
+        NSMutableAttributedString *mattirbuteStr = [[NSMutableAttributedString alloc] initWithString:indicatorName attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config ma5Color]}];
         
         if (VOLatt) {
             [mattirbuteStr appendAttributedString:VOLatt];
@@ -305,7 +304,7 @@
             [mattirbuteStr appendAttributedString:volMa10att];
         }
         
-        [mattirbuteStr drawInRect:CGRectMake(rect.origin.x + 5.0, 0, rect.size.width - 5.0, 20.0)];
+        [mattirbuteStr drawInRect:CGRectMake(rect.origin.x + 5.0f, rect.origin.y - 20.0f, rect.size.width - 5.0f, 20.0f)];
     }
 }
 

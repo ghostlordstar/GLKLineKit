@@ -39,6 +39,7 @@
 }
 
 - (void)p_initialization {
+    self.isBeginZero = YES;
     self.extremeValue = GLExtremeValueZero;
 }
 
@@ -47,7 +48,6 @@
     
     self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insetsOfKlineView]);
 }
-
 
 /**
  根据上下文和绘制区域绘制图形
@@ -127,7 +127,6 @@
         
         drawX += self.perItemWidth;
     }
-    
 }
 
 
@@ -180,6 +179,11 @@
                 minValue = tempModel.volume;
             }
         }
+    }
+    
+    // 如果从0开始绘制，强制最小值为0
+    if (self.isBeginZero) {
+        minValue = 0.0f;
     }
     
     // 调用传入的block，更新视图的最大最小值

@@ -170,13 +170,13 @@
     }
     
     // K
-    [self p_drawLineWithPointArray:self.kPointArray atContent:ctx color:[self.config ma5Color].CGColor];
+    [self p_drawLineWithPointArray:self.kPointArray atContent:ctx color:[self.config kdj_K_color].CGColor];
     
     // D
-    [self p_drawLineWithPointArray:self.dPointArray atContent:ctx color:[self.config ma10Color].CGColor];
+    [self p_drawLineWithPointArray:self.dPointArray atContent:ctx color:[self.config kdj_D_color].CGColor];
     
     // J
-    [self p_drawLineWithPointArray:self.jPointArray atContent:ctx color:[self.config ma30Color].CGColor];
+    [self p_drawLineWithPointArray:self.jPointArray atContent:ctx color:[self.config kdj_J_color].CGColor];
 }
 
 /**
@@ -299,13 +299,13 @@
         
         NSString *j_str = [NSString stringWithFormat:@"J:%@",[@(self.selectedModel.j) gl_numberToStringWithDecimalsLimit:6]];
         
-        NSAttributedString *k_Att = [[NSAttributedString alloc] initWithString:k_str attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma5Color]}];
+        NSAttributedString *k_Att = [[NSAttributedString alloc] initWithString:k_str attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config kdj_K_color]}];
         
-        NSAttributedString *d_Att = [[NSAttributedString alloc] initWithString:d_str attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma10Color]}];
+        NSAttributedString *d_Att = [[NSAttributedString alloc] initWithString:d_str attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config kdj_D_color]}];
         
-        NSAttributedString *j_Att = [[NSAttributedString alloc] initWithString:j_str attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma30Color]}];
+        NSAttributedString *j_Att = [[NSAttributedString alloc] initWithString:j_str attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config kdj_J_color]}];
         
-        NSMutableAttributedString *mattirbuteStr = [[NSMutableAttributedString alloc] initWithString:indicatorName attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:KColorTipText_999}];
+        NSMutableAttributedString *mattirbuteStr = [[NSMutableAttributedString alloc] initWithString:indicatorName attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:KColorTipText_999}];
         
         if (k_Att) {
             [mattirbuteStr appendAttributedString:k_Att];
@@ -319,7 +319,7 @@
             [mattirbuteStr appendAttributedString:j_Att];
         }
         
-        [mattirbuteStr drawInRect:CGRectMake(rect.origin.x + 5.0, 0, rect.size.width - 5.0, 20.0)];
+        [mattirbuteStr drawInRect:CGRectMake(rect.origin.x + 5.0f, rect.origin.y - 20.0f, rect.size.width - 5.0f, 20.0f)];
     }
 }
 

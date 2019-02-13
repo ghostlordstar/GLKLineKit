@@ -7,6 +7,8 @@
 //
 
 #import "NewSimpleKlineView.h"
+#import "KLineViewConfig.h"
+#import "KLineAssistantConfig.h"
 
 @interface NewSimpleKlineView ()
 
@@ -14,7 +16,7 @@
 @property (strong, nonatomic) KLineViewConfig *mainViewConfig;
 
 /** VolViewConfig */
-@property (strong, nonatomic) KLineVolViewConfig *volViewConfig;
+@property (strong, nonatomic) KLineAssistantConfig *volViewConfig;
 
 /** 当前的主图样式 */
 @property (assign, nonatomic) KLineMainViewType mainViewType;
@@ -43,9 +45,9 @@
     
     // 默认显示K线样式
     self.mainViewType = KLineMainViewTypeKLineWithMA;
-//    // 添加代理
-//    [self.kLineMainView.dataLogic addDelegate:self];
-//    [self.dataCenter addDelegate:self];
+    //    // 添加代理
+    //    [self.kLineMainView.dataLogic addDelegate:self];
+    //    [self.dataCenter addDelegate:self];
 }
 
 - (void)p_setUpUI {
@@ -82,10 +84,38 @@
             {
                 [self.kLineMainView removeAllDrawLogic];
                 
+                // 主图 ------
                 [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_bg" graphType:GraphTypeMain]];
-                [self.kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"k_line" graphType:GraphTypeMain]];
-                [self.kLineMainView addDrawLogic:[[KLineVolDrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol" graphType:GraphTypeAssistant]];
-                [self.kLineMainView addDrawLogic:[[KLineVolMADrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol_ma" graphType:GraphTypeAssistant]];
+                [self.kLineMainView addDrawLogic:[[KLineTimeDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"time" graphType:GraphTypeMain]];
+//                [self.kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"k_line" graphType:GraphTypeMain]];
+                //                [self.kLineMainView addDrawLogic:[[KLineMADrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_ma_5_10_30" graphType:GraphTypeMain]];
+                //                [self.kLineMainView addDrawLogic:[[KLineBOLLDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_boll" graphType:GraphTypeMain]];
+                // 副图 ---------
+                KLineBGDrawLogic *assistantBgLogic = [[KLineBGDrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"assistant_bg" graphType:GraphTypeAssistant];
+                assistantBgLogic.isHideMidDial = YES;
+                [assistantBgLogic updateConfig:self.volViewConfig];
+                [self.kLineMainView addDrawLogic:assistantBgLogic];
+                
+                //                KLineVolDrawLogic *volLogic = [[KLineVolDrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol" graphType:GraphTypeAssistant];
+                //                [volLogic updateConfig:self.volViewConfig];
+                //                [self.kLineMainView addDrawLogic:volLogic];
+                //
+                //                KLineVolMADrawLogic *volMaLogic = [[KLineVolMADrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"vol_ma" graphType:GraphTypeAssistant];
+                //                [volMaLogic updateConfig:self.volViewConfig];
+                //                [self.kLineMainView addDrawLogic:volMaLogic];
+                
+//                KLineMACDDrawLogic *macdLogic = [[KLineMACDDrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"macd" graphType:GraphTypeAssistant];
+//                [macdLogic updateConfig:self.volViewConfig];
+//                [self.kLineMainView addDrawLogic:macdLogic];
+                
+//                KLineRSIDrawLogic *rsiLogic = [[KLineRSIDrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"rsi" graphType:GraphTypeAssistant];
+//                [rsiLogic updateConfig:self.volViewConfig];
+//                [self.kLineMainView addDrawLogic:rsiLogic];
+                
+                KLineKDJDrawLogic *kdjLogic = [[KLineKDJDrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"kdj" graphType:GraphTypeAssistant];
+                [kdjLogic updateConfig:self.volViewConfig];
+                [self.kLineMainView addDrawLogic:kdjLogic];
+
             }
                 break;
                 
@@ -159,9 +189,9 @@
     return _mainViewConfig;
 }
 
-- (KLineVolViewConfig *)volViewConfig {
+- (KLineAssistantConfig *)volViewConfig {
     if (!_volViewConfig) {
-        _volViewConfig = [[KLineVolViewConfig alloc] init];
+        _volViewConfig = [[KLineAssistantConfig alloc] init];
     }
     return _volViewConfig;
 }

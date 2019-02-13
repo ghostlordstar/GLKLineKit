@@ -135,7 +135,7 @@
         drawX += self.perItemWidth;
     }
     
-    [self p_drawLineWithPointArray:self.timePointArray atContent:ctx color:KColorNormalText_666.CGColor];
+    [self p_drawLineWithPointArray:self.timePointArray atContent:ctx color:[self.config timeLineColor].CGColor];
 }
 
 

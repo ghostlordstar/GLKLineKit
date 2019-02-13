@@ -33,8 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  配置类对象
- 如果是自定义的配置类，一定要传，
- 如果不传默认使用的是KLineViewConfig
+ 如果是自定义的配置类，一定要传
+ 如果不传默认使用的是KLineBaseConfig
  */
 @property (readonly, strong, nonatomic) NSObject <KLineViewProtocol> *config;
 
@@ -50,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  更新配置
  如果是自定义的配置类，一定要传，
- 如果不传默认使用的是KLineViewConfig
+ 如果不传默认使用的是KLineBaseConfig
  */
 - (void)updateConfig:(NSObject<KLineViewProtocol> *)config NS_REQUIRES_SUPER;
 

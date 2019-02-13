@@ -18,8 +18,7 @@
 #import "KLineModel.h"
 
 // 视图的配置 -------
-#import "KLineViewConfig.h"
-#import "KLineVolViewConfig.h"
+#import "KLineBaseConfig.h"
 
 // 常量配置 -------
 #import "GLConstantDefinition.h"

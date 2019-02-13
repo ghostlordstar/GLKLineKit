@@ -7,12 +7,12 @@
 //
 
 /*
- K线视图的各种配置
+ K线主视图的各种配置
  */
 #import <Foundation/Foundation.h>
-#import "KLineViewProtocol.h"
+#import "KlineBaseConfig.h"
 
-@interface KLineViewConfig : NSObject <KLineViewProtocol>
+@interface KLineViewConfig : KLineBaseConfig
 
 
 

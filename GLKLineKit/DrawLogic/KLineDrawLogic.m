@@ -102,7 +102,7 @@
     
     for (NSInteger a = beginItemIndex; a <= endItemIndex; a ++) {
         KLineModel *tempModel = [DataCenter shareCenter].klineModelArray[a];
-        // 设置涨跌颜色
+        // 设置涨跌颜色,规定开盘价和收盘价相等0也为跌
         CGColorRef color = (tempModel.open - tempModel.close) >= 0 ? [self.config fallingColor].CGColor : [self.config risingColor].CGColor;
         // 设置画笔颜色
         CGContextSetStrokeColorWithColor(ctx, color);
@@ -112,6 +112,7 @@
         // 实体线
         CGFloat openY = self.logicRect.size.height * (1.0f - (tempModel.open - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y ;
         CGFloat closeY = self.logicRect.size.height * (1.0f - (tempModel.close - self.extremeValue.minValue) / diffValue) + self.logicRect.origin.y;
+        // 实体线最低高度为1.0f
         if (ABS(closeY - openY) <= 1.0f) {
             closeY = openY + 1.0f;
         }

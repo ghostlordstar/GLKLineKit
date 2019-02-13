@@ -12,4 +12,7 @@
 
 @interface KLineVolDrawLogic : BaseDrawLogic
 
+/* 绘制时底部是否从0开始，默认为YES */
+@property (assign, nonatomic) BOOL isBeginZero;
+
 @end

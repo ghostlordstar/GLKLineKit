@@ -11,6 +11,8 @@
 #import "DetailDataView.h"
 #import "HorizontalView.h"
 #import "VerticalView.h"
+#import "KLineViewConfig.h"
+#import "KLineAssistantConfig.h"
 
 @interface FullScreenKLineView ()<KLineDataLogicProtocol,DataCenterProtocol>
 
@@ -23,7 +25,7 @@
 @property (strong, nonatomic) KLineViewConfig *mainViewConfig;
 
 /** VolViewConfig */
-@property (strong, nonatomic) KLineVolViewConfig *volViewConfig;
+@property (strong, nonatomic) KLineAssistantConfig *volViewConfig;
 
 /** 当前的主图样式 */
 @property (readwrite, assign, nonatomic) KLineMainViewType mainViewType;
@@ -654,9 +656,9 @@
     return _mainViewConfig;
 }
 
-- (KLineVolViewConfig *)volViewConfig {
+- (KLineAssistantConfig *)volViewConfig {
     if (!_volViewConfig) {
-        _volViewConfig = [[KLineVolViewConfig alloc] init];
+        _volViewConfig = [[KLineAssistantConfig alloc] init];
     }
     return _volViewConfig;
 }

@@ -7,7 +7,7 @@
 //
 
 #import "KLineView.h"
-#import "KLineViewConfig.h"
+#import "KLineBaseConfig.h"
 #import "DataCenter.h"
 #import "KLineDataLogic.h"
 #import "KLineDrawLogic.h"
@@ -32,7 +32,7 @@
 
 /**
  K线图的配置对象
- 默认为KlineViewConfig
+ 默认为KLineBaseConfig
  如果要自定义，请使用initWithConfig:方法
  */
 @property (readwrite, strong, nonatomic) NSObject<KLineViewProtocol>*config;
@@ -915,7 +915,7 @@
 
 - (NSObject<KLineViewProtocol> *)config {
     if (!_config) {
-        _config = [[KLineViewConfig alloc] init];
+        _config = [[KLineBaseConfig alloc] init];
     }
     return _config;
 }

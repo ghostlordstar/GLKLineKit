@@ -14,10 +14,13 @@
 @required
 /**
  K线图的内边距
- 
- @return 内边距
  */
 - (UIEdgeInsets)insetsOfKlineView;
+
+/**
+ 边框的内边距
+ */
+- (UIEdgeInsets)insetsOfBorder;
 
 /**
  是否绘制边框
@@ -56,15 +59,11 @@
 
 /**
  最大的缩放比例
-
- @return 缩放比例最大值
  */
 - (CGFloat)maxPinchScale;
 
 /**
  最小的缩放比例
-
- @return 缩放比例的最小值
  */
 - (CGFloat)minPinchScale;
 
@@ -83,8 +82,20 @@
  */
 - (UIColor *)fallingColor;
 
-/* 是否充满,如果传入YES，最小显示K线数量无效 */
+/*
+ 分时线颜色
+ */
+- (UIColor *)timeLineColor;
+
+/*
+ 是否充满,如果传入YES，最小显示K线数量无效
+ */
 - (BOOL)isFullKline;
+
+/*
+ 图形上方详细数据的字体大小
+ */
+- (UIFont *)detailInfoFont;
 
 /**
  最小显示k线数量
@@ -102,6 +113,11 @@
 - (NSInteger)verticalSeparatorCount;
 
 /**
+ 分割线宽度，默认0.5f
+ */
+- (CGFloat)separatorWidth;
+
+/**
  ma5 线的颜色
  */
 - (UIColor *)ma5Color;
@@ -116,4 +132,58 @@
  */
 - (UIColor *)ma30Color;
 
+/**
+ Boll线上轨的颜色
+ */
+- (UIColor *)bollUpColor;
+
+/**
+ Boll线中轨的颜色
+ */
+- (UIColor *)bollMidColor;
+
+/**
+ Boll线下轨的颜色
+ */
+- (UIColor *)bollDownColor;
+
+/**
+ MACD中DIF线的颜色
+ */
+- (UIColor *)macdDIFColor;
+
+/**
+ MACD中DEA线的颜色
+ */
+- (UIColor *)macdDEAColor;
+
+/**
+ RSI中RSI1线的颜色
+ */
+- (UIColor *)rsiRSI_1_color;
+
+/**
+ RSI中RSI2线的颜色
+ */
+- (UIColor *)rsiRSI_2_color;
+
+/**
+ RSI中RSI3线的颜色
+ */
+- (UIColor *)rsiRSI_3_color;
+
+/**
+ KDJ中k线的颜色
+ */
+- (UIColor *)kdj_K_color;
+
+/**
+ KDJ中d线的颜色
+ */
+- (UIColor *)kdj_D_color;
+
+/**
+ KDJ中j线的颜色
+ */
+- (UIColor *)kdj_J_color;
 @end

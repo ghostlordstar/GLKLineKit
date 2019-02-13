@@ -79,9 +79,7 @@ static NSString *const klineKitDemoCell_id_1 = @"klineKitDemoCell_id_1";
         LandscapeController *landScapeVC = [[LandscapeController alloc] init];
         
         [self.navigationController pushViewController:landScapeVC animated:YES];
-        
     }
-    
 }
 
 #pragma  mark - 私有方法 ---
@@ -135,7 +133,7 @@ static NSString *const klineKitDemoCell_id_1 = @"klineKitDemoCell_id_1";
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
         [_dataArray addObject:KLocalizedString(@"kline_demo_portrait", @"竖屏")];
-        [_dataArray addObject:KLocalizedString(@"kline_demo_landscape", @"横屏")];
+//        [_dataArray addObject:KLocalizedString(@"kline_demo_landscape", @"横屏")];
     }
     return _dataArray;
 }

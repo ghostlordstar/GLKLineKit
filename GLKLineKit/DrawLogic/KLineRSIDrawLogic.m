@@ -168,13 +168,13 @@
     }
     
     // ris6
-    [self p_drawLineWithPointArray:self.rsi6PointArray atContent:ctx color:[self.config ma5Color].CGColor];
+    [self p_drawLineWithPointArray:self.rsi6PointArray atContent:ctx color:[self.config rsiRSI_1_color].CGColor];
     
     // rsi12
-    [self p_drawLineWithPointArray:self.rsi12PointArray atContent:ctx color:[self.config ma10Color].CGColor];
+    [self p_drawLineWithPointArray:self.rsi12PointArray atContent:ctx color:[self.config rsiRSI_2_color].CGColor];
     
     // rsi24
-    [self p_drawLineWithPointArray:self.rsi24PointArray atContent:ctx color:[self.config ma30Color].CGColor];
+    [self p_drawLineWithPointArray:self.rsi24PointArray atContent:ctx color:[self.config rsiRSI_3_color].CGColor];
 }
 
 /**
@@ -297,13 +297,13 @@
         
         NSString *rsi_24 = [NSString stringWithFormat:@"RSI3:%@",[@(self.selectedModel.rsi24) gl_numberToStringWithDecimalsLimit:6]];
         
-        NSAttributedString *rsi_6_Att = [[NSAttributedString alloc] initWithString:rsi_6 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma5Color]}];
+        NSAttributedString *rsi_6_Att = [[NSAttributedString alloc] initWithString:rsi_6 attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config rsiRSI_1_color]}];
         
-        NSAttributedString *rsi_12_Att = [[NSAttributedString alloc] initWithString:rsi_12 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma10Color]}];
+        NSAttributedString *rsi_12_Att = [[NSAttributedString alloc] initWithString:rsi_12 attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config rsiRSI_2_color]}];
         
-        NSAttributedString *rsi_24_Att = [[NSAttributedString alloc] initWithString:rsi_24 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma30Color]}];
+        NSAttributedString *rsi_24_Att = [[NSAttributedString alloc] initWithString:rsi_24 attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config rsiRSI_3_color]}];
         
-        NSMutableAttributedString *mattirbuteStr = [[NSMutableAttributedString alloc] initWithString:indicatorName attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:KColorTipText_999}];
+        NSMutableAttributedString *mattirbuteStr = [[NSMutableAttributedString alloc] initWithString:indicatorName attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:KColorTipText_999}];
         
         if (rsi_6_Att) {
             [mattirbuteStr appendAttributedString:rsi_6_Att];
@@ -317,7 +317,7 @@
             [mattirbuteStr appendAttributedString:rsi_24_Att];
         }
         
-        [mattirbuteStr drawInRect:CGRectMake(rect.origin.x + 5.0, 0, rect.size.width - 5.0, 20.0)];
+        [mattirbuteStr drawInRect:CGRectMake(rect.origin.x + 5.0, rect.origin.y - 20.0f, rect.size.width - 5.0, 20.0)];
     }
 }
 

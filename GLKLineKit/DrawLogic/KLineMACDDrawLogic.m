@@ -165,10 +165,10 @@
     }
     
     // dif
-    [self p_drawLineWithPointArray:self.difPointArray atContent:ctx color:[self.config ma5Color].CGColor];
+    [self p_drawLineWithPointArray:self.difPointArray atContent:ctx color:[self.config macdDIFColor].CGColor];
     
     // dea
-    [self p_drawLineWithPointArray:self.deaPointArray atContent:ctx color:[self.config ma10Color].CGColor];
+    [self p_drawLineWithPointArray:self.deaPointArray atContent:ctx color:[self.config macdDEAColor].CGColor];
     
     
 }
@@ -316,13 +316,13 @@
         
         NSString *macd = [NSString stringWithFormat:@"MACD:%@",[@(self.selectedModel.macd) gl_numberToStringWithDecimalsLimit:6]];
         
-        NSAttributedString *dif_Att = [[NSAttributedString alloc] initWithString:dif attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma5Color]}];
+        NSAttributedString *dif_Att = [[NSAttributedString alloc] initWithString:dif attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config macdDIFColor]}];
         
-        NSAttributedString *dea_Att = [[NSAttributedString alloc] initWithString:dea attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma10Color]}];
+        NSAttributedString *dea_Att = [[NSAttributedString alloc] initWithString:dea attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config macdDEAColor]}];
         
-        NSAttributedString *macd_Att = [[NSAttributedString alloc] initWithString:macd attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma30Color]}];
+        NSAttributedString *macd_Att = [[NSAttributedString alloc] initWithString:macd attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:kCustomPurpleColor}];
         
-        NSMutableAttributedString *mattirbuteStr = [[NSMutableAttributedString alloc] initWithString:indicatorName attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:KColorTipText_999}];
+        NSMutableAttributedString *mattirbuteStr = [[NSMutableAttributedString alloc] initWithString:indicatorName attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:KColorTipText_999}];
         
         if (dif_Att) {
             [mattirbuteStr appendAttributedString:dif_Att];
@@ -336,7 +336,7 @@
             [mattirbuteStr appendAttributedString:macd_Att];
         }
         
-        [mattirbuteStr drawInRect:CGRectMake(rect.origin.x + 5.0, 0, rect.size.width - 5.0, 20.0)];
+        [mattirbuteStr drawInRect:CGRectMake(rect.origin.x + 5.0, rect.origin.y - 20.0f, rect.size.width - 5.0, 20.0)];
     }
 }
 

@@ -365,13 +365,13 @@
         NSString *ma10String = [NSString stringWithFormat:@"ma10:%@ ",[@(self.selectedModel.ma10) gl_numberToStringWithDecimalsLimit:[DataCenter shareCenter].decimalsLimit]];
         NSString *ma30String = [NSString stringWithFormat:@"ma30:%@",[@(self.selectedModel.ma30) gl_numberToStringWithDecimalsLimit:[DataCenter shareCenter].decimalsLimit]];
         
-        NSAttributedString *ma5att = [[NSAttributedString alloc] initWithString:ma5String attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma5Color]}];
+        NSAttributedString *ma5att = [[NSAttributedString alloc] initWithString:ma5String attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config ma5Color]}];
         
-        NSAttributedString *ma10att = [[NSAttributedString alloc] initWithString:ma10String attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma10Color]}];
+        NSAttributedString *ma10att = [[NSAttributedString alloc] initWithString:ma10String attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config ma10Color]}];
         
-        NSAttributedString *ma30att = [[NSAttributedString alloc] initWithString:ma30String attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma30Color]}];
+        NSAttributedString *ma30att = [[NSAttributedString alloc] initWithString:ma30String attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config ma30Color]}];
         
-        NSMutableAttributedString *mattirbuteStr = [[NSMutableAttributedString alloc] initWithString:indicatorName attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10.0f],NSForegroundColorAttributeName:[self.config ma30Color]}];
+        NSMutableAttributedString *mattirbuteStr = [[NSMutableAttributedString alloc] initWithString:indicatorName attributes:@{NSFontAttributeName:[self.config detailInfoFont],NSForegroundColorAttributeName:[self.config ma30Color]}];
         
         if (!self.isMa5Hiden) {
             [mattirbuteStr appendAttributedString:ma5att];
@@ -385,7 +385,7 @@
             [mattirbuteStr appendAttributedString:ma30att];
         }
         
-        [mattirbuteStr drawInRect:CGRectMake(rect.origin.x + 5.0, 0, rect.size.width - 5.0, 20.0)];
+        [mattirbuteStr drawInRect:CGRectMake(rect.origin.x + 5.0, rect.origin.y - 20.0f, rect.size.width - 5.0, 20.0)];
     }
 }
 
