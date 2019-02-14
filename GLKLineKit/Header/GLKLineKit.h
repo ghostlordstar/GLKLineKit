@@ -34,5 +34,6 @@
 #import "KLineKDJDrawLogic.h"
 #import "KLineBOLLDrawLogic.h"
 #import "KLineRSIDrawLogic.h"
+#import "KLineDateDrawLogic.h"
 
 #endif /* GLKLineKit_h */

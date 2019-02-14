@@ -135,7 +135,7 @@ static LanguageTool *instance = nil;
         }
             
         default:
-            // 默认是简体中文包
+            // 默认是英文
         {
             languagePackageName = @"en";
             break;

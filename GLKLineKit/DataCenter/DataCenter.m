@@ -364,6 +364,13 @@ static DataCenter *_center;
         }
             break;
             
+            case IndicatorsDataTypeDate:
+        {
+            // 计算是否需要显示日期
+            [KLineIndicatorLogic prepareDataForDateFromIndex:index];
+            [self.indicatorsDataStateDict setObject:@(YES) forKey:@(dataType)];
+        }
+            break;
         default:{}
             break;
     }

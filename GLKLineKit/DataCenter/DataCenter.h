@@ -23,6 +23,7 @@ typedef enum : NSUInteger {
     IndicatorsDataTypeMACD,             // MACD
     IndicatorsDataTypeKDJ,              // KDJ
     IndicatorsDataTypeRSI,              // RSI
+    IndicatorsDataTypeDate,             // 时间展示
 } IndicatorsDataType;
 
 /**

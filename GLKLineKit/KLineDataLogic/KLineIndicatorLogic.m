@@ -418,4 +418,35 @@
     }
 }
 
+#pragma mark - Date时间展示数据准备 ---
+
+/**
+ 准备时间展示数据
+
+ @param index 计算开始的下标
+ */
++ (void)prepareDataForDateFromIndex:(NSInteger)index {
+    
+    if (index > ([DataCenter shareCenter].klineModelArray.count - 1)) {
+        index = [DataCenter shareCenter].klineModelArray.count - 1;
+    }
+    
+    if (index < 0) {
+        index = 0;
+    }
+    
+    if ([DataCenter shareCenter].klineModelArray.count >= 1) {
+        
+        for (NSInteger a = index; a < [DataCenter shareCenter].klineModelArray.count; a ++) {
+            KLineModel *tempModel = [DataCenter shareCenter].klineModelArray[a];
+            
+            if (a % 5 == 4) {
+                tempModel.showDate = YES;
+            }else {
+                tempModel.showDate = NO;
+            }
+        }
+    }
+}
+
 @end

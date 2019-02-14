@@ -184,6 +184,10 @@
  */
 @property (assign, nonatomic) double dn_avg_24;
 
+#pragma mark - 时间展示 ---
+/* 是否展示日期时间 */
+@property (assign, nonatomic) BOOL showDate;
+
 #pragma mark - 便捷方法 ---
 
 /**
