@@ -61,10 +61,10 @@
  */
 + (void)prepareDataForRSIFromIndex:(NSInteger)index;
 
-/**
- 准备时间展示数据
-
- @param index 计算开始的下标
- */
-+ (void)prepareDataForDateFromIndex:(NSInteger)index;
+///**
+// 准备时间展示数据
+//
+// @param index 计算开始的下标
+// */
+//+ (void)prepareDataForDateFromIndex:(NSInteger)index;
 @end

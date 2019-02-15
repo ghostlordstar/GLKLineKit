@@ -287,4 +287,12 @@
 - (UIColor *)kdj_J_color {
     return kCustomPurpleColor;
 }
+
+/*
+ 日期之间最小间隔
+ */
+- (CGFloat)dateMinGap {
+    return 20.0f;
+}
+
 @end

@@ -586,7 +586,7 @@
 - (void)p_drawWithLogic:(BaseDrawLogic *)drawLogic contentext:(CGContextRef)ctx rect:(CGRect)rect {
     
     NSDictionary *arguments = @{};
-    CGRect newRect = rect;
+//    CGRect newRect = rect;
     
     
     // 背景绘图算法传入附加参数和绘制的rect 进行特殊处理

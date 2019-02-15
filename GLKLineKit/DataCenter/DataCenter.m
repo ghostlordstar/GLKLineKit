@@ -214,6 +214,7 @@ static DataCenter *_center;
     if (!mergeCheckBlock) {
         
         [self addMoreDataWithArray:moreDataArray];
+        
     }else {
         if(moreDataArray.count >= 1) {
             KLineModel *lastModel = [self.klineModelArray lastObject];
@@ -364,13 +365,13 @@ static DataCenter *_center;
         }
             break;
             
-            case IndicatorsDataTypeDate:
-        {
-            // 计算是否需要显示日期
-            [KLineIndicatorLogic prepareDataForDateFromIndex:index];
-            [self.indicatorsDataStateDict setObject:@(YES) forKey:@(dataType)];
-        }
-            break;
+//            case IndicatorsDataTypeDate:
+//        {
+//            // 计算是否需要显示日期
+//            [KLineIndicatorLogic prepareDataForDateFromIndex:index];
+//            [self.indicatorsDataStateDict setObject:@(YES) forKey:@(dataType)];
+//        }
+//            break;
         default:{}
             break;
     }
@@ -448,12 +449,29 @@ static DataCenter *_center;
  @param index 开始的下标
  */
 - (void)p_prepareAllDataFromIndex:(NSUInteger)index {
-    // 找出所有需要准备的指标数据，并进行追加计算
     
+    // 更新K线时间间隔
+    [self p_updateKLineTimeInterval];
+    
+    // 找出所有需要准备的指标数据，并进行追加计算
     for (NSNumber *tempKey in [self.indicatorsDataStateDict copy]) {
         if ([[self.indicatorsDataStateDict objectForKey:tempKey] boolValue]) {
             [self prepareDataWithType:[tempKey integerValue] fromIndex:index];
         }
+    }
+}
+
+/*
+ 更新K线之间的时间间隔
+ */
+- (void)p_updateKLineTimeInterval {
+    if(self.klineModelArray.count > 2) {
+        KLineModel *model1 = self.klineModelArray[0];
+        KLineModel *model2 = self.klineModelArray[1];
+        
+        _timeInterval = model2.stamp - model1.stamp;
+    }else {
+        _timeInterval = 0.0f;
     }
 }
 

@@ -81,6 +81,29 @@
         endItemIndex = [DataCenter shareCenter].klineModelArray.count - 1;
     }
     
+    // 默认的K线间隔
+    NSUInteger count = 5;
+    CGFloat timeWidth = kHHmmWidth + [self.config dateMinGap];
+    
+    if ([DataCenter shareCenter].timeInterval >= 86400000) {
+        // 日线或更大周期
+        timeWidth = kYYMMWidth + [self.config dateMinGap];
+    }
+    
+    while ((count * self.perItemWidth) < timeWidth) {
+        count += 5;
+    }
+    
+    // 计算
+    for (NSInteger a = beginItemIndex; a <= endItemIndex; a ++) {
+        if (a % count == 0) {
+            KLineModel *tempModel = [DataCenter shareCenter].klineModelArray[a];
+            
+            
+            
+            
+        }
+    }
     
     
 }

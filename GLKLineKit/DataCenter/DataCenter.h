@@ -12,19 +12,9 @@
 #import "DataCenterProtocol.h"
 #import "GLConstantDefinition.h"
 #import "KLineModel.h"
-NS_ASSUME_NONNULL_BEGIN
+#import "GLKlineKitPublicEnum.h"
 
-/* 对指标数据处理时选择的指标类型 */
-typedef enum : NSUInteger {
-    IndicatorsDataTypeNone = 1,         // 无处理，只有高，开，低，收，时间，量等初始数据，不进行其他数据的计算
-    IndicatorsDataTypeMA,               // 价格MA(5,10,30)
-    IndicatorsDataTypeVolMA,            // 成交量MA(5,10)
-    IndicatorsDataTypeBOLL,             // BOLL
-    IndicatorsDataTypeMACD,             // MACD
-    IndicatorsDataTypeKDJ,              // KDJ
-    IndicatorsDataTypeRSI,              // RSI
-    IndicatorsDataTypeDate,             // 时间展示
-} IndicatorsDataType;
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  是否合并模型的block
@@ -45,6 +35,11 @@ typedef BOOL(^IsMergeModelBlock)(KLineModel *firstModel , KLineModel *secondMode
  小数位数限制
  */
 @property (assign, nonatomic) NSInteger decimalsLimit;
+
+/*
+ 两根K线之间的时间间隔
+ */
+@property (readonly, assign, nonatomic) NSTimeInterval timeInterval;
 
 /**
  初始化单例

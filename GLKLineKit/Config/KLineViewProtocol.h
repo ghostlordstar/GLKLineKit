@@ -186,4 +186,9 @@
  KDJ中j线的颜色
  */
 - (UIColor *)kdj_J_color;
+
+/*
+ 日期之间最小间隔
+ */
+- (CGFloat)dateMinGap;
 @end
