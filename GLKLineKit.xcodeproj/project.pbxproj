@@ -65,6 +65,7 @@
 		F83C3A5822166E2600354A3B /* KLineDateDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = F83C3A5722166E2600354A3B /* KLineDateDrawLogic.m */; };
 		F851842E221424E8005595B5 /* KLineViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F851842A221424E8005595B5 /* KLineViewConfig.m */; };
 		F851842F221424E8005595B5 /* KLineAssistantConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F851842B221424E8005595B5 /* KLineAssistantConfig.m */; };
+		F8595E132218225E0042065B /* BTC_USDT_1h.json in Resources */ = {isa = PBXBuildFile; fileRef = F8595E122218225E0042065B /* BTC_USDT_1h.json */; };
 		F8A0033122117FF9005E2A9F /* NewSimpleKlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A0033022117FF9005E2A9F /* NewSimpleKlineView.m */; };
 /* End PBXBuildFile section */
 
@@ -216,6 +217,7 @@
 		F851842B221424E8005595B5 /* KLineAssistantConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineAssistantConfig.m; sourceTree = "<group>"; };
 		F851842C221424E8005595B5 /* KLineViewConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineViewConfig.h; sourceTree = "<group>"; };
 		F851842D221424E8005595B5 /* KLineAssistantConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineAssistantConfig.h; sourceTree = "<group>"; };
+		F8595E122218225E0042065B /* BTC_USDT_1h.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BTC_USDT_1h.json; sourceTree = "<group>"; };
 		F8A0032F22117FF9005E2A9F /* NewSimpleKlineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewSimpleKlineView.h; sourceTree = "<group>"; };
 		F8A0033022117FF9005E2A9F /* NewSimpleKlineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewSimpleKlineView.m; sourceTree = "<group>"; };
 		F8C57C8E2212A26500AFD5C9 /* GLKLineKitPublicEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLKLineKitPublicEnum.h; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 		5D4CEFD2216DD738009D5602 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F8595E122218225E0042065B /* BTC_USDT_1h.json */,
 				5D4CEFD3216DD738009D5602 /* BTC_USDT_2h.json */,
 				5D5493A921808F7300FD024F /* LanguagePackage */,
 			);
@@ -543,6 +546,8 @@
 			children = (
 				5D4CEFE9216DD738009D5602 /* UIColor+Hex.h */,
 				5D4CEFE7216DD738009D5602 /* UIColor+Hex.m */,
+				5D4CF04C216DDDE0009D5602 /* NSString+GLDate.h */,
+				5D4CF04D216DDDE0009D5602 /* NSString+GLDate.m */,
 				5D4CEFE6216DD738009D5602 /* NSValue+GLExtremeValue.h */,
 				5D4CEFEA216DD738009D5602 /* NSValue+GLExtremeValue.m */,
 				5D4CEFE8216DD738009D5602 /* NSNumber+StringFormatter.h */,
@@ -616,20 +621,10 @@
 			isa = PBXGroup;
 			children = (
 				5D16387821709E56007C81CB /* UIFont */,
-				5D4CF04B216DDDE0009D5602 /* Date */,
 				5D4CF051216DDDE0009D5602 /* NSObject+Draw */,
 				5D4CF04E216DDDE0009D5602 /* UIView */,
 			);
 			path = Categories;
-			sourceTree = "<group>";
-		};
-		5D4CF04B216DDDE0009D5602 /* Date */ = {
-			isa = PBXGroup;
-			children = (
-				5D4CF04C216DDDE0009D5602 /* NSString+GLDate.h */,
-				5D4CF04D216DDDE0009D5602 /* NSString+GLDate.m */,
-			);
-			path = Date;
 			sourceTree = "<group>";
 		};
 		5D4CF04E216DDDE0009D5602 /* UIView */ = {
@@ -819,6 +814,7 @@
 				5D5493BD2180929100FD024F /* Localizable.strings in Resources */,
 				5D5493BC2180927F00FD024F /* Localizable.strings in Resources */,
 				5D4CF026216DD738009D5602 /* BTC_USDT_2h.json in Resources */,
+				F8595E132218225E0042065B /* BTC_USDT_1h.json in Resources */,
 				5D1F1D9820B8289E00BD47B1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -86,9 +86,9 @@
                 
                 // 主图 ------
                 [self.kLineMainView addDrawLogic:[[KLineBGDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_bg" graphType:GraphTypeMain]];
-                [self.kLineMainView addDrawLogic:[[KLineTimeDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"time" graphType:GraphTypeMain]];
+//                [self.kLineMainView addDrawLogic:[[KLineTimeDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"time" graphType:GraphTypeMain]];
                 [self.kLineMainView addDrawLogic:[[KLineDateDrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 100.0f, self.frame.size.width, 20.0f) drawLogicIdentifier:@"date" graphType:GraphTypeMain]];
-//                [self.kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"k_line" graphType:GraphTypeMain]];
+                [self.kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"k_line" graphType:GraphTypeMain]];
                 //                [self.kLineMainView addDrawLogic:[[KLineMADrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_ma_5_10_30" graphType:GraphTypeMain]];
                 //                [self.kLineMainView addDrawLogic:[[KLineBOLLDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_boll" graphType:GraphTypeMain]];
                 // 副图 ---------

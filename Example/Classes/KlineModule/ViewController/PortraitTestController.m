@@ -91,7 +91,7 @@
     // 此处模拟网络延迟获得数据
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         __strong typeof(weakSelf)strongSelf = weakSelf;
-        NSString *dataPath = [[NSBundle mainBundle] pathForResource:@"BTC_USDT_2h" ofType:@"json"];
+        NSString *dataPath = [[NSBundle mainBundle] pathForResource:@"BTC_USDT_1h" ofType:@"json"];
         NSData *klineData = [[NSData alloc] initWithContentsOfFile:dataPath];
 
         NSLog(@"KlineData length = %lu",(unsigned long)klineData.length);
