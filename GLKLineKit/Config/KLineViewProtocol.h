@@ -187,8 +187,14 @@
  */
 - (UIColor *)kdj_J_color;
 
-/*
- 日期之间最小间隔
+/**
+ 日期(时分)的最小宽度[hh:mm]
  */
-- (CGFloat)dateMinGap;
+- (CGFloat)dateMinWidthHHmm;
+
+/**
+ 日期(月/日)的最小宽度[MM/dd]
+ */
+- (CGFloat)dateMinWidthMMdd;
+
 @end

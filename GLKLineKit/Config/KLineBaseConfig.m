@@ -288,11 +288,18 @@
     return kCustomPurpleColor;
 }
 
-/*
- 日期之间最小间隔
+/**
+ 日期(时分)的最小宽度[hh:mm]
  */
-- (CGFloat)dateMinGap {
-    return 20.0f;
+- (CGFloat)dateMinWidthHHmm {
+    return 60.0f;
+}
+
+/**
+ 日期(月/日)的最小宽度[MM/dd]
+ */
+- (CGFloat)dateMinWidthMMdd {
+    return 60.0f;
 }
 
 @end
