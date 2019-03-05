@@ -62,6 +62,7 @@
 		5D5493BC2180927F00FD024F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D5493B92180916300FD024F /* Localizable.strings */; };
 		5D5493BD2180929100FD024F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D5493B62180914100FD024F /* Localizable.strings */; };
 		5DD9A3B22181F903002CF47D /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD9A3B12181F903002CF47D /* BaseView.m */; };
+		F813529D2221350600953CC6 /* KLineReticleDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = F813529C2221350600953CC6 /* KLineReticleDrawLogic.m */; };
 		F83C3A5822166E2600354A3B /* KLineDateDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = F83C3A5722166E2600354A3B /* KLineDateDrawLogic.m */; };
 		F851842E221424E8005595B5 /* KLineViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F851842A221424E8005595B5 /* KLineViewConfig.m */; };
 		F851842F221424E8005595B5 /* KLineAssistantConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F851842B221424E8005595B5 /* KLineAssistantConfig.m */; };
@@ -211,6 +212,8 @@
 		5DAA4E7D216DE867003A3250 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5DD9A3B02181F903002CF47D /* BaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
 		5DD9A3B12181F903002CF47D /* BaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
+		F813529B2221350600953CC6 /* KLineReticleDrawLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KLineReticleDrawLogic.h; sourceTree = "<group>"; };
+		F813529C2221350600953CC6 /* KLineReticleDrawLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KLineReticleDrawLogic.m; sourceTree = "<group>"; };
 		F83C3A5622166E2600354A3B /* KLineDateDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineDateDrawLogic.h; sourceTree = "<group>"; };
 		F83C3A5722166E2600354A3B /* KLineDateDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineDateDrawLogic.m; sourceTree = "<group>"; };
 		F851842A221424E8005595B5 /* KLineViewConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineViewConfig.m; sourceTree = "<group>"; };
@@ -602,6 +605,8 @@
 				5D4CF006216DD738009D5602 /* KLineTimeDrawLogic.m */,
 				F83C3A5622166E2600354A3B /* KLineDateDrawLogic.h */,
 				F83C3A5722166E2600354A3B /* KLineDateDrawLogic.m */,
+				F813529B2221350600953CC6 /* KLineReticleDrawLogic.h */,
+				F813529C2221350600953CC6 /* KLineReticleDrawLogic.m */,
 			);
 			path = DrawLogic;
 			sourceTree = "<group>";
@@ -841,6 +846,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D4CF01D216DD738009D5602 /* MASConstraint.m in Sources */,
+				F813529D2221350600953CC6 /* KLineReticleDrawLogic.m in Sources */,
 				5D16387B21709E56007C81CB /* UIFont+ScaleSize.m in Sources */,
 				5D4CF034216DD738009D5602 /* KLineMADrawLogic.m in Sources */,
 				5D4CF02D216DD738009D5602 /* UIColor+Hex.m in Sources */,

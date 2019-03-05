@@ -332,7 +332,6 @@
         if (!(touchY > CGRectGetMaxY(self.kLineMainView.frame) && touchY < CGRectGetMinY(self.volView.frame))) {
             self.horizontalTextView.frame = CGRectMake(0, touchY - 10.0f, self.frame.size.width, 20.0f);
             self.horizontalLineView.frame = CGRectMake(0, (touchY - 0.5f) >=0 ? (touchY - 0.5f) : 0, self.frame.size.width, 1.0);
-            
         }
     }
     

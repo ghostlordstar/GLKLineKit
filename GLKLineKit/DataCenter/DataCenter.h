@@ -42,6 +42,11 @@ typedef BOOL(^IsMergeModelBlock)(KLineModel *firstModel , KLineModel *secondMode
 @property (readonly, assign, nonatomic) NSTimeInterval timeInterval;
 
 /**
+ 是否正在展示十字线
+ */
+@property (assign, nonatomic) BOOL isShowReticle;
+
+/**
  初始化单例
  
  @return 数据中心单例
