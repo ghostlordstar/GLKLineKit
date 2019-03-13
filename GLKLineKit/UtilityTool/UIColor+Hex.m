@@ -16,6 +16,7 @@
  @param hexColor 十六进制颜色
  */
 + (UIColor *)colorWithHex:(long)hexColor {
+    
     return [UIColor colorWithHex:hexColor alpha:1.0f];
 }
 
@@ -36,6 +37,7 @@
  返回一个随机颜色
  */
 + (UIColor *)randomColor {
+    
     return [UIColor colorWithRed:arc4random_uniform(255)/255.0f green:arc4random_uniform(255)/255.0f blue:arc4random_uniform(255)/255.0f alpha:1];
 }
 

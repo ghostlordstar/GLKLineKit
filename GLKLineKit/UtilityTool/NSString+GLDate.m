@@ -28,7 +28,10 @@
     // 设置格式
     if (formatterString && formatterString.length >= 1) {
         [dateFormatter setDateFormat:formatterString];
+    }else {
+        [dateFormatter setDateFormat:@"MM/dd HH:mm"];
     }
+    
     // 根据格式导出日期
     result = [dateFormatter stringFromDate:date];
     return result;

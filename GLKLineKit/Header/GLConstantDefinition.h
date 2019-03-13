@@ -38,6 +38,7 @@ __GLExtremeValueEqualToExtremeValue(GLExtremeValue value1, GLExtremeValue value2
 {
     return value1.minValue == value2.minValue && value1.maxValue == value2.maxValue;
 }
+
 #define GLExtremeValueEqualToExtremeValue __GLExtremeValueEqualToExtremeValue
 
 #pragma mark -- 最大最小值的结构体 ----👆👆--end----
@@ -57,6 +58,9 @@ UIKIT_EXTERN NSString *const KlineViewToKlineBGDrawLogicExtremeValueKey;
 
 /* 十字线选中的model的key */
 UIKIT_EXTERN NSString *const KlineViewReticleSelectedModelKey;
+
+/* K线视图上触摸点集合的key */
+UIKIT_EXTERN NSString *const KlineViewTouchPointValueArrayKey;
 
 #pragma mark -- 画线常用的颜色 ---------
 #define kCustomYellowColor  [UIColor colorWithHex:0xFFC125]

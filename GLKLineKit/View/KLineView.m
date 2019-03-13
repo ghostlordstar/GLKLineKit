@@ -17,17 +17,15 @@
 #import "KLineTimeDrawLogic.h"
 #import "KLineVolMADrawLogic.h"
 #import "KLineMACDDrawLogic.h"
+#import "NSArray+Tools.h"
+
 
 @interface KLineView ()<DataCenterProtocol,KLineDataLogicProtocol>
 
-/**
- 数据中心
- */
+/** 数据中心 */
 @property (readwrite, weak, nonatomic) DataCenter *dataCenter;
 
-/**
- 数据逻辑处理类
- */
+/** 数据逻辑处理类 */
 @property (readwrite, strong, nonatomic) KLineDataLogic *dataLogic;
 
 /**
@@ -37,34 +35,22 @@
  */
 @property (readwrite, strong, nonatomic) NSObject<KLineViewProtocol>*config;
 
-/**
- 绘图算法集合
- */
+/** 绘图算法集合 */
 @property (strong, nonatomic) NSMutableArray <BaseDrawLogic *>*drawLogicArray;
 
-/**
- 当前显示的图的比例
- */
+/** 当前显示的图的比例 */
 @property (assign, nonatomic) CGFloat currentScale;
 
-/**
- 每个item的宽度
- */
+/** 每个item的宽度 */
 @property (assign, nonatomic) CGFloat perItemWidth;
 
-/**
- 当前显示的item范围
- */
+/** 当前显示的item范围 */
 @property (assign, nonatomic) CGPoint visibleRange;
 
-/**
- 是否在缩放状态
- */
+/** 是否在缩放状态  */
 @property (assign, nonatomic) BOOL isPinching;
 
-/**
- 当前最大能够显示的K线条数
- */
+/** 当前最大能够显示的K线条数 */
 @property (assign, nonatomic) CGFloat maxItemCount;
 
 /**
@@ -73,14 +59,10 @@
  */
 @property (strong, nonatomic) NSMutableArray <UITouch *>*touchArray;
 
-/**
- 左滑或右滑时的偏移量
- */
+/** 左滑或右滑时的偏移量 */
 @property (assign, nonatomic) CGFloat lastTouchPointX;
 
-/**
- 缩放时的两触点距离
- */
+/** 缩放时的两触点距离 */
 @property (assign, nonatomic) CGFloat lastPinchWidth;
 
 /**
@@ -89,9 +71,7 @@
  */
 @property (strong, nonatomic) NSMutableDictionary <NSNumber *,NSValue*>*currentExtremeValueDict;
 
-/**
- 更新最大最小值的block
- */
+/** 更新最大最小值的block */
 @property (copy, nonatomic) UpdateExtremeValueBlock updateExtremeValueBlock;
 
 /**
@@ -100,24 +80,16 @@
  */
 @property (strong, nonatomic) NSMutableDictionary *extremeValueDict;
 
-/**
- 是否正在显示十字线
- */
+/** 是否正在显示十字线 */
 @property (assign, nonatomic) BOOL isShowReticle;
 
-/**
- 开始的触点所处的位置
- */
+/** 开始的触点所处的位置 */
 @property (assign, nonatomic) CGPoint beginPoint;
 
-/**
- 触摸开始时的时间戳
- */
+/** 触摸开始时的时间戳 */
 @property (assign, nonatomic) NSTimeInterval touchBeginStamp;
 
-/**
- 是否是第一次添加数据
- */
+/** 是否是第一次添加数据 */
 @property (assign, nonatomic) BOOL isFirstLoad;
 
 /** 十字线选中的model */
@@ -441,7 +413,6 @@
     [self setNeedsDisplay];
 }
 
-
 /* 数据中心的回调方法 */
 #pragma mark - DataCenterProtocol ---
 /**
@@ -591,15 +562,15 @@
     // 背景绘图算法传入附加参数和绘制的rect 进行特殊处理
     if ([drawLogic isMemberOfClass:[KLineBGDrawLogic class]]) {
         // 传入最大最小值
-        arguments = @{KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]]};
+        arguments = @{KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewTouchPointValueArrayKey:[self.touchArray gl_touchesConvertToPointValuesAtView:self]};
         
     }else {  // 其他绘图算法默认传入附加参数和处理后的rect
         if (self.selectedModel) {
             // 传入更新最大最小值的block
-            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewReticleSelectedModelKey:self.selectedModel};
+            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewReticleSelectedModelKey:self.selectedModel,KlineViewTouchPointValueArrayKey:[self.touchArray gl_touchesConvertToPointValuesAtView:self]};
         }else {
             // 传入更新最大最小值的block
-            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]]};
+            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewTouchPointValueArrayKey:[self.touchArray gl_touchesConvertToPointValuesAtView:self]};
         }
         
         // 处理Rect
@@ -770,7 +741,6 @@
     
     CGPoint longPressPoint = [longPress locationInView:self];
     
-    // 移动超过2像素就算移动过
     if (longPress.state == UIGestureRecognizerStateChanged) {
         // 开始显示十字线
         NSLog(@"显示十字线");

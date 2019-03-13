@@ -21,6 +21,10 @@
  */
 @property (assign, nonatomic) CGFloat entityLineWidth;
 
+/**
+ 触点
+ */
+@property (assign, nonatomic) CGPoint touchPoint;
 @end
 
 @implementation KLineReticleDrawLogic
@@ -69,6 +73,12 @@
     // 修正最后一个元素下标，防止数组越界
     if (endItemIndex >= [DataCenter shareCenter].klineModelArray.count) {
         endItemIndex = [DataCenter shareCenter].klineModelArray.count - 1;
+    }
+    
+    NSArray *points = [arguments objectForKey:KlineViewTouchPointValueArrayKey];
+    NSValue *point = [points firstObject];
+    if (point) {
+        NSLog(@"十字线 ------ %@",point);
     }
     
     

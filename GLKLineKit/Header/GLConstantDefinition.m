@@ -17,5 +17,8 @@ NSString *const klineBGDrawLogicDefaultIdentifier = @"klineBGDrawLogicDefaultIde
 NSString *const KlineViewToKlineBGDrawLogicExtremeValueKey = @"KlineViewToKlineBGDrawLogicExtremeValueKey";
 /* 十字线选中的model的key */
 NSString  *const KlineViewReticleSelectedModelKey = @"KlineViewReticleSelectedModelKey";
+/* K线视图上触摸点集合的key */
+NSString  *const KlineViewTouchPointValueArrayKey = @"KlineViewTouchPointValueArrayKey";
+
 
 GLExtremeValue const GLExtremeValueZero = {0.0f,0.0f};

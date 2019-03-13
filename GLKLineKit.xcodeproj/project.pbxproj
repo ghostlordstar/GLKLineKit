@@ -63,6 +63,7 @@
 		5D5493BD2180929100FD024F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D5493B62180914100FD024F /* Localizable.strings */; };
 		5DD9A3B22181F903002CF47D /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD9A3B12181F903002CF47D /* BaseView.m */; };
 		F813529D2221350600953CC6 /* KLineReticleDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = F813529C2221350600953CC6 /* KLineReticleDrawLogic.m */; };
+		F816C7972236608F00ECBB76 /* NSArray+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = F816C7962236608F00ECBB76 /* NSArray+Tools.m */; };
 		F83C3A5822166E2600354A3B /* KLineDateDrawLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = F83C3A5722166E2600354A3B /* KLineDateDrawLogic.m */; };
 		F851842E221424E8005595B5 /* KLineViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F851842A221424E8005595B5 /* KLineViewConfig.m */; };
 		F851842F221424E8005595B5 /* KLineAssistantConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F851842B221424E8005595B5 /* KLineAssistantConfig.m */; };
@@ -214,6 +215,8 @@
 		5DD9A3B12181F903002CF47D /* BaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		F813529B2221350600953CC6 /* KLineReticleDrawLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KLineReticleDrawLogic.h; sourceTree = "<group>"; };
 		F813529C2221350600953CC6 /* KLineReticleDrawLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KLineReticleDrawLogic.m; sourceTree = "<group>"; };
+		F816C7952236608F00ECBB76 /* NSArray+Tools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Tools.h"; sourceTree = "<group>"; };
+		F816C7962236608F00ECBB76 /* NSArray+Tools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Tools.m"; sourceTree = "<group>"; };
 		F83C3A5622166E2600354A3B /* KLineDateDrawLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineDateDrawLogic.h; sourceTree = "<group>"; };
 		F83C3A5722166E2600354A3B /* KLineDateDrawLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineDateDrawLogic.m; sourceTree = "<group>"; };
 		F851842A221424E8005595B5 /* KLineViewConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineViewConfig.m; sourceTree = "<group>"; };
@@ -555,6 +558,8 @@
 				5D4CEFEA216DD738009D5602 /* NSValue+GLExtremeValue.m */,
 				5D4CEFE8216DD738009D5602 /* NSNumber+StringFormatter.h */,
 				5D4CEFE5216DD738009D5602 /* NSNumber+StringFormatter.m */,
+				F816C7952236608F00ECBB76 /* NSArray+Tools.h */,
+				F816C7962236608F00ECBB76 /* NSArray+Tools.m */,
 			);
 			path = UtilityTool;
 			sourceTree = "<group>";
@@ -847,6 +852,7 @@
 			files = (
 				5D4CF01D216DD738009D5602 /* MASConstraint.m in Sources */,
 				F813529D2221350600953CC6 /* KLineReticleDrawLogic.m in Sources */,
+				F816C7972236608F00ECBB76 /* NSArray+Tools.m in Sources */,
 				5D16387B21709E56007C81CB /* UIFont+ScaleSize.m in Sources */,
 				5D4CF034216DD738009D5602 /* KLineMADrawLogic.m in Sources */,
 				5D4CF02D216DD738009D5602 /* UIColor+Hex.m in Sources */,
