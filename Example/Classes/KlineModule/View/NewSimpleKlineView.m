@@ -91,6 +91,9 @@
                 [self.kLineMainView addDrawLogic:[[KLineDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"k_line" graphType:GraphTypeMain]];
                 //                [self.kLineMainView addDrawLogic:[[KLineMADrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_ma_5_10_30" graphType:GraphTypeMain]];
                 //                [self.kLineMainView addDrawLogic:[[KLineBOLLDrawLogic alloc] initWithRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 100.0f) drawLogicIdentifier:@"main_boll" graphType:GraphTypeMain]];
+                
+                [self.kLineMainView addDrawLogic:[[KLineReticleDrawLogic alloc] initWithRect:self.frame drawLogicIdentifier:@"kline_reticle" graphType:GraphTypeFull]];
+                
                 // 副图 ---------
                 KLineBGDrawLogic *assistantBgLogic = [[KLineBGDrawLogic alloc] initWithRect:CGRectMake(0, self.frame.size.height - 80.0f, self.frame.size.width, 80.0f) drawLogicIdentifier:@"assistant_bg" graphType:GraphTypeAssistant];
                 assistantBgLogic.isHideMidDial = YES;

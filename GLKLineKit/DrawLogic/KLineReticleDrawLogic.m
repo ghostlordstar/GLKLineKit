@@ -25,6 +25,9 @@
  触点
  */
 @property (assign, nonatomic) CGPoint touchPoint;
+
+@property (assign, nonatomic) CGFloat lineWidth;
+
 @end
 
 @implementation KLineReticleDrawLogic
@@ -38,6 +41,7 @@
 
 - (void)p_initialization {
     
+    self.lineWidth = 1.0f;
 }
 
 - (void)updateConfig:(NSObject<KLineViewProtocol> *)config {
@@ -76,10 +80,36 @@
     }
     
     NSArray *points = [arguments objectForKey:KlineViewTouchPointValueArrayKey];
-    NSValue *point = [points firstObject];
-    if (point) {
-        NSLog(@"十字线 ------ %@",point);
+    NSValue *pointValue = [points firstObject];
+    
+    if (!pointValue) {
+        
+        return;
+        
     }
+    
+    NSLog(@"十字线 ------ %@",pointValue);
+    CGPoint touchPoint = [pointValue CGPointValue];
+    
+    
+    // 横轴 -------
+    CGPoint y_beginPoint = CGPointMake(0, touchPoint.y);
+    CGPoint y_endPoint = CGPointMake(self.logicRect.size.width, touchPoint.y);
+    
+    // 设置画笔宽度
+    CGContextSetLineWidth(ctx, self.lineWidth);
+    // 设置画笔颜色
+    CGContextSetStrokeColorWithColor(ctx, [self.config reticle_color].CGColor);
+    
+    
+    CGContextMoveToPoint(ctx, y_beginPoint.x, y_beginPoint.y);
+    
+    CGContextAddLineToPoint(ctx, y_endPoint.x, y_endPoint.y);
+    
+    CGContextStrokePath(ctx);
+
+    // 纵轴 --------
+    
     
     
 }

@@ -188,6 +188,11 @@
 - (UIColor *)kdj_J_color;
 
 /**
+ 十字线颜色
+ */
+- (UIColor *)reticle_color;
+
+/**
  日期(时分)的最小宽度[hh:mm]
  */
 - (CGFloat)dateMinWidthHHmm;

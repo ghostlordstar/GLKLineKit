@@ -57,7 +57,7 @@
  触摸点集合
  只保存前两个触点
  */
-@property (strong, nonatomic) NSMutableArray <UITouch *>*touchArray;
+@property (strong, nonatomic) NSMutableArray <NSValue *>*touchPointArray;
 
 /** 左滑或右滑时的偏移量 */
 @property (assign, nonatomic) CGFloat lastTouchPointX;
@@ -195,7 +195,7 @@
 
 
 /**
- 是否包含某个指定id的绘图算法
+ 是否包含某个指定id的图形类型
  
  @param identifier id
  @return 存在返回对应的图形类型，不存在返回0
@@ -486,7 +486,6 @@
         self.perItemWidth = ([self.config defaultEntityLineWidth] + [self.config klineGap]) * self.currentScale;
         [self reDrawWithType:ReDrawTypeDefault];
     }
-    
 }
 
 /**
@@ -562,15 +561,15 @@
     // 背景绘图算法传入附加参数和绘制的rect 进行特殊处理
     if ([drawLogic isMemberOfClass:[KLineBGDrawLogic class]]) {
         // 传入最大最小值
-        arguments = @{KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewTouchPointValueArrayKey:[self.touchArray gl_touchesConvertToPointValuesAtView:self]};
+        arguments = @{KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewTouchPointValueArrayKey:self.touchPointArray};
         
     }else {  // 其他绘图算法默认传入附加参数和处理后的rect
         if (self.selectedModel) {
             // 传入更新最大最小值的block
-            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewReticleSelectedModelKey:self.selectedModel,KlineViewTouchPointValueArrayKey:[self.touchArray gl_touchesConvertToPointValuesAtView:self]};
+            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewReticleSelectedModelKey:self.selectedModel,KlineViewTouchPointValueArrayKey:self.touchPointArray};
         }else {
             // 传入更新最大最小值的block
-            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewTouchPointValueArrayKey:[self.touchArray gl_touchesConvertToPointValuesAtView:self]};
+            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewTouchPointValueArrayKey:self.touchPointArray};
         }
         
         // 处理Rect
@@ -648,7 +647,6 @@
         }
     }
 
-    NSLog(@" all---------------------------------");
 }
 
 /**
@@ -710,6 +708,8 @@
     
     CGPoint panPoint = [pan locationInView:self];
     
+    self.touchPointArray = @[[NSValue valueWithCGPoint:panPoint]].mutableCopy;
+    
     if (fabs(self.lastTouchPointX) == 0) {
         self.lastTouchPointX = panPoint.x;
     }
@@ -730,6 +730,8 @@
         CGPoint firstPoint = [pinch locationOfTouch:0 inView:self];
         CGPoint secondPoint = [pinch locationOfTouch:1 inView:self];
         
+        self.touchPointArray = @[[NSValue valueWithCGPoint:firstPoint],[NSValue valueWithCGPoint:secondPoint]].mutableCopy;
+
         CGFloat touchCenterX = (firstPoint.x + secondPoint.x) / 2.0;
         // 此处为了保持缩放平滑和灵敏，将捏合的速度作为缩放的参数
         [self p_updateScaleAndVisibleRangeWithScale:pinch.velocity touchCenterX:touchCenterX];
@@ -740,6 +742,8 @@
 - (void)p_longPressGestureAction:(UILongPressGestureRecognizer *)longPress {
     
     CGPoint longPressPoint = [longPress locationInView:self];
+    
+    self.touchPointArray = @[[NSValue valueWithCGPoint:longPressPoint]].mutableCopy;
     
     if (longPress.state == UIGestureRecognizerStateChanged) {
         // 开始显示十字线
@@ -886,6 +890,7 @@
     if (!_config) {
         _config = [[KLineBaseConfig alloc] init];
     }
+    
     return _config;
 }
 
@@ -899,11 +904,11 @@
     return _visibleRange;
 }
 
-- (NSMutableArray<UITouch *> *)touchArray {
-    if (!_touchArray) {
-        _touchArray = @[].mutableCopy;
+- (NSMutableArray<NSValue *> *)touchPointArray {
+    if (!_touchPointArray) {
+        _touchPointArray = @[].mutableCopy;
     }
-    return _touchArray;
+    return _touchPointArray;
 }
 
 - (NSMutableDictionary *)extremeValueDict {

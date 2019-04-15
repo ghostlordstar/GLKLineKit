@@ -289,6 +289,14 @@
 }
 
 /**
+ 十字线颜色
+ */
+- (UIColor *)reticle_color {
+    
+    return [UIColor colorWithHex:0x999999];
+}
+
+/**
  日期(时分)的最小宽度[hh:mm]
  */
 - (CGFloat)dateMinWidthHHmm {
