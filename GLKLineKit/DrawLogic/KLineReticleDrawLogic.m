@@ -28,6 +28,8 @@
 
 @property (assign, nonatomic) CGFloat lineWidth;
 
+@property (strong, nonatomic) KLineModel *selectedModel;
+
 @end
 
 @implementation KLineReticleDrawLogic
@@ -80,9 +82,14 @@
     }
     
     NSArray *points = [arguments objectForKey:KlineViewTouchPointValueArrayKey];
+    
+    NSInteger selectedIndex = [[arguments objectForKey:KlineViewReticleSelectedModelIndexKey] integerValue];
+    if (selectedIndex < [DataCenter shareCenter].klineModelArray.count) {
+        self.selectedModel = [[DataCenter shareCenter].klineModelArray objectAtIndex:selectedIndex];
+    }
     NSValue *pointValue = [points firstObject];
     
-    if (!pointValue) {
+    if (!pointValue || !self.selectedModel) {
         
         return;
         
@@ -109,9 +116,21 @@
     CGContextStrokePath(ctx);
 
     // 纵轴 --------
+    CGFloat tempx = (selectedIndex - visibleRange.x) * self.entityLineWidth;
+    
+    CGPoint x_beginPoint = CGPointMake(tempx, 0);
+    
+    CGPoint x_endPoint = CGPointMake(tempx,self.logicRect.size.height);
     
     
+    CGContextMoveToPoint(ctx, x_beginPoint.x, x_beginPoint.y);
     
+    CGContextAddLineToPoint(ctx, x_endPoint.x, x_endPoint.y);
+    
+    CGContextStrokePath(ctx);
+    
+    NSLog(@"select:%f,v_x:%f,tempx:%f",selectedIndex,visibleRange.x,tempx);
+
 }
 
 @end

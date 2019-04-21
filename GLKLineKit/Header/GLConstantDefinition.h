@@ -57,7 +57,7 @@ UIKIT_EXTERN NSString *const klineBGDrawLogicDefaultIdentifier;
 UIKIT_EXTERN NSString *const KlineViewToKlineBGDrawLogicExtremeValueKey;
 
 /* 十字线选中的model的key */
-UIKIT_EXTERN NSString *const KlineViewReticleSelectedModelKey;
+UIKIT_EXTERN NSString *const KlineViewReticleSelectedModelIndexKey;
 
 /* K线视图上触摸点集合的key */
 UIKIT_EXTERN NSString *const KlineViewTouchPointValueArrayKey;

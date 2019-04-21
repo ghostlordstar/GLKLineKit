@@ -15,8 +15,8 @@ NSString *const klineDrawLogicDefaultIdentifier = @"klineDrawLogicDefaultIdentif
 NSString *const klineBGDrawLogicDefaultIdentifier = @"klineBGDrawLogicDefaultIdentifier";
 /* k线视图传入背景绘图算法的最大最小值的key */
 NSString *const KlineViewToKlineBGDrawLogicExtremeValueKey = @"KlineViewToKlineBGDrawLogicExtremeValueKey";
-/* 十字线选中的model的key */
-NSString  *const KlineViewReticleSelectedModelKey = @"KlineViewReticleSelectedModelKey";
+/* 十字线选中的model位置Index的key */
+NSString  *const KlineViewReticleSelectedModelIndexKey = @"KlineViewReticleSelectedModelIndexKey";
 /* K线视图上触摸点集合的key */
 NSString  *const KlineViewTouchPointValueArrayKey = @"KlineViewTouchPointValueArrayKey";
 

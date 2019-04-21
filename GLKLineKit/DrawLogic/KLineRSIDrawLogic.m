@@ -216,7 +216,11 @@
         NSValue *tempExtremeValue = [argu objectForKey:KlineViewToKlineBGDrawLogicExtremeValueKey];
         GLExtremeValue value = [tempExtremeValue gl_extremeValue];
         self.extremeValue = value;
-        self.selectedModel = [argu objectForKey:KlineViewReticleSelectedModelKey];
+        NSInteger index = [[argu objectForKey:KlineViewReticleSelectedModelIndexKey] integerValue];
+        if (index < [DataCenter shareCenter].klineModelArray.count) {
+            self.selectedModel = [[DataCenter shareCenter].klineModelArray objectAtIndex:index];
+        }
+
     }
 }
 

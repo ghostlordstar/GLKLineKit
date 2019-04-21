@@ -92,8 +92,11 @@
 /** 是否是第一次添加数据 */
 @property (assign, nonatomic) BOOL isFirstLoad;
 
-/** 十字线选中的model */
-@property (strong, nonatomic) KLineModel *selectedModel;
+///** 十字线选中的model */
+//@property (strong, nonatomic) KLineModel *selectedModel;
+
+/** 十字线选中的model所在的位置 */
+@property (assign, nonatomic) NSInteger selectedIndex;
 
 /** 平移手势 */
 @property (strong, nonatomic) UIPanGestureRecognizer *panGesture;
@@ -509,7 +512,8 @@
 - (void)klineView:(KLineView *)view didMoveToPoint:(CGPoint)point selectedItemIndex:(NSInteger)index {
     
     if (index >= 0 && index < self.dataCenter.klineModelArray.count) {
-        self.selectedModel = self.dataCenter.klineModelArray[index];
+        self.selectedIndex = index;
+//        self.selectedModel = self.dataCenter.klineModelArray[index];
         [self reDrawWithType:ReDrawTypeDefault];
     }
 }
@@ -564,9 +568,9 @@
         arguments = @{KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewTouchPointValueArrayKey:self.touchPointArray};
         
     }else {  // 其他绘图算法默认传入附加参数和处理后的rect
-        if (self.selectedModel) {
+        if (self.selectedIndex >= 0) {
             // 传入更新最大最小值的block
-            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewReticleSelectedModelKey:self.selectedModel,KlineViewTouchPointValueArrayKey:self.touchPointArray};
+            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewReticleSelectedModelIndexKey:@(self.selectedIndex),KlineViewTouchPointValueArrayKey:self.touchPointArray};
         }else {
             // 传入更新最大最小值的block
             arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineBGDrawLogicExtremeValueKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewTouchPointValueArrayKey:self.touchPointArray};
