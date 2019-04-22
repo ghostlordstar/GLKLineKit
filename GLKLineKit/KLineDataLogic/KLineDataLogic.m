@@ -317,7 +317,7 @@
         index = 0;
     }
     
-    NSLog(@"move point = %@",NSStringFromCGPoint(point));
+    NSLog(@"move point = %@，index：%ld",NSStringFromCGPoint(point),(long)index);
     for (NSObject <KLineDataLogicProtocol>*tempDelegate in self.delegateContainer) {
         
         if (tempDelegate && [tempDelegate respondsToSelector:@selector(klineView:didMoveToPoint:selectedItemIndex:)]) {

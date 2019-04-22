@@ -9,6 +9,8 @@
 /* K线视图手势事件变化的逻辑处理 */
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+NS_ASSUME_NONNULL_BEGIN
+
 
 @protocol KLineDataLogicProtocol <NSObject>
 @required
@@ -143,3 +145,4 @@
 
 - (instancetype)init NS_UNAVAILABLE;
 @end
+NS_ASSUME_NONNULL_END

@@ -749,12 +749,15 @@
     
     self.touchPointArray = @[[NSValue valueWithCGPoint:longPressPoint]].mutableCopy;
     
-    if (longPress.state == UIGestureRecognizerStateChanged) {
+    if (longPress.state == UIGestureRecognizerStateBegan) {
         // 开始显示十字线
-        NSLog(@"显示十字线");
+        NSLog(@"十字线 ------ 1");
         [self.dataLogic beginTapKLineView:self touchPoint:longPressPoint perItemWidth:self.perItemWidth];
+    }else if(longPress.state == UIGestureRecognizerStateChanged) {
+        NSLog(@"十字线 ------- 2");
+        [self.dataLogic moveTouchAtKLineView:self touchPoint:longPressPoint perItemWidth:self.perItemWidth];
     }else {
-        
+        NSLog(@"十字线 ------- 3");
         // 隐藏十字线
         [self.dataLogic removeTouchAtKLineView:self touchPoint:longPressPoint perItemWidth:self.perItemWidth];
     }

@@ -129,7 +129,7 @@
     
     CGContextStrokePath(ctx);
     
-    NSLog(@"select:%f,v_x:%f,tempx:%f",selectedIndex,visibleRange.x,tempx);
+    NSLog(@"select:%f,",selectedIndex);
 
 }
 
