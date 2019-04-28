@@ -49,7 +49,9 @@
 - (void)updateConfig:(NSObject<KLineViewProtocol> *)config {
     [super updateConfig:config];
     
-    self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insetsOfBorder]);
+//    self.logicRect = UIEdgeInsetsInsetRect(self.logicRect, [self.config insetsOfBorder]);
+    UIEdgeInsets insets = [self.config insetsOfKlineView];
+    self.logicRect = CGRectMake(insets.left, insets.top, self.logicRect.size.width - insets.left - insets.right, self.logicRect.size.height - insets.top);
 }
 
 /**
@@ -67,6 +69,7 @@
     
     // 实体线宽度
     self.entityLineWidth = [self.config defaultEntityLineWidth] *scale;
+    
     if (self.entityLineWidth > [self.config maxEntityLineWidth]) {
         self.entityLineWidth = [self.config maxEntityLineWidth];
     }else if(self.entityLineWidth < [self.config minEntityLineWidth]) {
@@ -84,6 +87,8 @@
     NSArray *points = [arguments objectForKey:KlineViewTouchPointValueArrayKey];
     
     NSInteger selectedIndex = [[arguments objectForKey:KlineViewReticleSelectedModelIndexKey] integerValue];
+//    NSNumber *selected = [arguments objectForKey:KlineViewReticleSelectedModelIndexKey];
+    
     if (selectedIndex < [DataCenter shareCenter].klineModelArray.count) {
         self.selectedModel = [[DataCenter shareCenter].klineModelArray objectAtIndex:selectedIndex];
     }
@@ -95,7 +100,6 @@
         
     }
     
-    NSLog(@"十字线 ------ %@",pointValue);
     CGPoint touchPoint = [pointValue CGPointValue];
     
     
@@ -116,12 +120,11 @@
     CGContextStrokePath(ctx);
 
     // 纵轴 --------
-    CGFloat tempx = (selectedIndex - visibleRange.x) * self.entityLineWidth;
+    CGFloat tempx = (selectedIndex - visibleRange.x + 0.5) * self.perItemWidth;
     
-    CGPoint x_beginPoint = CGPointMake(tempx, 0);
+    CGPoint x_beginPoint = CGPointMake(tempx, self.logicRect.origin.y - 10.0f);
     
-    CGPoint x_endPoint = CGPointMake(tempx,self.logicRect.size.height);
-    
+    CGPoint x_endPoint = CGPointMake(tempx,self.logicRect.size.height + self.logicRect.origin.y);
     
     CGContextMoveToPoint(ctx, x_beginPoint.x, x_beginPoint.y);
     
@@ -129,8 +132,7 @@
     
     CGContextStrokePath(ctx);
     
-    NSLog(@"select:%f,",selectedIndex);
-
+    NSLog(@"567890 : %ld",selectedIndex);
 }
 
 @end

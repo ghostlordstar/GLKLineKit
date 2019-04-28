@@ -12,7 +12,7 @@
 
 @interface KLineMADrawLogic : BaseDrawLogic
 
-#pragma mark - 下方隐藏各MA线方法主要是为了配合分时图使用，因为一般分时图只会有一根MA线，可以根据需求隐藏不需要的线 ---
+#pragma mark - 下方隐藏各MA线方法主要是为了配合分时图使用，因为一般分时图只会有一根MA线，可以根据需求隐藏不需要的线
 
 /**
  隐藏ma5
