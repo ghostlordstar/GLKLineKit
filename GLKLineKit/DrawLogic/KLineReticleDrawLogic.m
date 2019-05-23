@@ -102,7 +102,6 @@
     
     CGPoint touchPoint = [pointValue CGPointValue];
     
-    
     // 横轴 -------
     CGPoint y_beginPoint = CGPointMake(0, touchPoint.y);
     CGPoint y_endPoint = CGPointMake(self.logicRect.size.width, touchPoint.y);
@@ -112,7 +111,6 @@
     // 设置画笔颜色
     CGContextSetStrokeColorWithColor(ctx, [self.config reticle_color].CGColor);
     
-    
     CGContextMoveToPoint(ctx, y_beginPoint.x, y_beginPoint.y);
     
     CGContextAddLineToPoint(ctx, y_endPoint.x, y_endPoint.y);
@@ -120,7 +118,7 @@
     CGContextStrokePath(ctx);
 
     // 纵轴 --------
-    CGFloat tempx = (selectedIndex - visibleRange.x + 0.5) * self.perItemWidth;
+    CGFloat tempx = (selectedIndex - visibleRange.x - 0.5) * self.perItemWidth;
     
     CGPoint x_beginPoint = CGPointMake(tempx, self.logicRect.origin.y - 10.0f);
     
@@ -132,7 +130,17 @@
     
     CGContextStrokePath(ctx);
     
-    NSLog(@"567890 : %ld",selectedIndex);
+//    NSValue *extremeVlue = [arguments objectForKey:<#(nonnull id)#>];
+//    
+//    
+//    GLExtremeValue extreme = [];
+//    
+    
+    
+    
+    
+    
+//    NSLog(@"567890 : %ld",selectedIndex);
 }
 
 @end

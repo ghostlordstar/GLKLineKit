@@ -863,7 +863,6 @@
     return _dataLogic;
 }
 
-
 - (CGFloat)maxItemCount {
     
     _maxItemCount = (self.frame.size.width - ([self.config insetsOfKlineView].left + [self.config insetsOfKlineView].right)) / self.perItemWidth;
