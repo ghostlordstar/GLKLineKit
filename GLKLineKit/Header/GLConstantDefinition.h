@@ -44,7 +44,8 @@ __GLExtremeValueEqualToExtremeValue(GLExtremeValue value1, GLExtremeValue value2
 #pragma mark -- 最大最小值的结构体 ----👆👆--end----
 
 #pragma mark - 一些Key的定义 ---------------
-/* 在字典中保存时对应的Key */
+
+/* 更新最值的block */
 UIKIT_EXTERN NSString *const updateExtremeValueBlockAtDictionaryKey;
 
 /* K线绘图算法默认的Identifier */
@@ -54,7 +55,7 @@ UIKIT_EXTERN NSString *const klineDrawLogicDefaultIdentifier;
 UIKIT_EXTERN NSString *const klineBGDrawLogicDefaultIdentifier;
 
 /* k线视图传入背景绘图算法的最大最小值的key */
-UIKIT_EXTERN NSString *const KlineViewToKlineBGDrawLogicExtremeValueKey;
+UIKIT_EXTERN NSString *const KlineViewToKlineDrawLogicExtremeValueArrayKey;
 
 /* 十字线选中的model的key */
 UIKIT_EXTERN NSString *const KlineViewReticleSelectedModelIndexKey;

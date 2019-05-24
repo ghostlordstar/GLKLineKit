@@ -146,7 +146,7 @@
     
     if(argu && [argu isKindOfClass:[NSDictionary class]]) {
         
-        NSValue *tempExtremeValue = [argu objectForKey:KlineViewToKlineBGDrawLogicExtremeValueKey];
+        NSValue *tempExtremeValue = [argu objectForKey:KlineViewToKlineDrawLogicExtremeValueArrayKey];
         GLExtremeValue tempValue = [tempExtremeValue gl_extremeValue];
         if (GLExtremeValueEqualToExtremeValue(tempValue, GLExtremeValueZero)) {
             self.extremeValue = GLExtremeValueMake(CGFLOAT_MAX, 0.0f);

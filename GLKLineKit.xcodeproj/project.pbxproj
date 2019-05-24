@@ -803,6 +803,7 @@
 			knownRegions = (
 				"zh-Hans-CN",
 				en,
+				Base,
 			);
 			mainGroup = 5D1F1D8220B8289D00BD47B1;
 			productRefGroup = 5D1F1D8C20B8289D00BD47B1 /* Products */;
