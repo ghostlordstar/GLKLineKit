@@ -232,9 +232,11 @@
     
     if(argu && [argu isKindOfClass:[NSDictionary class]]) {
         
-        NSValue *tempExtremeValue = [argu objectForKey:KlineViewToKlineDrawLogicExtremeValueArrayKey];
-        
-        self.extremeValue = [tempExtremeValue gl_extremeValue];
+        NSArray *extremeArray = [argu objectForKey:KlineViewToKlineDrawLogicExtremeValueArrayKey];
+        NSValue *tempExtremeValue = [extremeArray firstObject];
+        if (tempExtremeValue) {
+            self.extremeValue = [tempExtremeValue gl_extremeValue];
+        }
     }
 }
 
