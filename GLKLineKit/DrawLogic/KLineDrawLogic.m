@@ -148,7 +148,7 @@
         
         NSArray *extremeArray = [argu objectForKey:KlineViewToKlineDrawLogicExtremeValueArrayKey];
         NSValue *tempExtremeValue = [extremeArray firstObject];
-        GLExtremeValue tempValue = 
+        GLExtremeValue tempValue = [tempExtremeValue gl_extremeValue];
         if (tempExtremeValue) {
             self.extremeValue = [tempExtremeValue gl_extremeValue];
         }
@@ -157,7 +157,6 @@
         }else {
             self.extremeValue = tempValue;
         }
-        
     }
 }
 

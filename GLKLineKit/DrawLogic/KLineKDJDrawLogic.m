@@ -214,7 +214,7 @@
     
     if(argu && [argu isKindOfClass:[NSDictionary class]]) {
         
-        NSValue *tempExtremeValue = [argu objectForKey:KlineViewToKlineDrawLogicExtremeValueArrayKey];
+        NSValue *tempExtremeValue = [[argu objectForKey:KlineViewToKlineDrawLogicExtremeValueArrayKey] firstObject];
         GLExtremeValue value = [tempExtremeValue gl_extremeValue];
         self.extremeValue = value;
         NSInteger index = [[argu objectForKey:KlineViewReticleSelectedModelIndexKey] integerValue];
