@@ -66,7 +66,8 @@
 @property (assign, nonatomic) CGFloat lastPinchWidth;
 
 /**
- 当前的最值
+ 当前各图形类型(graphType)下各自的最值
+ 
  @{@(graphType):@(GLExtremeValue)}
  */
 @property (strong, nonatomic) NSMutableDictionary <NSNumber *,NSValue*>*currentExtremeValueDict;
@@ -75,10 +76,11 @@
 @property (copy, nonatomic) UpdateExtremeValueBlock updateExtremeValueBlock;
 
 /**
- 各绘图算法的最大最小值
+ 所有绘图算法下的最大最小值
+ 
  {@(graphType):@{identifier:@(GLExtremeValue)}}
  */
-@property (strong, nonatomic) NSMutableDictionary <NSNumber *, NSValue*>*extremeValueDict;
+@property (strong, nonatomic) NSMutableDictionary <NSNumber *, NSDictionary*>*allExtremeValueDict;
 
 /** 是否正在显示十字线 */
 @property (assign, nonatomic) BOOL isShowReticle;
@@ -225,11 +227,6 @@
  @return 添加后的绘图算法
  */
 - (NSArray <BaseDrawLogic *>* _Nullable)addDrawLogic:(BaseDrawLogic<ChartDrawProtocol>*)logic {
-    
-    //    if([logic isMemberOfClass:[KLineBGDrawLogic class]]) {
-    //        // 如果添加背景算法，就先把默认的移除掉
-    //        [self removeDrawLogicWithLogicId:klineBGDrawLogicDefaultIdentifier];
-    //    }
     
     for (BaseDrawLogic *tempLogic in self.drawLogicArray) {
         if (tempLogic.drawLogicIdentifier && [tempLogic.drawLogicIdentifier isEqualToString:logic.drawLogicIdentifier]) {
@@ -611,30 +608,7 @@
             [arguments setObject:@(self.selectedIndex) forKey:KlineViewReticleSelectedModelIndexKey];
         }
     }
-//    // 背景绘图算法传入附加参数和绘制的rect 进行特殊处理
-//    if ([drawLogic isMemberOfClass:[KLineBGDrawLogic class]]) {
-//        // 传入最大最小值KlineViewToKlineDrawLogicExtremeValueArrayKey
-//        arguments = @{:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewTouchPointValueArrayKey:self.touchPointArray};
-//
-//    }else {  // 其他绘图算法默认传入附加参数和处理后的rect
-//        if (self.selectedIndex >= 0) {
-//
-//            // 传入更新最大最小值的block
-//            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineDrawLogicExtremeValueArrayKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewReticleSelectedModelIndexKey:@(self.selectedIndex),KlineViewTouchPointValueArrayKey:self.touchPointArray};
-//
-//
-//        }else {
-//            // 传入更新最大最小值的block
-//            arguments = @{updateExtremeValueBlockAtDictionaryKey:self.updateExtremeValueBlock,KlineViewToKlineDrawLogicExtremeValueArrayKey:[NSValue gl_valuewithGLExtremeValue:[self p_getExtremeValueFilterIdentifier:drawLogic.drawLogicIdentifier graphType:drawLogic.graphType]],KlineViewTouchPointValueArrayKey:self.touchPointArray};
-//
-//        }
-//
-//        // 处理Rect
-//        //        newRect = CGRectMake(rect.origin.x + [self.config insetsOfKlineView].left, rect.origin.y + [self.config insetsOfKlineView].top, rect.size.width - ([self.config insetsOfKlineView].left + [self.config insetsOfKlineView].right), rect.size.height - ([self.config insetsOfKlineView].top + [self.config insetsOfKlineView].bottom));
-//    }
-    
-    // 绘制算法
-    //    [drawLogic drawWithCGContext:ctx rect:newRect indexPathForVisibleRange:self.visibleRange scale:self.currentScale otherArguments:arguments];
+
     [drawLogic drawWithCGContext:ctx rect:rect indexPathForVisibleRange:self.visibleRange scale:self.currentScale otherArguments:arguments];
 }
 
@@ -681,20 +655,20 @@
     
     if(identifier && identifier.length > 0) {
         if (graphType >= GraphTypeMain && graphType <= GraphTypeFull) {
-            NSMutableDictionary *tempDict = [self.extremeValueDict objectForKey:@(graphType)];
+            NSMutableDictionary *tempDict = [[self.allExtremeValueDict objectForKey:@(graphType)] mutableCopy];
             NSValue *value = [NSValue gl_valuewithGLExtremeValue:extremeValue];
             if (value) {
                 if (tempDict) {
                     [tempDict setObject:value forKey:identifier];
                 }else {
-                    [self.extremeValueDict setObject:@{identifier:value}.mutableCopy forKey:@(graphType)];
+                    [self.allExtremeValueDict setObject:@{identifier:value}.mutableCopy forKey:@(graphType)];
                 }
             }
         }
     }
     
-    for (NSNumber *keyNum in self.extremeValueDict) {
-        NSDictionary *tempDict = [self.extremeValueDict objectForKey:keyNum];
+    for (NSNumber *keyNum in self.allExtremeValueDict) {
+        NSDictionary *tempDict = [self.allExtremeValueDict objectForKey:keyNum];
         for (NSString *key in tempDict) {
             NSValue *value = [tempDict objectForKey:key];
             
@@ -715,8 +689,8 @@
     
     if (identifier && identifier.length >= 1) {
         
-        for (NSNumber *tempGraph in self.extremeValueDict) {
-            NSMutableDictionary *tempExtremeDict = [self.extremeValueDict objectForKey:tempGraph];
+        for (NSNumber *tempGraph in self.allExtremeValueDict) {
+            NSMutableDictionary *tempExtremeDict = [[self.allExtremeValueDict objectForKey:tempGraph] mutableCopy];
             
             for (NSString *tempId in [tempExtremeDict copy]) {
                 if ([tempId isEqualToString:identifier]) {
@@ -745,7 +719,6 @@
         
         NSLog(@"key:%@,Max:%f,Min:%f",keyNum,tempValue.maxValue,tempValue.minValue);
     }
-    NSLog(@" current---------------------------------");
 }
 
 /**
@@ -753,7 +726,7 @@
  */
 - (void)p_removeAllExtremeValues {
     
-    [self.extremeValueDict removeAllObjects];
+    [self.allExtremeValueDict removeAllObjects];
 }
 
 /*平移手势处理*/
@@ -865,7 +838,7 @@
 - (GLExtremeValue)p_getExtremeValueFilterIdentifier:(NSString * _Nullable)identifier graphType:(GraphType)graphType {
     
     GLExtremeValue result = GLExtremeValueMake(CGFLOAT_MAX, 0.0f);
-    NSDictionary *graphExtremeDict = [self.extremeValueDict objectForKey:@(graphType)];
+    NSDictionary *graphExtremeDict = [self.allExtremeValueDict objectForKey:@(graphType)];
     
     for (NSString *tempKey in graphExtremeDict) {
         if ([tempKey isEqualToString:identifier]) {
@@ -926,13 +899,11 @@
             GLExtremeValue currentExtreme = [strongSelf getCurrentExtremeValueWithGraphType:graphType];
             
             // 保存各算法的最大最小值
-            //            [strongSelf.extremeValueDict setObject:[NSValue gl_valuewithGLExtremeValue:GLExtremeValueMake(minValue, maxValue)] forKey:identifier];
             [strongSelf p_updateExtremeValueWithGLExtremeValue:GLExtremeValueMake(minValue, maxValue) identifier:identifier graphType:graphType];
             
             GLExtremeValue tempOtherExtreme = [strongSelf p_getExtremeValueFilterIdentifier:identifier graphType:graphType];
             GLExtremeValue tempDrawExtreme = GLExtremeValueMake(fmin(minValue, tempOtherExtreme.minValue), fmax(maxValue, tempOtherExtreme.maxValue));
             if (!GLExtremeValueEqualToExtremeValue(currentExtreme, tempDrawExtreme)) {
-                //                [strongSelf.currentExtremeValueDict setObject:[NSValue gl_valuewithGLExtremeValue:tempDrawExtreme] forKey:@(graphType)];
                 [strongSelf p_updateCurrentExtremeValue:tempDrawExtreme atGraphType:graphType];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [strongSelf setNeedsDisplay];
@@ -970,11 +941,11 @@
     return _touchPointArray;
 }
 
-- (NSMutableDictionary *)extremeValueDict {
-    if (!_extremeValueDict) {
-        _extremeValueDict = @{}.mutableCopy;
+- (NSMutableDictionary *)allExtremeValueDict {
+    if (!_allExtremeValueDict) {
+        _allExtremeValueDict = @{}.mutableCopy;
     }
-    return _extremeValueDict;
+    return _allExtremeValueDict;
 }
 
 - (NSMutableDictionary<NSNumber *,NSValue *> *)currentExtremeValueDict {

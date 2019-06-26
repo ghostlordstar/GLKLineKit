@@ -275,12 +275,15 @@
     
     if(argu && [argu isKindOfClass:[NSDictionary class]]) {
         
-        NSValue *tempExtremeValue = [argu objectForKey:KlineViewToKlineDrawLogicExtremeValueArrayKey];
-        GLExtremeValue value = [tempExtremeValue gl_extremeValue];
-        self.extremeValue = value;
+        NSArray *extremeArray = [argu objectForKey:KlineViewToKlineDrawLogicExtremeValueArrayKey];
         
-//        self.selectedModel = [argu objectForKey:KlineViewReticleSelectedModelKey];
+        if (extremeArray && extremeArray.count > 0) {
+            NSValue *tempExtremeValue = [extremeArray firstObject];
+            self.extremeValue = [tempExtremeValue gl_extremeValue];
+        }
+        
         NSInteger index = [[argu objectForKey:KlineViewReticleSelectedModelIndexKey] integerValue];
+        
         if (index < [DataCenter shareCenter].klineModelArray.count) {
             self.selectedModel = [[DataCenter shareCenter].klineModelArray objectAtIndex:index];
         }

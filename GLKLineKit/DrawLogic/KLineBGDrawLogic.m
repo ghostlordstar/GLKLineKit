@@ -201,7 +201,6 @@
     [self p_drawTextInRect:textRect text:[@(self.extremeValue.minValue) gl_numberToStringWithDecimalsLimit:decimalsLimit] attributes:attributes];
 }
 
-
 /**
  绘制一个左右和垂直居中的文字
  
@@ -233,8 +232,8 @@
     if(argu && [argu isKindOfClass:[NSDictionary class]]) {
         
         NSArray *extremeArray = [argu objectForKey:KlineViewToKlineDrawLogicExtremeValueArrayKey];
-        NSValue *tempExtremeValue = [extremeArray firstObject];
-        if (tempExtremeValue) {
+        if (extremeArray && extremeArray.count > 0) {
+            NSValue *tempExtremeValue = [extremeArray firstObject];
             self.extremeValue = [tempExtremeValue gl_extremeValue];
         }
     }
